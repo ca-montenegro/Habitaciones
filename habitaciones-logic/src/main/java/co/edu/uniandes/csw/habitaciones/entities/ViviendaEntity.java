@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ViviendaEntity implements Serializable {
@@ -26,8 +28,10 @@ public class ViviendaEntity implements Serializable {
     
     private String imagen;
     
+    @OneToOne
     private List reservas;
     
+    @OneToMany(mappedBy="Habitacion")
     private List habitaciones;
     
     
