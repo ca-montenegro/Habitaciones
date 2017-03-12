@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,14 +16,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ca.montenegro
  */
 @XmlRootElement
-public class UsuarioDetailDTO extends UsuarioDTO {
+public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
     private List<ReservaEntity> reservas;
     
+    @Override
     public List getReservas()
     {
         return reservas;
     }
     
+    @Override
     public void setReservas(List reservas)
     {
         this.reservas = reservas;
