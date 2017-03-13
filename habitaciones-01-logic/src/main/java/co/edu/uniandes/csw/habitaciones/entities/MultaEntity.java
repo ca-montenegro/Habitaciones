@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 public class MultaEntity implements Serializable{
     
     @Id
-    @OneToOne( mappedBy = "reserva")
+    @OneToOne( mappedBy = "multa")
     private String codigoReserva;
     
      @Temporal(TemporalType.TIMESTAMP) 
