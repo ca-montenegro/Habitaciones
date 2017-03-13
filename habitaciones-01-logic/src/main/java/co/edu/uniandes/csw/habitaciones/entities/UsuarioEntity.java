@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -130,6 +131,24 @@ public class UsuarioEntity {
             return this.getNumeroID().hashCode();
         }
         return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UsuarioEntity other = (UsuarioEntity) obj;
+        if (!Objects.equals(this.numeroID, other.numeroID)) {
+            return false;
+        }
+        return true;
     }
     
     
