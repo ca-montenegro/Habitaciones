@@ -3,28 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.habitaciones.entities;
+package co.edu.uniandes.csw.habitaciones.dtos;
 
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ca.montenegro
+ * @author jd.cardenas10
  */
-@Entity
-public class AnfitrionEntity extends UsuarioEntity{
-    
+public class AnfitrionDetailDTO {
+    /**
+ *
+ * @author jd.cardenas10
+ */
+@XmlRootElement
+public class AnfitrionDTO extends UsuarioDTO{
     private Double puntuacion;
     
-    @OneToMany
-    private List<ViviendaEntity> viviendas;
-    
-    public AnfitrionEntity()
-    {
-        super();
-    }
+    private List<ViviendaDTO> viviendas;
 
     public Double getPuntuacion() {
         return puntuacion;
@@ -34,14 +31,12 @@ public class AnfitrionEntity extends UsuarioEntity{
         this.puntuacion = puntuacion;
     }
 
-    public List<ViviendaEntity> getViviendas() {
+    public List<ViviendaDTO> getViviendas() {
         return viviendas;
     }
 
-    public void setViviendas(List<ViviendaEntity> viviendas) {
+    public void setViviendas(List<ViviendaDTO> viviendas) {
         this.viviendas = viviendas;
     }
-    
-    
-    
+}
 }
