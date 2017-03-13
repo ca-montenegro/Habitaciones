@@ -1,16 +1,18 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class ReservaEntity {
+public class ReservaEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,9 @@ public class ReservaEntity {
     private double costo;
     
     private char estado;
+    
+    @OneToOne
+    private MultaEntity multa;
 
     public String getCodigoReserva() {
         return codigoReserva;
@@ -64,6 +69,14 @@ public class ReservaEntity {
 
     public void setEstado(char estado) {
         this.estado = estado;
+    }
+    
+     public MultaEntity getMulta() {
+        return multa;
+    }
+
+    public void setMulta(MultaEntity multa) {
+        this.multa = multa;
     }
     
     @Override

@@ -4,13 +4,23 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class MultaEntity implements Serializable{
     
+    @Id
+    @OneToOne( mappedBy = "multa")
     private String codigoReserva;
+    
+     @Temporal(TemporalType.TIMESTAMP) 
+    private Date fechaCancelacion;
+    
+    @Temporal(TemporalType.TIMESTAMP) 
+    private Date fechaPago;
 
     public String getCodigoReserva() {
         return codigoReserva;
@@ -19,12 +29,7 @@ public class MultaEntity implements Serializable{
     public void setCodigoReserva(String codigoReserva) {
         this.codigoReserva = codigoReserva;
     }
-    
-    @Temporal(TemporalType.TIMESTAMP) 
-    private Date fechaCancelacion;
-    
-    @Temporal(TemporalType.TIMESTAMP) 
-    private Date fechaPago;
+   
 
     public Date getFechaCancelacion() {
         return fechaCancelacion;

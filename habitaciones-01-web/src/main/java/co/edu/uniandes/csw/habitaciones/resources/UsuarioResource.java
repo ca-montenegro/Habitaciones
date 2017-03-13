@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
+import co.edu.uniandes.csw.habitaciones.dtos.ReservaDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.UsuarioLogic;
+import co.edu.uniandes.csw.habitaciones.ejbs.ReservaLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
@@ -38,6 +40,7 @@ import javax.ws.rs.core.MediaType;
 public class UsuarioResource {
     
     @Inject private UsuarioLogic usuarioLogic;
+    private ReservaLogic reservaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
@@ -80,6 +83,12 @@ public class UsuarioResource {
     @Path("{id: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
+    }
+    
+    @GET
+    @Path("{id: \\d+}/reservas/{idReserva}")
+    public ReservaDTO getUsuarioReservaID ( @PathParam("id") Long id, @PathParam("idReserva") String idReserva) {
+        return new ReservaDTO(reservaLogic.getReserva(idReserva));
     }
     
      /**

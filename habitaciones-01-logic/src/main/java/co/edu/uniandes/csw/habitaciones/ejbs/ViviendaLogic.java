@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 
 /**
+ * @author c.penaloza
  * @generated
  */
 @Stateless

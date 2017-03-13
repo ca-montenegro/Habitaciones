@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+/**
+ * @author c.penaloza
+ */
 @Entity
 public class ViviendaEntity implements Serializable {
 
