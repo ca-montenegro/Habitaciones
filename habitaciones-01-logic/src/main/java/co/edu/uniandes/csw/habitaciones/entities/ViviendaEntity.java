@@ -30,7 +30,7 @@ public class ViviendaEntity implements Serializable {
     private String imagen;
     
     @OneToOne
-    private List reservas;
+    private List<ReservaEntity> reservas;
     
     @OneToMany(mappedBy="Habitacion")
     private List habitaciones;
