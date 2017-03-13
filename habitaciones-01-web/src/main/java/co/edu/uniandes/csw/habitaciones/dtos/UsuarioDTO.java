@@ -60,6 +60,23 @@ public class UsuarioDTO implements Serializable {
             this.reservas = entity.getReservas();
         }    
     }
+    
+     public UsuarioEntity toEntity() {
+        UsuarioEntity entity = new UsuarioEntity();
+        
+        entity.setNumeroID(this.numeroID);
+        entity.setTipoID(this.getTipoID());
+        entity.setNombre(this.nombre);
+        entity.setUsuario(this.usuario);
+        entity.setContrasenha(this.contrasenha);
+        entity.setCorreo(this.correo);
+        entity.setDireccion(this.direccion);
+        entity.setTelefono(this.telefono);
+        entity.setNumeroTarjeta(this.numeroTarjeta);
+        entity.setReservas(this.reservas);
+        
+      return entity;  
+    }
 
     public Long getNumeroID() {
         return numeroID;
