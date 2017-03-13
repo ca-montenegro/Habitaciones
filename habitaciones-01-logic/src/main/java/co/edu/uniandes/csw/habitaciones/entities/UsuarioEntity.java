@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.habitaciones.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.Id;
  * @author ca.montenegro
  */
 @Entity
-public class UsuarioEntity {
+public class UsuarioEntity implements Serializable {
     
     @Id
     private Long numeroID;

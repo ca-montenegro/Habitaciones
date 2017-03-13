@@ -36,6 +36,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
         super(entity);
         this.reservas = entity.getReservas();
     }
+
     
     public UsuarioEntity toEntity()
     {
