@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 
 /**
+ * @author c.penaloza
  * @generated
  */
 @Stateless
