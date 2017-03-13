@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.habitaciones.ejbs;
 
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
+import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.HabitacionPersistence;
 import java.util.List;
 import javax.inject.Inject;
@@ -28,8 +29,16 @@ public class HabitacionLogic {
         return persistence.find(id);
     }
     
-    public HabitacionEntity createHabitacion(HabitacionEntity entity)
+    public HabitacionEntity createHabitacion(HabitacionEntity entity) throws BusinessLogicException
     {
+        if(entity.getArea() <= 0.0)
+            throw new BusinessLogicException ("El area debe ser mayor a 0");
+        if(entity.getCapacidad() <= 0)
+            throw new BusinessLogicException("La capacidad debe ser mayor a 0");
+        if(entity.getValorDiario() <= 0)
+            throw new BusinessLogicException("El precio debe ser mayor a cero");
+        if(entity.getIdVivienda() == null)
+            throw new BusinessLogicException("La habitacion debe pertenecer a una vivienda");
         persistence.create(entity);
         return entity;
     }
