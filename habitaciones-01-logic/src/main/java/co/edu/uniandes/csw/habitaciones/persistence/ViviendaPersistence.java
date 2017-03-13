@@ -14,7 +14,7 @@ import javax.persistence.Query;
 @Stateless
 public class ViviendaPersistence  {
 
-    @PersistenceContext(unitName="viviendaPU")
+    @PersistenceContext(unitName="habitacionesPU")
     protected EntityManager em;
 
     public ViviendaEntity find(Long id) {
