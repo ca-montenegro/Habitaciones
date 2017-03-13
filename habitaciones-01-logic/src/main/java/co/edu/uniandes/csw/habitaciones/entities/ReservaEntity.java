@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,6 +27,9 @@ public class ReservaEntity implements Serializable{
     private double costo;
     
     private char estado;
+    
+    @OneToOne
+    private MultaEntity multa;
 
     public String getCodigoReserva() {
         return codigoReserva;
@@ -65,6 +69,14 @@ public class ReservaEntity implements Serializable{
 
     public void setEstado(char estado) {
         this.estado = estado;
+    }
+    
+     public MultaEntity getMulta() {
+        return multa;
+    }
+
+    public void setMulta(MultaEntity multa) {
+        this.multa = multa;
     }
     
     @Override

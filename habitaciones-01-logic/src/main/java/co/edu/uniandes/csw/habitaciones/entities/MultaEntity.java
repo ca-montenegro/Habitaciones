@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -12,6 +13,7 @@ import javax.persistence.TemporalType;
 public class MultaEntity implements Serializable{
     
     @Id
+    @OneToOne( mappedBy = "reserva")
     private String codigoReserva;
     
      @Temporal(TemporalType.TIMESTAMP) 
