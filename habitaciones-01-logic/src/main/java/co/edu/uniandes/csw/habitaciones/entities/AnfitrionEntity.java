@@ -18,7 +18,7 @@ public class AnfitrionEntity extends UsuarioEntity{
     
     private Double puntuacion;
     
-    @OneToMany
+    //@OneToMany
     private List<ViviendaEntity> viviendas;
     
     public AnfitrionEntity()

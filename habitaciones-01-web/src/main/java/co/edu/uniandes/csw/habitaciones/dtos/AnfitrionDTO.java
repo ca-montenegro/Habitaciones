@@ -16,6 +16,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AnfitrionDTO extends UsuarioDTO{
     private Double puntuacion;
 
+    public AnfitrionDTO(){
+        
+    }
+    
     public AnfitrionDTO(AnfitrionEntity entity){
         super(entity);
         if(entity!=null){
@@ -23,9 +27,20 @@ public class AnfitrionDTO extends UsuarioDTO{
         }
     }
     
+    @Override
     public AnfitrionEntity toEntity(){
         AnfitrionEntity entity=new AnfitrionEntity();
-        //
+        entity.setNumeroID(this.getNumeroID());
+        entity.setTipoID(this.getTipoID());
+        entity.setNombre(this.getNombre());
+        entity.setUsuario(this.getUsuario());
+        entity.setContrasenha(this.getContrasenha());
+        entity.setCorreo(this.getCorreo());
+        entity.setDireccion(this.getDireccion());
+        entity.setTelefono(this.getTelefono());
+        entity.setNumeroTarjeta(this.getNumeroTarjeta());
+        entity.setReservas(this.getReservas());
+        entity.setPuntuacion(this.getPuntuacion());
         return entity;
     }
     

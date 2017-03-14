@@ -32,6 +32,11 @@ public class AnfitrionPersistence {
         Query q = em.createQuery("select u from AnfitrionEntity u");
         return q.getResultList();
     }
+
+    public AnfitrionEntity create(AnfitrionEntity entity) {
+        em.persist(entity);
+        return entity;
+    }
     
     
     

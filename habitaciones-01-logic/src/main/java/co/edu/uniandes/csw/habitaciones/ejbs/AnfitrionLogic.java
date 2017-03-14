@@ -19,9 +19,13 @@ public class AnfitrionLogic {
     @Inject 
     private AnfitrionPersistence persistence;
     
-    public List<AnfitrionEntity> getUsuarios()
+    public List<AnfitrionEntity> getAnfitriones()
     {
         return persistence.findAll();
+    }
+
+    public AnfitrionEntity createAnfitrion(AnfitrionEntity entity) {
+        return persistence.create(entity);
     }
     
     

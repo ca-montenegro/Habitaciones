@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.habitaciones.dtos;
 
+import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -12,16 +15,54 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author jd.cardenas10
  */
-public class AnfitrionDetailDTO {
-    /**
- *
- * @author jd.cardenas10
- */
 @XmlRootElement
-public class AnfitrionDTO extends UsuarioDTO{
+public class AnfitrionDetailDTO extends UsuarioDTO{
+
     private Double puntuacion;
     
-    private List<ViviendaDTO> viviendas;
+    private List<ViviendaDetailDTO> viviendas;
+    
+    public AnfitrionDetailDTO(){
+        
+    }
+    
+    public AnfitrionDetailDTO(AnfitrionEntity entity){
+        super(entity);
+        if(entity!=null){
+        this.puntuacion=entity.getPuntuacion();
+        this.viviendas=new ArrayList();
+        if(entity.getViviendas()!=null){
+            for(ViviendaEntity vivienda:entity.getViviendas())
+            {   
+                this.viviendas.add(new ViviendaDetailDTO(vivienda));
+            }
+        }
+        }
+    }
+    
+    public AnfitrionEntity toEntity(){
+        AnfitrionEntity entity=new AnfitrionEntity();
+        entity.setNumeroID(this.getNumeroID());
+        entity.setTipoID(this.getTipoID());
+        entity.setNombre(this.getNombre());
+        entity.setUsuario(this.getUsuario());
+        entity.setContrasenha(this.getContrasenha());
+        entity.setCorreo(this.getCorreo());
+        entity.setDireccion(this.getDireccion());
+        entity.setTelefono(this.getTelefono());
+        entity.setNumeroTarjeta(this.getNumeroTarjeta());
+        entity.setReservas(this.getReservas());
+        entity.setPuntuacion(this.getPuntuacion());
+        entity.setViviendas(new ArrayList());
+        List<ViviendaEntity> entities=entity.getViviendas();
+        if(this.getViviendas()!=null){
+            for(ViviendaDetailDTO vivienda:this.getViviendas())
+            {
+                entities.add(vivienda.toEntity());
+            }
+        }
+        return entity;
+    }
 
     public Double getPuntuacion() {
         return puntuacion;
@@ -31,12 +72,11 @@ public class AnfitrionDTO extends UsuarioDTO{
         this.puntuacion = puntuacion;
     }
 
-    public List<ViviendaDTO> getViviendas() {
+    public List<ViviendaDetailDTO> getViviendas() {
         return viviendas;
     }
 
-    public void setViviendas(List<ViviendaDTO> viviendas) {
+    public void setViviendas(List<ViviendaDetailDTO> viviendas) {
         this.viviendas = viviendas;
     }
-}
 }
