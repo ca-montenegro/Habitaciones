@@ -52,8 +52,8 @@ public class HabitacionResource {
     
      @GET
      @Path("/viviendas/{idV:\\d+}/habitaciones/")
-        public List<HabitacionEntity> getHabitaciones(@PathParam("idV") Long idV) {
-        return habitacionLogic.getHabitaciones();
+        public List<HabitacionDetailDTO> getHabitaciones(@PathParam("idV") Long idV) {
+        return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
     
     @GET
