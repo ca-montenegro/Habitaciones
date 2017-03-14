@@ -14,7 +14,7 @@ public class MultaEntity implements Serializable{
     
     @Id
     @OneToOne(mappedBy = "multa")
-    private String codigoReserva;
+    private ReservaEntity reserva;
     
      @Temporal(TemporalType.TIMESTAMP) 
     private Date fechaCancelacion;
@@ -22,13 +22,14 @@ public class MultaEntity implements Serializable{
     @Temporal(TemporalType.TIMESTAMP) 
     private Date fechaPago;
 
-    public String getCodigoReserva() {
-        return codigoReserva;
+    public ReservaEntity getReserva() {
+        return reserva;
     }
 
-    public void setCodigoReserva(String codigoReserva) {
-        this.codigoReserva = codigoReserva;
+    public void setReserva(ReservaEntity reserva) {
+        this.reserva = reserva;
     }
+
    
 
     public Date getFechaCancelacion() {
@@ -49,8 +50,8 @@ public class MultaEntity implements Serializable{
     
     @Override
             public int hashCode() {
-        if (this.getCodigoReserva()!= null) {
-            return this.getCodigoReserva().hashCode();
+        if (this.getReserva()!= null) {
+            return this.getReserva().hashCode();
         }
         return super.hashCode();
     }
@@ -67,7 +68,7 @@ public class MultaEntity implements Serializable{
             return false;
         }
         final MultaEntity other = (MultaEntity) obj;
-        if (!Objects.equals(this.codigoReserva, other.codigoReserva)) {
+        if (!Objects.equals(this.reserva, other.reserva)) {
             return false;
         }
         return true;

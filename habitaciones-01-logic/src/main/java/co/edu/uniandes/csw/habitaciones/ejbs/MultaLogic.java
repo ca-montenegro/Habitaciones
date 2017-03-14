@@ -20,7 +20,7 @@ public class MultaLogic {
     }
             
     public MultaEntity createMulta(MultaEntity entity) throws BusinessLogicException{
-        if( persistence.find(entity.getCodigoReserva()) == null)
+        if( persistence.find(entity.getReserva().toString()) == null)
         {
             throw new BusinessLogicException("Ya existe una multa asociada a esa reserva.");
         }

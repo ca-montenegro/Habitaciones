@@ -23,6 +23,7 @@ public class ReservaLogic {
     
     public ReservaEntity createReserva(ReservaEntity entity) throws BusinessLogicException {
         if(entity.getFechaFin().after(entity.getFechaInicio()))
+            throw new BusinessLogicException("La fecha final de la reserva no puede ser antes de la fecha de inicio de la reserva.");
         if(entity.getCosto()< 0.0)
              throw new BusinessLogicException("El costo no puede ser negativo.");
         if(entity.getEstado() == 'C')
