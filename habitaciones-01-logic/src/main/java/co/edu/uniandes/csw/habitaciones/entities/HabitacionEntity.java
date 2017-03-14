@@ -31,7 +31,7 @@ public class HabitacionEntity implements Serializable {
     @ManyToOne
     private Long idVivienda;
     @OneToMany(mappedBy="Reserva")
-    private List reservas;
+    private List<ReservaEntity> reservas;
 
     public List getReservas() {
         return reservas;
