@@ -30,8 +30,6 @@ public class MultaEntity implements Serializable{
         this.reserva = reserva;
     }
 
-   
-
     public Date getFechaCancelacion() {
         return fechaCancelacion;
     }

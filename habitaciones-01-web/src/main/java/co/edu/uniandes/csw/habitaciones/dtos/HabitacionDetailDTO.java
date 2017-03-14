@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -19,7 +20,7 @@ public class HabitacionDetailDTO extends HabitacionDTO {
     
     private List<ReservaEntity> reservas;
     private Long idHabitacion;
-    private Long idVivienda;
+    private ViviendaEntity idVivienda;
 
     public long getIdHabitacion() {
         return idHabitacion;
@@ -37,16 +38,13 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         this.reservas = reservas;
     }
 
-    public long getIdVivienda() {
+    public ViviendaEntity getIdVivienda() {
         return idVivienda;
     }
 
-    public void setIdVivienda(long idVivienda) {
+    public void setIdVivienda(ViviendaEntity idVivienda) {
         this.idVivienda = idVivienda;
     }
-    
-    
-    
     public HabitacionDetailDTO()
     {      
         super();

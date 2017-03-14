@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,6 +31,28 @@ public class ReservaEntity implements Serializable{
     
     @OneToOne
     private MultaEntity multa;
+    
+    @ManyToOne
+    private HabitacionEntity habitacion;
+    
+    @ManyToOne
+    private ViviendaEntity vivienda;
+
+    public HabitacionEntity getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(HabitacionEntity habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public ViviendaEntity getVivienda() {
+        return vivienda;
+    }
+
+    public void setVivienda(ViviendaEntity vivienda) {
+        this.vivienda = vivienda;
+    }
 
     public String getCodigoReserva() {
         return codigoReserva;

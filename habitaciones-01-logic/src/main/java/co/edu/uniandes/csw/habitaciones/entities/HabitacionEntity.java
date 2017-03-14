@@ -28,9 +28,9 @@ public class HabitacionEntity implements Serializable {
     private Double valorDiario;
     private String descripcion;
     private String imagen;
-    @ManyToOne
-    private Long idVivienda;
-    @OneToMany(mappedBy="Reserva")
+    @ManyToOne 
+    private ViviendaEntity idVivienda;
+    @OneToMany(mappedBy="habitacion")
     private List<ReservaEntity> reservas;
 
     public List getReservas() {
@@ -89,13 +89,13 @@ public class HabitacionEntity implements Serializable {
         this.imagen = imagen;
     }
 
-    public Long getIdVivienda() {
+    public ViviendaEntity getIdVivienda()
+    {
         return idVivienda;
     }
-
-    public void setIdVivienda(Long idVivienda) {
+    
+    public void setIdVivienda(ViviendaEntity idVivienda)
+    {
         this.idVivienda = idVivienda;
     }
- 
-    
 }
