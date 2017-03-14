@@ -29,6 +29,4 @@ public class MultaPersistence {
     {
         return em.merge(entity);
     }
-    
-  
 }
