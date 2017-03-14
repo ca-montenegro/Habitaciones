@@ -36,7 +36,7 @@ public class ViviendaEntity implements Serializable {
     private List<ReservaEntity> reservas;
     
     @OneToMany(mappedBy="Habitacion")
-    private List habitaciones;
+    private List<HabitacionEntity> habitaciones;
     
     
     public ViviendaEntity(){
@@ -99,7 +99,7 @@ public class ViviendaEntity implements Serializable {
         this.imagen = imagen;
     }
 
-    public List getReservas() {
+    public List<ReservaEntity> getReservas() {
         return reservas;
     }
 
@@ -107,7 +107,7 @@ public class ViviendaEntity implements Serializable {
         this.reservas = reservas;
     }
 
-    public List getHabitaciones() {
+    public List<HabitacionEntity> getHabitaciones() {
         return habitaciones;
     }
 

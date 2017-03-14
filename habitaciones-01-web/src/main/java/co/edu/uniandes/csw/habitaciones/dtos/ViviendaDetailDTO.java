@@ -1,5 +1,6 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
+import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,9 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ViviendaDetailDTO extends ViviendaDTO{
 
-private List habitaciones;
+private List<HabitacionEntity> habitaciones;
 
-    public List getHabitaciones() {
+    public List<HabitacionEntity> getHabitaciones() {
         return habitaciones;
     }
 

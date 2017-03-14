@@ -45,6 +45,10 @@ public class UsuarioLogic {
         }
         return persistence.create(entity);
     }
+    
+    
+    
+    
     public UsuarioEntity updateUsuario(UsuarioEntity entity)
     {
         return persistence.update(entity);

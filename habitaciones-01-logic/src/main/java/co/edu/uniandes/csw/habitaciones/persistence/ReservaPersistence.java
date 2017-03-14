@@ -1,11 +1,15 @@
 package co.edu.uniandes.csw.habitaciones.persistence;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Parameter;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class ReservaPersistence {
@@ -30,4 +34,18 @@ public class ReservaPersistence {
     public ReservaEntity update(ReservaEntity entity){
         return em.merge(entity);
     }
+    
+    
+   // public ReservaEntity findByCodigoReserva(Date fechaInicio, Date fechaFin, Parameter<Date> param) {
+     //  
+       // TypedQuery<ReservaEntity> q
+      //          = em.createQuery("select u from ReservaEntity u where u.carnet = :carnet", ReservaEntity.class);
+      //  q = q.setParameter(param, fechaInicio, TemporalType.TIMESTAMP);
+      // List<ReservaEntity> sameCarnet = q.getResultList();
+       // if (sameCarnet.isEmpty() ) {
+       //     return null; 
+        //} else {
+         //   return sameCarnet.get(0);
+        //}
+    //}
 }

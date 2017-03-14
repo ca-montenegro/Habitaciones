@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.HabitacionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.HabitacionLogic;
+import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
+import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,14 +29,14 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *URI: habitaciones/
- * @author l.maya10
+ * @author l.maya10 c.penaloza
  */
-@Path("/habitaciones")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class HabitacionResource {
     
     @Inject private HabitacionLogic habitacionLogic;
+    @Inject private ViviendaLogic viviendaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
@@ -53,13 +56,27 @@ public class HabitacionResource {
     }
     
     @GET
-    @Path("{id: \\d+}")
-    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id) {
-        return new HabitacionDetailDTO(habitacionLogic.getHabitacion(id));
+    @Path("viviendas/{idV:\\d+}/habitaciones/{id: \\d+}")
+    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) {
+        HabitacionDetailDTO buscada= new HabitacionDetailDTO();
+        ViviendaEntity vivienda = viviendaLogic.getVivienda(idV);
+        List<HabitacionEntity> habitaciones = vivienda.getHabitaciones();
+         for (HabitacionEntity h: habitaciones){
+             if (h.getId()==idV){
+                habitaciones.add(h);
+                viviendaLogic.updateVivienda(vivienda);
+             }
+         }
+        return buscada;
     }
     
      @POST
-    public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto) {
+     @Path("viviendas/{idV:\\d+}/habitaciones/")
+    public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
+        ViviendaEntity v = viviendaLogic.getVivienda(idV);
+         List<HabitacionEntity> h = v.getHabitaciones();
+         h.add(dto.toEntity());
+         viviendaLogic.updateVivienda(v);
         return new HabitacionDetailDTO(habitacionLogic.createHabitacion(dto.toEntity()));
     }
     

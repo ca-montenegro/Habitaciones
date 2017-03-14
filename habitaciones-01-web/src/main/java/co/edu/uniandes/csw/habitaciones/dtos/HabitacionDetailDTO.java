@@ -17,7 +17,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class HabitacionDetailDTO extends HabitacionDTO {
     
     private List reservas;
-    private String idVivienda;
+    private Long idHabitacion;
+    private Long idVivienda;
+
+    public long getIdHabitacion() {
+        return idHabitacion;
+    }
+
+    public void setIdHabitacion(long idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
 
     public List getReservas() {
         return reservas;
@@ -27,11 +36,11 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         this.reservas = reservas;
     }
 
-    public String getIdVivienda() {
+    public long getIdVivienda() {
         return idVivienda;
     }
 
-    public void setIdVivienda(String idVivienda) {
+    public void setIdVivienda(long idVivienda) {
         this.idVivienda = idVivienda;
     }
     

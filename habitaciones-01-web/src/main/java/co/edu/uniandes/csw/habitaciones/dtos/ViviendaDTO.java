@@ -1,5 +1,6 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
+import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -18,7 +19,7 @@ public class ViviendaDTO  implements Serializable{
     private Double valorDiario;
     private int capacidad;
     private String imagen;
-    private List reservas;
+    private List<ReservaEntity> reservas;
 
 
     /**

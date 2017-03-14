@@ -124,6 +124,12 @@ public class UsuarioEntity implements Serializable {
         this.reservas = reservas;
     }
     
+    public boolean agregarReserva(ReservaEntity rese)
+    {
+        return reservas.add(rese);
+
+    }
+    
     
     
     @Override

@@ -29,7 +29,7 @@ public class HabitacionEntity implements Serializable {
     private String descripcion;
     private String imagen;
     @ManyToOne
-    private String idVivienda;
+    private Long idVivienda;
     @OneToMany(mappedBy="Reserva")
     private List reservas;
 
@@ -89,11 +89,11 @@ public class HabitacionEntity implements Serializable {
         this.imagen = imagen;
     }
 
-    public String getIdVivienda() {
+    public Long getIdVivienda() {
         return idVivienda;
     }
 
-    public void setIdVivienda(String idVivienda) {
+    public void setIdVivienda(Long idVivienda) {
         this.idVivienda = idVivienda;
     }
  
