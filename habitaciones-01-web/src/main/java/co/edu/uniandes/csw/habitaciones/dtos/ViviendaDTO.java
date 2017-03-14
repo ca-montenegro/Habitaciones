@@ -18,7 +18,7 @@ public class ViviendaDTO  implements Serializable{
     private Double valorDiario;
     private int capacidad;
     private String imagen;
-    private List<ReservaDetailDTO> reservas;
+    private List reservas;
 
 
     /**
