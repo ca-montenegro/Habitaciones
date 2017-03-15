@@ -11,8 +11,8 @@ public class ReservaDTO implements Serializable{
     private Long codigoReserva;
     private Date fechaInicio;
     private Date fechaFin;
-    private double costo;
-    private char estado;
+    private Double costo;
+    private Character estado;
     
     
     public ReservaDTO(){
@@ -68,15 +68,15 @@ public class ReservaDTO implements Serializable{
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(Double costo) {
         this.costo = costo;
     }
 
-    public char getEstado() {
+    public Character getEstado() {
         return estado;
     }
 
-    public void setEstado(char estado) {
+    public void setEstado(Character estado) {
         this.estado = estado;
     }
     
