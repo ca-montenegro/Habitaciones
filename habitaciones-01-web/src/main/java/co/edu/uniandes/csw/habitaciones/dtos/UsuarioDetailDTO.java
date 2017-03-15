@@ -28,7 +28,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
     {
         super(entity);
         if(entity!=null){ 
-        if(this.reservas!=null){
+        if(entity.getReservas()!=null){
             this.reservas=new ArrayList();
             for(ReservaEntity reserva:entity.getReservas())
             {   
@@ -52,9 +52,9 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
         
-        if(this.getReservas()!=null){
-            List<ReservaEntity> entities0=entity.getReservas();
+        if(this.getReservas()!=null){         
             entity.setReservas(new ArrayList());
+            List<ReservaEntity> entities0=entity.getReservas();
             for(ReservaDTO reserva:this.getReservas())
             {
                 entities0.add(reserva.toEntity());

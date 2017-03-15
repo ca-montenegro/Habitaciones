@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.habitaciones.resources;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
-import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.AnfitrionLogic;
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;

@@ -71,6 +71,7 @@ public class ViviendaDTO  implements Serializable{
         entity.setReservas(new ArrayList());
         
         if(this.getReservas()!=null){
+            entity.setHabitaciones(new ArrayList());
             List<ReservaEntity>entities=entity.getReservas();
             for(ReservaDTO reserva:this.getReservas())
                 {

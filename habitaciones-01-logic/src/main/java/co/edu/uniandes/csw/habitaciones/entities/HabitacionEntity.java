@@ -33,7 +33,7 @@ public class HabitacionEntity implements Serializable {
     @OneToMany(mappedBy="habitacion")
     private List<ReservaEntity> reservas;
 
-    public List getReservas() {
+    public List<ReservaEntity> getReservas() {
         return reservas;
     }
 

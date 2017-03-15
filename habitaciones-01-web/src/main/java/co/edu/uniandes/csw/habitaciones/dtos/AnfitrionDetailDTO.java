@@ -62,9 +62,10 @@ public class AnfitrionDetailDTO extends UsuarioDetailDTO{
             }
         }
         entity.setPuntuacion(this.getPuntuacion());
-        List<ViviendaEntity> entities=entity.getViviendas();
-        if(this.getViviendas()!=null){
+        
+        if(this.getViviendas()!=null){    
             entity.setViviendas(new ArrayList());
+            List<ViviendaEntity> entities=entity.getViviendas();
             for(ViviendaDetailDTO vivienda:this.getViviendas())
             {
                 entities.add(vivienda.toEntity());

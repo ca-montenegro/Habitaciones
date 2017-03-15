@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
-import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,33 +18,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class HabitacionDetailDTO extends HabitacionDTO {
     
-    private List<ReservaEntity> reservas;
-    private Long idHabitacion;
-    private ViviendaEntity idVivienda;
-
-    public long getIdHabitacion() {
-        return idHabitacion;
-    }
-
-    public void setIdHabitacion(long idHabitacion) {
-        this.idHabitacion = idHabitacion;
-    }
-
-    public List getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List reservas) {
-        this.reservas = reservas;
-    }
-
-    public ViviendaEntity getIdVivienda() {
-        return idVivienda;
-    }
-
-    public void setIdVivienda(ViviendaEntity idVivienda) {
-        this.idVivienda = idVivienda;
-    }
+    private List<ReservaDTO> reservas;
+    private ViviendaDTO idVivienda;
+    
     public HabitacionDetailDTO()
     {      
         super();
@@ -53,16 +29,55 @@ public class HabitacionDetailDTO extends HabitacionDTO {
     public HabitacionDetailDTO(HabitacionEntity entity)
     {      
         super(entity);
-        this.reservas = entity.getReservas();
-        this.idVivienda = entity.getIdVivienda();
+        if(entity!=null){
+        if(entity.getReservas()!=null){
+            this.reservas=new ArrayList();
+            for(ReservaEntity reserva:entity.getReservas())
+            {   
+                this.reservas.add(new ReservaDTO(reserva));
+            }
+        }
+        this.idVivienda = new ViviendaDTO(entity.getIdVivienda());
+        }
     }
     
     @Override
     public HabitacionEntity toEntity()
     {
-        HabitacionEntity entity = super.toEntity();
-        entity.setIdVivienda(this.getIdVivienda());
-        entity.setReservas(this.getReservas());
+        HabitacionEntity entity = new HabitacionEntity();
+        entity.setId(this.getId());
+        entity.setArea(this.getArea());
+        entity.setCapacidad(this.getCapacidad());
+        entity.setDescripcion(this.getDescripcion());
+        entity.setValorDiario(this.getValorDiario());
+        entity.setImagen(this.getImagen());
+        entity.setIdVivienda(this.idVivienda.toEntity());
+        if(this.getReservas()!=null){
+            entity.setReservas(new ArrayList());
+            List<ReservaEntity> entities0=entity.getReservas();
+            for(ReservaDTO reserva:this.getReservas())
+            {
+                entities0.add(reserva.toEntity());
+            }
+        }
         return entity;
     }
+
+    public List<ReservaDTO> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaDTO> reservas) {
+        this.reservas = reservas;
+    }
+
+    public ViviendaDTO getIdVivienda() {
+        return idVivienda;
+    }
+
+    public void setIdVivienda(ViviendaDTO idVivienda) {
+        this.idVivienda = idVivienda;
+    }
+    
+    
 }
