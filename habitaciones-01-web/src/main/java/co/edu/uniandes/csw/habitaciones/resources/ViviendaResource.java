@@ -58,25 +58,27 @@ public class ViviendaResource {
     /**
      * Obtiene la lista de los registros de Vivienda
      *
+     * @param id
      * @return Colección de objetos de ViviendaDetailDTO
      * @generated
      */
     @GET
-    @Path("/anfitriones/{idA:\\d+}/viviendas/")
+    @Path("/anfitriones/{idA}/viviendas")
     public List<ViviendaDTO> getViviendas(@PathParam("idA")Long id) {
-        return listEntity2DTO(viviendaLogic.getViviendas());
+        return listEntity2DTO(anfitrionLogic.getAnfitrion(id).getViviendas());
     }
 
     /**
      * Obtiene los datos de una instancia de Vivienda a partir de su ID
      *
+     * @param idA
      * @param id Identificador de la instancia a consultar
      * @return Instancia de ViviendaDetailDTO con los datos del Vivienda consultado
      * @generated
      */
     @GET
     @Path("/anfitriones/{idA:\\d+}/viviendas/{id: \\d+}")
-    public ViviendaDetailDTO getVivienda(@PathParam("id") Long id) {
+    public ViviendaDetailDTO getVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id) {
         return new ViviendaDetailDTO(viviendaLogic.getVivienda(id));
     }
 
@@ -96,14 +98,15 @@ public class ViviendaResource {
     /**
      * Actualiza la información de una instancia de Vivienda
      *
+     * @param idA
      * @param id Identificador de la instancia de Vivienda a modificar
      * @param dto Instancia de ViviendaDetailDTO con los nuevos datos
      * @return Instancia de ViviendaDetailDTO con los datos actualizados
      * @generated
      */
     @PUT
-    @Path("{id: \\d+}")
-    public ViviendaDetailDTO updateVivienda(@PathParam("id") Long id, ViviendaDetailDTO dto) {
+    @Path("/anfitriones/{idA}/viviendas/{id}")
+    public ViviendaDetailDTO updateVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id, ViviendaDetailDTO dto) {
         ViviendaEntity entity = dto.toEntity();
         entity.setIdVivienda(id);
         return new ViviendaDetailDTO(viviendaLogic.updateVivienda(entity));

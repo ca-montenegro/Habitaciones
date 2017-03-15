@@ -49,7 +49,7 @@ public class HabitacionLogic {
         return persistence.update(entity);
     }
     
-    public void deleteEmployee(Long id) {
+    public void deleteHabitacion(Long id) {
         persistence.delete(id);
     }
 }

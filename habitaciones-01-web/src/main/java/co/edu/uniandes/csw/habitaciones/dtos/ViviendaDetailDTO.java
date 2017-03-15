@@ -22,6 +22,9 @@ private List<HabitacionDTO> habitaciones;
         this.habitaciones = habitaciones;
     }
 
+    public ViviendaDetailDTO(){
+        
+    }
     /**
      * Crea un objeto ViviendaDetailDTO a partir de un objeto ViviendaEntity incluyendo los atributos de ViviendaDTO.
      *

@@ -54,11 +54,11 @@ public class AnfitrionResource {
         return habitacionDTOs;
     }
     
-    @GET
-    @Path("{id: \\d+}/viviendas")
-    public AnfitrionDetailDTO getViviendas(@PathParam("id") Long id){
-        return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
-    }
+    //@GET
+    //@Path("{id: \\d+}/viviendas")
+    //public AnfitrionDetailDTO getViviendas(@PathParam("id") Long id){
+    //    return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
+    //}
     
     @PUT
     @Path("{id: \\d+}/viviendas")

@@ -84,16 +84,16 @@ public class HabitacionResource {
     }
     
     @PUT
-    @Path("{id: \\d+}")
-    public HabitacionDetailDTO updateHabitacion(@PathParam("id") Long id, HabitacionDetailDTO dto) {
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
+    public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) {
        HabitacionEntity entity = dto.toEntity();
         entity.setId(id);
         return new HabitacionDetailDTO(habitacionLogic.updateHabitacion(entity));
     }
     
     @DELETE
-    @Path("{id: \\d+}")
-        public void deleteHabitacion (@PathParam("id") Long id) {
-        habitacionLogic.deleteEmployee(id);
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
+        public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) {
+        habitacionLogic.deleteHabitacion(id);
     }
 }
