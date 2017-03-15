@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.habitaciones.resources;
 
 
+import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
@@ -43,10 +44,10 @@ public class ViviendaResource {
      * @return Lista de ViviendaDetailDTO convertida.
      * @generated
      */
-    private List<ViviendaDetailDTO> listEntity2DTO(List<ViviendaEntity> entityList){
-        List<ViviendaDetailDTO> list = new ArrayList<>();
+    private List<ViviendaDTO> listEntity2DTO(List<ViviendaEntity> entityList){
+        List<ViviendaDTO> list = new ArrayList<>();
         for (ViviendaEntity entity : entityList) {
-            list.add(new ViviendaDetailDTO(entity));
+            list.add(new ViviendaDTO(entity));
         }
         return list;
     }
@@ -59,7 +60,7 @@ public class ViviendaResource {
      * @generated
      */
     @GET
-    public List<ViviendaDetailDTO> getViviendas() {
+    public List<ViviendaDTO> getViviendas() {
         
         return listEntity2DTO(viviendaLogic.getViviendas());
     }
@@ -88,7 +89,7 @@ public class ViviendaResource {
     public ViviendaDetailDTO createVivienda(ViviendaDetailDTO dto) throws BusinessLogicException {
         return new ViviendaDetailDTO(viviendaLogic.createVivienda(dto.toEntity()));
     }
-
+    
     /**
      * Actualiza la información de una instancia de Vivienda
      *

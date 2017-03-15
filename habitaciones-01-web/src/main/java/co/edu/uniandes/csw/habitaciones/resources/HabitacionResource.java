@@ -42,17 +42,17 @@ public class HabitacionResource {
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
  
-     private List<HabitacionDetailDTO> listEntity2DTO(List<HabitacionEntity> entityList){
-        List<HabitacionDetailDTO> list = new ArrayList<>();
+     private List<HabitacionDTO> listEntity2DTO(List<HabitacionEntity> entityList){
+        List<HabitacionDTO> list = new ArrayList<>();
         for (HabitacionEntity entity : entityList) {
-            list.add(new HabitacionDetailDTO(entity));
+            list.add(new HabitacionDTO(entity));
         }
         return list;
     }
     
      @GET
      @Path("/viviendas/{idV:\\d+}/habitaciones/")
-        public List<HabitacionDetailDTO> getHabitaciones(@PathParam("idV") Long idV) {
+        public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) {
         return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
     
