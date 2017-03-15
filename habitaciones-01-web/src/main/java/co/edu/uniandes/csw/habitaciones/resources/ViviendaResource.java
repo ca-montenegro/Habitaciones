@@ -1,10 +1,12 @@
 package co.edu.uniandes.csw.habitaciones.resources;
 
 
+import co.edu.uniandes.csw.habitaciones.dtos.HabitacionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.AnfitrionLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
+import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.List;
@@ -119,6 +121,25 @@ public class ViviendaResource {
     @Path("{id: \\d+}")
     public void deleteVivienda(@PathParam("id") Long id) {
         viviendaLogic.deleteVivienda(id);
+    }
+    
+    @POST
+     @Path("{idV:\\d+}/habitaciones/")
+    public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
+        ViviendaEntity v = viviendaLogic.getVivienda(idV);
+         List<HabitacionEntity> h = v.getHabitaciones();
+         HabitacionEntity nueva = dto.toEntity();
+         h.add(nueva);
+         viviendaLogic.updateVivienda(v);
+        return new HabitacionDetailDTO(nueva);
+    }
+    
+    @PUT
+    @Path("{idV:\\d+}/habitaciones/{id}")
+    public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) {
+       HabitacionEntity entity = dto.toEntity();
+        entity.setId(id);
+        return new HabitacionDetailDTO();
     }
     
 }

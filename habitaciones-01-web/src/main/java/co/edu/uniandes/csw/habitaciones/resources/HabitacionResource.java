@@ -73,24 +73,6 @@ public class HabitacionResource {
         return buscada;
     }
     
-     @POST
-     @Path("/viviendas/{idV:\\d+}/habitaciones/")
-    public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
-        ViviendaEntity v = viviendaLogic.getVivienda(idV);
-         List<HabitacionEntity> h = v.getHabitaciones();
-         h.add(dto.toEntity());
-         viviendaLogic.updateVivienda(v);
-        return new HabitacionDetailDTO(habitacionLogic.createHabitacion(dto.toEntity()));
-    }
-    
-    @PUT
-    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
-    public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) {
-       HabitacionEntity entity = dto.toEntity();
-        entity.setId(id);
-        return new HabitacionDetailDTO(habitacionLogic.updateHabitacion(entity));
-    }
-    
     @DELETE
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
         public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) {
