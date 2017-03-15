@@ -4,6 +4,7 @@ import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class ViviendaDTO  implements Serializable{
     private Double valorDiario;
     private int capacidad;
     private String imagen;
-    private List<ReservaEntity> reservas;
+    private List<ReservaDTO> reservas;
 
 
     /**
@@ -41,7 +42,13 @@ public class ViviendaDTO  implements Serializable{
         this.descripcion=entity.getDescripcion();
         this.direccion=entity.getDireccion();
         this.capacidad=entity.getCapacidad();
-        this.reservas=entity.getReservas();
+        this.reservas=new ArrayList();
+        if(entity.getReservas()!=null){
+            for(ReservaEntity reserva:entity.getReservas())
+            {   
+                this.reservas.add(new ReservaDTO(reserva));
+            }
+        }
         this.valorDiario=entity.getValorDiario();
         this.imagen=entity.getImagen();
        }
@@ -60,7 +67,14 @@ public class ViviendaDTO  implements Serializable{
         entity.setDescripcion(this.getDescripcion());
         entity.setDireccion(this.getDireccion());
         entity.setCapacidad(this.getCapacidad());
-        entity.setReservas(this.getReservas());
+        entity.setReservas(new ArrayList());
+        List<ReservaEntity>entities=entity.getReservas();
+        if(this.getReservas()!=null){
+            for(ReservaDTO reserva:this.getReservas())
+                {
+                    entities.add(reserva.toEntity());
+                }
+        }
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
     return entity;
@@ -122,11 +136,11 @@ public class ViviendaDTO  implements Serializable{
         this.imagen = imagen;
     }
 
-    public List getReservas() {
+    public List<ReservaDTO> getReservas() {
         return reservas;
     }
 
-    public void setReservas(List reservas) {
+    public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
     }
     

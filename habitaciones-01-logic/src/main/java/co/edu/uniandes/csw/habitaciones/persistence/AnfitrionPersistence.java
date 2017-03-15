@@ -38,6 +38,11 @@ public class AnfitrionPersistence {
         return entity;
     }
     
+    public AnfitrionEntity update(AnfitrionEntity entity)
+    {
+        return em.merge(entity);
+    }
+    
     
     
 }
