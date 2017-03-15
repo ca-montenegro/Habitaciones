@@ -32,6 +32,7 @@ import javax.ws.rs.core.MediaType;
  *URI: habitaciones/
  * @author l.maya10 c.penaloza
  */
+@Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class HabitacionResource {
