@@ -37,6 +37,7 @@ public class AnfitrionDetailDTO extends AnfitrionDTO{
         }
     }
     
+    @Override
     public AnfitrionEntity toEntity(){
         AnfitrionEntity entity=new AnfitrionEntity();
         entity.setNumeroID(this.getNumeroID());
