@@ -43,7 +43,7 @@ public class UsuarioResource {
 
     @Inject
     private UsuarioLogic usuarioLogic;
-    private ReservaLogic reservaLogic;
+    @Inject private ReservaLogic reservaLogic;
     @Context
     private HttpServletResponse response;
     @QueryParam("page")
@@ -73,7 +73,7 @@ public class UsuarioResource {
      * @generated
      */
     @GET
-    public List<UsuarioDetailDTO> getViviendas() {
+    public List<UsuarioDetailDTO> getUsuarios() {
 
         return listEntity2DTO(usuarioLogic.getUsuarios());
     }
