@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
+import co.edu.uniandes.csw.habitaciones.ejbs.AnfitrionLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
@@ -27,12 +28,12 @@ import java.util.ArrayList;
  * URI: employees/
  * @generated
  */
-@Path("/viviendas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
 
     @Inject private ViviendaLogic viviendaLogic;
+    @Inject private AnfitrionLogic anfitrionLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
@@ -60,8 +61,8 @@ public class ViviendaResource {
      * @generated
      */
     @GET
-    public List<ViviendaDTO> getViviendas() {
-        
+    @Path("/anfitriones/{idA:\\d+}/viviendas/")
+    public List<ViviendaDTO> getViviendas(@PathParam("idA")Long id) {
         return listEntity2DTO(viviendaLogic.getViviendas());
     }
 
@@ -73,7 +74,7 @@ public class ViviendaResource {
      * @generated
      */
     @GET
-    @Path("{id: \\d+}")
+    @Path("/anfitriones/{idA:\\d+}/viviendas/{id: \\d+}")
     public ViviendaDetailDTO getVivienda(@PathParam("id") Long id) {
         return new ViviendaDetailDTO(viviendaLogic.getVivienda(id));
     }
@@ -86,6 +87,7 @@ public class ViviendaResource {
      * @generated
      */
     @POST
+    @Path("/anfitriones/{idA:\\d+}/viviendas/")
     public ViviendaDetailDTO createVivienda(ViviendaDetailDTO dto) throws BusinessLogicException {
         return new ViviendaDetailDTO(viviendaLogic.createVivienda(dto.toEntity()));
     }
