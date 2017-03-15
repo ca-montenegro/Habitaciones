@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class HabitacionDetailDTO extends HabitacionDTO {
     
     private List<ReservaDTO> reservas;
-    private ViviendaDTO idVivienda;
     
     public HabitacionDetailDTO()
     {      
@@ -37,7 +36,6 @@ public class HabitacionDetailDTO extends HabitacionDTO {
                 this.reservas.add(new ReservaDTO(reserva));
             }
         }
-        this.idVivienda = new ViviendaDTO(entity.getIdVivienda());
         }
     }
     
@@ -51,7 +49,6 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         entity.setDescripcion(this.getDescripcion());
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
-        entity.setIdVivienda(this.idVivienda.toEntity());
         if(this.getReservas()!=null){
             entity.setReservas(new ArrayList());
             List<ReservaEntity> entities0=entity.getReservas();
@@ -69,15 +66,5 @@ public class HabitacionDetailDTO extends HabitacionDTO {
 
     public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
-    }
-
-    public ViviendaDTO getIdVivienda() {
-        return idVivienda;
-    }
-
-    public void setIdVivienda(ViviendaDTO idVivienda) {
-        this.idVivienda = idVivienda;
-    }
-    
-    
+    }    
 }

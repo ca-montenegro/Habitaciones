@@ -43,7 +43,7 @@ public class HabitacionResource {
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
  
-     private List<HabitacionDTO> listEntity2DTO(List<HabitacionEntity> entityList){
+     public static List<HabitacionDTO> listEntity2DTO(List<HabitacionEntity> entityList){
         List<HabitacionDTO> list = new ArrayList<>();
         for (HabitacionEntity entity : entityList) {
             list.add(new HabitacionDTO(entity));

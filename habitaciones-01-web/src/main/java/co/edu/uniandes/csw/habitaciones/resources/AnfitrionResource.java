@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.habitaciones.resources;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
+import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.AnfitrionLogic;
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
@@ -59,7 +60,7 @@ public class AnfitrionResource {
     //    return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
     //}
     
-    @PUT
+    @POST
     @Path("{id: \\d+}/viviendas")
     public ViviendaDTO agregarVivienda(@PathParam("id") Long id, ViviendaDTO dto) throws Exception{
         ViviendaEntity vivienda=dto.toEntity();
@@ -67,5 +68,19 @@ public class AnfitrionResource {
         return new ViviendaDTO(stored);
     }
     
-    
+     /**
+     * Actualiza la información de una instancia de Vivienda
+     * @param idA
+     * @param id Identificador de la instancia de Vivienda a modificar
+     * @param dto Instancia de ViviendaDetailDTO con los nuevos datos
+     * @return Instancia de ViviendaDetailDTO con los datos actualizados
+     * @generated
+     */
+    @PUT
+    @Path("{idA}/viviendas/{id}")
+    public ViviendaDetailDTO updateVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id, ViviendaDetailDTO dto) {
+        ViviendaEntity entity = dto.toEntity();
+        entity.setIdVivienda(id);
+        return new ViviendaDetailDTO(dto.toEntity());
+    }
 }

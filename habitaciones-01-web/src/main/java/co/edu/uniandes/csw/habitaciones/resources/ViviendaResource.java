@@ -1,10 +1,12 @@
 package co.edu.uniandes.csw.habitaciones.resources;
 
 
+import co.edu.uniandes.csw.habitaciones.dtos.HabitacionDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.HabitacionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.AnfitrionLogic;
+import co.edu.uniandes.csw.habitaciones.ejbs.HabitacionLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
@@ -37,6 +39,7 @@ public class ViviendaResource {
 
     @Inject private ViviendaLogic viviendaLogic;
     @Inject private AnfitrionLogic anfitrionLogic;
+    @Inject private HabitacionLogic habitacionLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
@@ -94,22 +97,6 @@ public class ViviendaResource {
         return new ViviendaDetailDTO(viviendaLogic.createVivienda(dto.toEntity()));
     }
     
-    /**
-     * Actualiza la información de una instancia de Vivienda
-     *
-     * @param idA
-     * @param id Identificador de la instancia de Vivienda a modificar
-     * @param dto Instancia de ViviendaDetailDTO con los nuevos datos
-     * @return Instancia de ViviendaDetailDTO con los datos actualizados
-     * @generated
-     */
-    @PUT
-    @Path("/anfitriones/{idA}/viviendas/{id}")
-    public ViviendaDetailDTO updateVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id, ViviendaDetailDTO dto) {
-        ViviendaEntity entity = dto.toEntity();
-        entity.setIdVivienda(id);
-        return new ViviendaDetailDTO(viviendaLogic.updateVivienda(entity));
-    }
 
     /**
      * Elimina una instancia de Vivienda de la base de datos
@@ -140,6 +127,12 @@ public class ViviendaResource {
        HabitacionEntity entity = dto.toEntity();
         entity.setId(id);
         return new HabitacionDetailDTO();
+    }
+    
+    @GET
+     @Path("{idV:\\d+}/habitaciones/")
+        public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) {
+        return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
     }
     
 }
