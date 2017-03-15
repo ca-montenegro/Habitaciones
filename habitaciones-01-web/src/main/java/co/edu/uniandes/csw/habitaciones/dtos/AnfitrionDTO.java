@@ -13,11 +13,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.cardenas10
  */
 @XmlRootElement
-public class AnfitrionDTO extends UsuarioDTO{
+public class AnfitrionDTO extends UsuarioDetailDTO{
     private Double puntuacion;
 
     public AnfitrionDTO(){
-        
+        super();
     }
     
     public AnfitrionDTO(AnfitrionEntity entity){
@@ -39,7 +39,7 @@ public class AnfitrionDTO extends UsuarioDTO{
         entity.setDireccion(this.getDireccion());
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
-        entity.setReservas(this.getReservas());
+        entity.setReservas(null);
         entity.setPuntuacion(this.getPuntuacion());
         return entity;
     }

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.cardenas10
  */
 @XmlRootElement
-public class AnfitrionDetailDTO extends UsuarioDTO{
+public class AnfitrionDetailDTO extends UsuarioDetailDTO{
 
     private Double puntuacion;
     
@@ -29,9 +30,9 @@ public class AnfitrionDetailDTO extends UsuarioDTO{
     public AnfitrionDetailDTO(AnfitrionEntity entity){
         super(entity);
         if(entity!=null){
-        this.puntuacion=entity.getPuntuacion();
-        this.viviendas=new ArrayList();
+        this.puntuacion=entity.getPuntuacion();    
         if(entity.getViviendas()!=null){
+            this.viviendas=new ArrayList();
             for(ViviendaEntity vivienda:entity.getViviendas())
             {   
                 this.viviendas.add(new ViviendaDetailDTO(vivienda));
@@ -51,11 +52,19 @@ public class AnfitrionDetailDTO extends UsuarioDTO{
         entity.setDireccion(this.getDireccion());
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
-        entity.setReservas(this.getReservas());
+        
+        if(this.getReservas()!=null){
+            entity.setReservas(new ArrayList());
+            List<ReservaEntity> entities0=entity.getReservas();
+            for(ReservaDTO reserva:this.getReservas())
+            {
+                entities0.add(reserva.toEntity());
+            }
+        }
         entity.setPuntuacion(this.getPuntuacion());
-        entity.setViviendas(new ArrayList());
         List<ViviendaEntity> entities=entity.getViviendas();
         if(this.getViviendas()!=null){
+            entity.setViviendas(new ArrayList());
             for(ViviendaDetailDTO vivienda:this.getViviendas())
             {
                 entities.add(vivienda.toEntity());

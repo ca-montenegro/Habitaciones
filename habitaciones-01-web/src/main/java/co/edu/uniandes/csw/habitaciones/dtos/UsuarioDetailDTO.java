@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.habitaciones.dtos;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,24 +18,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
-    private List<ReservaEntity> reservas;
+    private List<ReservaDTO> reservas;
     
-    @Override
-    public List getReservas()
-    {
-        return reservas;
-    }
-    
-    @Override
-    public void setReservas(List reservas)
-    {
-        this.reservas = reservas;
+    public UsuarioDetailDTO(){
+        super();
     }
     
     public UsuarioDetailDTO(UsuarioEntity entity)
     {
         super(entity);
-        this.reservas = entity.getReservas();
+        if(entity!=null){ 
+        if(this.reservas!=null){
+            this.reservas=new ArrayList();
+            for(ReservaEntity reserva:entity.getReservas())
+            {   
+                this.reservas.add(new ReservaDTO(reserva));
+            }
+        }
+        }
     }
 
     
@@ -50,7 +51,27 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
         entity.setDireccion(this.getDireccion());
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
-        entity.setReservas(this.getReservas());
+        
+        if(this.getReservas()!=null){
+            List<ReservaEntity> entities0=entity.getReservas();
+            entity.setReservas(new ArrayList());
+            for(ReservaDTO reserva:this.getReservas())
+            {
+                entities0.add(reserva.toEntity());
+            }
+        }
         return entity;
+    }
+    
+    //@Override
+    public List<ReservaDTO> getReservas()
+    {
+        return reservas;
+    }
+    
+    //@Override
+    public void setReservas(List reservas)
+    {
+        this.reservas = reservas;
     }
 }

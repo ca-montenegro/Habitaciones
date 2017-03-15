@@ -21,6 +21,10 @@ private List<HabitacionDTO> habitaciones;
     public void setHabitaciones(List<HabitacionDTO> habitaciones) {
         this.habitaciones = habitaciones;
     }
+    
+    public ViviendaDetailDTO(){
+        super();
+    }
 
     /**
      * Crea un objeto ViviendaDetailDTO a partir de un objeto ViviendaEntity incluyendo los atributos de ViviendaDTO.
@@ -31,8 +35,8 @@ private List<HabitacionDTO> habitaciones;
     public ViviendaDetailDTO(ViviendaEntity entity) {
         super(entity);
         if(entity!=null){
-        this.habitaciones=new ArrayList();
         if(entity.getHabitaciones()!=null){
+            this.habitaciones=new ArrayList();
             for(HabitacionEntity vivienda:entity.getHabitaciones())
             {   
                 this.habitaciones.add(new HabitacionDTO(vivienda));
@@ -59,9 +63,10 @@ private List<HabitacionDTO> habitaciones;
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
         entity.setHabitaciones(this.getHabitaciones());
-        entity.setHabitaciones(new ArrayList());
-        List<HabitacionEntity>entities=entity.getHabitaciones();
+        
         if(this.getHabitaciones()!=null){
+            entity.setHabitaciones(new ArrayList());
+            List<HabitacionEntity>entities=entity.getHabitaciones();
             for(HabitacionDTO habitacion:this.getHabitaciones())
                 {
                     entities.add(habitacion.toEntity());

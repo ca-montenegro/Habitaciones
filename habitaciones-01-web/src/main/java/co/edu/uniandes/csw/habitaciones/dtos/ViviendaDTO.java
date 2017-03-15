@@ -42,8 +42,9 @@ public class ViviendaDTO  implements Serializable{
         this.descripcion=entity.getDescripcion();
         this.direccion=entity.getDireccion();
         this.capacidad=entity.getCapacidad();
-        this.reservas=new ArrayList();
+        
         if(entity.getReservas()!=null){
+            this.reservas=new ArrayList();
             for(ReservaEntity reserva:entity.getReservas())
             {   
                 this.reservas.add(new ReservaDTO(reserva));
@@ -68,8 +69,9 @@ public class ViviendaDTO  implements Serializable{
         entity.setDireccion(this.getDireccion());
         entity.setCapacidad(this.getCapacidad());
         entity.setReservas(new ArrayList());
-        List<ReservaEntity>entities=entity.getReservas();
+        
         if(this.getReservas()!=null){
+            List<ReservaEntity>entities=entity.getReservas();
             for(ReservaDTO reserva:this.getReservas())
                 {
                     entities.add(reserva.toEntity());
