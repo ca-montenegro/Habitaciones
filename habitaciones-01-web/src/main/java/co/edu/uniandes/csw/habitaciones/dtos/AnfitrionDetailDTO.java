@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
-import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +16,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.cardenas10
  */
 @XmlRootElement
-public class AnfitrionDetailDTO extends UsuarioDetailDTO{
-
-    private Double puntuacion;
+public class AnfitrionDetailDTO extends AnfitrionDTO{
     
     private List<ViviendaDetailDTO> viviendas;
     
     public AnfitrionDetailDTO(){
-        
+        super();
     }
     
     public AnfitrionDetailDTO(AnfitrionEntity entity){
         super(entity);
-        if(entity!=null){
-        this.puntuacion=entity.getPuntuacion();    
+        if(entity!=null){  
         if(entity.getViviendas()!=null){
             this.viviendas=new ArrayList();
             for(ViviendaEntity vivienda:entity.getViviendas())
@@ -52,15 +48,6 @@ public class AnfitrionDetailDTO extends UsuarioDetailDTO{
         entity.setDireccion(this.getDireccion());
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
-        
-        if(this.getReservas()!=null){
-            entity.setReservas(new ArrayList());
-            List<ReservaEntity> entities0=entity.getReservas();
-            for(ReservaDTO reserva:this.getReservas())
-            {
-                entities0.add(reserva.toEntity());
-            }
-        }
         entity.setPuntuacion(this.getPuntuacion());
         
         if(this.getViviendas()!=null){    
@@ -72,14 +59,6 @@ public class AnfitrionDetailDTO extends UsuarioDetailDTO{
             }
         }
         return entity;
-    }
-
-    public Double getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(Double puntuacion) {
-        this.puntuacion = puntuacion;
     }
 
     public List<ViviendaDetailDTO> getViviendas() {

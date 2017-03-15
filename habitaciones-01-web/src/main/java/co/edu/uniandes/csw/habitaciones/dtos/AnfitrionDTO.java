@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.cardenas10
  */
 @XmlRootElement
-public class AnfitrionDTO extends UsuarioDetailDTO{
+public class AnfitrionDTO extends UsuarioDTO{
     private Double puntuacion;
 
     public AnfitrionDTO(){
