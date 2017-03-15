@@ -16,22 +16,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jd.cardenas10
  */
 @XmlRootElement
-public class AnfitrionDetailDTO extends UsuarioDTO{
-
-    private Double puntuacion;
+public class AnfitrionDetailDTO extends AnfitrionDTO{
     
     private List<ViviendaDetailDTO> viviendas;
     
     public AnfitrionDetailDTO(){
-        
+        super();
     }
     
     public AnfitrionDetailDTO(AnfitrionEntity entity){
         super(entity);
-        if(entity!=null){
-        this.puntuacion=entity.getPuntuacion();
-        this.viviendas=new ArrayList();
+        if(entity!=null){  
         if(entity.getViviendas()!=null){
+            this.viviendas=new ArrayList();
             for(ViviendaEntity vivienda:entity.getViviendas())
             {   
                 this.viviendas.add(new ViviendaDetailDTO(vivienda));
@@ -51,25 +48,17 @@ public class AnfitrionDetailDTO extends UsuarioDTO{
         entity.setDireccion(this.getDireccion());
         entity.setTelefono(this.getTelefono());
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
-        entity.setReservas(this.getReservas());
         entity.setPuntuacion(this.getPuntuacion());
-        entity.setViviendas(new ArrayList());
-        List<ViviendaEntity> entities=entity.getViviendas();
-        if(this.getViviendas()!=null){
+        
+        if(this.getViviendas()!=null){    
+            entity.setViviendas(new ArrayList());
+            List<ViviendaEntity> entities=entity.getViviendas();
             for(ViviendaDetailDTO vivienda:this.getViviendas())
             {
                 entities.add(vivienda.toEntity());
             }
         }
         return entity;
-    }
-
-    public Double getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(Double puntuacion) {
-        this.puntuacion = puntuacion;
     }
 
     public List<ViviendaDetailDTO> getViviendas() {

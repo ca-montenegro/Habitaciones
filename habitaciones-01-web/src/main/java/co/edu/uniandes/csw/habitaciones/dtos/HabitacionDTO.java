@@ -22,10 +22,9 @@ public class HabitacionDTO implements Serializable {
     private String descripcion;
     private String imagen;
     
-   
-    
     public HabitacionDTO()
     {
+        super();
     }
     
     public HabitacionDTO(HabitacionEntity entity)
@@ -53,9 +52,10 @@ public class HabitacionDTO implements Serializable {
         return entity;
     }
 
-    private Long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Long getId() {
+        return id;
     }
+    
     public Integer getCapacidad() {
         return capacidad;
     }

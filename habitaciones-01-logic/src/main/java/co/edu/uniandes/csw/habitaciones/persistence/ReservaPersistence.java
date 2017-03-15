@@ -48,4 +48,6 @@ public class ReservaPersistence {
          //   return sameCarnet.get(0);
         //}
     //}
+    
+    // aIni < bFin && aFin > bIni
 }

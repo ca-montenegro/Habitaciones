@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * URI: employees/
  * @generated
  */
-@Path("/")
+@Path("/viviendas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
@@ -57,15 +57,12 @@ public class ViviendaResource {
 
     /**
      * Obtiene la lista de los registros de Vivienda
-     *
-     * @param id
      * @return Colección de objetos de ViviendaDetailDTO
      * @generated
      */
     @GET
-    @Path("/anfitriones/{idA}/viviendas")
-    public List<ViviendaDTO> getViviendas(@PathParam("idA")Long id) {
-        return listEntity2DTO(anfitrionLogic.getAnfitrion(id).getViviendas());
+    public List<ViviendaDTO> getViviendas() {
+        return listEntity2DTO(viviendaLogic.getViviendas());
     }
 
     /**
