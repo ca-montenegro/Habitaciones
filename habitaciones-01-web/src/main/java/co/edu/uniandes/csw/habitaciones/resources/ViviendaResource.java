@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * URI: employees/
  * @generated
  */
-@Path("/")
+@Path("/viviendas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
