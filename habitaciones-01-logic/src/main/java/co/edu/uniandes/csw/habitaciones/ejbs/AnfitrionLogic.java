@@ -8,12 +8,14 @@ package co.edu.uniandes.csw.habitaciones.ejbs;
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
 import co.edu.uniandes.csw.habitaciones.persistence.AnfitrionPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author jd.cardenas10
  */
+@Stateless
 public class AnfitrionLogic {
     
     @Inject 

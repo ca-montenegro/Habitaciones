@@ -17,7 +17,7 @@ public class ReservaEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String codigoReserva;
+    private Long codigoReserva;
     
     @Temporal(TemporalType.TIMESTAMP) 
     private Date fechaInicio;
@@ -54,11 +54,11 @@ public class ReservaEntity implements Serializable{
         this.vivienda = vivienda;
     }
 
-    public String getCodigoReserva() {
+    public Long getCodigoReserva() {
         return codigoReserva;
     }
 
-    public void setCodigoReserva(String codigoReserva) {
+    public void setCodigoReserva(Long codigoReserva) {
         this.codigoReserva = codigoReserva;
     }
 

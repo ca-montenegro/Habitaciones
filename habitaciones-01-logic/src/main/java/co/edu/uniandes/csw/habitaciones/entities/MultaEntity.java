@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 public class MultaEntity implements Serializable{
     
     @Id
+    private Long codigoMulta;
+    
     @OneToOne(mappedBy = "multa")
     private ReservaEntity reserva;
     
@@ -44,6 +46,14 @@ public class MultaEntity implements Serializable{
 
     public void setFechaPago(Date fechaPago) {
         this.fechaPago = fechaPago;
+    }
+
+    public Long getCodigoMulta() {
+        return codigoMulta;
+    }
+
+    public void setCodigoMulta(Long codigoMulta) {
+        this.codigoMulta = codigoMulta;
     }
     
     @Override

@@ -8,8 +8,10 @@ package co.edu.uniandes.csw.habitaciones.ejbs;
 import co.edu.uniandes.csw.habitaciones.entities.MultaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.MultaPersistence;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+@Stateless
 public class MultaLogic {
     
     @Inject

@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.HabitacionPersistence;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
@@ -16,6 +17,7 @@ import javax.inject.Inject;
  * @author l.maya10
  * @generated
  */
+@Stateless
 public class HabitacionLogic {
     @Inject private HabitacionPersistence persistence;
     

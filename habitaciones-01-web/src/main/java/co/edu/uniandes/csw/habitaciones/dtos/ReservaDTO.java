@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservaDTO implements Serializable{
     
-    private String codigoReserva;
+    private Long codigoReserva;
     private Date fechaInicio;
     private Date fechaFin;
     private double costo;
@@ -40,11 +40,11 @@ public class ReservaDTO implements Serializable{
       return entity;  
     }
 
-    public String getCodigoReserva() {
+    public Long getCodigoReserva() {
         return codigoReserva;
     }
 
-    public void setCodigoReserva(String codigoReserva) {
+    public void setCodigoReserva(Long codigoReserva) {
         this.codigoReserva = codigoReserva;
     }
 
