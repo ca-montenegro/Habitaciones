@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+// TODO: eliminar los import que no se usan
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -37,5 +39,8 @@ public class MultaResource {
         }    
         return list;
     }
+
+    // TODO: implementar un constructor por defecto
+    // TODO: implementar los métodos del recurso
     
 }

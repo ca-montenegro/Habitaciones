@@ -78,6 +78,7 @@ public class ViviendaResource {
      * @return Instancia de ViviendaDetailDTO con los datos del Vivienda consultado
      * @generated
      */
+    // TODO: retornar una excepción / error 404 si no existe
     @GET
     @Path("/anfitriones/{idA:\\d+}/viviendas/{id: \\d+}")
     public ViviendaDetailDTO getVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id) {

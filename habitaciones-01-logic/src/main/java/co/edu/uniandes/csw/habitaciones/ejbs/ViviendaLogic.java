@@ -69,7 +69,7 @@ public class ViviendaLogic {
      * @return Instancia de ViviendaEntity con los datos actualizados.
      * 
      */
-   
+    // TODO: revisar las validaciones de negocio
     public ViviendaEntity updateVivienda(ViviendaEntity entity) {
         return persistence.update(entity);
     }
@@ -80,6 +80,7 @@ public class ViviendaLogic {
      * @param id Identificador de la instancia a eliminar.
      *
      */
+    // TODO: revisar las validaciones de negocio
     public void deleteVivienda(Long id) {
         persistence.delete(id);
     }

@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,4 +44,7 @@ public class ReservaResource {
     public List<ReservaDTO> getReservas(){
         return listEntity2DTO(reservaLogic.getReservas());
     }
+    
+    // TODO: implementar los métodos del recurso
+    
 }

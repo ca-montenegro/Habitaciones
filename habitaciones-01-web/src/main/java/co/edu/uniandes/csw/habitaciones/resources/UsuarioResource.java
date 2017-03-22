@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +8,7 @@ package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.UsuarioDTO;
+// TODO: eliminar los import que no se usan
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ReservaDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.UsuarioLogic;
@@ -86,6 +88,7 @@ public class UsuarioResource {
      * consultado
      * @generated
      */
+    // TODO: generar una excepción / error 404 si no existe 
     @GET
     @Path("{id: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) {

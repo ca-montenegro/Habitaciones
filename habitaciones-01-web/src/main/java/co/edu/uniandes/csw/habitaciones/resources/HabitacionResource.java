@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +12,7 @@ import co.edu.uniandes.csw.habitaciones.ejbs.HabitacionLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
+// TODO: eliminar los import que no se usan
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +59,7 @@ public class HabitacionResource {
         return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
     
+    // TODO: generar una excepción / error 404 si no existe
     @GET
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id: \\d+}")
     public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) {

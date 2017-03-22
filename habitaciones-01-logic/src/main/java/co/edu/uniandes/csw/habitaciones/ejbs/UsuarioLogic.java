@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -46,9 +47,7 @@ public class UsuarioLogic {
         return persistence.create(entity);
     }
     
-    
-    
-    
+    // TODO: revisar las validaciones en caso de actualización
     public UsuarioEntity updateUsuario(UsuarioEntity entity)
     {
         return persistence.update(entity);

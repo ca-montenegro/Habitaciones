@@ -1,3 +1,4 @@
+// TODO: eliminar los comentarios por defecto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +7,7 @@
 package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDTO;
+// TODO: eiminar los import que no se usan
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
