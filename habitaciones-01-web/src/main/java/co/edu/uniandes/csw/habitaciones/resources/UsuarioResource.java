@@ -1,29 +1,18 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.UsuarioDTO;
-// TODO: eliminar los import que no se usan
-import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ReservaDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.UsuarioLogic;
 import co.edu.uniandes.csw.habitaciones.ejbs.ReservaLogic;
-import co.edu.uniandes.csw.habitaciones.ejbs.ViviendaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
-import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -88,10 +77,10 @@ public class UsuarioResource {
      * consultado
      * @generated
      */
-    // TODO: generar una excepción / error 404 si no existe 
+
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) {
+    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
     }
 
@@ -104,9 +93,9 @@ public class UsuarioResource {
      */
     @GET
     @Path("{id: \\d+}/reservas/{idReserva}")
-    public ReservaDTO getUsuarioReservaID(@PathParam("id") Long id, @PathParam("idReserva") String idReserva) {
+    public ReservaDTO getUsuarioReservaID(@PathParam("id") Long id, @PathParam("idReserva") String idReserva) throws BusinessLogicException {
         for (ReservaEntity re : usuarioLogic.getUsuario(id).getReservas()) {
-            if (re.getCodigoReserva().equals(idReserva)) {
+            if (re.getCodigoReserva()==Long.parseLong(idReserva)) {
                 return new ReservaDTO(re);
             }
 
@@ -117,17 +106,24 @@ public class UsuarioResource {
     /**
      * Se encarga de crear un Usuario en la base de datos
      *
-     * @param dto Objeto de UsuarioDetailDTO con los datos nuevos
-     * @return Objeto de UsuarioDetailDTOcon los datos nuevos y su ID
+     * @param dto Objeto de UsuarioDTO con los datos nuevos
+     * @return Objeto de UsuarioDTO con los datos nuevos y su ID
      * @throws
      * co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
-     * @generated
+     * 
      */
     @POST
     public UsuarioDTO createUsuario(UsuarioDTO dto) throws BusinessLogicException {
         return new UsuarioDTO(usuarioLogic.createUsuario(dto.toEntity()));
     }
 
+    /**
+     * Crea una nueva reserva para un usuario
+     * @param id id del usuario a agregar reserva
+     * @param dto Objeto de ReservaDTO con los datos nuevos
+     * @return true si se creo y agrego la reserva de usuario. False de los contrarío
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     */
     @POST
     @Path("{id: \\d+}")
     public boolean createUsuarioReserva(@PathParam("id") Long id, ReservaDTO dto) throws BusinessLogicException {
@@ -144,34 +140,47 @@ public class UsuarioResource {
      *
      * @param id Identificador de la instancia de Usuario a modificar
      * @param dto Instancia UsuarioDetailDTO con los datos actualizados
+     * @return UsuarioDTO actualizado
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      * @generated
      */
     @PUT
     @Path("{id: \\d+}")
-    public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) {
+    public UsuarioDTO updateUsuario(@PathParam("id") Long id, UsuarioDTO dto) throws BusinessLogicException {
         UsuarioEntity entity = dto.toEntity();
         entity.setNumeroID(id);
         return new UsuarioDTO(usuarioLogic.updateUsuario(entity));
     }
 
+    /**
+     * Metodo que actualiza una reserva de un usuario.
+     * @param id id del usuario 
+     * @param idReserva id de la reserva a actualizar
+     * @param dto
+     * @return 
+     * @throws BusinessLogicException
+     */
     @PUT
     @Path("{id: \\d+}/reservas/{idReserva}")
-    public void updateReserva(@PathParam("id") Long id, @PathParam("idReserva") String idReserva, ReservaDTO dto) {
+    public ReservaDTO updateReserva(@PathParam("id") Long id, @PathParam("idReserva") String idReserva, ReservaDTO dto) throws BusinessLogicException {
         List<ReservaEntity> listaReservas = usuarioLogic.getUsuario(id).getReservas();
-
+        ReservaEntity reservaUpdate = null;
+        
         for (ReservaEntity re : listaReservas) {
             int count = 0;
 
-            if (re.getCodigoReserva().equals(idReserva)) {
+            if (re.getCodigoReserva()==Long.parseLong(idReserva)) {
 
                 listaReservas.remove(count);
-                re = reservaLogic.updateReserva(dto.toEntity());
+                reservaUpdate = reservaLogic.updateReserva(dto.toEntity());
                 listaReservas.add(re);
                 break;
             }
             count++;
         }
-        
+        if(reservaUpdate==null)
+            throw new BusinessLogicException("No existe la reserva con el id: "+idReserva+" para el usuario con id: " + id);
+        return new ReservaDTO(reservaUpdate);
 
     }
 }
