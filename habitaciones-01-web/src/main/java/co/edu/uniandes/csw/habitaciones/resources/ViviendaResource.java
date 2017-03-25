@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * URI: employees/
  * @generated
  */
-@Path("/viviendas")
+@Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
@@ -78,11 +78,12 @@ public class ViviendaResource {
      * @return Instancia de ViviendaDetailDTO con los datos del Vivienda consultado
      * @generated
      */
-    // TODO: retornar una excepción / error 404 si no existe
     @GET
     @Path("/anfitriones/{idA:\\d+}/viviendas/{id: \\d+}")
-    public ViviendaDetailDTO getVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id) {
-        return new ViviendaDetailDTO(viviendaLogic.getVivienda(id));
+    public ViviendaDetailDTO getVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id) throws BusinessLogicException {
+        ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
+        if (vivienda==null)throw new BusinessLogicException("Error 404");
+        return new ViviendaDetailDTO(vivienda);
     }
 
     /**
@@ -101,16 +102,25 @@ public class ViviendaResource {
 
     /**
      * Elimina una instancia de Vivienda de la base de datos
-     *
      * @param id Identificador de la instancia a eliminar
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      * @generated
      */
     @DELETE
-    @Path("{id: \\d+}")
-    public void deleteVivienda(@PathParam("id") Long id) {
+    @Path("/viviendas/eliminar/{id: \\d+}")
+    public void deleteVivienda(@PathParam("id") Long id) throws BusinessLogicException {
+        ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
+        if (vivienda==null)throw new BusinessLogicException("Error 404");
         viviendaLogic.deleteVivienda(id);
     }
     
+    /**
+     *Crea una nueva habitación en la vivienda del id dado por parámetro con los datos en el dto.
+     * @param dto nueva habitación
+     * @param idV id vivienda
+     * @return objeto HabitacionDetailDTO de la nueva habitación.
+     * @throws BusinessLogicException si no existe una vivienda con el id dado
+     */
     @POST
      @Path("{idV:\\d+}/habitaciones/")
     public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
@@ -122,6 +132,13 @@ public class ViviendaResource {
         return new HabitacionDetailDTO(nueva);
     }
     
+    /**
+     *Actualiza la información de una habitación específica en una vivienda dada.
+     * @param idV id vivienda
+     * @param id id habitacion a modificar
+     * @param dto nueva información de la habitación
+     * @return HabitacionDetailDTO con la nueva información de la habitación
+     */
     @PUT
     @Path("{idV:\\d+}/habitaciones/{id}")
     public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) {
@@ -130,6 +147,11 @@ public class ViviendaResource {
         return new HabitacionDetailDTO();
     }
     
+    /**
+     * Retorna todas las habitaciones de una vivienda
+     * @param idV id de la vivienda
+     * @return Lista de HabitacionDTO 
+     */
     @GET
      @Path("{idV:\\d+}/habitaciones/")
         public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) {

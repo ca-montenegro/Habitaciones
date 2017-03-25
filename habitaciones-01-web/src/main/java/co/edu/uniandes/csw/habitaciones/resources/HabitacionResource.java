@@ -32,7 +32,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *URI: habitaciones/
- * @author l.maya10 c.penaloza
+ * @author l.maya10
  */
 @Path("/habitaciones")
 @Consumes(MediaType.APPLICATION_JSON)
