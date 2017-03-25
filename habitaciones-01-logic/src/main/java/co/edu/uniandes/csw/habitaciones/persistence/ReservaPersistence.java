@@ -1,16 +1,11 @@
 package co.edu.uniandes.csw.habitaciones.persistence;
 
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
-// TODO: eliminar los import que no se usan
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.Parameter;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
 
 @Stateless
 public class ReservaPersistence {
