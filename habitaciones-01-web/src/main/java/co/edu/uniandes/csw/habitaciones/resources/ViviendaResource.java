@@ -26,6 +26,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * @author c.penaloza
@@ -66,6 +67,7 @@ public class ViviendaResource {
      * @generated
      */
     @GET
+    @Path("/viviendas")
     public List<ViviendaDTO> getViviendas() {
         return listEntity2DTO(viviendaLogic.getViviendas());
     }
@@ -107,7 +109,7 @@ public class ViviendaResource {
      * @generated
      */
     @DELETE
-    @Path("/viviendas/eliminar/{id: \\d+}")
+    @Path("/viviendas/{id: \\d+}")
     public void deleteVivienda(@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
         if (vivienda==null)throw new BusinessLogicException("Error 404");
@@ -144,7 +146,28 @@ public class ViviendaResource {
     public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) {
        HabitacionEntity entity = dto.toEntity();
         entity.setId(id);
-        return new HabitacionDetailDTO();
+        return new HabitacionDetailDTO(entity);
+    }
+    
+    /**
+     *Retorna una habitacion buscada
+     * @param idV id de la vivienda
+     * @param id id de la habitacion buscada
+     * @return HabitacionDetailDTO de la habitacion buscada
+     * @throws BusinessLogicException
+     */
+    @GET
+    @Path("{idV:\\d+}/habitaciones/{id}")
+    public HabitacionDetailDTO getHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
+        ViviendaEntity v = viviendaLogic.getVivienda(idV);
+        HabitacionEntity buscada = null;
+        for (HabitacionEntity h: v.getHabitaciones()){
+            if(Objects.equals(h.getId(), id)){
+                buscada = h;
+            }
+        }
+        if (buscada==null)throw new BusinessLogicException("No existe la habitación buscada.");
+        return new HabitacionDetailDTO(buscada);
     }
     
     /**
@@ -153,7 +176,7 @@ public class ViviendaResource {
      * @return Lista de HabitacionDTO 
      */
     @GET
-     @Path("{idV:\\d+}/habitaciones/")
+     @Path("viviendas/V{idV:\\d+}/habitaciones/")
         public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) {
         return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
     }
