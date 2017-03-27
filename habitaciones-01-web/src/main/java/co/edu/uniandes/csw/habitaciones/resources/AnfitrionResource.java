@@ -1,13 +1,6 @@
-// TODO: eliminar los comentarios por defecto
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.habitaciones.resources;
 
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDTO;
-// TODO: eiminar los import que no se usan
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDetailDTO;
@@ -56,11 +49,11 @@ public class AnfitrionResource {
         return habitacionDTOs;
     }
     
-    //@GET
-    //@Path("{id: \\d+}/viviendas")
-    //public AnfitrionDetailDTO getViviendas(@PathParam("id") Long id){
-    //    return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
-    //}
+    @GET
+    @Path("{id: \\d+}/viviendas")
+    public AnfitrionDetailDTO getViviendas(@PathParam("id") Long id){
+        return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
+    }
     
     @POST
     @Path("{id: \\d+}/viviendas")
