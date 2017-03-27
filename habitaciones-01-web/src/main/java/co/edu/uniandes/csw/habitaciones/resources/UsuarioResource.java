@@ -49,10 +49,10 @@ public class UsuarioResource {
      * @return Lista de UsuarioDetailDTO convertida.
      * @generated
      */
-    private List<UsuarioDetailDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
-        List<UsuarioDetailDTO> list = new ArrayList<>();
+    private List<UsuarioDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
+        List<UsuarioDTO> list = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
-            list.add(new UsuarioDetailDTO(entity));
+            list.add(new UsuarioDTO(entity));
         }
         return list;
     }
@@ -72,7 +72,7 @@ public class UsuarioResource {
      * @generated
      */
     @GET
-    public List<UsuarioDetailDTO> getUsuarios() {
+    public List<UsuarioDTO> getUsuarios() {
 
         return listEntity2DTO(usuarioLogic.getUsuarios());
     }

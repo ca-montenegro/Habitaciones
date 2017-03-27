@@ -62,7 +62,7 @@ public class HabitacionResource {
     // TODO: generar una excepción / error 404 si no existe
     @GET
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id: \\d+}")
-    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) {
+    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) throws BusinessLogicException {
         HabitacionDetailDTO buscada = null;
         ViviendaEntity vivienda = viviendaLogic.getVivienda(idV);
         List<HabitacionEntity> habitaciones = vivienda.getHabitaciones();
