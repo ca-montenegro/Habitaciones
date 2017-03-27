@@ -1,0 +1,45 @@
+[{
+  "numeroID": 1,
+  "tipoID" : "CC",
+  "nombre": "Carlitos",
+  "usuario":"carloslol",
+  "contrasenha": "lalalala",
+  "correo":"carloslol@hotmail.com",
+  "direccion": "calle 1 #3-1",
+  "telefono" : 12345,
+  "numeroTarjeta": 56789
+},
+{
+  "numeroID": 2,
+  "tipoID" : "CC",
+  "nombre": "Laura",
+  "usuario":"mayalol",
+  "contrasenha": "lalalala",
+  "correo":"mayalol@hotmail.com",
+  "direccion": "calle 2 #4-5",
+  "telefono" : 45678,
+  "numeroTarjeta": 1234
+},
+{
+  "numeroID": 3,
+  "tipoID" : "CC",
+  "nombre": "Jose",
+  "usuario":"jose",
+  "contrasenha": "lalalala",
+  "correo":"Jose@hotmail.com",
+  "direccion": "calle 3 #4-5",
+  "telefono" : 2468,
+  "numeroTarjeta": 13579
+}, 
+{
+  "numeroID": 4,
+  "tipoID" : "CC",
+  "nombre": "David",
+  "usuario":"david",
+  "contrasenha": "lalalala",
+  "correo":"david@hotmail.com",
+  "direccion": "calle 4#5-6",
+  "telefono" : 13579,
+  "numeroTarjeta": 123567
+}]
+ 
