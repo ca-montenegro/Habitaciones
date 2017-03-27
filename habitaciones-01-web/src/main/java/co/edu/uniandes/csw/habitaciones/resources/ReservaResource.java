@@ -4,13 +4,17 @@ package co.edu.uniandes.csw.habitaciones.resources;
 import co.edu.uniandes.csw.habitaciones.dtos.ReservaDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.ReservaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
+import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -35,10 +39,29 @@ public class ReservaResource {
     }
     
     @GET
-    public List<ReservaDTO> getReservas(){
+    @PathParam("/reservas")
+    public List<ReservaDTO> getTodasReservas(){
         return listEntity2DTO(reservaLogic.getReservas());
     }
     
-    // TODO: implementar los métodos del recurso
+    @GET
+    @PathParam("/reservas/{id: \\d+}")
+    public ReservaDTO getReserva (@PathParam("id") Long id){
+        ReservaEntity reserva = reservaLogic.getReserva(id);
+        return new ReservaDTO(reserva);
+    }
     
+    @POST
+    @PathParam("/reservas/{id: \\d+}")
+    public ReservaDTO createReserva(ReservaDTO dto)throws BusinessLogicException{
+        return new ReservaDTO(reservaLogic.createReserva(dto.toEntity()));
+    } 
+            
+    @PUT
+    @PathParam("/reservas/{id: \\d+}")
+    public ReservaDTO updateReserva(@PathParam("id") Long id, ReservaDTO dto){
+        ReservaEntity entity = dto.toEntity();
+        entity.setCodigoReserva(id);
+        return new ReservaDTO(reservaLogic.updateReserva(entity));
+    }
 }

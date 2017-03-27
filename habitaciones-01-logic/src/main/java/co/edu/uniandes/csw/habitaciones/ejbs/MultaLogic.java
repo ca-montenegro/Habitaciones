@@ -12,12 +12,12 @@ public class MultaLogic {
     @Inject
     private MultaPersistence persistence;
     
-    public MultaEntity getMulta(String codigo){
+    public MultaEntity getMulta(Long codigo){
         return persistence.find(codigo);
     }
             
     public MultaEntity createMulta(MultaEntity entity) throws BusinessLogicException{
-        if( persistence.find(entity.getReserva().toString()) == null)
+        if( persistence.find(entity.getReserva().getCodigoReserva()) == null)
         {
             throw new BusinessLogicException("Ya existe una multa asociada a esa reserva.");
         }

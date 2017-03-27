@@ -3,12 +3,17 @@ package co.edu.uniandes.csw.habitaciones.resources;
 import co.edu.uniandes.csw.habitaciones.dtos.MultaDTO;
 import co.edu.uniandes.csw.habitaciones.ejbs.MultaLogic;
 import co.edu.uniandes.csw.habitaciones.entities.MultaEntity;
+import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -31,8 +36,27 @@ public class MultaResource {
         }    
         return list;
     }
-
-    // TODO: implementar un constructor por defecto
-    // TODO: implementar los métodos del recurso
+ 
+    @GET
+    @Path("usuario/{idU:\\d+}/multas")
+    public MultaDTO getMulta( @PathParam("idU") Long idU) throws BusinessLogicException{
+        MultaEntity multa = multaLogic.getMulta(idU);
+        if( multa == null) throw new BusinessLogicException("Error 404");
+        return new MultaDTO(multa);
+    }
     
+    @PUT
+    @Path("usuario/{idU:\\d+}/multas")
+    public MultaDTO updateMulta(@PathParam("idU") Long idU, MultaDTO dto)
+    {
+        MultaEntity entity = dto.toEntity();
+        entity.setCodigoMulta(idU);
+        return new MultaDTO(entity);
+    }
+    
+    @POST
+    @Path("usuario/{idU:\\d+}/multas")
+    public MultaDTO createMulta(MultaDTO dto, @PathParam("idU") Long idU) throws BusinessLogicException{
+        return new MultaDTO(multaLogic.createMulta(dto.toEntity()));
+    }
 }

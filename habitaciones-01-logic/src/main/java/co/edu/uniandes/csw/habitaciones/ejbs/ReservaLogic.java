@@ -17,7 +17,7 @@ public class ReservaLogic {
         return persistence.findAll();
     }
     
-    public ReservaEntity getReserva(String codigo){
+    public ReservaEntity getReserva(Long codigo){
         return persistence.find(codigo);
     }
     

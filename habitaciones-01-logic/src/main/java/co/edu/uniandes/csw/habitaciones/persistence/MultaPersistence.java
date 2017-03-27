@@ -11,7 +11,7 @@ public class MultaPersistence {
     @PersistenceContext(unitName = "habitacionesPU")
     protected EntityManager em;
     
-    public MultaEntity find(String codigo){
+    public MultaEntity find(Long codigo){
         return em.find(MultaEntity.class, codigo); 
     }
                

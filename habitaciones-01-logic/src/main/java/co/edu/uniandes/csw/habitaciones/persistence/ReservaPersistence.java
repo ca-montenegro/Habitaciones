@@ -13,7 +13,7 @@ public class ReservaPersistence {
     @PersistenceContext(unitName="habitacionesPU")
     protected EntityManager em;
     
-    public ReservaEntity find(String codigo){
+    public ReservaEntity find(Long codigo){
         return em.find(ReservaEntity.class, codigo);
     }
     
