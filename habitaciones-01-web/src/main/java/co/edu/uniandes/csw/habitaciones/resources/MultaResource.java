@@ -38,7 +38,7 @@ public class MultaResource {
     }
  
     @GET
-    @Path("usuario/{idU:\\d+}/multas")
+    @Path("usuario{idU:\\d+}/multas")
     public MultaDTO getMulta( @PathParam("idU") Long idU) throws BusinessLogicException{
         MultaEntity multa = multaLogic.getMulta(idU);
         if( multa == null) throw new BusinessLogicException("Error 404");
