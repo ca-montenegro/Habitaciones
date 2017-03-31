@@ -13,6 +13,9 @@ public class ReservaDTO implements Serializable{
     private Date fechaFin;
     private Double costo;
     private Character estado;
+    private MultaDTO multa;
+    private HabitacionDTO habitacion;
+    private ViviendaDTO vivienda;
     
     
     public ReservaDTO(){
@@ -79,6 +82,31 @@ public class ReservaDTO implements Serializable{
     public void setEstado(Character estado) {
         this.estado = estado;
     }
+
+    public MultaDTO getMulta() {
+        return multa;
+    }
+
+    public void setMulta(MultaDTO multa) {
+        this.multa = multa;
+    }
+
+    public HabitacionDTO getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(HabitacionDTO habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public ViviendaDTO getVivienda() {
+        return vivienda;
+    }
+
+    public void setVivienda(ViviendaDTO vivienda) {
+        this.vivienda = vivienda;
+    }
+    
     
 }
 
