@@ -1,55 +1,49 @@
 (function (ng) {
     var mod = ng.module("viviendasModule", ['ui.router']);
-
-    mod.constant("contextoViviendas", "api/viviendas");
-
+    mod.constant("viviendasContext", "api/viviendas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/viviendas/';
-            $urlRouterProvider.otherwise("/viviendas");
+            $urlRouterProvider.otherwise("/listaViviendas");
 
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
                 abstract: true,
                 resolve: {
-                    authors: ['$http', 'contextoViviendas', function ($http, contextoViviendas) {
-                            return $http.get(contextoViviendas);
+                    authors: ['$http', function ($http) {
+                            return $http.get('data/viviendas.json');
                         }]
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'viv.html',
-                        controller: ['$scope', 'viviendas', function ($scope, viviendas) {
-                                $scope.authorsRecords = viviendas.data;
+                        templateUrl: basePath + 'viviendas.html',
+                        controller: ['$scope', 'viviendas', function ($scope, authors) {
+                                $scope.viviendasRecords = viviendas.data;
                             }]
-                    },
-                    'childrenView': {
-                        templateUrl: basePath + 'viv.html'
-                    }
-                }
-            }).state('listaViviendas', {
-                url: '/lista',
-                parent: 'viviendas',
-                views: {
-                    'listView': {
-                        templateUrl: basePath + 'viviendas.html'
                     }
                 }
             }).state('habitacionesVivienda', {
                 url: '/{idVivienda:int}/habitaciones',
-                parent: 'viviendas',
+                parent: 'authors',
                 param: {
                     idVivienda: null
                 },
-                resolve: {
-                    viviendaActual: ['$http', 'contextoViviendas', '$stateParams', function ($http, contextoViviendas, $params) {
-                            return $http.get(contextoViviendas + '/' + $params.idVivienda);
-                        }]
-                },
                 views: {
                     'listView': {
+                        resolve: {
+                            habitaciones: ['$http', function ($http) {
+                                    return $http.get('data/habitaciones.json');
+                                }]
+                        },
                         templateUrl: basePath + 'vivienda-habitaciones.html',
-                        controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
-                                $scope.viviendaActual = viviendaActual.data;
+                        controller: ['$scope', 'habitaciones', '$stateParams', function ($scope, habitaciones, $params) {
+                                $scope.habitacionesRecords = habitaciones.data;
+                                $scope.viviendaActual = $scope.viviendasRecords[$params.authorId - 1];
+                            }]
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'authors.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
                             }]
                     }
                 }
