@@ -7,7 +7,7 @@
 
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
-                abstract: true,
+                abstract: false,
                 resolve: {
                     authors: ['$http', function ($http) {
                             return $http.get('data/viviendas.json');
@@ -19,6 +19,14 @@
                         controller: ['$scope', 'viviendas', function ($scope, authors) {
                                 $scope.viviendasRecords = viviendas.data;
                             }]
+                    }
+                }
+                }).state('viviendasLista', {
+                url: '/lista',
+                parent: 'viviendas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'viviendas.html'
                     }
                 }
             }).state('habitacionesVivienda', {
@@ -41,9 +49,9 @@
                             }]
                     },
                     'detailView': {
-                        templateUrl: basePath + 'authors.detail.html',
+                        templateUrl: basePath + 'viviendas.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
+                                $scope.viviendaActual = $scope.viviendasRecords[$params.idVivienda - 1];
                             }]
                     }
                 }

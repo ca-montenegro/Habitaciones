@@ -5,11 +5,13 @@
         // Internal modules dependencies
         'principalModule',
         'HabitacionesModule',
-        'viviendasModule'
+        'viviendasModule',
+        'authorModule',
+        'Viviendas2Module'
 
     ]);
     // Resuelve problemas de las promesas
-    app.config(['$qProvider', function ($qProvider) {
+    app.config(['$qProvider', function ($qProvider){
             $qProvider.errorOnUnhandledRejections(false);
         }]);
 })(window.angular);
