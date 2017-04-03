@@ -1,31 +1,26 @@
-<div class="panel panel-default"> 
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentBook.image}}"/>
+<aside id="fh5co-hero" class="js-fullheight">
+    <div class="flexslider js-fullheight">
+        <ul class="slides">
+            <li style="background-image: url(images/img_viv.jpg);">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4 col-md-pull-4 js-fullheight slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1>Vivienda</h1>
+                                    <h2 class="price">$500000</h2>
+                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="details">
+                                        <span>2000 mts</span>
+                                        <span>3 Cuartos</span>
+                                        <span>Cartagena</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <dl>     
-                    <dt>{{currentBook.name}}</dt>
-                    <ul ng-repeat="author in currentBook.authors">
-                        <li>{{author.name}}</li>
-                    </ul>
-                    <dt> ISBN</dt>
-                    <dd>{{currentBook.isbn}}</dd>
-                    <hr>
-                    <dt>Publishing Date</dt>
-                    <dd>{{currentBook.publishingdate}}</dd>
-                    <hr>
-                    <dt class="bold">Editorial</dt>
-                    <dd>{{currentBook.editorial.name}}</dd>
-                    <hr>
-                    <dt class="bold">Description</dt>
-                    <dd>{{currentBook.description}}</dd>
-                </dl>
-            </div>
-        </div>
+            </li>   	
+        </ul>
     </div>
-</div>
-
+</aside>
