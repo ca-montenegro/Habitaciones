@@ -3,8 +3,7 @@
         // External dependencies
         'ui.router',
         // Internal modules dependencies       
-        'viviendasModule',
-        'habitacionesViviendaModule'
+        'HabitacionesModule'
 
     ]);
     // Resuelve problemas de las promesas

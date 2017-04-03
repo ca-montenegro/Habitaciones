@@ -47,7 +47,8 @@
 	<![endif]-->
 
 </head>
-<body style="height:100%">
+<body style="height:100%" ng-app = "mainApp">
+    
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
@@ -61,7 +62,7 @@
 							<ul class="sf-menu" id="fh5co-primary-menu">
 								<li class="active"><a href="index.html">Home</a></li>
 								<li><a href="viviendas.html" class="fh5co-sub-ddown">Viviendas</a></li>
-								<li><a href="habitaciones.html">Habitaciones</a></li>
+								<li><a ui-sref="habitaciones">Habitaciones</a></li>
                                                                 <li><a href="reservas.html">Reservas </a></li>
 								<li><a href="registro.html">Regístrate</a></li>
 								<li><a href="iniciar-sesion.html">Iniciar sesión</a></li>
@@ -71,8 +72,10 @@
 				</div>
 			</header>
 
-			<!-- end:header-top -->
-		<div>
+		
+                    <!-- end:header-top -->
+                
+		<div ui-view>
 			<div id="fh5co-testimonial" >
 				<div class="container">
 					<div class="row animate-box">
@@ -263,6 +266,11 @@
 
 <!-- Main JS -->
 <script src="js/main.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="src/modules/habitaciones/habitaciones.mod.js"></script>
+<script src="src/app.js"></script>
+
 
 </body>
 </html>
