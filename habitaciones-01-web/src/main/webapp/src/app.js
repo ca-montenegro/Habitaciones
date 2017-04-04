@@ -6,7 +6,6 @@
         'principalModule',
         'HabitacionesModule',
         'viviendasModule',
-        'authorModule',
         'Viviendas2Module',
         'reservasModule'
 
