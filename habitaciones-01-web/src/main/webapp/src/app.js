@@ -7,7 +7,8 @@
         'HabitacionesModule',
         'viviendasModule',
         'authorModule',
-        'Viviendas2Module'
+        'Viviendas2Module',
+        'reservasModule'
 
     ]);
     // Resuelve problemas de las promesas
