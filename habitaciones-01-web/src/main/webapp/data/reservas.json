@@ -1,0 +1,190 @@
+[{
+  "codigoReserva": 1,
+  "fechaInicio": "6/18/2016",
+  "fechaFin": "7/29/2016",
+  "costo": 5154758,
+  "estado": "P",
+  "vivienda" :
+    {
+      "idVivienda": 1,
+      "ciudad": "Vera",
+      "direccion": "15 Northridge Center"
+    },
+  "usuario" : {
+      "numeroID": 7,
+      "nombre": "Ruby",
+      "usuario": "rmyers0",
+      "correo": "rweaver0@hostgator.com"
+    }
+}, {
+  "codigoReserva": 2,
+  "fechaInicio": "10/27/2016",
+  "fechaFin": "9/4/2016",
+  "costo": 8680073,
+  "estado": "A",
+  "vivienda" : 
+    {
+      "idVivienda": 2,
+      "ciudad": "Tierimu",
+      "direccion": "5063 Straubel Junction"
+    },
+  "usuario": 
+    {
+      "numeroID": 7,
+      "nombre": "Cheryl",
+      "usuario": "cmorgan1",
+      "correo": "cmitchell1@home.pl"
+    }
+}, {
+  "codigoReserva": 3,
+  "fechaInicio": "10/7/2016",
+  "fechaFin": "10/24/2016",
+  "costo": 1222089,
+  "estado": "H",
+  "vivienda" : 
+    {
+      "idVivienda": 3,
+      "ciudad": "Cotaparaco",
+      "direccion": "554 Blue Bill Park Court"    
+    },
+  "usuario" : 
+    {
+      "numeroID": 57,
+      "nombre": "Shawn",
+      "usuario": "shunter2",
+      "correo": "sblack2@huffingtonpost.com"
+    }
+}, {
+  "codigoReserva": 4,
+  "fechaInicio": "3/7/2017",
+  "fechaFin": "10/9/2016",
+  "costo": 7632567,
+  "estado": "C",
+  "vivienda" : 
+    {
+      "idVivienda": 4,
+      "ciudad": "Milići",
+      "direccion": "07 6th Park"
+    },
+  "usuario" :
+    {
+      "numeroID": 2,
+      "nombre": "Harry",
+      "usuario": "hjohnson3",
+      "correo": "hwilliamson3@taobao.com"
+    }
+}, {
+  "codigoReserva": 5,
+  "fechaInicio": "2/23/2017",
+  "fechaFin": "4/2/2016",
+  "costo": 2203805,
+  "estado": "C",
+  "vivienda" : 
+    {
+      "idVivienda": 5,
+      "ciudad": "Donghoufang",
+      "direccion": "944 Chive Trail"
+    },
+  "usuario" : 
+    {
+      "numeroID": 67,
+      "nombre": "Martin",
+      "usuario": "mrichardson4",
+      "correo": "msmith4@purevolume.com"
+    }
+}, {
+  "codigoReserva": 6,
+  "fechaInicio": "3/28/2017",
+  "fechaFin": "10/27/2016",
+  "costo": 928766,
+  "estado": "H",
+  "vivienda" : 
+    {
+      "idVivienda": 6,
+      "ciudad": "Kedungtulup",
+      "direccion": "4455 Hauk Place"
+    },
+  "usuario" :
+    {
+      "numeroID": 69,
+      "nombre": "Pamela",
+      "usuario": "pcunningham5",
+      "correo": "phayes5@goo.gl"
+    }
+}, {
+  "codigoReserva": 7,
+  "fechaInicio": "9/2/2016",
+  "fechaFin": "12/28/2016",
+  "costo": 2442843,
+  "estado": "C",
+  "vivienda" : 
+    {
+      "idVivienda": 7,
+      "ciudad": "Tacuatí",
+      "direccion": "3 Cardinal Crossing"
+    },
+  "usuario" :
+    {
+      "numeroID": 14,
+      "nombre": "Victor",
+      "usuario": "vprice6",
+      "correo": "vwest6@hc360.com"
+    }
+}, {
+  "codigoReserva": 8,
+  "fechaInicio": "11/29/2016",
+  "fechaFin": "10/21/2016",
+  "costo": 1189493,
+  "estado": "A", 
+  "vivienda" :
+    {
+      "idVivienda": 8,
+      "ciudad": "Salon-de-Provence",
+      "direccion": "78431 Buell Park"
+    },
+  "usuario" : 
+    {
+      "numeroID": 84,
+      "nombre": "Sara",
+      "usuario": "sbishop7",
+      "correo": "sfranklin7@discovery.com"
+    }
+}, {
+  "codigoReserva": 9,
+  "fechaInicio": "2/9/2017",
+  "fechaFin": "5/31/2016",
+  "costo": 2107998,
+  "estado": "H",
+  "vivienda" : 
+    {
+      "idVivienda": 9,
+      "ciudad": "Bibai",
+      "direccion": "98082 Banding Road"
+    },
+  "usuario" :
+    {
+      "numeroID": 73,
+      "nombre": "Tina",
+      "usuario": "tharper8",
+      "correo": "treynolds8@cbc.ca"
+    }
+}, {
+  "codigoReserva": 10,
+  "fechaInicio": "8/1/2016",
+  "fechaFin": "1/2/2017",
+  "costo": 4025253,
+  "estado": "C",
+  "vivienda" : 
+    {
+      "idVivienda": 10,
+      "ciudad": "Pasacao",
+      "direccion": "480 Comanche Center"
+    },
+  "usuario" :
+    {
+      "numeroID": 3,
+      "nombre": "Marilyn",
+      "usuario": "mwheeler9",
+      "correo": "mcox9@skyrock.com"
+    }
+}]
