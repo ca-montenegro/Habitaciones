@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <b>Habitaciones<b>    
+    <div class="row">
+        
+        <div class="col-md-4 animate-box" ng-repeat="habitacion in currentVivienda.habitaciones">
+            
+            <div class="thumbnail">
+                 <a ui-sref="habitacionDetail({habitacionId: habitacion.idHabitacion})"> 
+                    <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.idHabitacion}}"/>
+                    
+                 </a>
+                    <div class ="caption text-center"> 
+                        <p>{{habitacion.valorDiario}}</p>
+                       
+                    </div>
+               
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,47 @@
+<div class ="panel panel-default panel-body " row>
+    <b class="col-md-6">Usuario con id {{currentUsuario.id}}</b>
+    <b class="col-md-6" >Usuarios</b>
+    <div row>
+        <div class="col-md-6 bordeNaranja">
+            
+            <div class ="thumb col-md-5" >
+                <dl>
+                    <dt> <b>Nombre</b></dt>
+                    <dd>{{currentUsuario.nombre}}</dd>
+                    <dt> <b>Id</b></dt>
+                    <dd>{{currentUsuario.id}}</dd>
+                    <dt><b>Tipo id</b></dt>
+                    <dd>{{currentUsuario.tipoID}}</dd>
+                    <dt><b>Correo</b></dt>
+                    <dd>{{currentUsuario.correo}}</dd>
+                    <dt><b>Genero</b></dt>
+                    <dd>{{currentUsuario.gender}}</dd>
+                    <dt><b>Dirección</b></dt>
+                    <dd>{{currentUsuario.direccion}}</dd>
+                    <dt><b>Telefono</b></dt>
+                    <dd>{{currentUsuario.telefono}}</dd>
+                    <dt><b>Numero de Tarjeta</b></dt>
+                    <dd>{{currentUsuario.numeroTarjeta}}</dd>
+                </dl>
+            </div>
+        </div>
+        <div class ="thumb col-md-6 bordeNaranja " >
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Identificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="usuario in usuariosRecords">
+                        <td id="{{$index}}-name"><a ui-sref="usuarioDetail({usuarioId: usuario.id})">{{usuario.nombre}}</a></td>
+                        <td id="{{$index}}-description">{{usuario.id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>             
+
+
+    </div>
+</div>

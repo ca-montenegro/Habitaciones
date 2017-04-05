@@ -12,11 +12,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="reserva in reservasRecords">
-                    <td id="{{$index}}-codigoReserva">   <a ui-sref="reservaDetail({codigoReserva: reserva.codigoReserva})">{{reserva.codigoReserva}}</a></td>
-                    <td id="{{$index}}-ciudad">{{reserva.vivienda.ciudad}}</td>
-                    <td id="{{$index}}-Costo">{{reserva.costo}}</td>
-                    <td id="{{$index}}-fechaInicio">{{reserva.fechaInicio}}</td>
-                    <td id="{{$index}}-fechaFinal">{{reserva.fechaFin}}</td>
+                    <td id="{{$index}}-codigoReserva">   <a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.codigoReserva}}</a></td>
+                    <td id="{{$index}}-ciudad"> <a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.vivienda.ciudad}}</td>
+                    <td id="{{$index}}-Costo"> <a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.costo}}</td>
+                    <td id="{{$index}}-fechaInicio"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaInicio}}</td>
+                    <td id="{{$index}}-fechaFinal"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaFin}}</td>
                 </tr>
             </tbody>
         </table>

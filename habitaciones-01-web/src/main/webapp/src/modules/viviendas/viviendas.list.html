@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    
+    <div class="row">
+        <hr>
+        <div class="col-md-4 animate-box" ng-repeat="vivienda in viviendasRecords">
+            
+            <div class="thumbnail">
+                 <a ui-sref="viviendaDetail({viviendaId: vivienda.idVivienda})"> 
+                    <img class="img-responsive" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
+                    <span class="status">COP{{vivienda.valorDiario}}</span>
+                 </a>
+                    <div class="property-details"> 
+                        <p>{{vivienda.ciudad}}</p>
+                        
+                       
+                    </div>
+               
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

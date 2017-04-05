@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    
+    <div class="row">
+        
+        <div class="col-md-2" ng-repeat="habitacion in habitacionesRecords">
+            
+            <div class="thumbnail">
+                 <a ui-sref="habitacionDetail({habitacionId: habitacion.idHabitacion})"> 
+                    <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.idHabitacion}}"/>
+                 </a>
+                    <div class ="caption text-center"> 
+                        <p>{{habitacion.area}}</p>
+                    </div>
+               
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

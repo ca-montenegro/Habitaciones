@@ -1,39 +1,35 @@
 <div class="panel panel-default"> 
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-3">
-                <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentBook.image}}"/>
-                </div>
-
-            </div>
-            <div class="col-md-3">
-                <dl>     
-                    <dt>{{currentBook.name}}</dt>
-                    <ul ng-repeat="author in currentBook.authors">
-                        <a ui-sref="authorDetail({authorId: author.id})">{{author.name}}</a>
-                    </ul>
-                    <dt> ISBN</dt>
-                    <dd>{{currentBook.isbn}}</dd>
+            <div class="thumb">
+                <dl>
+                    
+                    <dt><b>Codigo reserva</b></dt>
+                    <dd>{{currentReserva.codigoReserva}}</dd>
                     <hr>
-                    <dt>Publishing Date</dt>
-                    <dd>{{currentBook.publishingdate}}</dd>
+                    <dt><b>Fecha Inicio</b></dt>
+                    <dd>{{currentReserva.fechaInicio}}</dd>
                     <hr>
-                    <dt class="bold">Editorial</dt>
-
-                    <dd>{{currentBook.editorial.name}}</dd>
+                    <dt><b>Fecha Fin</b></dt>
+                    <dd>{{currentReserva.fechaFin}}</dd>
                     <hr>
-                    <dt class="bold">Description</dt>
-                    <dd>{{currentBook.description}}</dd>
+                    <dt><b>Costo</b></dt>
+                    <dd>{{currentReserva.costo}}</dd>
+                    <hr>
+                    <dt><b>Estado</b></dt>
+                    <dd>{{currentReserva.estado}}</dd>
+                    <hr>
+                    <dt><b>ID de la vivienda</b></dt>
+                    <dd>{{currentReserva.vivienda.ciudad}}</dd>
+                    <hr>
+                    <dt><b>Ciudad</b></dt>
+                    <dd>{{currentReserva.vivienda.ciudad}}</dd>
+                    <hr>
+                    <dt><b>Dirección</b></dt>
+                    <dd>{{currentReserva.vivienda.direccion}}</dd>
+                    
                 </dl>
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Reviews</a></li>
-                    <li role="presentation"><a href="#">Profile</a></li>
-                    <li role="presentation"><a href="#">Messages</a></li>
-                </ul>
             </div>
         </div>
     </div>
 </div>
-<div ui-view="childrenView"></div>
-
