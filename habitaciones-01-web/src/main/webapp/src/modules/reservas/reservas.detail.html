@@ -2,6 +2,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="thumb">
+                <div class="tablaReservas">
                 <dl>
                     
                     <dt><b>Codigo reserva</b></dt>
@@ -14,13 +15,16 @@
                     <dd>{{currentReserva.fechaFin}}</dd>
                     <hr>
                     <dt><b>Costo</b></dt>
-                    <dd>{{currentReserva.costo}}</dd>
+                    <dd>COP {{currentReserva.costo}}</dd>
                     <hr>
                     <dt><b>Estado</b></dt>
-                    <dd>{{currentReserva.estado}}</dd>
+                    <dd> {{currentReserva.estado == 'P' ? 'Pagado' : ''}}</dd>
+                    <dd> {{currentReserva.estado == 'C' ? 'Cancelada' : ''}}</dd>
+                    <dd> {{currentReserva.estado == 'H' ? 'Hecha' : ''}}</dd>
+                    <dd> {{currentReserva.estado == 'A' ? 'Pasada' : ''}}</dd>
                     <hr>
                     <dt><b>ID de la vivienda</b></dt>
-                    <dd>{{currentReserva.vivienda.ciudad}}</dd>
+                    <dd>{{currentReserva.vivienda.idVivienda}}</dd>
                     <hr>
                     <dt><b>Ciudad</b></dt>
                     <dd>{{currentReserva.vivienda.ciudad}}</dd>
