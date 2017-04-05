@@ -1,24 +1,23 @@
 <div class="container-fluid">
     <b>Habitaciones<b>    
-    <div class="row">
-        
-        <div class="col-md-4 animate-box" ng-repeat="habitacion in currentVivienda.habitaciones">
-            
-            <div class="thumbnail">
-                 <a ui-sref="habitacionDetail({habitacionId: habitacion.idHabitacion})"> 
-                    <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.idHabitacion}}"/>
+            <div class="row">
+                
+                <div class="col-md-4 animate-box" ng-repeat="habitacion in currentVivienda.habitaciones">
                     
-                 </a>
-                    <div class ="caption text-center"> 
-                        <p>{{habitacion.valorDiario}}</p>
-                       
+                    <div class="property">
+                        <a ui-sref="habitacionDetail({habitacionId: habitacion.idHabitacion})"> 
+                            <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.idHabitacion}}"/>
+                            <ul class="list-details">
+                                <li>{{habitacion.valorDiario}}<li>
+                                <li>{{habitacion.area}} metros</li>
+                                    
+                            </ul>
+                        </a>
+                            
                     </div>
-               
+                        
+                </div>
+                    
+            </div>
                 
             </div>
-            
-        </div>
-        
-    </div>
-    
-</div>
