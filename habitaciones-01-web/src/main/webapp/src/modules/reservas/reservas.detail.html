@@ -18,6 +18,7 @@
                     <dd>COP {{currentReserva.costo}}</dd>
                     <hr>
                     <dt><b>Estado</b></dt>
+                    <!-- condiciones para mostrar los tipos de estado que existen-->
                     <dd> {{currentReserva.estado == 'P' ? 'Pagado' : ''}}</dd>
                     <dd> {{currentReserva.estado == 'C' ? 'Cancelada' : ''}}</dd>
                     <dd> {{currentReserva.estado == 'H' ? 'Hecha' : ''}}</dd>
