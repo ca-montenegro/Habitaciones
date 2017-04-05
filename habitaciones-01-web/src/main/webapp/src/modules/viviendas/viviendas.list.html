@@ -3,7 +3,7 @@
     <div class="col-md-4 animate-box" ng-repeat="vivienda in viviendasRecords">
         <div class="property">
             <a ui-sref="viviendaDetail({viviendaId: vivienda.idVivienda})"> 
-                <img class="img-responsive" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
+                <img class="img-responsive col-md-12" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
                 <ul class="list-details">
                     <li>{{vivienda.valorDiario}}<li>
                     <li>{{vivienda.area}} metros cuadrados</li>
