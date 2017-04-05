@@ -4,7 +4,6 @@
             <div class="col-md-2"></div>
                 <div class="tablaReservas col-md-8" >
                 <dl>
-                    
                     <dt><b>Codigo reserva</b></dt>
                     <dd>{{currentReserva.codigoReserva}}</dd>
                     <hr>
@@ -18,7 +17,7 @@
                     <dd>COP {{currentReserva.costo}}</dd>
                     <hr>
                     <dt><b>Estado</b></dt>
-                    <!-- condiciones para mostrar los tipos de estado que existen-->
+                    <!-- condiciones para mostrar los tipos de estado que existen.-->
                     <dd> {{currentReserva.estado == 'P' ? 'Pagado' : ''}}</dd>
                     <dd> {{currentReserva.estado == 'C' ? 'Cancelada' : ''}}</dd>
                     <dd> {{currentReserva.estado == 'H' ? 'Hecha' : ''}}</dd>
@@ -32,7 +31,6 @@
                     <hr>
                     <dt><b>Dirección</b></dt>
                     <dd>{{currentReserva.vivienda.direccion}}</dd>
-                    
                 </dl>
             </div>
         </div>
