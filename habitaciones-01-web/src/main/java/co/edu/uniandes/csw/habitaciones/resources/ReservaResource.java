@@ -43,21 +43,21 @@ public class ReservaResource {
         return listEntity2DTO(reservaLogic.getReservas());
     }
     
-    //@GET
-    //@PathParam("{id: \\d+}")
-    //public ReservaDTO getReserva (@PathParam("id") Long id){
-    //    ReservaEntity reserva = reservaLogic.getReserva(id);
-    //    return new ReservaDTO(reserva);
-    //}
+    @GET
+    @Path("{id: \\d+}")
+    public ReservaDTO getReserva (@PathParam("id") Long id){
+        ReservaEntity reserva = reservaLogic.getReserva(id);
+        return new ReservaDTO(reserva);
+    }
     
     @POST
-    @PathParam("{id: \\d+}")
+    @Path("{id: \\d+}")
     public ReservaDTO createReserva(ReservaDTO dto)throws BusinessLogicException{
         return new ReservaDTO(reservaLogic.createReserva(dto.toEntity()));
     } 
             
     @PUT
-    @PathParam("{id: \\d+}")
+    @Path("{id: \\d+}")
     public ReservaDTO updateReserva(@PathParam("id") Long id, ReservaDTO dto){
         ReservaEntity entity = dto.toEntity();
         entity.setCodigoReserva(id);

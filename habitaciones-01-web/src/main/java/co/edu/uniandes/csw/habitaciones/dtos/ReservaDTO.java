@@ -19,6 +19,7 @@ public class ReservaDTO implements Serializable{
     
     
     public ReservaDTO(){
+        super();
     }
 
     public ReservaDTO(ReservaEntity entity){
