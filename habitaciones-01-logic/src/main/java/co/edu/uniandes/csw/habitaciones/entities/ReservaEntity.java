@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,13 +30,13 @@ public class ReservaEntity implements Serializable{
     
     private char estado;
     
-    @OneToOne
+    @OneToOne (fetch = FetchType.LAZY)
     private MultaEntity multa;
     
-    @ManyToOne
+    @ManyToOne//(fetch = FetchType.LAZY)
     private HabitacionEntity habitacion;
     
-    @ManyToOne
+    @ManyToOne//(fetch = FetchType.LAZY)
     private ViviendaEntity vivienda;
 
     public HabitacionEntity getHabitacion() {
