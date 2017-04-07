@@ -35,16 +35,17 @@
                 param: {
                     codigoReserva: null
                 },
-                resolve: {
-                    currentReserva: ['$http','reservasContext', '$stateParams', function($http, reservasContext, $params) {
-                            return $http.get(reservasContext+'/'+$params.codigoReservas);
-                    }]
-                },
-                views: {
+                views : {
+                    'listView' : {
+                        resolve: {
+                     reservas: ['$http', 'reservasContext', function ($http) {
+                             return $http.get(reservasContext);
+                     }]
+                }, },
                     'detailView': {
                         templateUrl: basePath + 'reservas.detail.html',
-                        controller: ['$scope', 'currentReserva', function ($scope, currentReserva) {
-                                $scope.currentReserva = currentReserva.data;
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentReserva = $scope.reservasRecords[$params.codigoReserva];
                             }]
                     }
 
