@@ -55,7 +55,25 @@ public class ViviendaDTO  implements Serializable{
         this.imagen=entity.getImagen();
        }
     }
-
+    /**
+     * Constructor necesario para poder evitar ciclos infinitos al momento que ReservaDTO llama al constructor normal
+     * @param entity
+     * @param condicion 
+     */
+    
+    public ViviendaDTO(ViviendaEntity entity, String condicion)
+    {
+        if (entity!=null){
+        this.idVivienda=entity.getIdVivienda();
+        this.ciudad=entity.getCiudad();
+        this.descripcion=entity.getDescripcion();
+        this.direccion=entity.getDireccion();
+        this.capacidad=entity.getCapacidad();
+        this.valorDiario=entity.getValorDiario();
+        this.imagen=entity.getImagen();
+    }
+    }
+    
     /**
      * Convierte un objeto ViviendaDTO a ViviendaEntity.
      *

@@ -29,6 +29,7 @@ public class ReservaDTO implements Serializable{
             this.estado = entity.getEstado();
             this.fechaInicio = entity.getFechaInicio();
             this.fechaFin = entity.getFechaFin();
+            this.vivienda = new ViviendaDTO(entity.getVivienda(), "nada");
         }
     }
     
