@@ -34,7 +34,7 @@ public class ViviendaEntity implements Serializable {
     @OneToMany(mappedBy = "vivienda")
     private List<ReservaEntity> reservas;
     
-    @OneToMany(mappedBy="idVivienda")
+    @OneToMany(mappedBy="vivienda")
     private List<HabitacionEntity> habitaciones;
     
     

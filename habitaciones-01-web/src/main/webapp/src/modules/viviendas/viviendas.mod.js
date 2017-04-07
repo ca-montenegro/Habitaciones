@@ -18,7 +18,7 @@
                         templateUrl: basePath + 'viviendas.html',
                         controller: ['$scope', 'viviendas', function ($scope, viviendas) {
                                 $scope.viviendasRecords = viviendas.data;
-                            }]
+                            }]  
                     }
                 }
             }).state('viviendasList', {

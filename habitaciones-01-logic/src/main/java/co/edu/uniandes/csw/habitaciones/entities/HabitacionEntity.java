@@ -25,7 +25,7 @@ public class HabitacionEntity implements Serializable {
     private String descripcion;
     private String imagen;
     @ManyToOne 
-    private ViviendaEntity idVivienda;
+    private ViviendaEntity vivienda;
     @OneToMany(mappedBy="habitacion")
     private List<ReservaEntity> reservas;
 
@@ -87,11 +87,11 @@ public class HabitacionEntity implements Serializable {
 
     public ViviendaEntity getIdVivienda()
     {
-        return idVivienda;
+        return vivienda;
     }
     
     public void setIdVivienda(ViviendaEntity idVivienda)
     {
-        this.idVivienda = idVivienda;
+        this.vivienda = idVivienda;
     }
 }

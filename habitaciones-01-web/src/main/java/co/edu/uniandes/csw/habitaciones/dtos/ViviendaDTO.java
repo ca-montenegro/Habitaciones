@@ -12,8 +12,8 @@ import java.util.List;
  */
 @XmlRootElement
 public class ViviendaDTO  implements Serializable{
-
-    private Long idVivienda; 
+    
+    private Long idVivienda;
     private String descripcion;
     private String ciudad;
     private String direccion;
@@ -21,15 +21,15 @@ public class ViviendaDTO  implements Serializable{
     private int capacidad;
     private String imagen;
     private List<ReservaDTO> reservas;
-
-
+    
+    
     /**
      * @generated
      */
     public ViviendaDTO() {
         super();
     }
-
+    
     /**
      * Crea un objeto ViviendaDTO a partir de un objeto ViviendaEntity.
      *
@@ -37,41 +37,41 @@ public class ViviendaDTO  implements Serializable{
      * @generated
      */
     public ViviendaDTO(ViviendaEntity entity) {
-	   if (entity!=null){
-        this.idVivienda=entity.getIdVivienda();
-        this.ciudad=entity.getCiudad();
-        this.descripcion=entity.getDescripcion();
-        this.direccion=entity.getDireccion();
-        this.capacidad=entity.getCapacidad();
-        
-        if(entity.getReservas()!=null){
-            this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {   
-                this.reservas.add(new ReservaDTO(reserva));
+        if (entity!=null){
+            this.idVivienda=entity.getIdVivienda();
+            this.ciudad=entity.getCiudad();
+            this.descripcion=entity.getDescripcion();
+            this.direccion=entity.getDireccion();
+            this.capacidad=entity.getCapacidad();
+            
+            if(entity.getReservas()!=null){
+                this.reservas=new ArrayList();
+                for(ReservaEntity reserva:entity.getReservas())
+                {
+                    this.reservas.add(new ReservaDTO(reserva));
+                }
             }
+            this.valorDiario=entity.getValorDiario();
+            this.imagen=entity.getImagen();
         }
-        this.valorDiario=entity.getValorDiario();
-        this.imagen=entity.getImagen();
-       }
     }
     /**
      * Constructor necesario para poder evitar ciclos infinitos al momento que ReservaDTO llama al constructor normal
      * @param entity
-     * @param condicion 
+     * @param condicion
      */
     
     public ViviendaDTO(ViviendaEntity entity, String condicion)
     {
         if (entity!=null){
-        this.idVivienda=entity.getIdVivienda();
-        this.ciudad=entity.getCiudad();
-        this.descripcion=entity.getDescripcion();
-        this.direccion=entity.getDireccion();
-        this.capacidad=entity.getCapacidad();
-        this.valorDiario=entity.getValorDiario();
-        this.imagen=entity.getImagen();
-    }
+            this.idVivienda=entity.getIdVivienda();
+            this.ciudad=entity.getCiudad();
+            this.descripcion=entity.getDescripcion();
+            this.direccion=entity.getDireccion();
+            this.capacidad=entity.getCapacidad();
+            this.valorDiario=entity.getValorDiario();
+            this.imagen=entity.getImagen();
+        }
     }
     
     /**
@@ -93,75 +93,75 @@ public class ViviendaDTO  implements Serializable{
             entity.setHabitaciones(new ArrayList());
             List<ReservaEntity>entities=entity.getReservas();
             for(ReservaDTO reserva:this.getReservas())
-                {
-                    entities.add(reserva.toEntity());
-                }
+            {
+                entities.add(reserva.toEntity());
+            }
         }
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
-    return entity;
+        return entity;
     }
-
+    
     public Long getIdVivienda() {
         return idVivienda;
     }
-
+    
     public void setIdVivienda(Long idVivienda) {
         this.idVivienda = idVivienda;
     }
-
+    
     public String getDescripcion() {
         return descripcion;
     }
-
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    
     public String getCiudad() {
         return ciudad;
     }
-
+    
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-
+    
     public String getDireccion() {
         return direccion;
     }
-
+    
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    
     public Double getValorDiario() {
         return valorDiario;
     }
-
+    
     public void setValorDiario(Double valorDiario) {
         this.valorDiario = valorDiario;
     }
-
+    
     public int getCapacidad() {
         return capacidad;
     }
-
+    
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
-
+    
     public String getImagen() {
         return imagen;
     }
-
+    
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
+    
     public List<ReservaDTO> getReservas() {
         return reservas;
     }
-
+    
     public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
     }
