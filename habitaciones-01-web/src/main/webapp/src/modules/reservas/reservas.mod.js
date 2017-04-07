@@ -2,7 +2,6 @@
     var mod = ng.module("reservasModule", ['ui.router']);
     /**
      * Recurso de reserva, lee directamente del back-end, para su correcto funcionamiento ejecutar el script en la carpeta /data/ScriptViviendas.sql 
-     * o en la carpeta habitaciones-01-logic/Other Sources/src/main/resources/META-INF.sql/reservas.sql
      */
     mod.constant("reservasContext", "api/reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
