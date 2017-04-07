@@ -30,20 +30,4 @@ public class ReservaPersistence {
     public ReservaEntity update(ReservaEntity entity){
         return em.merge(entity);
     }
-    
-    
-   // public ReservaEntity findByCodigoReserva(Date fechaInicio, Date fechaFin, Parameter<Date> param) {
-     //  
-       // TypedQuery<ReservaEntity> q
-      //          = em.createQuery("select u from ReservaEntity u where u.carnet = :carnet", ReservaEntity.class);
-      //  q = q.setParameter(param, fechaInicio, TemporalType.TIMESTAMP);
-      // List<ReservaEntity> sameCarnet = q.getResultList();
-       // if (sameCarnet.isEmpty() ) {
-       //     return null; 
-        //} else {
-         //   return sameCarnet.get(0);
-        //}
-    //}
-    
-    // aIni < bFin && aFin > bIni
 }

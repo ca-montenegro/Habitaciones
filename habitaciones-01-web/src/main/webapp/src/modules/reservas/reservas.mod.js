@@ -9,8 +9,8 @@
                 url: '/reservas',
                 abstract: true,
                 resolve: {
-                    reservas: ['$http', function ($http) {
-                            return $http.get('data/reservas.json');
+                    reservas: ['$http', 'reservasContext', function ($http,reservasContext) {
+                            return $http.get(reservasContext);
                         }]
                 },
                 views: {
@@ -35,22 +35,16 @@
                 param: {
                     codigoReserva: null
                 },
-                views: {
-                   'listView': {
-                       resolve: {
-                    reservas: ['$http', function ($http) {
-                            return $http.get('data/reservas.json');
-                        }]
+                resolve: {
+                    currentReserva: ['$http','reservasContext', '$stateParams', function($http, reservasContext, $params) {
+                            return $http.get(reservasContext+'/'+$params.codigoReservas);
+                    }]
                 },
-                        templateUrl: 'src/modules/reservas/reservas.list.html',
-                        controller: ['$scope', '$stateParams','reservas', function ($scope, $params) {
-                                $scope.currentReserva = $scope.reservasRecords[$params.codigoReserva-1];
-                            }]
-                    },
+                views: {
                     'detailView': {
                         templateUrl: basePath + 'reservas.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentReserva = $scope.reservasRecords[$params.codigoReserva-1];
+                        controller: ['$scope', 'currentReserva', function ($scope, currentReserva) {
+                                $scope.currentReserva = currentReserva.data;
                             }]
                     }
 
