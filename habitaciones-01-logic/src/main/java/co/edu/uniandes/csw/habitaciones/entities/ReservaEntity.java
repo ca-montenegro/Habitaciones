@@ -53,7 +53,7 @@ public class ReservaEntity implements Serializable{
 
     public void setVivienda(ViviendaEntity vivienda) {
         this.vivienda = vivienda;
-    }
+    } 
 
     public Long getCodigoReserva() {
         return codigoReserva;

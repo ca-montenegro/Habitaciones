@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <b>Viviendas<b>    
+            <div class="row">
+                
+                <div class="col-md-4 animate-box" ng-repeat="vivienda in currentAnfitrion.viviendas">
+                    
+                    <div class="property">
+                        <a ui-sref="viviendaDetail({viviendanId: vivienda.idVivienda})"> 
+                            <img class="img-responsive" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
+                            <ul class="list-details">
+                                <li>Ciudad {{vivienda.ciudad}}</li>
+                                <li>Dirección {{vivienda.direccion}}</li>
+                                <li>HabitacionesLibres {{vivienda.habitacionesDisponibles}}</li>
+                                <li>Valor dia {{vivienda.valorDiario}}</li> 
+                                <li>Capacidad {{vivienda.capacidad}}</li>
+                            </ul>
+                        </a>
+                            
+                    </div>
+                        
+                </div>
+                    
+            </div>
+                
+            </div>
