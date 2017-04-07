@@ -38,7 +38,7 @@
                 views : {
                     'listView' : {
                         resolve: {
-                     reservas: ['$http', 'reservasContext', function ($http) {
+                     reservas: ['$http', 'reservasContext', function ($http, reservasContext) {
                              return $http.get(reservasContext);
                      }]
                 }, },
@@ -47,7 +47,7 @@
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
                                 $scope.currentReserva = $scope.reservasRecords[$params.codigoReserva-1];
                             }]
-                    }
+                    } 
 
                 }
 
