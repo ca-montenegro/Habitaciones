@@ -47,7 +47,7 @@
                                 $scope.viviendaActual =  viviendaActual.data;
                             }]
                     }
-                    
+
                 }
                 
             });

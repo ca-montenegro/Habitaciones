@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author c.penaloza
@@ -37,6 +39,8 @@ public class ViviendaEntity implements Serializable {
     @OneToMany(mappedBy="vivienda")
     private List<HabitacionEntity> habitaciones;
     
+    @OneToOne (fetch = FetchType.LAZY)
+    private AnfitrionEntity anfitrion;
     
     public ViviendaEntity(){
         
@@ -114,6 +118,16 @@ public class ViviendaEntity implements Serializable {
         this.habitaciones = habitaciones;
     }
 
+    public AnfitrionEntity getAnfitrion() {
+        return anfitrion;
+    }
+
+    public void setAnfitrion(AnfitrionEntity anfitrion) {
+        this.anfitrion = anfitrion;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         if (this.getIdVivienda()!= null) {

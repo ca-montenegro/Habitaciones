@@ -125,7 +125,7 @@ public class ViviendaResource {
      * @throws BusinessLogicException si no existe una vivienda con el id dado
      */
     @POST
-     @Path("{idV:\\d+}/habitaciones/")
+     @Path("/viviendas/{idV:\\d+}/habitaciones/")
     public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
          List<HabitacionEntity> h = v.getHabitaciones();
@@ -144,7 +144,7 @@ public class ViviendaResource {
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
     @PUT
-    @Path("{idV:\\d+}/habitaciones/{id}")
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
     public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) throws BusinessLogicException {
         getHabitacion(idV, id);
         HabitacionEntity entity = dto.toEntity();
@@ -160,7 +160,7 @@ public class ViviendaResource {
      * @throws BusinessLogicException
      */
     @GET
-    @Path("{idV:\\d+}/habitaciones/{id}")
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
     public HabitacionDetailDTO getHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
         HabitacionEntity buscada = null;
@@ -180,7 +180,7 @@ public class ViviendaResource {
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException 
      */
     @GET
-     @Path("viviendas/V{idV:\\d+}/habitaciones/")
+     @Path("viviendas/{idV:\\d+}/habitaciones/")
         public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) throws BusinessLogicException {
             if (viviendaLogic.getVivienda(idV)==null)throw new WebApplicationException("La vivienda no existe", 404);
         return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
