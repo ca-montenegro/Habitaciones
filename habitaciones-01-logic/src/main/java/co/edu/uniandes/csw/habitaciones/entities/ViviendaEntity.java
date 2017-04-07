@@ -39,7 +39,7 @@ public class ViviendaEntity implements Serializable {
     @OneToMany(mappedBy="vivienda")
     private List<HabitacionEntity> habitaciones;
     
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private AnfitrionEntity anfitrion;
     
     public ViviendaEntity(){
