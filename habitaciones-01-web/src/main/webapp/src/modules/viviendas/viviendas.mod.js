@@ -4,7 +4,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/viviendas/';
             $urlRouterProvider.otherwise("/viviendasList");
-
+            
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
                 abstract: true,
@@ -35,27 +35,21 @@
                 param: {
                     viviendaId: null
                 },
-                views: {
-                    'listView': {
-                       resolve: {
-                    viviendas: ['$http', 'viviendasContext',function ($http) {
-                            return $http.get(viviendasContext);
+                resolve: {
+                    viviendaActual: ['$http', 'viviendasContext', '$stateParams',function ($http, viviendasContext, $params) {
+                            return $http.get(viviendasContext+'/'+$params.viviendaId);
                         }]
                 },
-                        templateUrl: 'src/modules/viviendas/habitacionesVivienda.list.html',
-                        controller: ['$scope', '$stateParams','viviendas', function ($scope, $params) {
-                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId];
-                            }]
-                    },
+                views: {
                     'detailView': {
                         templateUrl: basePath + 'viviendas.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId];
+                        controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
+                                $scope.viviendaActual =  viviendaActual.data;
                             }]
                     }
-
+                    
                 }
-
+                
             });
         }]);
 })(window.angular);

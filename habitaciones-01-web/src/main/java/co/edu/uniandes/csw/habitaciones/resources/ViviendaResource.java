@@ -82,8 +82,8 @@ public class ViviendaResource {
      * @generated
      */
     @GET
-    @Path("/anfitriones/{idA:\\d+}/viviendas/{id: \\d+}")
-    public ViviendaDetailDTO getVivienda(@PathParam("idA") Long idA, @PathParam("id") Long id) throws BusinessLogicException {
+    @Path("/viviendas/{id: \\d+}")
+    public ViviendaDetailDTO getVivienda(@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
         if (vivienda==null)throw new WebApplicationException("La vivienda no existe", 404);
         return new ViviendaDetailDTO(vivienda);
