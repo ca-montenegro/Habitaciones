@@ -9,8 +9,8 @@
                 url: '/viviendas',
                 abstract: true,
                 resolve: {
-                    viviendas: ['$http', function ($http) {
-                            return $http.get('data/viviendas.json');
+                    viviendas: ['$http', 'viviendasContext',function ($http, viviendasContext) {
+                            return $http.get(viviendasContext);
                         }]
                 },
                 views: {
@@ -38,19 +38,19 @@
                 views: {
                     'listView': {
                        resolve: {
-                    viviendas: ['$http', function ($http) {
-                            return $http.get('data/viviendas.json');
+                    viviendas: ['$http', 'viviendasContext',function ($http) {
+                            return $http.get(viviendasContext);
                         }]
                 },
                         templateUrl: 'src/modules/viviendas/habitacionesVivienda.list.html',
                         controller: ['$scope', '$stateParams','viviendas', function ($scope, $params) {
-                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId-1];
+                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId];
                             }]
                     },
                     'detailView': {
                         templateUrl: basePath + 'viviendas.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId-1];
+                                $scope.currentVivienda = $scope.viviendasRecords[$params.viviendaId];
                             }]
                     }
 
