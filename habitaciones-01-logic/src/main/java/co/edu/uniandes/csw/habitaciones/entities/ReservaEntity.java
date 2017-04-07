@@ -33,10 +33,10 @@ public class ReservaEntity implements Serializable{
     @OneToOne (fetch = FetchType.LAZY)
     private MultaEntity multa;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     private HabitacionEntity habitacion;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     private ViviendaEntity vivienda;
 
     public HabitacionEntity getHabitacion() {
