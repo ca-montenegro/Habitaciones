@@ -42,6 +42,7 @@ public class ViviendaDTO  implements Serializable{
     public ViviendaDTO(ViviendaEntity entity) {
         if (entity!=null){
             this.idVivienda=entity.getIdVivienda();
+            this.anfitrion=new AnfitrionDTO(entity.getAnfitrion());
             this.ciudad=entity.getCiudad();
             this.descripcion=entity.getDescripcion();
             this.direccion=entity.getDireccion();
@@ -53,8 +54,6 @@ public class ViviendaDTO  implements Serializable{
                     this.habitaciones.add(new HabitacionDTO(habitacion));
                 }
             }
-
-            this.anfitrion=new AnfitrionDTO(entity.getAnfitrion());
             
             if(entity.getReservas()!=null){
                 this.reservas=new ArrayList();
@@ -176,6 +175,22 @@ public class ViviendaDTO  implements Serializable{
     
     public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
+    }
+
+    public List<HabitacionDTO> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void setHabitaciones(List<HabitacionDTO> habitaciones) {
+        this.habitaciones = habitaciones;
+    }
+
+    public AnfitrionDTO getAnfitrion() {
+        return anfitrion;
+    }
+
+    public void setAnfitrion(AnfitrionDTO anfitrion) {
+        this.anfitrion = anfitrion;
     }
     
     
