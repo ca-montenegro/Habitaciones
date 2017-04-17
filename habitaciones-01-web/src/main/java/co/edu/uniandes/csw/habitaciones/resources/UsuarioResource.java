@@ -92,6 +92,12 @@ public class UsuarioResource {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
     }
     
+    @GET
+    @Path("{id:\\d+}/adminLogin}")
+    public UsuarioDetailDTO getUsuarioAdmin(@PathParam("id") Long id) throws BusinessLogicException {
+        return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
+    }
+    
     /**
      *Retorna una lista de reservas para un usuario con ID
      * @param id id del usuario
@@ -204,4 +210,6 @@ public class UsuarioResource {
         return new ReservaDTO(reservaUpdate);
 
     }
+    
+    
 }

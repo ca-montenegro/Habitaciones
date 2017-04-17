@@ -9,8 +9,8 @@
                 url: '/usuarios',
                 abstract: true,
                 resolve: {
-                    usuarios: ['$http', function ($http) {
-                            return $http.get('data/datos.json');
+                    usuarios: ['$http','usuarioContext', function ($http,usuarioContext) {
+                            return $http.get(usuarioContext);
                         }]
                 },
                 views: {
@@ -30,7 +30,7 @@
                     }
                 }
             }).state('usuarioAdminLogin', {
-                url: '/adminLogin',
+                url: '/1/adminLogin',
                 parent: 'usuarios',
                 views: {
                     'listView': {
@@ -45,15 +45,19 @@
                 },
                 views:{
                     listView:{
-                        
-                      templateUrl: basePath + 'usuario.list.html'  
+                      templateUrl: basePath + 'usuario.list.html', 
+                      resolve : {
+                          usuarios :['$http', 'usuarioContext', function ($http,usuarioContext){
+                                  return $http.get(usuarioContext);
+                          }]
+                      },
                     },
                     detailView:{
                        
                         templateUrl: basePath + 'usuario.detail.html',
-                        controller: ['$scope','usuarios', '$stateParams', function ($scope, usuarios,$params) {
+                        controller: ['$scope','usuarios', '$stateParams', function ($scope,$params) {
                              
-                                $scope.currentUsuario = $scope.usuariosRecords[$params.usuarioId-1];
+                                $scope.currentUsuario = $scope.usuariosRecords[$params.usuarioId];
                             }]
                     }
                 }

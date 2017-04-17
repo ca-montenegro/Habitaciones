@@ -32,6 +32,8 @@ public class UsuarioDTO implements Serializable {
     
     private Long numeroTarjeta;
     
+    private String DType;
+    
     //private List<ReservaEntity> reservas;
     
     public UsuarioDTO()
@@ -144,6 +146,8 @@ public class UsuarioDTO implements Serializable {
     public void setNumeroTarjeta(Long numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
+    
+    
 
     //public List<ReservaEntity> getReservas() {
     //    return reservas;
@@ -152,6 +156,14 @@ public class UsuarioDTO implements Serializable {
     //public void setReservas(List<ReservaEntity> reservas) {
       //  this.reservas = reservas;
     //}
+
+    public String getDType() {
+        return DType;
+    }
+
+    public void setDType(String DType) {
+        this.DType = DType;
+    }
     
     
 }
