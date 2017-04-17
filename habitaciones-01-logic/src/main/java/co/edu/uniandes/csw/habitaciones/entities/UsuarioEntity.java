@@ -34,6 +34,8 @@ public class UsuarioEntity implements Serializable {
     
     private List<ReservaEntity> reservas;
     
+    private String DType;
+    
     public UsuarioEntity()
     {
         
@@ -124,6 +126,16 @@ public class UsuarioEntity implements Serializable {
         return reservas.add(rese);
 
     }
+
+    public String getDType() {
+        return DType;
+    }
+
+    public void setDType(String DType) {
+        this.DType = DType;
+    }
+    
+    
     
     
     
