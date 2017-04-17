@@ -1,5 +1,6 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
+import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
@@ -108,6 +109,14 @@ public class ViviendaDTO  implements Serializable{
                 entities.add(reserva.toEntity());
             }
         }
+        AnfitrionEntity anfitrion = new AnfitrionEntity();
+        anfitrion.setCorreo(this.getAnfitrion().getCorreo());
+        anfitrion.setNombre(this.getAnfitrion().getNombre());
+        anfitrion.setDireccion(this.getAnfitrion().getDireccion());
+        anfitrion.setPuntuacion(this.getAnfitrion().getPuntuacion());
+        anfitrion.setTelefono(this.getAnfitrion().getTelefono());
+        
+        entity.setAnfitrion(anfitrion);
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
         return entity;

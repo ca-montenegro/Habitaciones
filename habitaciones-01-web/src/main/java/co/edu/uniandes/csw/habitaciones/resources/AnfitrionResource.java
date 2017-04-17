@@ -49,15 +49,17 @@ public class AnfitrionResource {
         return habitacionDTOs;
     }
     
-    @GET
-    @Path("{id: \\d+}/viviendas")
-    public AnfitrionDetailDTO getViviendas(@PathParam("id") Long id){
-        return new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
+     public AnfitrionDTO getAnfitrion(Long id){
+        AnfitrionDTO buscado=new AnfitrionDTO(anfitrionlogic.getAnfitrion(id));
+  
+        return buscado;
     }
     
+
     @POST
     @Path("{id: \\d+}/viviendas")
     public ViviendaDTO agregarVivienda(@PathParam("id") Long id, ViviendaDTO dto) throws Exception{
+        dto.setAnfitrion(getAnfitrion(id));
         ViviendaEntity vivienda=dto.toEntity();
         ViviendaEntity stored=anfitrionlogic.createVivienda(id,vivienda);
         return new ViviendaDTO(stored);
