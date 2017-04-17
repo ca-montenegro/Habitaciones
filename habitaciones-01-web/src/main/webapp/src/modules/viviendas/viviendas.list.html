@@ -1,17 +1,18 @@
-<div >
+
+<div class="container-fluid">
     
-    <div class="col-md-3 animate-box" ng-repeat="vivienda in viviendasRecords">
-        <div>
+    <div class="col-md-4 animate-box" ng-repeat="vivienda in viviendasRecords">
+        <div class="property">
             <a ui-sref="viviendaDetail({viviendaId: vivienda.idVivienda})"> 
-                <img class="img-responsive" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
-                <ul >
+                <img class="img-thumbnail" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
+                <ul class="list-details">
                     <li>Capacidad: {{vivienda.capacidad}}<li>
-                    
+                    <i class="icon-wallet"></i>
                 </ul>
             </a>
-            <div >
+            <div class="property-details">
                 <h3>{{vivienda.ciudad}}</h3>
-                <span>{{vivienda.direccion}}</span>
+                <span class="status"><i class="icon-map"></i>{{vivienda.direccion}}</span>
             </div>
         </div>
     </div>
