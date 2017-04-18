@@ -1,5 +1,5 @@
 <div class ="panel panel-default panel-body " row>
-    <b class="col-md-6">Usuario con id {{currentUsuario.id}}</b>
+    <b class="col-md-6">Usuario con id {{currentUsuario.numeroID}}</b>
     <b class="col-md-6" >Usuarios</b>
     <div row>
         <div class="col-md-6 bordeNaranja">
@@ -22,6 +22,8 @@
                     <dd>{{currentUsuario.telefono}}</dd>
                     <dt><b>Numero de Tarjeta</b></dt>
                     <dd>{{currentUsuario.numeroTarjeta}}</dd>
+                    <dt><b>Código Reserva</b></dt>
+                    <dd>{{currentUsuario.codigoReserva}}</dd>
                 </dl>
             </div>
         </div>
@@ -35,8 +37,8 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="usuario in usuariosRecords">
-                        <td id="{{$index}}-name"><a ui-sref="usuarioDetail({usuarioId: usuario.id})">{{usuario.nombre}}</a></td>
-                        <td id="{{$index}}-description">{{usuario.id}}</td>
+                        <td id="{{$index}}-name"><a ui-sref="usuarioDetail({usuarioId: usuario.numeroID})">{{usuario.nombre}}</a></td>
+                        <td id="{{$index}}-description">{{usuario.numeroID}}</td>
                     </tr>
                 </tbody>
             </table>

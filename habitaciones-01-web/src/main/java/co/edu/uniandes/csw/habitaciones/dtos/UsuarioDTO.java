@@ -1,8 +1,10 @@
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 //import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
 import java.io.Serializable;
+import java.util.List;
 //import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -32,9 +34,10 @@ public class UsuarioDTO implements Serializable {
     
     private Long numeroTarjeta;
     
-    private String DType;
+    private String image;
+
     
-    //private List<ReservaEntity> reservas;
+    private List<ReservaEntity> reservas;
     
     public UsuarioDTO()
     {
@@ -54,7 +57,8 @@ public class UsuarioDTO implements Serializable {
             this.direccion = entity.getDireccion();
             this.telefono = entity.getTelefono();
             this.numeroTarjeta = entity.getNumeroTarjeta();
-            //this.reservas = entity.getReservas();
+            this.reservas = entity.getReservas();
+            this.image = entity.getImage();
         }    
     }
     
@@ -70,7 +74,8 @@ public class UsuarioDTO implements Serializable {
         entity.setDireccion(this.direccion);
         entity.setTelefono(this.telefono);
         entity.setNumeroTarjeta(this.numeroTarjeta);
-        //entity.setReservas(this.reservas);
+        entity.setReservas(this.reservas);
+        entity.setImage(this.image);
         
       return entity;  
     }
@@ -148,6 +153,7 @@ public class UsuarioDTO implements Serializable {
     }
     
     
+    
 
     //public List<ReservaEntity> getReservas() {
     //    return reservas;
@@ -157,13 +163,14 @@ public class UsuarioDTO implements Serializable {
       //  this.reservas = reservas;
     //}
 
-    public String getDType() {
-        return DType;
+    public String getImage() {
+        return image;
     }
 
-    public void setDType(String DType) {
-        this.DType = DType;
+    public void setImage(String image) {
+        this.image = image;
     }
+
     
     
 }

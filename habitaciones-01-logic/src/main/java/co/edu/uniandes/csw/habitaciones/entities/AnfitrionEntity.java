@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.util.List;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -9,6 +10,7 @@ import javax.persistence.OneToMany;
  * @author ca.montenegro
  */
 @Entity
+@DiscriminatorValue("c")
 public class AnfitrionEntity extends UsuarioEntity{
     
     private Double puntuacion;
