@@ -18,6 +18,7 @@
                         templateUrl: basePath + 'usuarios.html',
                         controller: ['$scope', 'usuarios', function ($scope, usuarios) {
                                 $scope.usuariosRecords = usuarios.data;
+                               
                             }]
                     }
                 }
@@ -30,7 +31,7 @@
                     }
                 }
             }).state('usuarioAdminLogin', {
-                url: '/1/adminLogin',
+                url: '/10/adminLogin',
                 parent: 'usuarios',
                 views: {
                     'listView': {
@@ -42,6 +43,11 @@
                 parent: 'usuarios',
                 param:{
                     usuarioId: null
+                },
+                resolve : {
+                    currentUsuario : ['$http', 'usuarioContext', '$stateParams', function ($http, usuarioContext, $params){
+                            return $http.get(usuarioContext + '/' + $params.usuarioId);
+                    }]
                 },
                 views:{
                     listView:{
@@ -55,9 +61,10 @@
                     detailView:{
                        
                         templateUrl: basePath + 'usuario.detail.html',
-                        controller: ['$scope','usuarios', '$stateParams', function ($scope,$params) {
-                             
-                                $scope.currentUsuario = $scope.usuariosRecords[$params.usuarioId];
+                        controller: ['$scope','currentUsuario', function ($scope,currentUsuario) {
+                                console.log(currentUsuario.data);
+                                $scope.currentUsuario = currentUsuario.data;
+                                
                             }]
                     }
                 }

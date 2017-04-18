@@ -6,10 +6,11 @@ delete from HabitacionEntity;
 delete from ViviendaEntity;
 delete from UsuarioEntity;
 
-insert into UsuarioEntity (numeroId, DTYPE, contrasenha, correo, direccion, nombre, numeroTarjeta, telefono, tipoId, usuario, puntuacion) values (1,'C', 'hola', 'hola@hola.com', 'calle 1 No 1-1', 'Andres', 18723889, 6876187, 'Cedula', 'andres', 10);
-insert into UsuarioEntity (numeroId, DTYPE, contrasenha, correo, direccion, nombre, numeroTarjeta, telefono, tipoId, usuario, puntuacion) values (2,'C', 'hola2', 'hola2@hola.com', 'calle 2 No 1-1', 'David', 18723888, 6876188, 'Cedula', 'david', 10);
+insert into UsuarioEntity (numeroId, DTYPE, contrasenha, correo, direccion, nombre, numeroTarjeta, telefono, tipoId, usuario, puntuacion,image) values (1,'c', 'hola', 'hola@hola.com', 'calle 1 No 1-1', 'Andres', 18723889, 6876187, 'Cedula', 'andres', 10,'https://randomuser.me/api/portraits/men/63.jpg');
+insert into UsuarioEntity (numeroId, DTYPE, contrasenha, correo, direccion, nombre, numeroTarjeta, telefono, tipoId, usuario, puntuacion,image) values (2,'c', 'hola2', 'hola2@hola.com', 'calle 2 No 2.2', 'David', 18723888, 6876188, 'Cedula', 'david', 10,'https://randomuser.me/api/portraits/men/84.jpg?aki_policy=large');
+insert into UsuarioEntity (numeroId, DTYPE, contrasenha, correo, direccion, nombre, numeroTarjeta, telefono, tipoId, usuario, puntuacion,image) values (3,'c', 'Raj Koothrappali', 'raj@hola.com', 'calle 3 No 3-3', 'Raj Koothrappali', 18723810, 6876110, 'Cedula', 'raj', 10,'https://randomuser.me/api/portraits/men/39.jpg?aki_policy=large');
 
-insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (1, 6, 'Bogota', 'Casa bonita', 'Calle 200', 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large', 273,1);
+insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (1, 6, 'Bogota', 'Casa bonita', 'Calle 200', 'thtps://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large', 273,1);
 insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (2, 8, 'Cali', 'Casa grande', 'Calle 15', 'https://a0.muscache.com/im/pictures/25735497/948807b4_original.jpg?aki_policy=large', 458,2);
 insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (3, 5, 'Medellin', 'Casa fea', 'Calle 45', 'https://a0.muscache.com/im/pictures/52149945/33130c63_original.jpg?aki_policy=large', 430,1);
 insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (4, 5, 'Villa de Leyva', 'Casa pequena', 'Calle 70', 'https://a0.muscache.com/im/pictures/21162888/5a0f1151_original.jpg?aki_policy=large', 350,2);

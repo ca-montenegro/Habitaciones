@@ -3,14 +3,19 @@ package co.edu.uniandes.csw.habitaciones.entities;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
 
 /**
  *
  * @author ca.montenegro
  */
 @Entity
+@Inheritance
+@DiscriminatorColumn(name="DTYPE")
 public class UsuarioEntity implements Serializable {
     
     @Id
@@ -34,7 +39,8 @@ public class UsuarioEntity implements Serializable {
     
     private List<ReservaEntity> reservas;
     
-    private String DType;
+    private String image;
+    
     
     public UsuarioEntity()
     {
@@ -127,17 +133,14 @@ public class UsuarioEntity implements Serializable {
 
     }
 
-    public String getDType() {
-        return DType;
+    public String getImage() {
+        return image;
     }
 
-    public void setDType(String DType) {
-        this.DType = DType;
+    public void setImage(String image) {
+        this.image = image;
     }
-    
-    
-    
-    
+
     
     @Override
     public int hashCode() {
