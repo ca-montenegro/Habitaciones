@@ -18,19 +18,19 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ViviendaLogic {
-
+    
     @Inject private ViviendaPersistence persistence;
-
+    
     /**
      * Obtiene la lista de los registros de Vivienda.
      * @return Colección de objetos de ViviendaEntity.
      */
-   
-        public List<ViviendaEntity> getViviendas() {
+    
+    public List<ViviendaEntity> getViviendas() {
         return persistence.findAll();
     }
-
-
+    
+    
     /**
      * Obtiene los datos de una instancia de Vivienda a partir de su ID.
      * @param id Identificador de la instancia a consultar
@@ -42,7 +42,7 @@ public class ViviendaLogic {
         if (vivienda==null)throw new BusinessLogicException("La vivienda con el id dado no existe.");
         return vivienda;
     }
-
+    
     /**
      * Se encarga de crear un Vivienda en la base de datos.
      * @param entity Objeto de ViviendaEntity con los datos nuevos
@@ -63,7 +63,7 @@ public class ViviendaLogic {
         persistence.create(entity);
         return entity;
     }
-
+    
     /**
      * Actualiza la información de una instancia de Vivienda.
      * @param entity Instancia de ViviendaEntity con los nuevos datos.
@@ -71,7 +71,7 @@ public class ViviendaLogic {
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
     public ViviendaEntity updateVivienda(ViviendaEntity entity) throws BusinessLogicException {
-         if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty())
+        if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty())
             throw new BusinessLogicException("Debe incluir la dirección completa.");
         if (entity.getValorDiario()<0.0)
             throw new BusinessLogicException("El precio no puede ser negativo.");
@@ -81,7 +81,7 @@ public class ViviendaLogic {
             throw new BusinessLogicException("La vivienda debe tener capacidad para por lo menos una persona.");
         return persistence.update(entity);
     }
-
+    
     /**
      * Elimina una instancia de Vivienda de la base de datos.
      * @param id Identificador de la instancia a eliminar.
@@ -100,6 +100,6 @@ public class ViviendaLogic {
         }
         persistence.delete(id);
     }
-  
-  
+    
+    
 }
