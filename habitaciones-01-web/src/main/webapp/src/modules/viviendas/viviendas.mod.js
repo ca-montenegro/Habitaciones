@@ -28,8 +28,11 @@
                     'listView': {
                         templateUrl: basePath + 'viviendas.list.html'
                     },
+                    'detailView': {
+                        templateUrl: basePath + 'botonBuscar.html'
+                    },
                     'extraView': {
-                        templateUrl: basePath + 'crearVivienda.html'
+                        templateUrl: basePath + 'botonAgregar.html'
                     }
                 }
             }).state('agregarVivienda', {
