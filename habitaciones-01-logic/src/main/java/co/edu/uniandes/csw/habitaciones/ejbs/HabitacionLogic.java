@@ -35,7 +35,7 @@ public class HabitacionLogic {
             throw new BusinessLogicException("La capacidad debe ser mayor a 0");
         if(entity.getValorDiario() <= 0)
             throw new BusinessLogicException("El precio debe ser mayor a cero");
-        if(entity.getIdVivienda() == null)
+        if(entity.getVivienda() == null)
             throw new BusinessLogicException("La habitacion debe pertenecer a una vivienda");
         persistence.create(entity);
         return entity;

@@ -17,10 +17,10 @@ insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccio
 insert into ViviendaEntity (idVivienda, capacidad, ciudad, descripcion, direccion, imagen, valorDiario, anfitrion_numeroId) values (6, 7, 'Santa Marta', 'Casa divertida', 'Calle 18', 'https://a0.muscache.com/im/pictures/16304758/0ec38e53_original.jpg?aki_policy=large', 470,2);
 
 
-insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, idVivienda_idvivienda) values (1, 30, 2, 'bonita', 'http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg', 858, 1);
-insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, idVivienda_idvivienda) values (2, 31, 3, 'fea', 'http://www.casaentremuros.com/media/img/habitacion1_casa_entremuros800x600.jpg', 859, 2);
-insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, idVivienda_idvivienda) values (3, 32, 4, 'grande', 'https://www.diariofemenino.com/images/galeria/12000/12166_la-habitacion-de-la-casa-de-jude-law-y-sienna-miller.jpg', 852, 3);
-insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, idVivienda_idvivienda) values (4, 33, 5, 'mediana', 'http://countryvillaslanzarote.com/wp-content/uploads/2015/05/C-de-Mozaga-habitacion1.jpg', 855, 3);
+insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, vivienda_idvivienda) values (1, 30, 2, 'bonita', 'http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg', 858, 1);
+insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, vivienda_idvivienda) values (2, 31, 3, 'fea', 'http://www.casaentremuros.com/media/img/habitacion1_casa_entremuros800x600.jpg', 859, 2);
+insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, vivienda_idvivienda) values (3, 32, 4, 'grande', 'https://www.diariofemenino.com/images/galeria/12000/12166_la-habitacion-de-la-casa-de-jude-law-y-sienna-miller.jpg', 852, 3);
+insert into HabitacionEntity (id, area, capacidad, descripcion, imagen, valorDiario, vivienda_idvivienda) values (4, 33, 5, 'mediana', 'http://countryvillaslanzarote.com/wp-content/uploads/2015/05/C-de-Mozaga-habitacion1.jpg', 855, 3);
 
 insert into UsuarioEntity_ViviendaEntity (anfitrionEntity_numeroId, viviendas_idvivienda) values (2, 1);
 insert into UsuarioEntity_ViviendaEntity (anfitrionEntity_numeroId, viviendas_idvivienda) values (2, 2);
@@ -32,10 +32,10 @@ insert into MultaEntity (codigoMulta, fechaCancelacion, fechaPago) values (2, nu
 insert into MultaEntity (codigoMulta, fechaCancelacion, fechaPago) values (3, null,null);
 insert into MultaEntity (codigoMulta, fechaCancelacion, fechaPago) values (4, '2017-03-07 00:00:00',null);
 
-insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (1, 89654, 'H', '2017-03-07 00:00:00', '2017-03-10 00:00:00', 1 , 3, 1);
-insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (2, 89654, 'P', '2017-03-08 00:00:00', '2017-03-11 00:00:00', 1 , 3, 2);
+insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (1, 89654, 'H', '2017-03-07 00:00:00', '2017-03-10 00:00:00', 1 , 1, 1);
+insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (2, 89654, 'P', '2017-03-08 00:00:00', '2017-03-11 00:00:00', 1 , 2, 2);
 insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (3, 89654, 'A', '2017-03-09 00:00:00', '2017-03-12 00:00:00', 1 , 3, 3);
-insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (4, 89654, 'C', '2017-03-10 00:00:00', '2017-03-13 00:00:00', 1 , 3, 4);
+insert into ReservaEntity (codigoReserva, costo, estado, fechaInicio, fechaFin, habitacion_Id, vivienda_idvivienda, multa_codigoMulta) values (4, 89654, 'C', '2017-03-10 00:00:00', '2017-03-13 00:00:00', 1 , 4, 4);
 
 insert into UsuarioEntity_ReservaEntity (UsuarioEntity_numeroId, reservas_codigoReserva) values (1,1);
 insert into UsuarioEntity_ReservaEntity (UsuarioEntity_numeroId, reservas_codigoReserva) values (2,2);

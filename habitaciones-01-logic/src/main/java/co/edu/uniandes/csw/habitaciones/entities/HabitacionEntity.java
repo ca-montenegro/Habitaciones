@@ -85,12 +85,12 @@ public class HabitacionEntity implements Serializable {
         this.imagen = imagen;
     }
 
-    public ViviendaEntity getIdVivienda()
+    public ViviendaEntity getVivienda()
     {
         return vivienda;
     }
     
-    public void setIdVivienda(ViviendaEntity idVivienda)
+    public void setVivienda(ViviendaEntity idVivienda)
     {
         this.vivienda = idVivienda;
     }
