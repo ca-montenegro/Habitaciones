@@ -27,6 +27,17 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'viviendas.list.html'
+                    },
+                    'extraView': {
+                        templateUrl: basePath + 'crearVivienda.html'
+                    }
+                }
+            }).state('agregarVivienda', {
+                url: '/agregar',
+                parent: 'viviendas',
+                views: {
+                    'agregar': {
+                        templateUrl: basePath + 'crearVivienda.html'
                     }
                 }
             }).state('viviendaDetail', {
@@ -45,6 +56,12 @@
                         templateUrl: basePath + 'viviendas.detail.html',
                         controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
                                 $scope.viviendaActual =  viviendaActual.data;
+                            }]
+                    },
+                    'listView': {
+                        templateUrl: basePath + 'habitacionesVivienda.list.html',
+                        controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
+                                $scope.viviendaActual = viviendaActual.data.habitaciones;
                             }]
                     }
 
