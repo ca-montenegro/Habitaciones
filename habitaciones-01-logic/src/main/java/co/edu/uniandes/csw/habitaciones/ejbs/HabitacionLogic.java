@@ -22,6 +22,11 @@ public class HabitacionLogic {
         return persistence.findAll();
     }
     
+    public List<HabitacionEntity> getHabitacionesVivienda(Long idVivienda)
+    {
+        return persistence.findAllVivienda(idVivienda);
+    }
+    
     public HabitacionEntity getHabitacion(Long id)
     {
         return persistence.find(id);

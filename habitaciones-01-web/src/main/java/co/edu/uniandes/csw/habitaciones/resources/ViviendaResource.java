@@ -184,6 +184,7 @@ public class ViviendaResource {
         public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) throws BusinessLogicException {
             if (viviendaLogic.getVivienda(idV)==null)throw new WebApplicationException("La vivienda no existe", 404);
         return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
+        //return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitacionesVivienda(idV));
     }
     
 }

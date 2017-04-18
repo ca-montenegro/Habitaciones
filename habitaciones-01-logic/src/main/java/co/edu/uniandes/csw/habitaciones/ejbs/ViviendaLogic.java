@@ -26,7 +26,7 @@ public class ViviendaLogic {
      * @return Colección de objetos de ViviendaEntity.
      */
    
-    public List<ViviendaEntity> getViviendas() {
+        public List<ViviendaEntity> getViviendas() {
         return persistence.findAll();
     }
 
