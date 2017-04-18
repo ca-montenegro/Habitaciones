@@ -20,7 +20,7 @@ public class HabitacionDTO implements Serializable {
     
     public HabitacionDTO()
     {
-        super();
+        
     }
     
     public HabitacionDTO(HabitacionEntity entity)

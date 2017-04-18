@@ -22,7 +22,7 @@ public class ViviendaDTO  implements Serializable{
     private Double valorDiario;
     private int capacidad;
     private String imagen;
-    private List<ReservaDTO> reservas;
+    protected List<ReservaDTO> reservas;
     private List<HabitacionDTO> habitaciones;
     private AnfitrionDTO anfitrion;
     
@@ -31,7 +31,7 @@ public class ViviendaDTO  implements Serializable{
      * @generated
      */
     public ViviendaDTO() {
-        super();
+        
     }
     
     /**
@@ -48,21 +48,6 @@ public class ViviendaDTO  implements Serializable{
             this.descripcion=entity.getDescripcion();
             this.direccion=entity.getDireccion();
             this.capacidad=entity.getCapacidad();
-            if(entity.getHabitaciones()!=null){
-                this.habitaciones=new ArrayList();
-                for(HabitacionEntity habitacion:entity.getHabitaciones())
-                {
-                    this.habitaciones.add(new HabitacionDTO(habitacion));
-                }
-            }
-            
-            if(entity.getReservas()!=null){
-                this.reservas=new ArrayList();
-                for(ReservaEntity reserva:entity.getReservas())
-                {
-                    this.reservas.add(new ReservaDTO(reserva));
-                }
-            }
             this.valorDiario=entity.getValorDiario();
             this.imagen=entity.getImagen();
         }

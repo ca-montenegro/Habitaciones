@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -39,7 +40,7 @@ public class ViviendaEntity implements Serializable {
     @OneToMany(mappedBy="vivienda")
     private List<HabitacionEntity> habitaciones;
     
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private AnfitrionEntity anfitrion;
     
     public ViviendaEntity(){
