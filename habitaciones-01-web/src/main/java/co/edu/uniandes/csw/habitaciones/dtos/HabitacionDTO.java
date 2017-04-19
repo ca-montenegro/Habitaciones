@@ -1,3 +1,7 @@
+/**
+ * Habitacion DTO
+ * @author l.maya10
+ */
 
 package co.edu.uniandes.csw.habitaciones.dtos;
 
@@ -5,10 +9,7 @@ import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author l.maya10
- */
+
 @XmlRootElement
 public class HabitacionDTO implements Serializable {
     static final long serialVersionUID = 1L;
