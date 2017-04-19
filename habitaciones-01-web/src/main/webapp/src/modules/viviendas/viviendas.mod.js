@@ -78,7 +78,7 @@
                     'listView': {
                         templateUrl: basePath + 'habitacionesVivienda.list.html',
                         controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
-                                $scope.viviendaActual = viviendaActual.data.habitaciones;
+                                $scope.viviendaActual = viviendaActual.data;
                             }]
                     }
                     

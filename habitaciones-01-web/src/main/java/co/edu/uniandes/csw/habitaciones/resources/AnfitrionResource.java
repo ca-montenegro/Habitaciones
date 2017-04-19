@@ -1,5 +1,6 @@
 package co.edu.uniandes.csw.habitaciones.resources;
 
+import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionBasicDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.AnfitrionDetailDTO;
 import co.edu.uniandes.csw.habitaciones.dtos.ViviendaDTO;
@@ -64,7 +65,7 @@ public class AnfitrionResource {
     @POST
     @Path("{id: \\d+}/viviendas")
     public ViviendaDTO agregarVivienda(@PathParam("id") Long id, ViviendaDTO dto) throws Exception{
-        dto.setAnfitrion(getAnfitrion(id));
+        dto.setAnfitrion((AnfitrionBasicDTO) getAnfitrion(id));
         ViviendaEntity vivienda=dto.toEntity();
         ViviendaEntity stored=anfitrionlogic.createVivienda(id,vivienda);
         return new ViviendaDTO(stored);
