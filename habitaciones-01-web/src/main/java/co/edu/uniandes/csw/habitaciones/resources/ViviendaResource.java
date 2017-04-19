@@ -90,7 +90,9 @@ public class ViviendaResource {
     @Path("/viviendas/{id: \\d+}")
     public ViviendaDetailDTO getVivienda(@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
-        if (vivienda==null)throw new WebApplicationException("La vivienda no existe", 404);
+        if (vivienda==null){
+            throw new WebApplicationException("La vivienda no existe", 404);
+        }
         return new ViviendaDetailDTO(vivienda);
     }
 
@@ -118,7 +120,9 @@ public class ViviendaResource {
     @Path("/viviendas/{id: \\d+}")
     public void deleteVivienda(@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
-        if (vivienda==null)throw new WebApplicationException("La vivienda no existe", 404);
+        if (vivienda==null){
+            throw new WebApplicationException("La vivienda no existe", 404);
+        }
         viviendaLogic.deleteVivienda(id);
     }
     
@@ -174,7 +178,9 @@ public class ViviendaResource {
                 buscada = h;
             }
         }
-        if (buscada==null)throw new WebApplicationException("La habitación no existe", 404);
+        if (buscada==null){
+            throw new WebApplicationException("La habitación no existe", 404);
+        }
         return new HabitacionDetailDTO(buscada);
     }
     
@@ -187,7 +193,9 @@ public class ViviendaResource {
     @GET
      @Path("viviendas/{idV:\\d+}/habitaciones/")
         public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) throws BusinessLogicException {
-            if (viviendaLogic.getVivienda(idV)==null)throw new WebApplicationException("La vivienda no existe", 404);
+            if (viviendaLogic.getVivienda(idV)==null){
+                throw new WebApplicationException("La vivienda no existe", 404);
+            }
         return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
         //return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitacionesVivienda(idV));
     }

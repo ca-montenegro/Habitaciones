@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class AnfitrionDetailDTO extends AnfitrionDTO{
     
+    static final long serialVersionUID = 1L;
+    
     private List<ViviendaDetailDTO> viviendas;
     
     public AnfitrionDetailDTO(){
