@@ -5,6 +5,7 @@
     login.controller('MainController', function ($scope, $http, $window,$state) {
     
 	$scope.agregar = function(){
+            
             $http.get("api/viviendas/"+$scope.id).then(
                     function(response){
                         
