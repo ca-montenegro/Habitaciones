@@ -1106,6 +1106,14 @@ div.cs-select span {
   text-decoration: none;
   color: #5a5a5a; }
 
+#fondo {
+  background: #44C662;
+}
+
+#fondo2 {
+    background: #1c8234;
+}
+
 #footer {
   background: #273547;
   padding: 60px 0 40px; }

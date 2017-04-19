@@ -1,13 +1,14 @@
-&nbsp
-<div class="center-block" style="width:500px" align ="center" >
+
+<div id="fondo" class="center-block" style="width:100%x" align ="center" >
+    &nbsp
     <div class="s-holder">
-        <h2>Agregar Viviendas</h2>
-        <div class="row" ng-controller = 'MainController'>
+        <b><h2 style="color:white">Agregar Viviendas</h2></b>
+        <div class="row" style="width:400px" ng-controller = 'MainController'>
             
             <div>
                 <section>
                     <div class="form-group">
-                        <label for="class">Id usuario:</label>
+                        <label style="color:white" for="class">Id usuario:</label>
                         <input type="text" class="form-control" ng-model="id" placeholder="Id" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     </div>
                 </section>
@@ -15,14 +16,14 @@
             
             <div>
                 <div class="form-group">
-                    <label for="from">En qué ciudad:</label>
+                    <label style="color:white" for="from">En qué ciudad:</label>
                     <input type="text" class="form-control" ng-model="ciudad" placeholder="Ciudad"/>
                 </div>
             </div>
                 
             <div>
                 <div class="form-group">
-                    <label for="from">Cuál es la dirección:</label>
+                    <label style="color:white" for="from">Cuál es la dirección:</label>
                     <input type="text" class="form-control" ng-model="direccion" placeholder="Dirección"/>
                 </div>
             </div>
@@ -30,7 +31,7 @@
             <div>
                 <section>
                     <div class="form-group">
-                        <label for="class">Precio por noche (COP$):</label>
+                        <label style="color:white" for="class">Precio por noche (COP$):</label>
                         <input type="text" class="form-control" ng-model="precio" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     </div>
                 </section>
@@ -38,7 +39,7 @@
             
             <div>
                 <div class="form-group">
-                    <label for="from">Qué distingue a la vivienda:</label>
+                    <label style="color:white" for="from">Qué distingue a la vivienda:</label>
                     <input type="text" class="form-control" ng-model="descripcion" placeholder="Descripción"/>
                 </div>
             </div>
@@ -46,7 +47,7 @@
             <div>
                 <section>
                     <div class="form-group">
-                        <label for="class">Capacidad de la vivienda (personas):</label>
+                        <label style="color:white" for="class">Capacidad de la vivienda (personas):</label>
                         <input type="text" class="form-control" ng-model="capacidad" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     </div>
                 </section>
@@ -55,7 +56,7 @@
             <div>
                 <section>
                     <div class="form-group">
-                        <label for="class">Imagen:</label>
+                        <label style="color:white" for="class">Imagen:</label>
                         <input type="file" ng-model="foto">
                     </div>
                 </section>
