@@ -15,6 +15,8 @@ import java.util.List;
 @XmlRootElement
 public class ViviendaDTO  implements Serializable{
     
+    static final long serialVersionUID = 1L;
+    
     private Long idVivienda;
     private String descripcion;
     private String ciudad;

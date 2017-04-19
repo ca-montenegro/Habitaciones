@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("c")
 public class AnfitrionEntity extends UsuarioEntity{
     
+    static final long serialVersionUID = 1L;
+    
     private Double puntuacion;
     
     @OneToMany(mappedBy = "anfitrion")

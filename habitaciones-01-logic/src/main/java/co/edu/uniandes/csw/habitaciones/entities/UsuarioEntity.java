@@ -16,6 +16,8 @@ import javax.persistence.Inheritance;
 @DiscriminatorColumn(name="DTYPE")
 public class UsuarioEntity implements Serializable {
     
+    static final long serialVersionUID = 1L;
+    
     @Id
     private Long numeroID;
     

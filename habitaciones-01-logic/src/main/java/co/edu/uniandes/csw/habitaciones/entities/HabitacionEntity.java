@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class HabitacionEntity implements Serializable {
+    
+    static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

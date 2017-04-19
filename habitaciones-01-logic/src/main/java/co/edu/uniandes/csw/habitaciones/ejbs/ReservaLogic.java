@@ -10,6 +10,8 @@ import javax.inject.Inject;
 @Stateless
 public class ReservaLogic {
     
+    static final long serialVersionUID = 1L;
+    
     @Inject 
     private ReservaPersistence persistence;
    

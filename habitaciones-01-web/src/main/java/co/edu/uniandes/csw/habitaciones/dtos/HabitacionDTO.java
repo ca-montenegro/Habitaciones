@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class HabitacionDTO implements Serializable {
+    static final long serialVersionUID = 1L;
+    
     private Long id;
     private Integer capacidad;
     private Double area;

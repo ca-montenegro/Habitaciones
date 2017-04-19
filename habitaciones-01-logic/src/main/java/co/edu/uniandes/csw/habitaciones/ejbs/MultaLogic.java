@@ -9,6 +9,8 @@ import javax.inject.Inject;
 @Stateless
 public class MultaLogic {
     
+    static final long serialVersionUID = 1L;
+    
     @Inject
     private MultaPersistence persistence;
     
