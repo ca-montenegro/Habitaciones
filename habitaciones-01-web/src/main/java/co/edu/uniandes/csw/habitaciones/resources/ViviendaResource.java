@@ -1,3 +1,10 @@
+/**
+ * Recurso Vivienda
+ * @author c.penaloza
+ * URI: employees/
+ * @generated
+ */
+
 package co.edu.uniandes.csw.habitaciones.resources;
 
 
@@ -29,15 +36,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 import javax.ws.rs.WebApplicationException;
 
-/**
- * @author c.penaloza
- * URI: employees/
- * @generated
- */
+
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
+    
+    public ViviendaResource(){}
 
     @Inject private ViviendaLogic viviendaLogic;
     @Inject private AnfitrionLogic anfitrionLogic;

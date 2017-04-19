@@ -19,6 +19,8 @@ public class AnfitrionLogic {
     
     static final long serialVersionUID = 1L;
     
+    public AnfitrionLogic(){}
+    
     @Inject 
     private AnfitrionPersistence persistence;
     @Inject

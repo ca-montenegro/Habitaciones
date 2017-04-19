@@ -5,13 +5,15 @@
     login.controller('MainController', function ($scope, $http, $window,$state) {
     
 	$scope.agregar = function(){
-            $http.get("api/viviendas/"+$scope.id)
-            $scope.datos = response.data;
+            $http.get("api/viviendas/"+$scope.id).then(
+                    function(response){
+                        
+                         $scope.datos = response.data;
             var anfitrion = {
                 "correo": data.correo,
                 "direccion": data.direccion,
                 "image": data.image,
-                "nombre": datos.nombre,
+                "nombre": data.nombre,
                 "telefono": data.telefono
             }
       
@@ -26,6 +28,9 @@
             }
             
             $http.post('/api/viviendas', obj).then($state.go("viviendasList"), $window.alert("Error agregando la vivienda :("));
+                    }
+                    )
+           
             
         }
     });

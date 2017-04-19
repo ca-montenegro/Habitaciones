@@ -1,3 +1,8 @@
+/**
+ * @author c.penaloza
+ * Lògica del recurso vivienda.
+ */
+
 package co.edu.uniandes.csw.habitaciones.ejbs;
 
 
@@ -11,11 +16,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-
-/**
- * @author c.penaloza
- * @generated
- */
 @Stateless
 public class ViviendaLogic {
     
