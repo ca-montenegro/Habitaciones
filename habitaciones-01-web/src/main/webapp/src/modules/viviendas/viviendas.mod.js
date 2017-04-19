@@ -39,8 +39,22 @@
                 url: '/agregar',
                 parent: 'viviendas',
                 views: {
-                    'agregar': {
+                    'detailView': {
                         templateUrl: basePath + 'crearVivienda.html'
+                    }
+                }
+            }).state('buscarVivienda', {
+                url: '/filtrar',
+                parent: 'viviendas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'viviendas.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'buscarVivienda.html'
+                    },
+                    'extraView': {
+                        templateUrl: basePath + 'botonAgregar.html'
                     }
                 }
             }).state('viviendaDetail', {
@@ -67,7 +81,7 @@
                                 $scope.viviendaActual = viviendaActual.data.habitaciones;
                             }]
                     }
-
+                    
                 }
                 
             });
