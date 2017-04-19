@@ -19,6 +19,10 @@ import javax.inject.Inject;
 @Stateless
 public class ViviendaLogic {
     
+    public ViviendaLogic(){
+        
+    }
+    
     static final long serialVersionUID = 1L;
     
     @Inject private ViviendaPersistence persistence;

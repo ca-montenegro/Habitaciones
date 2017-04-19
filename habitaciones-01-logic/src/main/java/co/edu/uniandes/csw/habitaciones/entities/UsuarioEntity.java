@@ -16,6 +16,10 @@ import javax.persistence.Inheritance;
 @DiscriminatorColumn(name="DTYPE")
 public class UsuarioEntity implements Serializable {
     
+    public UsuarioEntity(){
+        
+    }
+    
     static final long serialVersionUID = 1L;
     
     @Id
@@ -41,11 +45,6 @@ public class UsuarioEntity implements Serializable {
     
     private String image;
     
-    
-    public UsuarioEntity()
-    {
-        
-    }
 
     public Long getNumeroID() {
         return numeroID;

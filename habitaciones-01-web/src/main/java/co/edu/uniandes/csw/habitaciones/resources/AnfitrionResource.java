@@ -28,7 +28,9 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class AnfitrionResource {
     
-    public AnfitrionResource(){}
+    public AnfitrionResource(){
+    
+    }
     
     @Inject
     private AnfitrionLogic anfitrionlogic;

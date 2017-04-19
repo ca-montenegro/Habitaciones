@@ -12,6 +12,10 @@ import javax.persistence.TemporalType;
 @Entity
 public class MultaEntity implements Serializable{
     
+    public MultaEntity(){
+        
+    }
+    
     static final long serialVersionUID = 1L;
     
     @Id

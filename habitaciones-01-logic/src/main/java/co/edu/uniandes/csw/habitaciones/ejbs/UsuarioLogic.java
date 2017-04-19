@@ -14,7 +14,9 @@ import javax.inject.Inject;
 @Stateless
 public class UsuarioLogic {
     
-    public UsuarioLogic(){};
+    public UsuarioLogic(){
+    
+    }
     
     static final long serialVersionUID = 1L;
     
