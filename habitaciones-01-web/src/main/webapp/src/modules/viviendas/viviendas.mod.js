@@ -40,7 +40,7 @@
                 parent: 'viviendas',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'crearVivienda.html'
+                        templateUrl: basePath + 'agregarVivienda.html'
                     }
                 }
             }).state('buscarVivienda', {

@@ -1,0 +1,77 @@
+&nbsp
+<div class="center-block" style="width:500px" align ="center" >
+    <div class="s-holder">
+        <h2>Agregar Viviendas</h2>
+        <div class="row" ng-controller = 'MainController'>
+            
+            <div>
+                <section>
+                    <div class="form-group">
+                        <label for="class">Id usuario:</label>
+                        <input type="text" class="form-control" ng-model="id" placeholder="Id" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    </div>
+                </section>
+            </div>
+            
+            <div>
+                <div class="form-group">
+                    <label for="from">En qué ciudad:</label>
+                    <input type="text" class="form-control" ng-model="ciudad" placeholder="Ciudad"/>
+                </div>
+            </div>
+                
+            <div>
+                <div class="form-group">
+                    <label for="from">Cuál es la dirección:</label>
+                    <input type="text" class="form-control" ng-model="direccion" placeholder="Dirección"/>
+                </div>
+            </div>
+                
+            <div>
+                <section>
+                    <div class="form-group">
+                        <label for="class">Precio por noche (COP$):</label>
+                        <input type="text" class="form-control" ng-model="precio" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    </div>
+                </section>
+            </div>
+            
+            <div>
+                <div class="form-group">
+                    <label for="from">Qué distingue a la vivienda:</label>
+                    <input type="text" class="form-control" ng-model="descripcion" placeholder="Descripción"/>
+                </div>
+            </div>
+                
+            <div>
+                <section>
+                    <div class="form-group">
+                        <label for="class">Capacidad de la vivienda (personas):</label>
+                        <input type="text" class="form-control" ng-model="capacidad" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    </div>
+                </section>
+            </div>
+                
+            <div>
+                <section>
+                    <div class="form-group">
+                        <label for="class">Imagen:</label>
+                        <input type="file" ng-model="foto">
+                    </div>
+                </section>
+            </div>
+                
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("myFile");
+                    x.disabled = true;
+                }
+            </script>
+                &nbsp
+            <div>
+                <p><a class="btn btn-primary btn-lg" href ng-click = "agregar()">Agregar</a></p>
+            </div>
+                
+        </div>
+    </div>
+</div>

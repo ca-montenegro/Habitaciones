@@ -726,7 +726,8 @@ div.cs-select span {
   list-style: none;
   display: inline-block;
   color: rgba(255, 255, 255, 0.9);
-  margin-left: 10px; }
+  margin-left: 10px;
+  margin-right: 10px;}
 
 #fh5co-about .fh5co-staff {
   margin-bottom: 3em; }
