@@ -30,8 +30,9 @@ login.controller('MainController', function ($scope, $http, $window,$state) {
         		}
         	}
         }
-        if(!encontrado)
-        		window.alert("No se reconoce el usuario o contraseña")
+        if(!encontrado){
+        		window.alert("No se reconoce el usuario o contraseña");
+                    }
         /**$scope.usuario = (response.data[1].usuario);
         $scope.contrasenha = (response.data[1].contrasenha);
         if($scope.usuario==$scope.usrname1)
