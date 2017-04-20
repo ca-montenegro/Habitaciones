@@ -15,6 +15,8 @@ import java.util.List;
 @XmlRootElement
 public class ViviendaDTO  implements Serializable{
     
+    static final long serialVersionUID = 1L;
+    
     private Long idVivienda;
     private String descripcion;
     private String ciudad;
@@ -22,9 +24,7 @@ public class ViviendaDTO  implements Serializable{
     private Double valorDiario;
     private int capacidad;
     private String imagen;
-    protected List<ReservaDTO> reservas;
-    private List<HabitacionDTO> habitaciones;
-    private AnfitrionDTO anfitrion;
+    private AnfitrionBasicDTO anfitrion;
     
     
     /**
@@ -43,7 +43,7 @@ public class ViviendaDTO  implements Serializable{
     public ViviendaDTO(ViviendaEntity entity) {
         if (entity!=null){
             this.idVivienda=entity.getIdVivienda();
-            this.anfitrion=new AnfitrionDTO(entity.getAnfitrion());
+            this.anfitrion=new AnfitrionBasicDTO(entity.getAnfitrion());
             this.ciudad=entity.getCiudad();
             this.descripcion=entity.getDescripcion();
             this.direccion=entity.getDireccion();
@@ -86,14 +86,6 @@ public class ViviendaDTO  implements Serializable{
         entity.setCapacidad(this.getCapacidad());
         entity.setReservas(new ArrayList());
         
-        if(this.getReservas()!=null){
-            entity.setHabitaciones(new ArrayList());
-            List<ReservaEntity>entities=entity.getReservas();
-            for(ReservaDTO reserva:this.getReservas())
-            {
-                entities.add(reserva.toEntity());
-            }
-        }
         AnfitrionEntity anfitrion = new AnfitrionEntity();
         anfitrion.setCorreo(this.getAnfitrion().getCorreo());
         anfitrion.setNombre(this.getAnfitrion().getNombre());
@@ -162,28 +154,12 @@ public class ViviendaDTO  implements Serializable{
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
-    public List<ReservaDTO> getReservas() {
-        return reservas;
-    }
-    
-    public void setReservas(List<ReservaDTO> reservas) {
-        this.reservas = reservas;
-    }
 
-    public List<HabitacionDTO> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(List<HabitacionDTO> habitaciones) {
-        this.habitaciones = habitaciones;
-    }
-
-    public AnfitrionDTO getAnfitrion() {
+    public AnfitrionBasicDTO getAnfitrion() {
         return anfitrion;
     }
 
-    public void setAnfitrion(AnfitrionDTO anfitrion) {
+    public void setAnfitrion(AnfitrionBasicDTO anfitrion) {
         this.anfitrion = anfitrion;
     }
     

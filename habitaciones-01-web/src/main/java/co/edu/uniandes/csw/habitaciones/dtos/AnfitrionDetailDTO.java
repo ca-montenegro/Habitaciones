@@ -1,3 +1,9 @@
+/**
+ * DTO Anfitrion
+ * @author jd.cardenas10
+ */
+
+
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
@@ -6,12 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author jd.cardenas10
- */
 @XmlRootElement
 public class AnfitrionDetailDTO extends AnfitrionDTO{
+    
+    static final long serialVersionUID = 1L;
     
     private List<ViviendaDetailDTO> viviendas;
     

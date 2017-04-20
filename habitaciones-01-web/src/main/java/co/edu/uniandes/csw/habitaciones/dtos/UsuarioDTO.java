@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class UsuarioDTO implements Serializable {
     
+    static final long serialVersionUID = 1L;
+    
      private Long numeroID;
     
     private String tipoID;

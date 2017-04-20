@@ -16,6 +16,12 @@ import javax.persistence.TemporalType;
 @Entity
 public class ReservaEntity implements Serializable{
     
+    public ReservaEntity(){
+        
+    }
+    
+    static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoReserva;

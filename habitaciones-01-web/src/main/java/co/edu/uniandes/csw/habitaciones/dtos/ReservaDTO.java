@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ReservaDTO implements Serializable{
     
+    static final long serialVersionUID = 1L;
+    
     private Long codigoReserva;
     private Date fechaInicio;
     private Date fechaFin;

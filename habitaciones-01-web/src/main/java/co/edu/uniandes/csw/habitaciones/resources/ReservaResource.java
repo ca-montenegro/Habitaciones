@@ -25,6 +25,8 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class ReservaResource {
     
+    public ReservaResource(){}
+    
     @Inject private ReservaLogic reservaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;

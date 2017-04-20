@@ -1,24 +1,26 @@
-<div class="center-block" style="width:500px" align ="center">
+
+<div id="fondo" class="center-block" style="width:100%" align ="center">
     <div class="s-holder">
-        <h2>Agregar Viviendas</h2>
-        <div class="row">
+        &nbsp
+        <h2 style="color:white">Filtrar Viviendas</h2>
+        <div class="row" style="width:400px">
             <div class="col-xxs-12 col-xs-12">
                 <div class="input-field">
-                    <label for="from">Dónde:</label>
+                    <label style="color:white" for="from">Dónde:</label>
                     <input type="text" class="form-control" id="from-place" placeholder="Ciudad"/>
                 </div>
             </div>
                 
             <div class="col-xxs-12 col-xs-12">
                 <div class="input-field">
-                    <label for="from">Desde cuándo:</label>
+                    <label style="color:white" for="from">Desde cuándo:</label>
                     <input type="date" class="form-control" id="from-place" placeholder="Any"/>
                 </div>
             </div>
                 
             <div class="col-xxs-12 col-xs-12">
                 <div class="input-field">
-                    <label for="from">Hasta cuándo:</label>
+                    <label style="color:white" for="from">Hasta cuándo:</label>
                     <input type="date" class="form-control" id="from-place" placeholder="Any"/>
                 </div>
             </div>
@@ -26,7 +28,7 @@
             <div class="col-xxs-12 col-xs-12">
                 <section>
                     <div>
-                        <label for="class">Precio mínimo (COP$):</label>
+                        <label style="color:white" for="class">Precio mínimo (COP$):</label>
                         <input type="text" class="form-control" id="precio-minimo" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     </div>
                 </section>
@@ -34,7 +36,7 @@
             <div class="col-xxs-12 col-xs-12">
                 <section>
                     <div>
-                        <label for="class">Precio máximo (COP$):</label>
+                        <label style="color:white" for="class">Precio máximo (COP$):</label>
                         <input type="text" class="form-control" id="precio-minimo" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     </div>
                 </section>
@@ -42,9 +44,9 @@
             </div>
             <div class="col-xxs-12 col-xs-12">
                 <section>
-                    <label for="class">Habitaciones:</label>
+                    <label style="color:white" for="class">Habitaciones:</label>
                     <div class="wide">
-                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                        <select class="input-field">
                             <option value="" disabled selected>Mínimo</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -55,7 +57,7 @@
                             <option value="7">7</option>
                             <option value="8">8</option>
                         </select>
-                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                        <select class="input-field">
                             <option value="" disabled selected>Máximo</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -71,14 +73,14 @@
             </div>
             <div class="col-xxs-12 col-xs-12">
                 <section>
-                    <label for="class">Área (mts):</label>
+                    <label style="color:white" for="class">Área (mts):</label>
                     <div class="wide">
-                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                        <select class="input-field">
                             <option value="" disabled selected>Mínimo</option>
                             <option value="1">Building</option>
                             <option value="2">Office</option>
                         </select>
-                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                        <select class="input-field">
                             <option value="" disabled selected>Máximo</option>
                             <option value="1">Building</option>
                             <option value="2">Office</option>
@@ -88,8 +90,9 @@
             </div>
             &nbsp
             <div class="col-xxs-12 col-xs-12 text-center">
-                <p><a class="btn btn-primary btn-lg" href="#">Buscar</a></p>
+                <p><a class="btn btn-default btn-lg" href="#">Buscar</a></p>
             </div>
         </div>
     </div>
 </div>
+<br>

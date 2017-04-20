@@ -1,3 +1,7 @@
+/**
+ * Habitacion detail DTO    
+ * @author l.maya10
+ */
 
 package co.edu.uniandes.csw.habitaciones.dtos;
 
@@ -7,12 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author l.maya10
- */
+
 @XmlRootElement
 public class HabitacionDetailDTO extends HabitacionDTO {
+    
+    static final long serialVersionUID = 1L;
     
     private List<ReservaDTO> reservas;
     

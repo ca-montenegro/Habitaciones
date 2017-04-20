@@ -15,6 +15,14 @@ import javax.inject.Inject;
  */
 @Stateless
 public class HabitacionLogic {
+
+    public HabitacionLogic() {
+    }
+    
+    
+    
+    static final long serialVersionUID = 1L;
+    
     @Inject private HabitacionPersistence persistence;
     
     public List<HabitacionEntity> getHabitaciones()

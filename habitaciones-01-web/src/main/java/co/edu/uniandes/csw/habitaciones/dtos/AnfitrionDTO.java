@@ -1,14 +1,17 @@
+/**
+ *DTO Anfitrion
+ * @author jd.cardenas10
+ */
+
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author jd.cardenas10
- */
 @XmlRootElement
 public class AnfitrionDTO extends UsuarioDTO{
+    static final long serialVersionUID = 1L;
+    
     private Double puntuacion;
 
     public AnfitrionDTO(){

@@ -31,6 +31,8 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class HabitacionResource {
     
+    public HabitacionResource(){}
+    
     @Inject private HabitacionLogic habitacionLogic;
     @Inject private ViviendaLogic viviendaLogic;
     @Context private HttpServletResponse response;

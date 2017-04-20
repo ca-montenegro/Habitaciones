@@ -24,6 +24,8 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class MultaResource {
     
+    public MultaResource(){}
+    
     @Inject private MultaLogic multaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;

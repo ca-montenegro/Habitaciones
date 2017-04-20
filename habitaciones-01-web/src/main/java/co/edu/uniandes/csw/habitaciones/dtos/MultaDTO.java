@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class MultaDTO implements Serializable {
     
+    static final long serialVersionUID = 1L;
+    
     private Long codigoMulta;
     
     private ReservaDTO reserva;

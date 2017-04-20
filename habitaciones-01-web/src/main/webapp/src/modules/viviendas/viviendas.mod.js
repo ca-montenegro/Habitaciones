@@ -40,7 +40,7 @@
                 parent: 'viviendas',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + 'crearVivienda.html'
+                        templateUrl: basePath + 'agregarVivienda.html'
                     }
                 }
             }).state('buscarVivienda', {
@@ -78,7 +78,7 @@
                     'listView': {
                         templateUrl: basePath + 'habitacionesVivienda.list.html',
                         controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
-                                $scope.viviendaActual = viviendaActual.data.habitaciones;
+                                $scope.viviendaActual = viviendaActual.data;
                             }]
                     }
                     
