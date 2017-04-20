@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class AnfitrionDTO extends UsuarioDTO{
-    static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     private Double puntuacion;
 

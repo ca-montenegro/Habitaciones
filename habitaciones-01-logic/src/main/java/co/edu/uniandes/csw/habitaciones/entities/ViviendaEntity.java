@@ -62,6 +62,11 @@ public class ViviendaEntity implements Serializable
     private String imagen;
     
     /**
+     * Numero de habitaciones de la vivienda
+     */
+    private int numeroHabitaciones;
+    
+    /**
      * Lista de reservas de la vivienda
      */
     @OneToMany(mappedBy = "vivienda")
@@ -215,7 +220,15 @@ public class ViviendaEntity implements Serializable
         this.anfitrion = anfitrion;
     }
     
+    public int getNumeroHabitaciones()
+    {
+        return numeroHabitaciones;
+    }
     
+    public void setNumeroHabitaciones(int numeroHabitaciones)
+    {
+        this.numeroHabitaciones=numeroHabitaciones;
+    }
     
     @Override
     public int hashCode() {

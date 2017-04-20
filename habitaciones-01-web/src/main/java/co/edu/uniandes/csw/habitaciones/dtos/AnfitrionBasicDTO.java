@@ -10,8 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class AnfitrionBasicDTO extends AnfitrionDTO{
-    static final long serialVersionUID = 1L;
-    
+    private static final long serialVersionUID = 1L;
 
     public AnfitrionBasicDTO(){
         
