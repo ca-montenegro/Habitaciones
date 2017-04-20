@@ -23,8 +23,6 @@ public class UsuarioLogic {
     
     private final UsuarioPersistence persistence;
     
-    
-    
     @Inject
     public UsuarioLogic (UsuarioPersistence persistence)
     {

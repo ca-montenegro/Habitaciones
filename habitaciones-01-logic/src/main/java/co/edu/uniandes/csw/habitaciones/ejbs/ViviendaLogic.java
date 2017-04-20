@@ -10,40 +10,67 @@ import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.habitaciones.persistence.UsuarioPersistence;
 import co.edu.uniandes.csw.habitaciones.persistence.ViviendaPersistence;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 @Stateless
-public class ViviendaLogic {
-    
-    public ViviendaLogic(){
-        
+public class ViviendaLogic 
+{
+    /**
+     * Constructor por defecto
+     */
+    public ViviendaLogic()
+    {
+        persistence = new ViviendaPersistence();
     }
     
-    static final long serialVersionUID = 1L;
+    /**
+     * Serializable
+     */
+    private static final long serialVersionUID = 1L;
     
-    @Inject private ViviendaPersistence persistence;
+    /**
+     * Persistencia
+     */
+    private final ViviendaPersistence persistence;
+    
+    /**
+     * Constructor
+     * @param persistence 
+     */
+    @Inject
+    public ViviendaLogic (ViviendaPersistence persistence)
+    {
+        Assert.notNull(persistence, "My persistence must be not null");
+        this.persistence = persistence;
+    }
     
     /**
      * Obtiene la lista de los registros de Vivienda.
+     * 
      * @return Colección de objetos de ViviendaEntity.
      */
     
-    public List<ViviendaEntity> getViviendas() {
+    public List<ViviendaEntity> getViviendas() 
+    {
         return persistence.findAll();
     }
     
     
     /**
      * Obtiene los datos de una instancia de Vivienda a partir de su ID.
+     * 
      * @param id Identificador de la instancia a consultar
      * @return Instancia de ViviendaEntity con los datos del Vivienda consultado.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public ViviendaEntity getVivienda(Long id) throws BusinessLogicException {
+    public ViviendaEntity getVivienda(Long id) throws BusinessLogicException 
+    {
         ViviendaEntity vivienda = persistence.find(id);
         if (vivienda==null){
             throw new BusinessLogicException("La vivienda con el id dado no existe.");
@@ -53,13 +80,15 @@ public class ViviendaLogic {
     
     /**
      * Se encarga de crear un Vivienda en la base de datos.
+     * 
      * @param entity Objeto de ViviendaEntity con los datos nuevos
      * @return Objeto de ViviendaEntity con los datos nuevos y su ID.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      * @generated
      */
     
-    public ViviendaEntity createVivienda(ViviendaEntity entity) throws BusinessLogicException {
+    public ViviendaEntity createVivienda(ViviendaEntity entity) throws BusinessLogicException 
+    {
         if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty()){
             throw new BusinessLogicException("Debe incluir la dirección completa.");}
         if (entity.getValorDiario()<0.0){
@@ -78,7 +107,8 @@ public class ViviendaLogic {
      * @return Instancia de ViviendaEntity con los datos actualizados.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public ViviendaEntity updateVivienda(ViviendaEntity entity) throws BusinessLogicException {
+    public ViviendaEntity updateVivienda(ViviendaEntity entity) throws BusinessLogicException 
+    {
         if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty()){
             throw new BusinessLogicException("Debe incluir la dirección completa.");}
         if (entity.getValorDiario()<0.0){
@@ -95,7 +125,8 @@ public class ViviendaLogic {
      * @param id Identificador de la instancia a eliminar.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public void deleteVivienda(Long id) throws BusinessLogicException {
+    public void deleteVivienda(Long id) throws BusinessLogicException 
+    {
         ViviendaEntity vivienda = getVivienda(id);
         Date d = new Date();
         for (ReservaEntity r: vivienda.getReservas()){

@@ -1,6 +1,8 @@
  /**
   * Entidad vivienda
+  *
   * @author c.penaloza
+  *
   */
 
 package co.edu.uniandes.csw.habitaciones.entities;
@@ -160,56 +162,102 @@ public class ViviendaEntity implements Serializable
         this.direccion = direccion;
     }
     
+    /**
+     * Retorna el valor diario de la vivienda
+     * @return valorDiario
+     */
     public Double getValorDiario()
     {
         return valorDiario;
     }
     
+    /**
+     * Define el valor diario de la vivienda
+     * @param valorDiario
+     */
     public void setValorDiario(Double valorDiario)
     {
         this.valorDiario = valorDiario;
     }
     
+    /**
+     * Retorna la capacidadde la vivienda
+     * @return capacidad
+     */
     public int getCapacidad()
     {
         return capacidad;
     }
     
+    /**
+     * Define la capacidad de la vivienda
+     * @param capacidad
+     */
     public void setCapacidad(int capacidad)
     {
         this.capacidad = capacidad;
     }
     
+    /**
+     * Retorna la ruta de la imagen de la vivienda
+     * @return imagen
+     */
     public String getImagen()
     {
         return imagen;
     }
     
+    /**
+     * Define la rita de la imagen
+     * @param imagen
+     */
     public void setImagen(String imagen)
     {
         this.imagen = imagen;
     }
     
+    /**
+     * Retorna la lista de reservas
+     * @return copy
+     */
     public List<ReservaEntity> getReservas()
     {
-        return reservas;
+        List<ReservaEntity> copy = reservas;
+        return copy;
     }
     
+    /**
+     * Cambia la lista de reservas
+     * @param reservas
+     */
     public void setReservas(List reservas)
     {
         this.reservas = reservas;
     }
     
+    /**
+     * Retorna la lista de habitaciones
+     * @return copy
+     */
     public List<HabitacionEntity> getHabitaciones()
     {
-        return habitaciones;
+        List<HabitacionEntity> copy = habitaciones;
+        return copy;
     }
     
+    /**
+     * Cambia la lista de habitaciones
+     * @param habitaciones
+     */
     public void setHabitaciones(List habitaciones)
     {
         this.habitaciones = habitaciones;
     }
     
+    /**
+     * Retorna el anfitrion
+     * @return anfitrion
+     */
     public AnfitrionEntity getAnfitrion()
     {
         return anfitrion;
@@ -232,7 +280,8 @@ public class ViviendaEntity implements Serializable
     
     @Override
     public int hashCode() {
-        if (this.getIdVivienda()!= null) {
+        if (this.getIdVivienda()!= null)
+        {
             return this.getIdVivienda().hashCode();
         }
         return super.hashCode();
@@ -240,17 +289,21 @@ public class ViviendaEntity implements Serializable
     
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj)
+        {
             return true;
         }
-        if (obj == null) {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final ViviendaEntity other = (ViviendaEntity) obj;
-        if (!Objects.equals(this.idVivienda, other.idVivienda)) {
+        if (!Objects.equals(this.idVivienda, other.idVivienda))
+        {
             return false;
         }
         return true;
