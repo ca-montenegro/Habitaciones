@@ -18,7 +18,7 @@
         <sonar.host.url>http://157.253.238.75:9000</sonar.host.url>
         <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
         <sonar.exclusions>src/main/webapp/bower_components/**</sonar.exclusions>
-        <sonar.exclusions>src/main/webapp/css/*</sonar.exclusions>
+        <sonar.exclusions>src/main/webapp/css/**</sonar.exclusions>
     </properties>
     <dependencyManagement>
         <dependencies>
