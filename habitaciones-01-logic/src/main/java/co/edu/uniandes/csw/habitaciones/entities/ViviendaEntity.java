@@ -1,3 +1,8 @@
+ /**
+  * Entidad vivienda
+  * @author c.penaloza
+  */
+
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.io.Serializable;
@@ -12,123 +17,204 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-/**
- * @author c.penaloza
- */
+
 @Entity
-public class ViviendaEntity implements Serializable {
-    static final long serialVersionUID = 1L;
+public class ViviendaEntity implements Serializable
+{
+    private static final long serialVersionUID = 1L;
     
-    
+    /**
+     * Id autogenerado de la vivienda
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVivienda;
     
+    /**
+     * Descripcion de la vivienda
+     */
     private String descripcion;
     
+    /**
+     * Ciudad de la vivienda
+     */
     private String ciudad;
     
+    /**
+     * Direccion de la vivienda
+     */
     private String direccion;
     
+    
+    /**
+     * Valor diario de la vivienda
+     */
     private Double valorDiario;
     
+    /**
+     * Capacidad de la vivienda
+     */
     private int capacidad;
     
+    /**
+     * Imagen de la vivienda
+     */
     private String imagen;
     
+    /**
+     * Lista de reservas de la vivienda
+     */
     @OneToMany(mappedBy = "vivienda")
     private List<ReservaEntity> reservas;
     
+    /**
+     * Lista de habitaciones de la vivienda
+     */
     @OneToMany(mappedBy="vivienda")
     private List<HabitacionEntity> habitaciones;
     
+    /**
+     * Anfitrion de la vivienda
+     */
     @ManyToOne
     private AnfitrionEntity anfitrion;
     
     public ViviendaEntity(){
         
     }
-
-    public Long getIdVivienda() {
+    
+    /**
+     * Retorna el id
+     * @return idVivienda
+     */
+    public Long getIdVivienda()
+    {
         return idVivienda;
     }
-
-    public void setIdVivienda(Long idVivienda) {
+    
+    /**
+     * Cambia el id de la vivienda
+     * @param idVivienda
+     */
+    public void setIdVivienda(Long idVivienda)
+    {
         this.idVivienda = idVivienda;
     }
-
-    public String getDescripcion() {
+    
+    /**
+     * Retorna la descripcion
+     * @return descripcio
+     */
+    public String getDescripcion()
+    {
         return descripcion;
     }
-
-    public void setDescripcion(String descripcion) {
+    
+    /**
+     * Define la descripcion
+     * @param descripcion
+     */
+    public void setDescripcion(String descripcion)
+    {
         this.descripcion = descripcion;
     }
-
-    public String getCiudad() {
+    
+    /**
+     * Retorna la ciudad
+     * @return ciudad
+     */
+    public String getCiudad()
+    {
         return ciudad;
     }
-
-    public void setCiudad(String ciudad) {
+    
+    /**
+     * Define la ciudad
+     * @param ciudad
+     */
+    public void setCiudad(String ciudad)
+    {
         this.ciudad = ciudad;
     }
-
-    public String getDireccion() {
+    
+    /**
+     * Retorna la direccion
+     * @return direccion
+     */
+    public String getDireccion()
+    {
         return direccion;
     }
-
-    public void setDireccion(String direccion) {
+    
+    /**
+     * Define la direccion
+     * @param direccion
+     */
+    public void setDireccion(String direccion)
+    {
         this.direccion = direccion;
     }
-
-    public Double getValorDiario() {
+    
+    public Double getValorDiario()
+    {
         return valorDiario;
     }
-
-    public void setValorDiario(Double valorDiario) {
+    
+    public void setValorDiario(Double valorDiario)
+    {
         this.valorDiario = valorDiario;
     }
-
-    public int getCapacidad() {
+    
+    public int getCapacidad()
+    {
         return capacidad;
     }
-
-    public void setCapacidad(int capacidad) {
+    
+    public void setCapacidad(int capacidad)
+    {
         this.capacidad = capacidad;
     }
-
-    public String getImagen() {
+    
+    public String getImagen()
+    {
         return imagen;
     }
-
-    public void setImagen(String imagen) {
+    
+    public void setImagen(String imagen)
+    {
         this.imagen = imagen;
     }
-
-    public List<ReservaEntity> getReservas() {
+    
+    public List<ReservaEntity> getReservas()
+    {
         return reservas;
     }
-
-    public void setReservas(List reservas) {
+    
+    public void setReservas(List reservas)
+    {
         this.reservas = reservas;
     }
-
-    public List<HabitacionEntity> getHabitaciones() {
+    
+    public List<HabitacionEntity> getHabitaciones()
+    {
         return habitaciones;
     }
-
-    public void setHabitaciones(List habitaciones) {
+    
+    public void setHabitaciones(List habitaciones)
+    {
         this.habitaciones = habitaciones;
     }
-
-    public AnfitrionEntity getAnfitrion() {
+    
+    public AnfitrionEntity getAnfitrion()
+    {
         return anfitrion;
     }
-
-    public void setAnfitrion(AnfitrionEntity anfitrion) {
+    
+    public void setAnfitrion(AnfitrionEntity anfitrion)
+    {
         this.anfitrion = anfitrion;
     }
-
+    
     
     
     @Override
@@ -138,7 +224,7 @@ public class ViviendaEntity implements Serializable {
         }
         return super.hashCode();
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
