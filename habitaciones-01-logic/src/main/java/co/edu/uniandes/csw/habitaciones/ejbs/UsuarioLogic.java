@@ -6,6 +6,7 @@ import co.edu.uniandes.csw.habitaciones.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 /**
  *
@@ -14,14 +15,27 @@ import javax.inject.Inject;
 @Stateless
 public class UsuarioLogic {
     
-    public UsuarioLogic(){
-    
-    }
+   
     
     static final long serialVersionUID = 1L;
     
+    
+    
+    private final UsuarioPersistence persistence;
+    
+    
+    
     @Inject
-    private UsuarioPersistence persistence;
+    public UsuarioLogic (UsuarioPersistence persistence)
+    {
+        Assert.notNull(persistence, "My persistence must be not null");
+        this.persistence = persistence;
+    }
+    
+    public UsuarioLogic(){
+        persistence = new UsuarioPersistence();
+    }
+    
     
     public List<UsuarioEntity> getUsuarios()
     {
@@ -31,8 +45,9 @@ public class UsuarioLogic {
     public UsuarioEntity getUsuario(Long id) throws BusinessLogicException
     {
         UsuarioEntity user =  persistence.find(id);
-        if(user==null)
+        if(user==null){
             throw new BusinessLogicException("El usuario no existe");
+        }
         return user;
     }
     
@@ -40,12 +55,13 @@ public class UsuarioLogic {
     {
         List<UsuarioEntity> list = getUsuarios();
         for(UsuarioEntity user: list ){
-            if(user.getUsuario().equals(entity.getUsuario()))
+            if(user.getUsuario().equals(entity.getUsuario())){
                 throw new BusinessLogicException("Un usuario con ese Nombre de usuario ya existe");
+            }
             if(user.getCorreo().equals(entity.getCorreo()))
-                throw new BusinessLogicException("El correo ya existe para un usuario");
-            if(user.getNumeroTarjeta()==entity.getNumeroTarjeta())
-                throw new BusinessLogicException("Existe un usuario con el número de tarjeta ingresado");
+            {throw new BusinessLogicException("El correo ya existe para un usuario");}
+            if(user.getNumeroTarjeta().equals(entity.getNumeroTarjeta()))
+            {throw new BusinessLogicException("Existe un usuario con el número de tarjeta ingresado");}
         }
         return persistence.create(entity);
     }
@@ -56,11 +72,11 @@ public class UsuarioLogic {
         List<UsuarioEntity> list = getUsuarios();
         for(UsuarioEntity user: list ){
             if(user.getUsuario().equals(entity.getUsuario()))
-                throw new BusinessLogicException("Un usuario con ese Nombre de usuario ya existe");
+            {throw new BusinessLogicException("Un usuario con ese Nombre de usuario ya existe");}
             if(user.getCorreo().equals(entity.getCorreo()))
-                throw new BusinessLogicException("El correo ya existe para un usuario");
-            if(user.getNumeroTarjeta()==entity.getNumeroTarjeta())
-                throw new BusinessLogicException("Existe un usuario con el número de tarjeta ingresado");
+            {throw new BusinessLogicException("El correo ya existe para un usuario");}
+            if(user.getNumeroTarjeta().equals(entity.getNumeroTarjeta()))
+            {throw new BusinessLogicException("Existe un usuario con el número de tarjeta ingresado");}
         }
         return persistence.update(entity);
     }

@@ -208,7 +208,7 @@ public class UsuarioResource {
             count++;
         }
         if(reservaUpdate==null)
-            throw new BusinessLogicException("No existe la reserva con el id: "+idReserva+" para el usuario con id: " + id);
+        {throw new BusinessLogicException("No existe la reserva con el id: "+idReserva+" para el usuario con id: " + id);}
         return new ReservaDTO(reservaUpdate);
 
     }
