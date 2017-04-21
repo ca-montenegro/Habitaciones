@@ -86,7 +86,8 @@ public class ViviendaEntity implements Serializable
     @ManyToOne
     private AnfitrionEntity anfitrion;
     
-    public ViviendaEntity(){
+    public ViviendaEntity()
+    {
         
     }
     
@@ -94,8 +95,7 @@ public class ViviendaEntity implements Serializable
      * Retorna el id
      * @return idVivienda
      */
-    public Long getIdVivienda()
-    {
+    public Long getIdVivienda(){
         return idVivienda;
     }
     
@@ -103,8 +103,7 @@ public class ViviendaEntity implements Serializable
      * Cambia el id de la vivienda
      * @param idVivienda
      */
-    public void setIdVivienda(Long idVivienda)
-    {
+    public void setIdVivienda(Long idVivienda){
         this.idVivienda = idVivienda;
     }
     
@@ -112,8 +111,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la descripcion
      * @return descripcio
      */
-    public String getDescripcion()
-    {
+    public String getDescripcion(){
         return descripcion;
     }
     
@@ -121,8 +119,7 @@ public class ViviendaEntity implements Serializable
      * Define la descripcion
      * @param descripcion
      */
-    public void setDescripcion(String descripcion)
-    {
+    public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
     
@@ -130,8 +127,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la ciudad
      * @return ciudad
      */
-    public String getCiudad()
-    {
+    public String getCiudad(){
         return ciudad;
     }
     
@@ -139,8 +135,7 @@ public class ViviendaEntity implements Serializable
      * Define la ciudad
      * @param ciudad
      */
-    public void setCiudad(String ciudad)
-    {
+    public void setCiudad(String ciudad){
         this.ciudad = ciudad;
     }
     
@@ -148,8 +143,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la direccion
      * @return direccion
      */
-    public String getDireccion()
-    {
+    public String getDireccion(){
         return direccion;
     }
     
@@ -157,8 +151,7 @@ public class ViviendaEntity implements Serializable
      * Define la direccion
      * @param direccion
      */
-    public void setDireccion(String direccion)
-    {
+    public void setDireccion(String direccion){
         this.direccion = direccion;
     }
     
@@ -166,8 +159,7 @@ public class ViviendaEntity implements Serializable
      * Retorna el valor diario de la vivienda
      * @return valorDiario
      */
-    public Double getValorDiario()
-    {
+    public Double getValorDiario(){
         return valorDiario;
     }
     
@@ -175,8 +167,7 @@ public class ViviendaEntity implements Serializable
      * Define el valor diario de la vivienda
      * @param valorDiario
      */
-    public void setValorDiario(Double valorDiario)
-    {
+    public void setValorDiario(Double valorDiario){
         this.valorDiario = valorDiario;
     }
     
@@ -184,8 +175,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la capacidadde la vivienda
      * @return capacidad
      */
-    public int getCapacidad()
-    {
+    public int getCapacidad(){
         return capacidad;
     }
     
@@ -193,8 +183,7 @@ public class ViviendaEntity implements Serializable
      * Define la capacidad de la vivienda
      * @param capacidad
      */
-    public void setCapacidad(int capacidad)
-    {
+    public void setCapacidad(int capacidad){
         this.capacidad = capacidad;
     }
     
@@ -202,8 +191,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la ruta de la imagen de la vivienda
      * @return imagen
      */
-    public String getImagen()
-    {
+    public String getImagen(){
         return imagen;
     }
     
@@ -211,8 +199,7 @@ public class ViviendaEntity implements Serializable
      * Define la rita de la imagen
      * @param imagen
      */
-    public void setImagen(String imagen)
-    {
+    public void setImagen(String imagen){
         this.imagen = imagen;
     }
     
@@ -220,8 +207,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la lista de reservas
      * @return copy
      */
-    public List<ReservaEntity> getReservas()
-    {
+    public List<ReservaEntity> getReservas(){
         List<ReservaEntity> copy = reservas;
         return copy;
     }
@@ -230,8 +216,7 @@ public class ViviendaEntity implements Serializable
      * Cambia la lista de reservas
      * @param reservas
      */
-    public void setReservas(List reservas)
-    {
+    public void setReservas(List reservas){
         this.reservas = reservas;
     }
     
@@ -239,8 +224,7 @@ public class ViviendaEntity implements Serializable
      * Retorna la lista de habitaciones
      * @return copy
      */
-    public List<HabitacionEntity> getHabitaciones()
-    {
+    public List<HabitacionEntity> getHabitaciones(){
         List<HabitacionEntity> copy = habitaciones;
         return copy;
     }
@@ -249,8 +233,7 @@ public class ViviendaEntity implements Serializable
      * Cambia la lista de habitaciones
      * @param habitaciones
      */
-    public void setHabitaciones(List habitaciones)
-    {
+    public void setHabitaciones(List habitaciones){
         this.habitaciones = habitaciones;
     }
     
@@ -258,28 +241,25 @@ public class ViviendaEntity implements Serializable
      * Retorna el anfitrion
      * @return anfitrion
      */
-    public AnfitrionEntity getAnfitrion()
-    {
+    public AnfitrionEntity getAnfitrion(){
         return anfitrion;
     }
     
-    public void setAnfitrion(AnfitrionEntity anfitrion)
-    {
+    public void setAnfitrion(AnfitrionEntity anfitrion){
         this.anfitrion = anfitrion;
     }
     
-    public int getNumeroHabitaciones()
-    {
+    public int getNumeroHabitaciones(){
         return numeroHabitaciones;
     }
     
-    public void setNumeroHabitaciones(int numeroHabitaciones)
-    {
+    public void setNumeroHabitaciones(int numeroHabitaciones){
         this.numeroHabitaciones=numeroHabitaciones;
     }
     
     @Override
-    public int hashCode() {
+    public int hashCode() 
+    {
         if (this.getIdVivienda()!= null)
         {
             return this.getIdVivienda().hashCode();
@@ -288,7 +268,8 @@ public class ViviendaEntity implements Serializable
     }
     
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) 
+    {
         if (this == obj)
         {
             return true;

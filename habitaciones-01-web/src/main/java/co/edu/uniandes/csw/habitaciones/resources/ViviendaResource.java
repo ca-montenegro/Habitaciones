@@ -1,4 +1,4 @@
-/**
+    /**
  * Recurso Vivienda
  * @author c.penaloza
  * URI: employees/
@@ -45,7 +45,6 @@ public class ViviendaResource {
     public ViviendaResource(){}
 
     @Inject private ViviendaLogic viviendaLogic;
-    @Inject private AnfitrionLogic anfitrionLogic;
     @Inject private HabitacionLogic habitacionLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
