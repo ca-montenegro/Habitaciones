@@ -29,9 +29,7 @@
             
                 $http.post('/api/viviendas', obj).then($state.go("viviendasList"), $window.alert("Error agregando la vivienda :("));
             }
-                    )
-           
-            
+                    )   
         }
     });
 })(window.angular);

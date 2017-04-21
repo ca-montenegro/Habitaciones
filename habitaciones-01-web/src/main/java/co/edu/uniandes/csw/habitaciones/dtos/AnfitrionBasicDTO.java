@@ -12,11 +12,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AnfitrionBasicDTO extends AnfitrionDTO{
     private static final long serialVersionUID = 1L;
 
-    public AnfitrionBasicDTO(){
+    public AnfitrionBasicDTO()
+    {
         
     }
     
     public AnfitrionBasicDTO(AnfitrionEntity entity){
+        this.setNumeroID(entity.getNumeroID());
+        this.setTipoID(entity.getTipoID());
         this.setNombre(entity.getNombre());
         this.setCorreo(entity.getCorreo());
         this.setDireccion(entity.getDireccion());
@@ -27,6 +30,8 @@ public class AnfitrionBasicDTO extends AnfitrionDTO{
     @Override
     public AnfitrionEntity toEntity(){
         AnfitrionEntity entity=new AnfitrionEntity();
+        entity.setNumeroID(this.getNumeroID());
+        entity.setTipoID(entity.getTipoID());
         entity.setNombre(this.getNombre());
         entity.setCorreo(this.getCorreo());
         entity.setDireccion(this.getDireccion());

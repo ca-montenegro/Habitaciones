@@ -31,7 +31,8 @@ public class ViviendaDTO  implements Serializable{
     /**
      * @generated
      */
-    public ViviendaDTO() {
+    public ViviendaDTO()
+    {
         
     }
     
@@ -41,7 +42,8 @@ public class ViviendaDTO  implements Serializable{
      * @param entity Entidad ViviendaEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ViviendaDTO(ViviendaEntity entity) {
+    public ViviendaDTO(ViviendaEntity entity)
+    {
         if (entity!=null){
             this.idVivienda=entity.getIdVivienda();
             this.anfitrion=new AnfitrionBasicDTO(entity.getAnfitrion());
@@ -102,92 +104,92 @@ public class ViviendaDTO  implements Serializable{
         return entity;
     }
     
-    public Long getIdVivienda() 
+    public Long getIdVivienda()
     {
         return idVivienda;
     }
     
-    public void setIdVivienda(Long idVivienda) 
+    public void setIdVivienda(Long idVivienda)
     {
         this.idVivienda = idVivienda;
     }
     
-    public String getDescripcion() 
+    public String getDescripcion()
     {
         return descripcion;
     }
     
-    public void setDescripcion(String descripcion) 
+    public void setDescripcion(String descripcion)
     {
         this.descripcion = descripcion;
     }
     
-    public String getCiudad() 
+    public String getCiudad()
     {
         return ciudad;
     }
     
-    public void setCiudad(String ciudad) 
+    public void setCiudad(String ciudad)
     {
         this.ciudad = ciudad;
     }
     
-    public String getDireccion() 
+    public String getDireccion()
     {
         return direccion;
     }
     
-    public void setDireccion(String direccion) 
+    public void setDireccion(String direccion)
     {
         this.direccion = direccion;
     }
     
-    public Double getValorDiario() 
+    public Double getValorDiario()
     {
         return valorDiario;
     }
     
-    public void setValorDiario(Double valorDiario) 
+    public void setValorDiario(Double valorDiario)
     {
         this.valorDiario = valorDiario;
     }
     
-    public int getCapacidad() 
+    public int getCapacidad()
     {
         return capacidad;
     }
     
-    public void setCapacidad(int capacidad) 
+    public void setCapacidad(int capacidad)
     {
         this.capacidad = capacidad;
     }
     
-    public String getImagen() 
+    public String getImagen()
     {
         return imagen;
     }
     
-    public void setImagen(String imagen) 
+    public void setImagen(String imagen)
     {
         this.imagen = imagen;
     }
-
-    public AnfitrionBasicDTO getAnfitrion() 
+    
+    public AnfitrionBasicDTO getAnfitrion()
     {
         return anfitrion;
     }
-
-    public void setAnfitrion(AnfitrionBasicDTO anfitrion) 
+    
+    public void setAnfitrion(AnfitrionBasicDTO anfitrion)
     {
         this.anfitrion = anfitrion;
     }
-
-    public int getNumeroHabitaciones() 
+    
+    public int getNumeroHabitaciones()
     {
         return numeroHabitaciones;
     }
-
-    public void setNumeroHabitaciones(int numeroHabitaciones) 
+    
+    public void setNumeroHabitaciones(int numeroHabitaciones)
     {
         this.numeroHabitaciones = numeroHabitaciones;
     }
