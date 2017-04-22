@@ -32,7 +32,7 @@ import javax.persistence.OneToMany;
 public class AnfitrionEntity extends UsuarioEntity{
     
     
-    static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     private Double puntuacion;
     

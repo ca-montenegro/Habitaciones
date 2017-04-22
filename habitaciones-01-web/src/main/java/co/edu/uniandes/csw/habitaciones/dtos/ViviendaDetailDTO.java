@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ViviendaDetailDTO extends ViviendaDTO{
     
-    static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     private List<ReservaDTO> reservas;
     private List<HabitacionDTO> habitaciones;
