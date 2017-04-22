@@ -43,9 +43,9 @@
                         templateUrl: basePath + 'agregarVivienda.html',
                         controller: ['$scope', '$http', '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,  viviendas, viviendasContext) {
-                                /**
+                                
                                 $scope.tempVivienda = {
-                                    anfitrion= {},
+                                    anfitrion: {},
                                     capacidad: '',
                                     ciudad: '',
                                     descripcion: '',
@@ -53,7 +53,7 @@
                                     idVivienda: '',
                                     imagen: '',
                                     numeroTelefono: '',
-                                    valorDiario: ''                                    
+                                    valorDiario: 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large'                                    
                                 };
                                 console.log($scope.tempVivienda);
                                 $scope.agregarVivienda = function () {
@@ -109,7 +109,7 @@
                                 function responseError(response) {
                                     
                                     self.showError(response.data);
-                                }**/
+                                }
                             }]
                     }
                 }
