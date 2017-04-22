@@ -1,15 +1,36 @@
+/* 
+ * Copyright (C) 2017 c.penaloza.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301  USA
+ */
+
 (function (ng){
-    var mod = ng.module("viviendaModule", ['ui.router']);
-    mod.constant("viviendasContext", "api/viviendas");
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/viviendas/';
-            $urlRouterProvider.otherwise("/viviendasList");
+    const mod = ng.module("viviendaModule", ['ui.router']);
+    mod.constant('viviendasContext', 'api/viviendas');
+    mod.config(['$stateProvider', '$urlRouterProvider',
+        function ($stateProvider, $urlRouterProvider) {
+            const basePath = 'src/modules/viviendas/';
+            $urlRouterProvider.otherwise('/viviendasList');
             
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
                 abstract: true,
                 resolve: {
-                    viviendas: ['$http', 'viviendasContext',function ($http, viviendasContext) {
+                    viviendas: ['$http', 'viviendasContext',
+                        function ($http, viviendasContext) {
                             return $http.get(viviendasContext);
                         }]
                 },
@@ -19,8 +40,8 @@
                         controller: ['$scope', 'viviendas', function ($scope, viviendas) {
                                 $scope.viviendasRecords = viviendas.data;
                             }]  
-                    }
-                }
+                    },
+                },
             }).state('viviendasList', {
                 url: '/lista',
                 parent: 'viviendas',
