@@ -25,6 +25,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author ca.montenegro
