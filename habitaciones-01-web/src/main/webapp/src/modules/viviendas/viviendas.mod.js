@@ -72,14 +72,14 @@
                                     descripcion: '',
                                     direccion: '',
                                     idVivienda: '',
-                                    imagen: '',
+                                    imagen: 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large',
                                     numeroTelefono: '',
-                                    valorDiario: 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large'                                    
+                                    valorDiario: ''                                    
                                 };
                                 console.log($scope.tempVivienda);
                                 $scope.agregarVivienda = function () {
                                     
-                                    $http.get("api/viviendas/"+$scope.id).then(
+                                    $http.get("api/usuarios/"+$scope.tempVivienda.anfitrion.id).then(
                                             function(response){
                                                 
                                                 $scope.data = response.data;
@@ -94,7 +94,8 @@
                                     tempVivienda = $scope.tempVivienda;
                                     console.log(tempVivienda);
                                     
-                                    return $http.post(viviendasContext, tempVivienda)
+                                    const contextoAnfitrion = 'api/anfitriones/'+tempVivienda.anfitrion.id+'/viviendas';
+                                    return $http.post(contextoAnfitrion, tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado

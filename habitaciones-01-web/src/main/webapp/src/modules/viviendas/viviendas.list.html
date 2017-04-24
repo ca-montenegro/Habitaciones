@@ -3,20 +3,22 @@
     
     <div class="col-md-4 animate-box" ng-repeat="vivienda in viviendasRecords">
         &nbsp
+        <a ui-sref="viviendaDetail({viviendaId: vivienda.idVivienda})">
         <div class="property">
-            <a ui-sref="viviendaDetail({viviendaId: vivienda.idVivienda})"> 
+             
                 <img class="img-thumbnail" ng-src ='{{vivienda.imagen}}' alt = "{{vivienda.idVivienda}}"/>
                 <ul class="list-details">
                     <li>Capacidad: {{vivienda.capacidad}} <span class="glyphicon glyphicon-user"></span><li>
                     <li>Costo: {{vivienda.valorDiario}} <span class="glyphicon glyphicon-usd"></span><li>
                     <li>Cuartos: {{vivienda.numeroHabitaciones}} <span class="glyphicon glyphicon-bed"></span><li>
                 </ul>
-            </a>
+            
             <div class="property-details">
                 <h3>{{vivienda.ciudad}}</h3>
                 <span class="status"><i class="icon-map"></i>{{vivienda.direccion}} </span>
             </div>
         </div>
+            </a>
             
     </div>
         
