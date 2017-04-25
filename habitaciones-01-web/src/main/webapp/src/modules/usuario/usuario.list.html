@@ -6,11 +6,11 @@
 
     <div class="row">
 
-        <div class="col-md-2" ng-repeat="usuario in usuariosRecords">
+        <div class="col-sm-3" ng-repeat="usuario in usuariosRecords">
             <div class="thumbnail">
                 <a ui-sref ="usuarioDetail({usuarioId: usuario.numeroID})">
                 
-                            <img class="img-responsive" ng-src="{{usuario.image}}" alt="{{usuario.nombre}}" />
+                            <img ng-src="{{usuario.image}}" alt="{{usuario.nombre}}" />
                    
 
                     <div class ="caption text-center"> 
