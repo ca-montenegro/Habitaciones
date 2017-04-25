@@ -29,6 +29,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 @Entity
@@ -39,6 +40,7 @@ public class ViviendaEntity implements Serializable
     /**
      * Id autogenerado de la vivienda
      */
+    @PodamExclude
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVivienda;
@@ -83,18 +85,21 @@ public class ViviendaEntity implements Serializable
      * Lista de reservas de la vivienda
      */
     @OneToMany(mappedBy = "vivienda")
+    @PodamExclude
     private List<ReservaEntity> reservas;
     
     /**
      * Lista de habitaciones de la vivienda
      */
     @OneToMany(mappedBy="vivienda")
+    @PodamExclude
     private List<HabitacionEntity> habitaciones;
     
     /**
      * Anfitrion de la vivienda
      */
     @ManyToOne
+    @PodamExclude
     private AnfitrionEntity anfitrion;
     
     public ViviendaEntity()

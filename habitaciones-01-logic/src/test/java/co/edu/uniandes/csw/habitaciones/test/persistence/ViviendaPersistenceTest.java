@@ -31,6 +31,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class ViviendaPersistenceTest {
     
+    public static final String DEPLOY = "Prueba";
+    
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -49,7 +51,7 @@ public class ViviendaPersistenceTest {
     /**
      * @generated
      */
-    @PersistenceContext
+    @PersistenceContext(unitName = "habitacionesPU")
     private EntityManager em;
 
     /**
@@ -86,7 +88,7 @@ public class ViviendaPersistenceTest {
      * @generated
      */
     private void clearData() {
-        em.createQuery("delete from BookEntity").executeUpdate();
+        em.createQuery("delete from ViviendaEntity").executeUpdate();
     }
 
     /**
@@ -115,7 +117,7 @@ public class ViviendaPersistenceTest {
      * @generated
      */
     @Test
-    public void createBookTest() {
+    public void createViviendaTest() {
         PodamFactory factory = new PodamFactoryImpl();
         ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
         ViviendaEntity result = viviendaPersistence.create(newEntity);
@@ -124,18 +126,16 @@ public class ViviendaPersistenceTest {
 
         ViviendaEntity entity = em.find(ViviendaEntity.class, result.getIdVivienda());
 
-        Assert.assertEquals(newEntity.getAnfitrion(), entity.getAnfitrion());
         Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
         Assert.assertEquals(newEntity.getCiudad(), entity.getCiudad());
         Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
-        Assert.assertEquals(newEntity.getIdVivienda(), entity.getIdVivienda());
         Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
         Assert.assertEquals(newEntity.getNumeroHabitaciones(), entity.getNumeroHabitaciones());
         Assert.assertEquals(newEntity.getValorDiario(), entity.getValorDiario());
     }
 
     /**
-     * Prueba para consultar la lista de Books.
+     * Prueba para consultar la lista de Viviendas.
      *
      * @generated
      */
@@ -155,7 +155,7 @@ public class ViviendaPersistenceTest {
     }
 
     /**
-     * Prueba para consultar un Book.
+     * Prueba para consultar una Vivienda.
      *
      * @generated
      */
@@ -163,56 +163,51 @@ public class ViviendaPersistenceTest {
     public void getViviendaTest() {
         ViviendaEntity entity = data.get(0);
         ViviendaEntity newEntity = viviendaPersistence.find(entity.getIdVivienda());
+
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getAnfitrion(), newEntity.getAnfitrion());
-        Assert.assertEquals(entity.getCapacidad(), newEntity.getCapacidad());
-        Assert.assertEquals(entity.getImage(), newEntity.getImage());
-        Assert.assertEquals(entity.getDescription(), newEntity.getDescription());
-        
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(newEntity.getAnfitrion(), newEntity.getAnfitrion());
         Assert.assertEquals(newEntity.getCapacidad(), newEntity.getCapacidad());
-        Assert.assertEquals(newEntity.getCiudad(), entity.getCiudad());
-        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
-        Assert.assertEquals(newEntity.getIdVivienda(), entity.getIdVivienda());
-        Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
-        Assert.assertEquals(newEntity.getNumeroHabitaciones(), entity.getNumeroHabitaciones());
-        Assert.assertEquals(newEntity.getValorDiario(), entity.getValorDiario());
+        Assert.assertEquals(newEntity.getCiudad(), newEntity.getCiudad());
+        Assert.assertEquals(newEntity.getDireccion(), newEntity.getDireccion());
+        Assert.assertEquals(newEntity.getImagen(), newEntity.getImagen());
+        Assert.assertEquals(newEntity.getNumeroHabitaciones(), newEntity.getNumeroHabitaciones());
+        Assert.assertEquals(newEntity.getValorDiario(), newEntity.getValorDiario());
     }
 
     /**
-     * Prueba para eliminar un Book.
+     * Prueba para eliminar una Vivienda.
      *
      * @generated
      */
     @Test
     public void deleteViviendaTest() {
-        BookEntity entity = data.get(0);
-        bookPersistence.delete(entity.getId());
-        BookEntity deleted = em.find(BookEntity.class, entity.getId());
+        ViviendaEntity entity = data.get(0);
+        viviendaPersistence.delete(entity.getIdVivienda());
+        ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Prueba para actualizar un Book.
+     * Prueba para actualizar una Vivienda.
      *
      * @generated
      */
     @Test
-    public void updateBookTest() {
-        BookEntity entity = data.get(0);
+    public void updateViviendaTest() {
+        ViviendaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        BookEntity newEntity = factory.manufacturePojo(BookEntity.class);
-        newEntity.setId(entity.getId());
+        ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+        newEntity.setIdVivienda(entity.getIdVivienda());
 
-        bookPersistence.update(newEntity);
+        viviendaPersistence.update(newEntity);
 
-        BookEntity resp = em.find(BookEntity.class, entity.getId());
+        ViviendaEntity resp = em.find(ViviendaEntity.class, entity.getIdVivienda());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-        Assert.assertEquals(newEntity.getIsbn(), resp.getIsbn());
-        Assert.assertEquals(newEntity.getImage(), resp.getImage());
-        Assert.assertEquals(newEntity.getDescription(), resp.getDescription());
+        Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
+        Assert.assertEquals(newEntity.getCiudad(), resp.getCiudad());
+        Assert.assertEquals(newEntity.getDireccion(), resp.getDireccion());
+        Assert.assertEquals(newEntity.getImagen(), resp.getImagen());
+        Assert.assertEquals(newEntity.getNumeroHabitaciones(), resp.getNumeroHabitaciones());
+        Assert.assertEquals(newEntity.getValorDiario(), resp.getValorDiario());
     }
     
 }
