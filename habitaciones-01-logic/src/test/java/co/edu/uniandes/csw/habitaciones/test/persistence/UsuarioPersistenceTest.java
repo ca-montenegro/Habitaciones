@@ -34,10 +34,10 @@ public class UsuarioPersistenceTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
-                .addClass(UsuarioEntity.class)
-                .addClass(UsuarioPersistence.class)
-                //.addPackage(UsuarioEntity.class.getPackage())
-                //.addPackage(UsuarioPersistence.class.getPackage())
+                //.addClass(UsuarioEntity.class)
+                //.addClass(UsuarioPersistence.class)
+                .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioPersistence.class.getPackage())
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource("META-INF/beans.xml", "beans.xml");
     }
