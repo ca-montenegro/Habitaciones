@@ -18,7 +18,7 @@
  */
 
 (function (ng){
-    const mod = ng.module("viviendaModule", ['ui.router']);
+    const mod = ng.module('viviendaModule', ['ui.router']);
     mod.constant('viviendasContext', 'api/viviendas');
     mod.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
@@ -31,15 +31,14 @@
                 resolve: {
                     viviendas: ['$http', 'viviendasContext',
                         function ($http, viviendasContext) {
-                            return $http.get(viviendasContext);
-                        }]
+                            return $http.get(viviendasContext);}]
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'viviendas.html',
-                        controller: ['$scope', 'viviendas', function ($scope, viviendas) {
-                                $scope.viviendasRecords = viviendas.data;
-                            }]  
+                        controller: ['$scope', 'viviendas', 
+                            function ($scope, viviendas) {
+                                $scope.viviendasRecords = viviendas.data}]  
                     },
                 },
             }).state('viviendasList', {
@@ -54,7 +53,7 @@
                     },
                     'extraView': {
                         templateUrl: basePath + 'botonAgregar.html'
-                    }
+                    },
                 }
             }).state('agregarVivienda', {
                 url: '/agregar',
@@ -63,7 +62,8 @@
                     'listView': {
                         templateUrl: basePath + 'agregarVivienda.html',
                         controller: ['$scope', '$http', '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,  viviendas, viviendasContext) {
+                            function ($scope, $http, $state,
+                            viviendas, viviendasContext) {
                                 
                                 $scope.tempVivienda = {
                                     anfitrion: {},
@@ -72,16 +72,18 @@
                                     descripcion: '',
                                     direccion: '',
                                     idVivienda: '',
-                                    imagen: 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large',
+                                    imagen: '',
                                     numeroTelefono: '',
-                                    valorDiario: ''                                    
+                                    valorDiario: '',                                   
                                 };
                                 console.log($scope.tempVivienda);
                                 $scope.agregarVivienda = function () {
 
-                                    console.log(tempVivienda);
+                                    console.log($scope.tempVivienda);
                                     
-                                    const contextoAnfitrion = 'api/anfitriones/'+tempVivienda.anfitrion.id+'/viviendas';
+                                    const contextoAnfitrion = 
+                                            'api/anfitriones/'+
+                                            tempVivienda.anfitrion.id+'/viviendas';
                                     return $http.post(contextoAnfitrion, tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
@@ -98,7 +100,7 @@
                                 
                                 // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
                                 function showMessage(msg, type) {
-                                    var types = ["info", "danger", "warning", "success"];
+                                    var types = ['info', 'danger', 'warning', 'success'];
                                     if (types.some(function (rc) {
                                         return type === rc;
                                     })) {
@@ -127,7 +129,7 @@
                     },
                     'extraView': {
                         templateUrl: basePath + 'botonAgregar.html'
-                    }
+                    },
                 }
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
@@ -155,7 +157,7 @@
                     },
                     'extraView': {
                         templateUrl: basePath + 'botonAgregarHabitacion.html'
-                    }
+                    },
                 }
             }).state('agregarHabitacion', {
                 url: '/agregarHabitacion',
@@ -167,11 +169,11 @@
                             function ($scope, $http, $state,  viviendas, viviendasContext) {
                                 
                                 $scope.tempHabitacion = {
-                                    "area": '',
-                                    "capacidad": '',
-                                    "descripcion": '',
-                                    "imagen": "http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
-                                    "valorDiario": ''                                    
+                                    'area': '',
+                                    'capacidad': '',
+                                    'descripcion': '',
+                                    'imagen': '',
+                                    'valorDiario': ''                                    
                                 };
                                 console.log($scope.tempHabitacion);
                                 $scope.agregarHabitacion = function () {
@@ -179,7 +181,8 @@
                                     tempVivienda = $scope.tempVivienda;
                                     console.log(tempVivienda);
                                     
-                                    const contextoAnfitrion = 'api/anfitriones/'+tempVivienda.anfitrion.id+'/viviendas';
+                                    const contextoAnfitrion = 'api/anfitriones/'
+                                            +tempVivienda.anfitrion.id+'/viviendas';
                                     return $http.post(contextoAnfitrion, tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
@@ -196,7 +199,8 @@
                                 
                                 // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
                                 function showMessage(msg, type) {
-                                    var types = ["info", "danger", "warning", "success"];
+                                    const types = 
+                                            ['info', 'danger', 'warning', 'success'];
                                     if (types.some(function (rc) {
                                         return type === rc;
                                     })) {
@@ -205,20 +209,20 @@
                                 }
                                 
                                 this.showError = function (msg) {
-                                    showMessage(msg, "danger");
+                                    showMessage(msg, 'danger');
                                 };
                                 
                                 this.showSuccess = function (msg) {
-                                    showMessage(msg, "success");
+                                    showMessage(msg, 'success');
                                 };
                                 
-                                var self = this;
+                                const self = this;
                                 function responseError(response) {
                                     
                                     self.showError(response.data);
                                 }
                             }]
-                    }
+                    },
                 }
             });
         }]);
