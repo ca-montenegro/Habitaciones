@@ -28,6 +28,7 @@ public class UsuarioPersistenceTest {
 
     public static final String DEPLOY = "Prueba";
 
+    
     /**
      * @generated
      */
