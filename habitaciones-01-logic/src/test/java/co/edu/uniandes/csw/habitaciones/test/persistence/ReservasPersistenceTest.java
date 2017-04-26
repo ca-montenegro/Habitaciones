@@ -14,15 +14,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
+@RunWith(Arquillian.class)
 public class ReservasPersistenceTest {
+    
+    public static final String DEPLOY = "Prueba";
     
     @Deployment
     public static JavaArchive createDeployment(){
@@ -42,7 +47,7 @@ public class ReservasPersistenceTest {
     /**
      * @generated
      */
-    @PersistenceContext(name = "habitacionesPU")
+    @PersistenceContext(unitName = "habitacionesPU")
     private EntityManager em;
 
     /**
@@ -108,7 +113,7 @@ public class ReservasPersistenceTest {
      * @generated
      */
     @Test
-    public void createBookTest() {
+    public void createReservaTest() {
         PodamFactory factory = new PodamFactoryImpl();
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
         ReservaEntity result = reservaPersistence.create(newEntity);

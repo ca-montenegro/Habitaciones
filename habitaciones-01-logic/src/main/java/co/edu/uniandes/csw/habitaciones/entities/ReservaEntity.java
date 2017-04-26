@@ -21,6 +21,7 @@ package co.edu.uniandes.csw.habitaciones.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class ReservaEntity implements Serializable{
@@ -42,6 +44,7 @@ public class ReservaEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PodamExclude
     private Long codigoReserva;
     
     @Temporal(TemporalType.TIMESTAMP) 
@@ -54,13 +57,16 @@ public class ReservaEntity implements Serializable{
     
     private char estado;
     
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @PodamExclude
     private MultaEntity multa;
     
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @PodamExclude
     private HabitacionEntity habitacion;
     
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne
+    @PodamExclude
     private ViviendaEntity vivienda;
 
     public HabitacionEntity getHabitacion() {

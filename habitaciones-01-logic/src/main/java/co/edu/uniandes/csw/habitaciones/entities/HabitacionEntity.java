@@ -20,6 +20,7 @@ package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,7 +51,7 @@ public class HabitacionEntity implements Serializable {
     private String imagen;
     @ManyToOne 
     private ViviendaEntity vivienda;
-    @OneToMany(mappedBy="habitacion")
+    @OneToMany(mappedBy="habitacion", cascade = CascadeType.PERSIST)
     private List<ReservaEntity> reservas;
 
     public List<ReservaEntity> getReservas() {
