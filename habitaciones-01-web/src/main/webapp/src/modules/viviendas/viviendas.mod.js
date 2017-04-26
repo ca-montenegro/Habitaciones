@@ -172,6 +172,72 @@
                         controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
                                 $scope.viviendaActual = viviendaActual.data;
                             }]
+                    },
+                    'extraView': {
+                        templateUrl: basePath + 'botonAgregarHabitacion.html'
+                    }
+                }
+            }).state('agregarHabitacion', {
+                url: '/agregarHabitacion',
+                parent: 'viviendas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'agregarHabitacion.html',
+                        controller: ['$scope', '$http', '$state', 'viviendas', 'viviendasContext',
+                            function ($scope, $http, $state,  viviendas, viviendasContext) {
+                                
+                                $scope.tempHabitacion = {
+                                    "area": '',
+                                    "capacidad": '',
+                                    "descripcion": '',
+                                    "imagen": "http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
+                                    "valorDiario": ''                                    
+                                };
+                                console.log($scope.tempHabitacion);
+                                $scope.agregarHabitacion = function () {
+                                    
+                                    tempVivienda = $scope.tempVivienda;
+                                    console.log(tempVivienda);
+                                    
+                                    const contextoAnfitrion = 'api/anfitriones/'+tempVivienda.anfitrion.id+'/viviendas';
+                                    return $http.post(contextoAnfitrion, tempVivienda)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        console.log('check');
+                                    }, responseError);
+                                    
+                                }
+                                
+                                this.closeAlert = function (index) {
+                                    $scope.alerts.splice(index, 1);
+                                };
+                                
+                                // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
+                                function showMessage(msg, type) {
+                                    var types = ["info", "danger", "warning", "success"];
+                                    if (types.some(function (rc) {
+                                        return type === rc;
+                                    })) {
+                                        $scope.alerts.push({type: type, msg: msg});
+                                    }
+                                }
+                                
+                                this.showError = function (msg) {
+                                    showMessage(msg, "danger");
+                                };
+                                
+                                this.showSuccess = function (msg) {
+                                    showMessage(msg, "success");
+                                };
+                                
+                                var self = this;
+                                function responseError(response) {
+                                    
+                                    self.showError(response.data);
+                                }
+                            }]
                     }
                 }
             });

@@ -4,8 +4,16 @@
     <div class="s-holder">
         <b><h2 style="color:white">Agregar Habitacións</h2></b>
         <div class="row" style="width:400px" ng-controller = 'MainController'>
-            <form novalidate name="form" id="agregarVivienda-form" role="form" ng-submit="form.$valid && agregarVivienda()">
+            <form novalidate name="form" id="agregarVivienda-form" role="form" ng-submit="form.$valid && agregarHabitacion()">
                 <fieldset>
+                    <div>
+                        <section>
+                            <div class="form-group">
+                                <label style="color:white" for="class">Capacidad:</label>
+                                <input type="text" class="form-control" ng-model="tempHabitacion.capacidad" ng-init="tempHabitacion.capacidad" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            </div>
+                        </section>
+                    </div>
                     <div>
                         <section>
                             <div class="form-group">
@@ -17,35 +25,12 @@
                     
                     <div>
                         <div class="form-group">
-                            <label style="color:white" for="from">En qué ciudad:</label>
+                            <label style="color:white" for="from">Descripción</label>
                             <input type="text" class="form-control" ng-model="tempVivienda.ciudad" ng-init="tempVivienda.ciudad" placeholder="Ciudad"/>
                         </div>
                     </div>
                     
-                    <div>
-                        <div class="form-group">
-                            <label style="color:white" for="from">Cuál es la dirección:</label>
-                            <input type="text" class="form-control" ng-model="tempVivienda.direccion" ng-init="tempVivienda.direccion" placeholder="Dirección"/>
-                        </div>
-                    </div>
                     
-                    <div>
-                        <section>
-                            <div class="form-group">
-                                <label style="color:white" for="class">Precio por noche (COP$):</label>
-                                <input type="text" class="form-control" ng-model="tempVivienda.valorDiario" ng-init="tempVivienda.valorDiario" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                            </div>
-                        </section>
-                    </div>
-                    
-                    <div>
-                        <div class="form-group">
-                            <label style="color:white" for="from">Qué distingue a la vivienda:</label>
-                            <input type="text" class="form-control" ng-model="tempVivienda.descripcion" nd-init="tempVivienda.descripcion" placeholder="Descripción"/>
-                        </div>
-                    </div>
-                    
-                    <div>
                         <section>
                             <div class="form-group">
                                 <label style="color:white" for="class">Capacidad de la vivienda (personas):</label>
@@ -55,20 +40,7 @@
                     </div>
                     
                     <div>
-                        <section>
-                            <div class="form-group">
-                                <label style="color:white" for="class">Imagen:</label>
-                                <input type="file" style="background:#273547" style="color:white" ng-model="foto">
-                            </div>
-                        </section>
-                    </div>
-                    
-                    <script>
-                        function myFunction() {
-                            var x = document.getElementById("myFile");
-                            x.disabled = true;
-                        }
-                    </script>
+
                     &nbsp
                 </fieldset>
                 <div>
