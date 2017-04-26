@@ -121,11 +121,15 @@ public class ReservasPersistenceTest {
         Assert.assertNotNull(result);
 
         ReservaEntity entity = em.find(ReservaEntity.class, result.getCodigoReserva());
+        double error = 0.00000001;
 
-        Assert.assertEquals(newEntity.getCosto(), entity.getCosto());
+        Assert.assertEquals(newEntity.getCosto(), entity.getCosto(), error);
         Assert.assertEquals(newEntity.getEstado(),entity.getEstado());
         Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
-        
+        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals(newEntity.getHabitacion(), entity.getHabitacion());
+        Assert.assertEquals(newEntity.getMulta(), entity.getMulta());
+        Assert.assertEquals(newEntity.getVivienda(), entity.getVivienda());
     }
 
     /**
@@ -154,13 +158,19 @@ public class ReservasPersistenceTest {
      * @generated
      */
     @Test
-    public void getViviendaTest() {
+    public void getReservaTest() {
         ReservaEntity entity = data.get(0);
         ReservaEntity newEntity = reservaPersistence.find(entity.getCodigoReserva());
-        Assert.assertNotNull(newEntity);
-
+        double error = 0.00000001;
         
         Assert.assertNotNull(newEntity);
+        Assert.assertEquals(newEntity.getCosto(), entity.getCosto(), error);
+        Assert.assertEquals(newEntity.getEstado(),entity.getEstado());
+        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
+        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals(newEntity.getHabitacion(), entity.getHabitacion());
+        Assert.assertEquals(newEntity.getMulta(), entity.getMulta());
+        Assert.assertEquals(newEntity.getVivienda(), entity.getVivienda());
     }
     /**
      * Prueba para actualizar un Book.
@@ -173,10 +183,19 @@ public class ReservasPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
         newEntity.setCodigoReserva(entity.getCodigoReserva());
+        double error = 0.00000001;
 
         reservaPersistence.update(newEntity);
 
         ReservaEntity resp = em.find(ReservaEntity.class, entity.getCodigoReserva());
+        
+        Assert.assertEquals(newEntity.getCosto(), resp.getCosto(), error);
+        Assert.assertEquals(newEntity.getEstado(),resp.getEstado());
+        Assert.assertEquals(newEntity.getFechaInicio(), resp.getFechaInicio());
+        Assert.assertEquals(newEntity.getFechaFin(), resp.getFechaFin());
+        Assert.assertEquals(newEntity.getHabitacion(), resp.getHabitacion());
+        Assert.assertEquals(newEntity.getMulta(), resp.getMulta());
+        Assert.assertEquals(newEntity.getVivienda(), resp.getVivienda());
     }
     
 }
