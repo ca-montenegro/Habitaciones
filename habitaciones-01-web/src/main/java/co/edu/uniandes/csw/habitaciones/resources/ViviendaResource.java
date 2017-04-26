@@ -1,21 +1,21 @@
-/* 
- * Copyright (C) 2017 c.penaloza.
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301  USA
- */
+/*
+* Copyright (C) 2017 c.penaloza.
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301  USA
+*/
 package co.edu.uniandes.csw.habitaciones.resources;
 
 
@@ -46,6 +46,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.ws.rs.WebApplicationException;
+import org.springframework.util.Assert;
 
 
 @Path("/")
@@ -53,13 +54,25 @@ import javax.ws.rs.WebApplicationException;
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
     
-    public ViviendaResource(){}
     
-    @Inject private ViviendaLogic viviendaLogic;
-    @Inject private HabitacionLogic habitacionLogic;
+    private final ViviendaLogic viviendaLogic;
+    private final HabitacionLogic habitacionLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
+    
+    /**
+     *
+     * @param viviendaLogic
+     */
+    @Inject
+    public ViviendaResource (ViviendaLogic viviendaLogic, HabitacionLogic habitacionLogic) {
+        Assert.notNull(viviendaLogic, "Vivienda logic no puede ser nula!");
+        this.viviendaLogic = viviendaLogic;
+        
+        Assert.notNull(habitacionLogic, "Habitacion logic no puede ser nula!");
+        this.habitacionLogic = habitacionLogic;
+    }
     
     /**
      * Convierte una lista de ViviendaEntity a una lista de ViviendaDetailDTO.
@@ -144,11 +157,14 @@ public class ViviendaResource {
      */
     @POST
     @Path("/viviendas/{idV:\\d+}/habitaciones/")
-    public HabitacionDetailDTO createHabitacion(HabitacionDetailDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
+    public HabitacionDetailDTO createHabitacion(HabitacionDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
         List<HabitacionEntity> h = v.getHabitaciones();
         HabitacionEntity nueva = dto.toEntity();
+        HabitacionLogic hl = new HabitacionLogic();
+        hl.createHabitacion(nueva);
         h.add(nueva);
+        v.setHabitaciones(h);
         viviendaLogic.updateVivienda(v);
         return new HabitacionDetailDTO(nueva);
     }
@@ -182,12 +198,15 @@ public class ViviendaResource {
     public HabitacionDetailDTO getHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
         HabitacionEntity buscada = null;
-        for (HabitacionEntity h: v.getHabitaciones()){
-            if(Objects.equals(h.getId(), id)){
+        for (HabitacionEntity h: v.getHabitaciones())
+        {
+            if(Objects.equals(h.getId(), id))
+            {
                 buscada = h;
             }
         }
-        if (buscada==null){
+        if (buscada==null)
+        {
             throw new WebApplicationException("La habitación no existe", 404);
         }
         return new HabitacionDetailDTO(buscada);

@@ -54,9 +54,7 @@ public class HabitacionPersistence {
     }
     
     public HabitacionEntity create(HabitacionEntity entity) {
-      
         em.persist(entity);
-        
         return entity;
     }
     

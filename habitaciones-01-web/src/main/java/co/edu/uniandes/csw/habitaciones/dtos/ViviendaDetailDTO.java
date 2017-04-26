@@ -90,6 +90,14 @@ public class ViviendaDetailDTO extends ViviendaDTO{
                     this.habitaciones.add(new HabitacionDTO(vivienda));
                 }
             }
+            
+            if(entity.getReservas()!=null){
+                this.reservas=new ArrayList();
+                for(ReservaEntity reserva:entity.getReservas())
+                {
+                    this.reservas.add(new ReservaDTO(reserva));
+                }
+            }
         }
     }
     

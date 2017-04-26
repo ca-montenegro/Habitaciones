@@ -68,7 +68,7 @@
                                 $scope.tempVivienda = {
                                     anfitrion: {},
                                     capacidad: '',
-                                    ciudad: '',
+                                    ciudad: '', 
                                     descripcion: '',
                                     direccion: '',
                                     idVivienda: '',
@@ -78,20 +78,7 @@
                                 };
                                 console.log($scope.tempVivienda);
                                 $scope.agregarVivienda = function () {
-                                    
-                                    $http.get("api/usuarios/"+$scope.tempVivienda.anfitrion.id).then(
-                                            function(response){
-                                                
-                                                $scope.data = response.data;
-                                        anfitri = {
-                                            "correo": data.correo,
-                                            "direccion": data.direccion,
-                                            "image": data.image,
-                                            "nombre": data.nombre,
-                                            "telefono": data.telefono
-                                        }})
-                                    $scope.tempVivienda.anfitrion=anfitri;
-                                    tempVivienda = $scope.tempVivienda;
+
                                     console.log(tempVivienda);
                                     
                                     const contextoAnfitrion = 'api/anfitriones/'+tempVivienda.anfitrion.id+'/viviendas';
@@ -119,13 +106,6 @@
                                     }
                                 }
                                 
-                                this.showError = function (msg) {
-                                    showMessage(msg, "danger");
-                                };
-                                
-                                this.showSuccess = function (msg) {
-                                    showMessage(msg, "success");
-                                };
                                 
                                 var self = this;
                                 function responseError(response) {
