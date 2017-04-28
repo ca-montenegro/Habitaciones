@@ -21,7 +21,9 @@ package co.edu.uniandes.csw.habitaciones.ejbs;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.persistence.ReservaPersistence;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -52,6 +54,8 @@ public class ReservaLogic {
              throw new BusinessLogicException("El costo no puede ser negativo.");
         if(entity.getEstado() == 'C')
              throw new BusinessLogicException("No se puede crear una reserva cancelada.");
+        Long dias = entity.getFechaFin().getTime() - entity.getFechaInicio().getTime();
+        entity.setCosto(entity.getVivienda().getValorDiario() * TimeUnit.DAYS.convert(dias, TimeUnit.MILLISECONDS)); 
         persistence.create(entity);
         return entity;
     }
