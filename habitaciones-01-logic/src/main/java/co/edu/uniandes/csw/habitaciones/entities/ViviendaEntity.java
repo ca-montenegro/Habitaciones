@@ -31,6 +31,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 
 @Entity
@@ -70,6 +71,7 @@ public class ViviendaEntity implements Serializable
     /**
      * Capacidad de la vivienda
      */
+    @PodamIntValue(minValue = 0)
     private int capacidad;
     
     /**
@@ -80,6 +82,8 @@ public class ViviendaEntity implements Serializable
     /**
      * Numero de habitaciones de la vivienda
      */
+    @PodamExclude
+    @PodamIntValue(minValue = 0)
     private int numeroHabitaciones;
     
     /**

@@ -49,7 +49,7 @@ public class HabitacionPersistence {
     
     public List<HabitacionEntity> findAllVivienda(Long idVivienda) {
        
-        Query q = em.createQuery("select u from HabitacionEntity u where vivienda_idVivienda=" + idVivienda);
+        Query q = em.createQuery("select * from HabitacionEntity where vivienda_idVivienda=" + idVivienda);
         return q.getResultList();
     }
     
