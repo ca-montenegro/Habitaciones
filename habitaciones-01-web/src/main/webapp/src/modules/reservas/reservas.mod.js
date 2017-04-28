@@ -41,7 +41,6 @@
                         controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
                                 function ($scope, $http, $state, reservas, reservasContext) {
                         $scope.tempUser = {
-                            codigoReserva: '',
                             fechaInicio: '',
                             fechaFin: '',
                             costo: '',
