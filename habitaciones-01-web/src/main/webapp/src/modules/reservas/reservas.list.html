@@ -13,10 +13,13 @@
                 <tr ng-repeat="reserva in reservasRecords">
                     <td id="{{$index}}-codigoReserva"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.codigoReserva}}</a></td>
                     <td id="{{$index}}-Estado"> <a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.estado}}</td>
-                    <td id="{{$index}}-fechaInicio"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaInicio}}</td>
-                    <td id="{{$index}}-fechaFinal"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaFin}}</td>
+                    <td id="{{$index}}-fechaInicio"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaInicio|date:'yyyy-MM-dd'}}</td>
+                    <td id="{{$index}}-fechaFinal"><a ui-sref="reservasDetail({codigoReserva: reserva.codigoReserva})">{{reserva.fechaFin|date:'yyyy-MM-dd'}}</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div  style="text-align:center">
+        <button class="buttonNuevaReserva"><a ui-sref="registrarReserva">Realizar nueva reserva</a></button>
     </div>
 </div>

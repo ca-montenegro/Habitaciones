@@ -8,10 +8,10 @@
                     <dd>{{currentReserva.codigoReserva}}</dd>
                     <hr>
                     <dt><b>Fecha Inicio</b></dt>
-                    <dd>{{currentReserva.fechaInicio}}</dd>
+                    <dd>{{currentReserva.fechaInicio|date:'yyyy-MM-dd'}}</dd>
                     <hr>
                     <dt><b>Fecha Fin</b></dt>
-                    <dd>{{currentReserva.fechaFin}}</dd>
+                    <dd>{{currentReserva.fechaFin|date:'yyyy-MM-dd'}}</dd>
                     <hr>
                     <dt><b>Costo</b></dt>
                     <dd>COP {{currentReserva.vivienda.valorDiario}}</dd>
