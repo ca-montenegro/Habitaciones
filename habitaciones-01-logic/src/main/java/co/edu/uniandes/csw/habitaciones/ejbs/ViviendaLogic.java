@@ -125,7 +125,7 @@ public class ViviendaLogic
         if (entity.getValorDiario()<0.0){
             throw new BusinessLogicException("El precio no puede ser negativo.");}
         if (entity.getCapacidad()<0){
-            throw new BusinessLogicException("La vivienda debe tener capacidad para por lo menos una persona.");}
+            throw new BusinessLogicException("La capacidad de la vivienda no puede ser negativa.");}
         return persistence.update(entity);
     }
     
