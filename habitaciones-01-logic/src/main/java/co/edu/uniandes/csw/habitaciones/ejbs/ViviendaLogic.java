@@ -106,7 +106,7 @@ public class ViviendaLogic
             throw new BusinessLogicException("Debe incluir la dirección completa.");}
         if (entity.getValorDiario()<0.0){
             throw new BusinessLogicException("El precio no puede ser negativo.");}
-        if (entity.getCapacidad()<=0){
+        if (entity.getCapacidad()<0){
             throw new BusinessLogicException("La vivienda debe tener capacidad para por lo menos una persona.");}
         persistence.create(entity);
         return entity;
