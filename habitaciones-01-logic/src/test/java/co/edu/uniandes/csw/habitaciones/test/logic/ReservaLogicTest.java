@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.habitaciones.test.persistence;
+package co.edu.uniandes.csw.habitaciones.test.logic;
 
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
+import co.edu.uniandes.csw.habitaciones.ejbs.ReservaLogic;
+import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.ReservaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,29 +27,33 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 @RunWith(Arquillian.class)
-public class ReservasPersistenceTest {
+public class ReservaLogicTest {
     
-    public static final String DEPLOY = "PruebaReservaPersistence";
-    
-    @Deployment
-    public static JavaArchive createDeployment(){
-        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ReservaEntity.class.getPackage())
-                .addPackage(ReservaPersistence.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml","beans.xml");
-    }
-    
-        /**
-     * @generated
-     */
-    @Inject
-    private ReservaPersistence reservaPersistence;
+    public static final String DEPLOY = "PruebaReservaLogic";
 
     /**
      * @generated
      */
-    @PersistenceContext(unitName = "habitacionesPU")
+    @Deployment
+    public static WebArchive createDeployment() {
+        return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
+                .addPackage(ReservaEntity.class.getPackage())
+                .addPackage(ReservaLogic.class.getPackage())
+                .addPackage(ReservaPersistence.class.getPackage())
+                .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
+                .addAsWebInfResource("META-INF/beans.xml", "beans.xml");
+    }
+
+    /**
+     * @generated
+     */
+    @Inject
+    private ReservaLogic reservaLogic;
+
+    /**
+     * @generated
+     */
+    @PersistenceContext
     private EntityManager em;
 
     /**
@@ -102,49 +108,47 @@ public class ReservasPersistenceTest {
         for (int i = 0; i < 3; i++) {
             PodamFactory factory = new PodamFactoryImpl();
             ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+
             em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Prueba para crear una Vivienda.
+     * Prueba para crear una Reserva.
      *
      * @generated
      */
     @Test
-    public void createReservaTest() {
+    public void createReservaTest() throws BusinessLogicException {
         PodamFactory factory = new PodamFactoryImpl();
-        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
-        ReservaEntity result = reservaPersistence.create(newEntity);
-
+        ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+        ReservaEntity result = reservaLogic.createReserva(entity);
         Assert.assertNotNull(result);
-
-        ReservaEntity entity = em.find(ReservaEntity.class, result.getCodigoReserva());
         double error = 0.00000001;
 
-        Assert.assertEquals(newEntity.getCosto(), entity.getCosto(), error);
-        Assert.assertEquals(newEntity.getEstado(),entity.getEstado());
-        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
-        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
-        Assert.assertEquals(newEntity.getHabitacion(), entity.getHabitacion());
-        Assert.assertEquals(newEntity.getMulta(), entity.getMulta());
-        Assert.assertEquals(newEntity.getVivienda(), entity.getVivienda());
+        Assert.assertEquals(result.getCosto(), entity.getCosto(), error);
+        Assert.assertEquals(result.getEstado(),entity.getEstado());
+        Assert.assertEquals(result.getFechaInicio(), entity.getFechaInicio());
+        Assert.assertEquals(result.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals(result.getHabitacion(), entity.getHabitacion());
+        Assert.assertEquals(result.getMulta(), entity.getMulta());
+        Assert.assertEquals(result.getVivienda(), entity.getVivienda());
     }
 
     /**
-     * Prueba para consultar la lista de Books.
+     * Prueba para consultar la lista de Reservas.
      *
      * @generated
      */
     @Test
     public void getReservasTest() {
-        List<ReservaEntity> list = reservaPersistence.findAll();
+        List<ReservaEntity> list = reservaLogic.getReservas();
         Assert.assertEquals(data.size(), list.size());
-        for (ReservaEntity ent : list) {
+        for (ReservaEntity entity : list) {
             boolean found = false;
-            for (ReservaEntity entity : data) {
-                if (ent.getCodigoReserva().equals(entity.getCodigoReserva())) {
+            for (ReservaEntity storedEntity : data) {
+                if (entity.getCodigoReserva().equals(storedEntity.getCodigoReserva())) {
                     found = true;
                 }
             }
@@ -160,42 +164,41 @@ public class ReservasPersistenceTest {
     @Test
     public void getReservaTest() {
         ReservaEntity entity = data.get(0);
-        ReservaEntity newEntity = reservaPersistence.find(entity.getCodigoReserva());
+        ReservaEntity resultEntity = reservaLogic.getReserva(entity.getCodigoReserva());
+        Assert.assertNotNull(resultEntity);
         double error = 0.00000001;
-        
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(newEntity.getCosto(), entity.getCosto(), error);
-        Assert.assertEquals(newEntity.getEstado(),entity.getEstado());
-        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
-        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
-        Assert.assertEquals(newEntity.getHabitacion(), entity.getHabitacion());
-        Assert.assertEquals(newEntity.getMulta(), entity.getMulta());
-        Assert.assertEquals(newEntity.getVivienda(), entity.getVivienda());
+        Assert.assertEquals(entity.getCosto(), resultEntity.getCosto(), error);
+        Assert.assertEquals(entity.getEstado(),resultEntity.getEstado());
+        Assert.assertEquals(entity.getFechaInicio(), resultEntity.getFechaInicio());
+        Assert.assertEquals(entity.getFechaFin(), resultEntity.getFechaFin());
+        Assert.assertEquals(entity.getHabitacion(), resultEntity.getHabitacion());
+        Assert.assertEquals(entity.getMulta(), resultEntity.getMulta());
+        Assert.assertEquals(entity.getVivienda(), resultEntity.getVivienda());
     }
+
     /**
      * Prueba para actualizar un Book.
      *
      * @generated
      */
     @Test
-    public void updateReservaTest() {
+    public void updateBookTest() {
         ReservaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
-        newEntity.setCodigoReserva(entity.getCodigoReserva());
-        double error = 0.00000001;
+        ReservaEntity pojoEntity = factory.manufacturePojo(ReservaEntity.class);
+        pojoEntity.setCodigoReserva(entity.getCodigoReserva());
 
-        reservaPersistence.update(newEntity);
+        reservaLogic.updateReserva(pojoEntity);
 
         ReservaEntity resp = em.find(ReservaEntity.class, entity.getCodigoReserva());
         
-        Assert.assertEquals(newEntity.getCosto(), resp.getCosto(), error);
-        Assert.assertEquals(newEntity.getEstado(),resp.getEstado());
-        Assert.assertEquals(newEntity.getFechaInicio(), resp.getFechaInicio());
-        Assert.assertEquals(newEntity.getFechaFin(), resp.getFechaFin());
-        Assert.assertEquals(newEntity.getHabitacion(), resp.getHabitacion());
-        Assert.assertEquals(newEntity.getMulta(), resp.getMulta());
-        Assert.assertEquals(newEntity.getVivienda(), resp.getVivienda());
+        double error = 0.00000001;
+        Assert.assertEquals(pojoEntity.getCosto(), resp.getCosto(), error);
+        Assert.assertEquals(pojoEntity.getEstado(),resp.getEstado());
+        Assert.assertEquals(pojoEntity.getFechaInicio(), resp.getFechaInicio());
+        Assert.assertEquals(pojoEntity.getFechaFin(), resp.getFechaFin());
+        Assert.assertEquals(pojoEntity.getHabitacion(), resp.getHabitacion());
+        Assert.assertEquals(pojoEntity.getMulta(), resp.getMulta());
+        Assert.assertEquals(pojoEntity.getVivienda(), resp.getVivienda());
     }
-    
 }
