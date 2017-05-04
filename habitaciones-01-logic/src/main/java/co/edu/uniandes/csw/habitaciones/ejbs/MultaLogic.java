@@ -23,6 +23,8 @@ import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.MultaPersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
+
 
 @Stateless
 public class MultaLogic {
@@ -34,6 +36,11 @@ public class MultaLogic {
     private static final long serialVersionUID = 1L;
     
     @Inject
+    public MultaLogic (MultaPersistence persistence)
+    {
+        Assert.notNull(persistence, "My persistence must be not null");
+        this.persistence = persistence;
+    }
     private MultaPersistence persistence;
     
     public MultaEntity getMulta(Long codigo){
