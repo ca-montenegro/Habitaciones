@@ -36,6 +36,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 @Path("/multas")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -44,10 +45,16 @@ public class MultaResource {
     
     public MultaResource(){}
     
-    @Inject private MultaLogic multaLogic;
+    private MultaLogic multaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
+    
+    @Inject 
+    public MultaResource (MultaLogic multaLogic) {
+        Assert.notNull(multaLogic, "Multa logic no puede ser nula!");
+        this.multaLogic = multaLogic;
+    }
     
     private List<MultaDTO> listEntity2DTO (List<MultaEntity> entityList){
         List<MultaDTO> list= new ArrayList<>();

@@ -37,6 +37,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import org.springframework.util.Assert;
 
 @Path("/reservas")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -45,10 +46,16 @@ public class ReservaResource {
     
     public ReservaResource(){}
     
-    @Inject private ReservaLogic reservaLogic;
+    private ReservaLogic reservaLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
+    
+    @Inject 
+    public ReservaResource (ReservaLogic reservaLogic) {
+        Assert.notNull(reservaLogic, "Reserva logic no puede ser nula!");
+        this.reservaLogic = reservaLogic;
+    }
     
     private List<ReservaDTO> listEntity2DTO (List<ReservaEntity> entityList){
         List<ReservaDTO> list= new ArrayList<>();
