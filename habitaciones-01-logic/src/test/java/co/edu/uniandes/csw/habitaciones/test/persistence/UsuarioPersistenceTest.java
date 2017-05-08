@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,14 +34,14 @@ public class UsuarioPersistenceTest {
      * @generated
      */
     @Deployment
-    public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
                 //.addClass(UsuarioEntity.class)
                 //.addClass(UsuarioPersistence.class)
                 .addPackage(UsuarioEntity.class.getPackage())
                 .addPackage(UsuarioPersistence.class.getPackage())
-                .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
-                .addAsWebInfResource("META-INF/beans.xml", "beans.xml");
+                .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml","beans.xml");
     }
 
     /**
