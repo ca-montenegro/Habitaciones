@@ -7,9 +7,12 @@ package co.edu.uniandes.csw.habitaciones.test.logic;
 
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.ejbs.ReservaLogic;
+import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.ReservaPersistence;
+import java.util.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -94,10 +97,12 @@ public class ReservaLogicTest {
     }
 
     /**
-     * @generated
+     * Datos usados en las pruebas.
      */
     private List<ReservaEntity> data = new ArrayList<ReservaEntity>();
 
+    private ViviendaEntity vivienda; 
+    
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
@@ -105,10 +110,20 @@ public class ReservaLogicTest {
      * @generated
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
-            PodamFactory factory = new PodamFactoryImpl();
-            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+      
+        PodamFactory factory = new PodamFactoryImpl();
 
+        // crea una vivienda para las pruebas
+        vivienda = factory.manufacturePojo(ViviendaEntity.class);
+        vivienda.setValorDiario(10000.00);
+        em.persist(vivienda);
+        
+        for (int i = 0; i < 3; i++) {   
+          
+            // crea una reserva (sin asociaciones)
+            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+            entity.setVivienda(vivienda);
+            
             em.persist(entity);
             data.add(entity);
         }
@@ -122,7 +137,14 @@ public class ReservaLogicTest {
     @Test
     public void createReservaTest() throws BusinessLogicException {
         PodamFactory factory = new PodamFactoryImpl();
+        
+        // crea una reserva (sin asociaciones)
         ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+        // hace que la fecha final sea mayor a fecha inicial
+        entity.setFechaFin( agregaUnDia(entity.getFechaInicio()) );
+        // asocia la reserva a la habitación de prueba
+        entity.setVivienda(vivienda);
+        
         ReservaEntity result = reservaLogic.createReserva(entity);
         Assert.assertNotNull(result);
         double error = 0.00000001;
@@ -201,4 +223,16 @@ public class ReservaLogicTest {
         Assert.assertEquals(pojoEntity.getMulta(), resp.getMulta());
         Assert.assertEquals(pojoEntity.getVivienda(), resp.getVivienda());
     }
+    
+    private Date agregaDias(Date date, int dias) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, dias); //minus number would decrement the days
+        return cal.getTime();      
+    }
+    
+    private Date agregaUnDia(Date date) {
+        return agregaDias(date, 1);
+    }
+    
 }
