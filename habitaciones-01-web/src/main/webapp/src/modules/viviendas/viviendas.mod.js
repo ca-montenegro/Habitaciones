@@ -180,7 +180,7 @@
                 parent : 'reservas',
                 views: {
                     'listView' : {
-                        templateUrl: basePath + 'nuevaReserva.html',
+                        templateUrl: 'src/modules/reservas/nuevaReserva.html',
                         controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
                                 function ($scope, $http, $state, reservas, reservasContext) {
                         $scope.tempUser = {
