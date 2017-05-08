@@ -34,6 +34,7 @@ import javax.inject.Inject;
 public class HabitacionLogic {
 
     public HabitacionLogic() {
+        
     }
     
     
@@ -59,14 +60,19 @@ public class HabitacionLogic {
     
     public HabitacionEntity createHabitacion(HabitacionEntity entity) throws BusinessLogicException
     {
-        if(entity.getArea() <= 0.0)
+        if(entity.getArea() <= 0.0){
             throw new BusinessLogicException ("El area debe ser mayor a 0");
-        if(entity.getCapacidad() <= 0)
+        }
+        if(entity.getCapacidad()<=0.0){
             throw new BusinessLogicException("La capacidad debe ser mayor a 0");
-        if(entity.getValorDiario() <= 0)
+        }
+        if(entity.getValorDiario()<0.0)
+        {
             throw new BusinessLogicException("El precio debe ser mayor a cero");
-        if(entity.getVivienda() == null)
+        }
+        if(entity.getVivienda() == null){
             throw new BusinessLogicException("La habitacion debe pertenecer a una vivienda");
+        }
         persistence.create(entity);
         return entity;
     }

@@ -161,12 +161,11 @@ public class ViviendaResource {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
         List<HabitacionEntity> h = v.getHabitaciones();
         HabitacionEntity nueva = dto.toEntity();
-        HabitacionLogic hl = new HabitacionLogic();
-        hl.createHabitacion(nueva);
+        nueva.setVivienda(v);
         h.add(nueva);
         v.setHabitaciones(h);
         viviendaLogic.updateVivienda(v);
-        return new HabitacionDetailDTO(nueva);
+        return new HabitacionDetailDTO(habitacionLogic.createHabitacion(nueva));
     }
     
     /**

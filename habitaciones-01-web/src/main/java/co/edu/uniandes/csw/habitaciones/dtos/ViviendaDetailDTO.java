@@ -33,8 +33,16 @@ public class ViviendaDetailDTO extends ViviendaDTO{
     
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Lista de reservas dto
+     */
     private List<ReservaDTO> reservas;
+    
+    /**
+     * Lista de Habitaciones dto
+     */
     private List<HabitacionDTO> habitaciones;
+    
     
     public List<HabitacionDTO> getHabitaciones() {
         return habitaciones;
@@ -52,8 +60,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
         this.reservas = reservas;
     }
     
-    
-    
+    /**
+     * Constructor vivienda dto
+     */
     public ViviendaDetailDTO(){
         super();
         ViviendaEntity entity = super.toEntity();
@@ -85,9 +94,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
         if(entity!=null){
             if(entity.getHabitaciones()!=null){
                 this.habitaciones=new ArrayList();
-                for(HabitacionEntity vivienda:entity.getHabitaciones())
+                for(HabitacionEntity habitacion:entity.getHabitaciones())
                 {
-                    this.habitaciones.add(new HabitacionDTO(vivienda));
+                    this.habitaciones.add(new HabitacionDTO(habitacion));
                 }
             }
             
