@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import org.springframework.util.Assert;
 
 @Stateless
 public class ReservaLogic {
@@ -37,6 +38,11 @@ public class ReservaLogic {
     private static final long serialVersionUID = 1L;
     
     @Inject 
+    public ReservaLogic (ReservaPersistence persistence)
+    {
+        Assert.notNull(persistence, "My persistence must be not null");
+        this.persistence = persistence;
+    }
     private ReservaPersistence persistence;
    
     public List<ReservaEntity> getReservas() {
