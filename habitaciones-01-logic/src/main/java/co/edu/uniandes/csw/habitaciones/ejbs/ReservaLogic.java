@@ -54,13 +54,14 @@ public class ReservaLogic {
     }
     
     public ReservaEntity createReserva(ReservaEntity entity) throws BusinessLogicException {
-        if(entity.getFechaFin().after(entity.getFechaInicio()))
+        if(entity.getFechaFin().before(entity.getFechaInicio()))
             throw new BusinessLogicException("La fecha final de la reserva no puede ser antes de la fecha de inicio de la reserva.");
         if(entity.getCosto()< 0.0)
              throw new BusinessLogicException("El costo no puede ser negativo.");
         if(entity.getEstado() == 'C')
              throw new BusinessLogicException("No se puede crear una reserva cancelada.");
         Long dias = (entity.getFechaFin().getTime() - entity.getFechaInicio().getTime()/(1000 * 60 * 60 * 24));
+        
         entity.setCosto(entity.getVivienda().getValorDiario() * dias); 
         persistence.create(entity);
         return entity;
