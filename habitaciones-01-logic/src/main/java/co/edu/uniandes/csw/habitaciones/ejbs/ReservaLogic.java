@@ -60,8 +60,8 @@ public class ReservaLogic {
              throw new BusinessLogicException("El costo no puede ser negativo.");
         if(entity.getEstado() == 'C')
              throw new BusinessLogicException("No se puede crear una reserva cancelada.");
-        Long dias = entity.getFechaFin().getTime() - entity.getFechaInicio().getTime();
-        entity.setCosto(entity.getVivienda().getValorDiario() * TimeUnit.DAYS.convert(dias, TimeUnit.MILLISECONDS)); 
+        Long dias = (entity.getFechaFin().getTime() - entity.getFechaInicio().getTime()/(1000 * 60 * 60 * 24));
+        entity.setCosto(entity.getVivienda().getValorDiario() * dias); 
         persistence.create(entity);
         return entity;
     }

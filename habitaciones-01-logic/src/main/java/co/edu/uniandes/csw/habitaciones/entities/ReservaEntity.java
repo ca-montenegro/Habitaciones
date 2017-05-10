@@ -55,6 +55,7 @@ public class ReservaEntity implements Serializable{
     
     private double costo;
     
+    @PodamExclude
     private char estado;
     
     @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
