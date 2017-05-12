@@ -169,23 +169,6 @@ public class ViviendaResource {
     }
     
     /**
-     *Actualiza la información de una habitación específica en una vivienda dada.
-     * @param idV id vivienda
-     * @param id id habitacion a modificar
-     * @param dto nueva información de la habitación
-     * @return HabitacionDetailDTO con la nueva información de la habitación
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
-     */
-    @PUT
-    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
-    public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) throws BusinessLogicException {
-        getHabitacion(idV, id);
-        HabitacionEntity entity = dto.toEntity();
-        entity.setId(id);
-        return new HabitacionDetailDTO(entity);
-    }
-    
-    /**
      *Retorna una habitacion buscada
      * @param idV id de la vivienda
      * @param id id de la habitacion buscada

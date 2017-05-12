@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,7 +44,7 @@ import javax.ws.rs.core.MediaType;
  *URI: habitaciones/
  * @author l.maya10
  */
-@Path("/habitaciones")
+@Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class HabitacionResource {
@@ -65,6 +66,7 @@ public class HabitacionResource {
     }
     
      @GET
+     @Path("/habitaciones/")
         public List<HabitacionDTO> getHabitaciones() {
         return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
@@ -94,5 +96,22 @@ public class HabitacionResource {
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
         public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) {
         habitacionLogic.deleteHabitacion(id);
+    }
+        
+            /**
+     *Actualiza la información de una habitación específica en una vivienda dada.
+     * @param idV id vivienda
+     * @param id id habitacion a modificar
+     * @param dto nueva información de la habitación
+     * @return HabitacionDetailDTO con la nueva información de la habitación
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     */
+    @PUT
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
+    public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) throws BusinessLogicException {
+        getHabitacion(idV, id);
+        HabitacionEntity entity = dto.toEntity();
+        entity.setId(id);
+        return new HabitacionDetailDTO(entity);
     }
 }
