@@ -123,18 +123,16 @@
                                     'area': '',
                                     'capacidad': '',
                                     'descripcion': '',
-                                    'imagen': '',
+                                    'imagen': 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large',
                                     'valorDiario': ''                                    
                                 };
                                 console.log($scope.tempHabitacion);
                                 $scope.agregarHabitacion = function () {
                                     
-                                    tempVivienda = $scope.tempVivienda;
-                                    console.log(tempVivienda);
+                                    tempHabitacion = $scope.tempHabitacion;
+                                    console.log($scope.tempHabitacion);
                                     
-                                    const contextoAnfitrion = 'api/anfitriones/'
-                                            +tempVivienda.anfitrion.id+'/viviendas';
-                                    return $http.post(contextoAnfitrion, tempVivienda)
+                                    return $http.post(viviendasContext+'/2'+'/habitaciones', tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado

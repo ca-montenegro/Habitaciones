@@ -37,6 +37,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -71,26 +72,6 @@ public class HabitacionResource {
         return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
         
-        
-    @GET
-    @Path("/viviendas/{idV:\\d+}/habitaciones/{id: \\d+}")
-    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) throws BusinessLogicException {
-        HabitacionDetailDTO buscada = null;
-        ViviendaEntity vivienda = viviendaLogic.getVivienda(idV);
-        List<HabitacionEntity> habitaciones = vivienda.getHabitaciones();
-         for (HabitacionEntity h: habitaciones){
-             if (h.getId()==idV){
-                habitaciones.add(h);
-                viviendaLogic.updateVivienda(vivienda);
-                buscada = new HabitacionDetailDTO(h);
-             }
-         }
-         if (buscada == null)
-         {
-             throw new BusinessLogicException("Error 404");
-         }
-        return buscada;
-    }
     
     @DELETE
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
@@ -109,7 +90,7 @@ public class HabitacionResource {
     @PUT
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
     public HabitacionDetailDTO updateHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id, HabitacionDetailDTO dto) throws BusinessLogicException {
-        getHabitacion(idV, id);
+        habitacionLogic.getHabitacion(id);
         HabitacionEntity entity = dto.toEntity();
         entity.setId(id);
         return new HabitacionDetailDTO(entity);

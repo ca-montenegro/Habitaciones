@@ -159,12 +159,9 @@ public class ViviendaResource {
     @Path("/viviendas/{idV:\\d+}/habitaciones/")
     public HabitacionDetailDTO createHabitacion(HabitacionDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
-        List<HabitacionEntity> h = v.getHabitaciones();
         HabitacionEntity nueva = dto.toEntity();
         nueva.setVivienda(v);
-        h.add(nueva);
-        v.setHabitaciones(h);
-        viviendaLogic.updateVivienda(v);
+
         return new HabitacionDetailDTO(habitacionLogic.createHabitacion(nueva));
     }
     
@@ -176,22 +173,13 @@ public class ViviendaResource {
      * @throws BusinessLogicException
      */
     @GET
-    @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
-    public HabitacionDetailDTO getHabitacion(@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
-        ViviendaEntity v = viviendaLogic.getVivienda(idV);
-        HabitacionEntity buscada = null;
-        for (HabitacionEntity h: v.getHabitaciones())
-        {
-            if(Objects.equals(h.getId(), id))
-            {
-                buscada = h;
-            }
+    @Path("/viviendas/{idV:\\d+}/habitaciones/{id: \\d+}")
+    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) throws BusinessLogicException {
+        HabitacionEntity hab = habitacionLogic.getHabitacion(id);
+        if (hab==null){
+            throw new WebApplicationException("La vivienda no existe", 404);
         }
-        if (buscada==null)
-        {
-            throw new WebApplicationException("La habitación no existe", 404);
-        }
-        return new HabitacionDetailDTO(buscada);
+        return new HabitacionDetailDTO(hab);
     }
     
     /**

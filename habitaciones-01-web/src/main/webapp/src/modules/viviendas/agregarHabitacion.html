@@ -20,7 +20,7 @@
                         <section>
                             <div class="form-group">
                                 <label style="color:white" for="class">Precio por noche:</label>
-                                <input type="text" class="form-control" ng-model="tempHabitacion.capacidad" ng-init="tempHabitacion.capacidad" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <input type="text" class="form-control" ng-model="tempHabitacion.precio" ng-init="tempHabitacion.precio" placeholder="$$$" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </section>
                     </div>
@@ -46,7 +46,7 @@
                     &nbsp
                 </fieldset>
                 <div>
-                    <p><a type="submit" class="btn btn-default btn-lg" href ng-click = "agregar()">Agregar</a></p>
+                    <p><a type="submit" class="btn btn-default btn-lg" href ng-click = "agregarHabitacion()">Agregar</a></p>
                 </div>
                 &nbsp
         </div>
