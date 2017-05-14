@@ -49,12 +49,14 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class UsuarioResource {
-    
-    public UsuarioResource(){}
+
+    public UsuarioResource() {
+    }
 
     @Inject
     private UsuarioLogic usuarioLogic;
-    @Inject private ReservaLogic reservaLogic;
+    @Inject
+    private ReservaLogic reservaLogic;
     @Context
     private HttpServletResponse response;
     @QueryParam("page")
@@ -69,15 +71,15 @@ public class UsuarioResource {
      * @return Lista de UsuarioDetailDTO convertida.
      * @generated
      */
-    private List<UsuarioDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
+    private static List<UsuarioDTO> listEntity2DTO(List<UsuarioEntity> entityList) {
         List<UsuarioDTO> list = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
             list.add(new UsuarioDTO(entity));
         }
         return list;
     }
-    
-    private List<ReservaDTO> listEntity2DTOReserva(List<ReservaEntity> entityList) {
+
+    private static List<ReservaDTO> listEntity2DTOReserva(List<ReservaEntity> entityList) {
         List<ReservaDTO> list = new ArrayList<>();
         for (ReservaEntity entity : entityList) {
             list.add(new ReservaDTO(entity));
@@ -105,29 +107,28 @@ public class UsuarioResource {
      * consultado
      * @generated
      */
-
     @GET
     @Path("{id: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws BusinessLogicException {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
     }
-    
+
     @GET
     @Path("{id:\\d+}/adminLogin}")
     public UsuarioDetailDTO getUsuarioAdmin(@PathParam("id") Long id) throws BusinessLogicException {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
     }
-    
+
     /**
-     *Retorna una lista de reservas para un usuario con ID
+     * Retorna una lista de reservas para un usuario con ID
+     *
      * @param id id del usuario
      * @return List<ReservaDTO> lista de reservasDTO
      * @throws BusinessLogicException
      */
     @GET
     @Path("{id:\\d+}/reservas")
-    public List<ReservaDTO> getReservas(@PathParam("id") Long id) throws BusinessLogicException
-    {
+    public List<ReservaDTO> getReservas(@PathParam("id") Long id) throws BusinessLogicException {
         return listEntity2DTOReserva(usuarioLogic.getUsuario(id).getReservas());
     }
 
@@ -142,7 +143,7 @@ public class UsuarioResource {
     @Path("{id: \\d+}/reservas/{idReserva}")
     public ReservaDTO getUsuarioReservaID(@PathParam("id") Long id, @PathParam("idReserva") String idReserva) throws BusinessLogicException {
         for (ReservaEntity re : usuarioLogic.getUsuario(id).getReservas()) {
-            if (re.getCodigoReserva()==Long.parseLong(idReserva)) {
+            if (re.getCodigoReserva() == Long.parseLong(idReserva)) {
                 return new ReservaDTO(re);
             }
 
@@ -157,7 +158,7 @@ public class UsuarioResource {
      * @return Objeto de UsuarioDTO con los datos nuevos y su ID
      * @throws
      * co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
-     * 
+     *
      */
     @POST
     public UsuarioDTO createUsuario(UsuarioDTO dto) throws BusinessLogicException {
@@ -166,10 +167,13 @@ public class UsuarioResource {
 
     /**
      * Crea una nueva reserva para un usuario
+     *
      * @param id id del usuario a agregar reserva
      * @param dto Objeto de ReservaDTO con los datos nuevos
-     * @return true si se creo y agrego la reserva de usuario. False de los contrarío
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @return true si se creo y agrego la reserva de usuario. False de los
+     * contrarío
+     * @throws
+     * co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
     @POST
     @Path("{id: \\d+}/reserva")
@@ -188,7 +192,8 @@ public class UsuarioResource {
      * @param id Identificador de la instancia de Usuario a modificar
      * @param dto Instancia UsuarioDetailDTO con los datos actualizados
      * @return UsuarioDTO actualizado
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @throws
+     * co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      * @generated
      */
     @PUT
@@ -201,10 +206,11 @@ public class UsuarioResource {
 
     /**
      * Metodo que actualiza una reserva de un usuario.
-     * @param id id del usuario 
+     *
+     * @param id id del usuario
      * @param idReserva id de la reserva a actualizar
      * @param dto
-     * @return 
+     * @return
      * @throws BusinessLogicException
      */
     @PUT
@@ -212,11 +218,11 @@ public class UsuarioResource {
     public ReservaDTO updateReserva(@PathParam("id") Long id, @PathParam("idReserva") String idReserva, ReservaDTO dto) throws BusinessLogicException {
         List<ReservaEntity> listaReservas = usuarioLogic.getUsuario(id).getReservas();
         ReservaEntity reservaUpdate = null;
-        
+
         for (ReservaEntity re : listaReservas) {
             int count = 0;
 
-            if (re.getCodigoReserva()==Long.parseLong(idReserva)) {
+            if (re.getCodigoReserva() == Long.parseLong(idReserva)) {
 
                 listaReservas.remove(count);
                 reservaUpdate = reservaLogic.updateReserva(dto.toEntity());
@@ -225,11 +231,11 @@ public class UsuarioResource {
             }
             count++;
         }
-        if(reservaUpdate==null)
-        {throw new BusinessLogicException("No existe la reserva con el id: "+idReserva+" para el usuario con id: " + id);}
+        if (reservaUpdate == null) {
+            throw new BusinessLogicException("No existe la reserva con el id: " + idReserva + " para el usuario con id: " + id);
+        }
         return new ReservaDTO(reservaUpdate);
 
     }
-    
-    
+
 }

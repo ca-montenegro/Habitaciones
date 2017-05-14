@@ -28,46 +28,45 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+
 /**
  *
  * @author ca.montenegro
  */
 @Entity
 @Inheritance
-@DiscriminatorColumn(name="DTYPE")
+@DiscriminatorColumn(name = "DTYPE")
 public class UsuarioEntity implements Serializable {
-    
-    public UsuarioEntity(){
-        
+
+    public UsuarioEntity() {
+
     }
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     private Long numeroID;
-    
+
     private String tipoID;
-    
+
     private String nombre;
-    
+
     private String usuario;
-    
+
     private String contrasenha;
-    
+
     private String correo;
-    
+
     private String direccion;
-    
+
     private Long telefono;
-    
+
     private Long numeroTarjeta;
-    
-    
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<ReservaEntity> reservas;
-    
+
     private String image;
-    
 
     public Long getNumeroID() {
         return numeroID;
@@ -148,9 +147,8 @@ public class UsuarioEntity implements Serializable {
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
     }
-    
-    public boolean agregarReserva(ReservaEntity rese)
-    {
+
+    public boolean agregarReserva(ReservaEntity rese) {
         return reservas.add(rese);
 
     }
@@ -163,10 +161,9 @@ public class UsuarioEntity implements Serializable {
         this.image = image;
     }
 
-    
     @Override
     public int hashCode() {
-        if (this.getNumeroID()!= null) {
+        if (this.getNumeroID() != null) {
             return this.getNumeroID().hashCode();
         }
         return super.hashCode();
@@ -189,6 +186,5 @@ public class UsuarioEntity implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

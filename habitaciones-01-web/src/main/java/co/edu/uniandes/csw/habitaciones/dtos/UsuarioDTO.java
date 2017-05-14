@@ -30,46 +30,41 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author ca.montenegro
  */
-
 @XmlRootElement
 public class UsuarioDTO implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     private Long numeroID;
-    
+
     private String tipoID;
-    
+
     private String nombre;
-    
+
     private String usuario;
-    
+
     private String contrasenha;
-    
+
     private String correo;
-    
+
     private String direccion;
-    
+
     private Long telefono;
-    
+
     private Long numeroTarjeta;
-    
+
     private String image;
 
-    
     private List<ReservaEntity> reservas;
-    
-    public UsuarioDTO()
-    {
-        
+
+    public UsuarioDTO() {
+
     }
-    
-    public UsuarioDTO(UsuarioEntity entity)
-    {
-        if(entity!=null)
-        {
+
+    public UsuarioDTO(UsuarioEntity entity) {
+        if (entity != null) {
             this.numeroID = entity.getNumeroID();
-            this.tipoID=entity.getTipoID();
+            this.tipoID = entity.getTipoID();
             this.nombre = entity.getNombre();
             this.usuario = entity.getUsuario();
             this.contrasenha = entity.getContrasenha();
@@ -79,12 +74,12 @@ public class UsuarioDTO implements Serializable {
             this.numeroTarjeta = entity.getNumeroTarjeta();
             this.reservas = entity.getReservas();
             this.image = entity.getImage();
-        }    
+        }
     }
-    
-     public UsuarioEntity toEntity() {
+
+    public UsuarioEntity toEntity() {
         UsuarioEntity entity = new UsuarioEntity();
-        
+
         entity.setNumeroID(this.numeroID);
         entity.setTipoID(this.getTipoID());
         entity.setNombre(this.nombre);
@@ -96,8 +91,8 @@ public class UsuarioDTO implements Serializable {
         entity.setNumeroTarjeta(this.numeroTarjeta);
         entity.setReservas(this.reservas);
         entity.setImage(this.image);
-        
-      return entity;  
+
+        return entity;
     }
 
     public Long getNumeroID() {
@@ -171,18 +166,13 @@ public class UsuarioDTO implements Serializable {
     public void setNumeroTarjeta(Long numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
-    
-    
-    
 
     //public List<ReservaEntity> getReservas() {
     //    return reservas;
     //}
-
     //public void setReservas(List<ReservaEntity> reservas) {
-      //  this.reservas = reservas;
+    //  this.reservas = reservas;
     //}
-
     public String getImage() {
         return image;
     }
@@ -191,6 +181,4 @@ public class UsuarioDTO implements Serializable {
         this.image = image;
     }
 
-    
-    
 }
