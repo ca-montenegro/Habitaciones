@@ -41,6 +41,10 @@ public class UsuarioLogic {
     
     private final UsuarioPersistence persistence;
     
+    public UsuarioLogic(){
+        persistence = new UsuarioPersistence();
+    }
+        
     @Inject
     public UsuarioLogic (UsuarioPersistence persistence)
     {
@@ -48,9 +52,7 @@ public class UsuarioLogic {
         this.persistence = persistence;
     }
     
-    public UsuarioLogic(){
-        persistence = new UsuarioPersistence();
-    }
+
     
     
     public List<UsuarioEntity> getUsuarios()
