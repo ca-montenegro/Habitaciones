@@ -1,5 +1,5 @@
 (function (ng){
-var login = ng.module('MainLogin', ['ui.router']);
+let login = ng.module('MainLogin', ['ui.router']);
 login.controller('MainController', function ($scope, $http, $window,$state) {
     
 	$scope.loge = function(){
@@ -15,9 +15,9 @@ login.controller('MainController', function ($scope, $http, $window,$state) {
       function(response){
         
         $scope.datos = response.data;
-        var encontrado = false;
+        let encontrado = false;
         console.log($scope.datos.length);
-        for(var i = 0; i<$scope.datos.length; i++)
+        for(let i = 0; i<$scope.datos.length; i++)
         {
         	$scope.usuario = (response.data[i].usuario);
         	if($scope.usuario==$scope.usrname1 && !encontrado){

@@ -1,8 +1,8 @@
 (function (ng) {
-    var mod = ng.module("usuarioModule", ['ui.router']);
+    let mod = ng.module("usuarioModule", ['ui.router']);
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/usuario/';
+            const basePath = 'src/modules/usuario/';
             $urlRouterProvider.otherwise("/usuariosList");
             $stateProvider.state('usuarios', {
                 url: '/usuarios',
@@ -56,7 +56,7 @@
                                     direccion: '',
                                     telefono: '',
                                     numeroTarjeta: '',
-                                    image: "https://randomuser.me/api/portraits/men/63.jpg"
+                                    image: ""
 
                                 };
                                 console.log($scope.tempUser);
@@ -82,7 +82,7 @@
 
                                 // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
                                 function showMessage(msg, type) {
-                                    var types = ["info", "danger", "warning", "success"];
+                                    const types = ["info", "danger", "warning", "success"];
                                     if (types.some(function (rc) {
                                         return type === rc;
                                     })) {
@@ -98,7 +98,7 @@
                                     showMessage(msg, "success");
                                 };
 
-                                var self = this;
+                                let self = this;
                                 function responseError(response) {
 
                                     self.showError(response.data);
