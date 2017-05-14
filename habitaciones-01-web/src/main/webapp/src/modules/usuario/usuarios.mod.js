@@ -56,7 +56,7 @@
                                     direccion: '',
                                     telefono: '',
                                     numeroTarjeta: '',
-                                    image: ""
+                                    image: '',
 
                                 };
                                 console.log($scope.tempUser);
@@ -69,7 +69,7 @@
                                                 .then(function () {
                                                     // $http.post es una promesa
                                                     // cuando termine bien, cambie de estado
-                                                    $state.go('usuariosList');
+                                                    $state.go('viviendasList');
                                                     console.log('check');
                                                 }, responseError);
 

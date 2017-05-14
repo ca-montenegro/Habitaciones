@@ -1,16 +1,12 @@
-<head>
-    <link rel="stylesheet" href="css/registroStyle.css">
+<div class="panel-body">
 
-</head>
-<div class="container-fluid">
+    <div class="row" >
 
-    <div class="row">
-
-        <div class="col-sm-3" ng-repeat="usuario in usuariosRecords">
-            <div class="thumbnail">
+        <div class="col-md-3" ng-repeat="usuario in usuariosRecords" >
+            <div class="thumb">
                 <a ui-sref ="usuarioDetail({usuarioId: usuario.numeroID})">
                 
-                            <img ng-src="{{usuario.image}}" alt="{{usuario.nombre}}" />
+                    <img ng-src="{{usuario.image}}" alt="{{usuario.nombre}}"  width="500" height="500" proportional="true" />
                    
 
                     <div class ="caption text-center"> 
