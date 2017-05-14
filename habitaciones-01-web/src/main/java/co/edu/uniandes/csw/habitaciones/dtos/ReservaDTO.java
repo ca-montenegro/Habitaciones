@@ -23,7 +23,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+ @XmlRootElement
 public class ReservaDTO implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -49,15 +49,16 @@ public class ReservaDTO implements Serializable{
             this.estado = entity.getEstado();
             this.fechaInicio = entity.getFechaInicio();
             this.fechaFin = entity.getFechaFin();
-            this.vivienda = new ViviendaDTO(entity.getVivienda(), "nada");
-        }
+            this.vivienda = new ViviendaDTO(entity.getVivienda());
+            this.multa = new MultaDTO(entity.getMulta());
+            this.habitacion = new HabitacionDTO(entity.getHabitacion());
+            }
     }
     
     public ReservaEntity toEntity() {
         ReservaEntity entity = new ReservaEntity();
         
         entity.setCodigoReserva(this.getCodigoReserva());
-        entity.setCosto(this.getCosto());
         entity.setEstado(this.getEstado());
         entity.setFechaInicio(this.getFechaInicio());
         entity.setFechaFin(this.getFechaFin());
