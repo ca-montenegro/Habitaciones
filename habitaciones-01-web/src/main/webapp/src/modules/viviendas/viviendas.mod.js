@@ -31,14 +31,14 @@
                 resolve: {
                     viviendas: ['$http', 'viviendasContext',
                         function ($http, viviendasContext) {
-                            return $http.get(viviendasContext);}]
+                            return $http.get(viviendasContext);},]
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'viviendas.html',
                         controller: ['$scope', 'viviendas', 
                             function ($scope, viviendas) {
-                                $scope.viviendasRecords = viviendas.data}]  
+                                $scope.viviendasRecords = viviendas.data},]  
                     },
                 },
             }).state('viviendasList', {
@@ -53,7 +53,7 @@
                     },
                     'extraView': {
                     },
-                }
+                },
             }).state('buscarVivienda', {
                 url: '/filtrar',
                 parent: 'viviendas',
@@ -67,7 +67,7 @@
                     'extraView': {
                         templateUrl: basePath + 'botonAgregar.html',
                     },
-                }
+                },
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
                 parent: 'viviendas',
@@ -80,7 +80,7 @@
                         function ($http, viviendasContext, $params) {
                             return $http.get(viviendasContext+
                                     '/'+$params.viviendaId);
-                        }]
+                        },]
                 },
                 views: {
                     'detailView': {
@@ -88,19 +88,20 @@
                         controller: ['$scope', 'viviendaActual',
                             function ($scope, viviendaActual) {
                                 $scope.viviendaActual =  viviendaActual.data;
-                            }]
+                            },]
                     },
                     'listView': {
-                        templateUrl: basePath + 'habitacionesVivienda.list.html',
+                        templateUrl: basePath +
+                                'habitacionesVivienda.list.html',
                         controller: ['$scope', 'viviendaActual',
                             function ($scope, viviendaActual) {
                                 $scope.viviendaActual = viviendaActual.data;
-                            }]
+                            },]
                     },
                     'extraView': {
                         templateUrl: basePath + 'botonAgregarHabitacion.html',
                     },
-                }
+                },
             }).state('agregarHabitacion', {
                 url: '/agregarHabitacion',
                 parent: 'viviendas',
@@ -115,16 +116,19 @@
                                     'area': '',
                                     'capacidad': '',
                                     'descripcion': '',
-                                    'imagen': 'https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large',
-                                    'valorDiario': ''                                    
+                                    'imagen': 
+                                            'https:/'+'/a0.muscache.com/im/pictures/42492006'+
+                                            '/d656f7da_original.jpg?aki_policy=large',
+                                    'valorDiario': '',
                                 };
                                 console.log($scope.tempHabitacion);
                                 $scope.agregarHabitacion = function () {
                                     
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
-                                    
-                                    return $http.post(viviendasContext+'/2'+'/habitaciones', tempHabitacion)
+                                    const nuevoContext = viviendasContext+
+                                            '/2'+'/habitaciones';
+                                    return $http.post(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
@@ -138,14 +142,17 @@
                                     $scope.alerts.splice(index, 1);
                                 };
                                 
-                                // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
+                                // Función showMessage: Recibe el mensaje en String y su
+                                // tipo con el fin de almacenarlo en el array $scope.alerts.
                                 function showMessage(msg, type) {
                                     const types = 
-                                            ['info', 'danger', 'warning', 'success'];
+                                            ['info', 'danger',
+                                        'warning', 'success'];
                                     if (types.some(function (rc) {
                                         return type === rc;
                                     })) {
-                                        $scope.alerts.push({type: type, msg: msg});
+                                        $scope.alerts.push
+                                        ({type: type, msg: msg});
                                     }
                                 }
                                 
@@ -162,18 +169,20 @@
                                     
                                     self.showError(response.data);
                                 }
-                            }]
+                            },]
                     },
-                }
+                },
             }).state('registrarReserva', {
                 url: '/registrarReserva',
                 parent : 'reservas',
                 views: {
                     'listView' : {
-                        templateUrl: 'src/modules/reservas/nuevaReserva.html',
+                        templateUrl:
+                                'src/modules/reservas/nuevaReserva.html',
                         controller: ['$scope', '$http',
                             '$state', 'reservas', 'reservasContext',
-                            function ($scope, $http, $state, reservas, reservasContext) {
+                            function ($scope, $http, $state,
+                            reservas, reservasContext) {
                                 $scope.tempUser = {
                                     fechaInicio: '',
                                     fechaFin: '',
@@ -189,23 +198,26 @@
                             
                                     tempUser = $scope.tempUser;
                                     console.log(tempUser);
-                                    return $http.post(reservasContext, tempUser)
+                                    return $http.post
+                                    (reservasContext,tempUser)
                                             .then(function()
                                     {
                                         $state.go('reservasList');
                                         console.log('check');
                                     }, responseError);  
-                                }
+                                },
                                 this.closeAlert = function (index) {
                                     $scope.alerts.splice(index, 1);
                                 };
                         
                                 function showMessage(msg, type) {
-                                    var types = ["info", "danger", "warning", "success"];
+                                    const types = ["info", "danger",
+                                        "warning", "success"];
                                     if(types.some(function (rc) {
                                         return type === rc;
                                     })) {
-                                        $scope.alerts.push({type: type, msg: msg});
+                                        $scope.alerts.push
+                                        ({type: type, msg: msg});
                                     }
                                 }
                         
@@ -217,14 +229,14 @@
                                     showMessage(msg, "success");
                                 };
                         
-                                var self = this;
+                                const self = this;
                                 function responseError(response) {
                                     self.showError(response.data);
                                 }
-                            }]
+                            },]
                     }
                 }
             
             });
-        }]);
+        }],);
 })(window.angular);

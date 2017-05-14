@@ -296,9 +296,6 @@ public class ViviendaEntity implements Serializable
         if (obj == null){
             resp = false;
         }
-        if (getClass() != obj.getClass()){
-            resp = false;
-        }
         final ViviendaEntity other = (ViviendaEntity) obj;
         if (!Objects.equals(this.idVivienda, other.idVivienda)){
             resp = false;
