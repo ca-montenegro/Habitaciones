@@ -105,6 +105,7 @@ public class ViviendaLogicTest {
     }
     
     /**
+     * Crea una lista de viviendas entity
      * @generated
      */
     private List<ViviendaEntity> data = new ArrayList<ViviendaEntity>();
@@ -127,7 +128,7 @@ public class ViviendaLogicTest {
     
     /**
      * Prueba para crear un Vivienda.
-     *
+     * 
      * @generated
      */
     @Test
@@ -150,7 +151,7 @@ public class ViviendaLogicTest {
     
     /**
      * Prueba para consultar la lista de Viviendas.
-     *
+     * Get vivienda test
      * @generated
      */
     @Test
@@ -170,7 +171,7 @@ public class ViviendaLogicTest {
     
     /**
      * Prueba para consultar un Vivienda.
-     *
+     * Excepcion si ocurre un error
      * @generated
      */
     @Test
@@ -195,6 +196,15 @@ public class ViviendaLogicTest {
         viviendaLogic.deleteVivienda(entity.getIdVivienda());
         ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
         Assert.assertNull(deleted);
+        
+        entity = data.get(1);
+        viviendaLogic.deleteVivienda(entity.getIdVivienda());
+        deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
+        Assert.assertNull(deleted);
+        
+        entity = data.get(2);
+        deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
+        Assert.assertNotNull(deleted);
     }
     
     /**
