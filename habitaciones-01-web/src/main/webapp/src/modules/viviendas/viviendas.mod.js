@@ -20,6 +20,7 @@
 (function (ng){
     const mod = ng.module('viviendaModule', ['ui.router']);
     mod.constant('viviendasContext', 'api/viviendas');
+    mod.constant('reservasContext', 'api/reservas');
     mod.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/viviendas/';
@@ -176,67 +177,93 @@
                 url: '/registrarReserva',
                 parent : 'reservas',
                 views: {
-                    'listView' : {
-                        templateUrl:
-                                'src/modules/reservas/nuevaReserva.html',
-                        controller: ['$scope', '$http',
-                            '$state', 'reservas', 'reservasContext',
-                            function ($scope, $http, $state,
-                            reservas, reservasContext) {
-                                $scope.tempUser = {
+                    'listView': {
+                        templateUrl:'src/modules/reservas/nuevaReserva.html',
+                        controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
+                            function ($scope, $http, $state,  reservas, reservasContext) {
+                                
+                                $scope.tempReserva = {
                                     fechaInicio: '',
-                                    fechaFin: '',
-                                    costo: '',
-                                    estado: '',
-                                    multa: '',
-                                    habitacion: '',
-                                    vivienda: ''
+                                    fechaFin: '',  
+                                    estado:'H',
+                                    "habitacion": {
+                                    "area": 30,
+                                    "capacidad": 2,
+                                    "descripcion": "bonita",
+                                    "imagen": "http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
+                                    "valorDiario": 858
+                                    },
+                                    "multa": {
+                                    "codigoMulta": 100
+                                    },
+                                    "vivienda": {
+                                        "anfitrion": {
+                                        "correo": "hola2@hola.com",
+                                        "direccion": "calle 2 No 2.2",
+                                        "nombre": "David",
+                                        "numeroID": 2,
+                                        "telefono": 6876188,
+                                        "tipoID": "Cedula",
+                                        "puntuacion": 10
+                                        },
+                                    "capacidad": 8,
+                                    "ciudad": "Cali",
+                                    "descripcion": "Casa grande",
+                                    "direccion": "Calle 15",
+                                    "idVivienda": 2,
+                                    "imagen": "https://a0.muscache.com/im/pictures/25735497/948807b4_original.jpg?aki_policy=large",
+                                    "numeroHabitaciones": 1,
+                                    "valorDiario": 458
+                                    }
                                 };
-                        
-                                console.log($scope.tempUser);
-                                $scope.registrar = function() {
-                            
-                                    tempUser = $scope.tempUser;
-                                    console.log(tempUser);
-                                    return $http.post
-                                    (reservasContext,tempUser)
-                                            .then(function()
-                                    {
-                                        $state.go('reservasList');
+                                console.log($scope.tempReserva);
+                                $scope.agregarReserva = function () {
+                                    
+                                    tempReserva = $scope.tempReserva;
+                                    console.log($scope.tempReserva);
+                                    
+                                    return $http.post(reservasContext+'/6', tempReserva)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);  
-                                },
+                                    }, responseError);
+                                    
+                                }
+                                
                                 this.closeAlert = function (index) {
                                     $scope.alerts.splice(index, 1);
                                 };
-                        
+                                
+                                // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
                                 function showMessage(msg, type) {
-                                    const types = ["info", "danger",
-                                        "warning", "success"];
-                                    if(types.some(function (rc) {
+                                    const types = 
+                                            ['info', 'danger', 'warning', 'success'];
+                                    if (types.some(function (rc) {
                                         return type === rc;
                                     })) {
-                                        $scope.alerts.push
-                                        ({type: type, msg: msg});
+                                        $scope.alerts.push({type: type, msg: msg});
                                     }
                                 }
-                        
-                                this.showError = function(msg) {
-                                    showMessage(msg, "danger");
+                                
+                                this.showError = function (msg) {
+                                    showMessage(msg, 'danger');
                                 };
-                        
-                                this.showSuccess = function(msg) {
-                                    showMessage(msg, "success");
+                                
+                                this.showSuccess = function (msg) {
+                                    showMessage(msg, 'success');
                                 };
-                        
+                                
                                 const self = this;
                                 function responseError(response) {
+                                    
                                     self.showError(response.data);
                                 }
-                            },]
-                    }
+                            }]
+                    },
                 }
             
             });
-        }],);
+        }]);
 })(window.angular);
