@@ -49,24 +49,10 @@
                         templateUrl: basePath + 'viviendas.list.html'
                     },
                     'detailView': {
-                        templateUrl: basePath + 'botonBuscar.html'
+                        //templateUrl: basePath + 'botonBuscar.html'
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregar.html'
                     },
-                }
-            }).state('agregarVivienda', {
-                url: '/agregar',
-                parent: 'viviendas',
-                views: {
-                    'listView': {
-                        templateUrl: basePath + 'agregarVivienda.html',
-                        controller: ['$scope', '$http', '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,
-                            viviendas, viviendasContext) {
-                                
-                            }]
-                    }
                 }
             }).state('buscarVivienda', {
                 url: '/filtrar',
@@ -196,14 +182,12 @@
                             
                             tempUser = $scope.tempUser;
                             console.log(tempUser);
-                            if(true){
                                 return $http.post(reservasContext, tempUser)
                                         .then(function()
                                 {
                                     $state.go('reservasList');
                                     console.log('check');
-                                }, responseError);
-                            }
+                                }, responseError);  
                         }
                         this.closeAlert = function (index) {
                             $scope.alerts.splice(index, 1);

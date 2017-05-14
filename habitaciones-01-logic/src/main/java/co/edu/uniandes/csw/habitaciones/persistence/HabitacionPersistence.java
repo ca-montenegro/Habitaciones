@@ -41,6 +41,12 @@ public class HabitacionPersistence {
         return em.find(HabitacionEntity.class, id);
     }
     
+    public HabitacionEntity findV(Long id, Long idV)
+    {
+        Query q = em.createQuery("SELECT u FROM HABITACIONENTITY u WHERE u.ID="+id+"AND u.IDVIVIENDA=:" + idV);
+        return (HabitacionEntity) q.getResultList().get(0);
+    }
+    
     public List<HabitacionEntity> findAll() {
        
         Query q = em.createQuery("select u from HabitacionEntity u");

@@ -58,6 +58,11 @@ public class HabitacionLogic {
         return persistence.find(id);
     }
     
+    public HabitacionEntity getHabitacionVivienda(Long id, Long idV)
+    {
+        return persistence.findV(id,idV);
+    }
+    
     public HabitacionEntity createHabitacion(HabitacionEntity entity) throws BusinessLogicException
     {
         if(entity.getArea() <= 0.0){

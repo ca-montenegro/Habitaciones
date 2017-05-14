@@ -72,6 +72,23 @@ public class HabitacionResource {
         return listEntity2DTO(habitacionLogic.getHabitaciones());
     }
         
+    /**
+     *Retorna una habitacion buscada
+     * @param idV id de la vivienda
+     * @param id id de la habitacion buscada
+     * @return HabitacionDetailDTO de la habitacion buscada
+     * @throws BusinessLogicException
+     */
+    @GET
+    @Path("/habitaciones/{id: \\d+}")
+    public HabitacionDetailDTO getHabitacion(@PathParam("id") Long id, @PathParam("idV") Long idV) throws BusinessLogicException {
+        HabitacionEntity hab = habitacionLogic.getHabitacion(id);
+        if (hab==null){
+            throw new WebApplicationException("La vivienda no existe", 404);
+        }
+        return new HabitacionDetailDTO(hab);
+    }
+        
     
     @DELETE
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
