@@ -46,7 +46,7 @@
                 parent: 'viviendas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'viviendas.list.html'
+                        templateUrl: basePath + 'viviendas.list.html',
                     },
                     'detailView': {
                         //templateUrl: basePath + 'botonBuscar.html'
@@ -59,41 +59,46 @@
                 parent: 'viviendas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'viviendas.list.html'
+                        templateUrl: basePath + 'viviendas.list.html',
                     },
                     'detailView': {
-                        templateUrl: basePath + 'buscarVivienda.html'
+                        templateUrl: basePath + 'buscarVivienda.html',
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregar.html'
+                        templateUrl: basePath + 'botonAgregar.html',
                     },
                 }
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
                 parent: 'viviendas',
                 param: {
-                    viviendaId: null
+                    viviendaId: null,
                 },
                 resolve: {
-                    viviendaActual: ['$http', 'viviendasContext', '$stateParams',function ($http, viviendasContext, $params) {
-                            return $http.get(viviendasContext+'/'+$params.viviendaId);
+                    viviendaActual: 
+                            ['$http', 'viviendasContext', '$stateParams',
+                        function ($http, viviendasContext, $params) {
+                            return $http.get(viviendasContext+
+                                    '/'+$params.viviendaId);
                         }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'viviendas.detail.html',
-                        controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
+                        controller: ['$scope', 'viviendaActual',
+                            function ($scope, viviendaActual) {
                                 $scope.viviendaActual =  viviendaActual.data;
                             }]
                     },
                     'listView': {
                         templateUrl: basePath + 'habitacionesVivienda.list.html',
-                        controller: ['$scope', 'viviendaActual', function ($scope, viviendaActual) {
+                        controller: ['$scope', 'viviendaActual',
+                            function ($scope, viviendaActual) {
                                 $scope.viviendaActual = viviendaActual.data;
                             }]
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregarHabitacion.html'
+                        templateUrl: basePath + 'botonAgregarHabitacion.html',
                     },
                 }
             }).state('agregarHabitacion', {
@@ -102,7 +107,8 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
-                        controller: ['$scope', '$http', '$state', 'viviendas', 'viviendasContext',
+                        controller: ['$scope', '$http',
+                            '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,  viviendas, viviendasContext) {
                                 
                                 $scope.tempHabitacion = {
@@ -165,56 +171,57 @@
                 views: {
                     'listView' : {
                         templateUrl: 'src/modules/reservas/nuevaReserva.html',
-                        controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
-                                function ($scope, $http, $state, reservas, reservasContext) {
-                        $scope.tempUser = {
-                            fechaInicio: '',
-                            fechaFin: '',
-                            costo: '',
-                            estado: '',
-                            multa: '',
-                            habitacion: '',
-                            vivienda: ''
-                        };
+                        controller: ['$scope', '$http',
+                            '$state', 'reservas', 'reservasContext',
+                            function ($scope, $http, $state, reservas, reservasContext) {
+                                $scope.tempUser = {
+                                    fechaInicio: '',
+                                    fechaFin: '',
+                                    costo: '',
+                                    estado: '',
+                                    multa: '',
+                                    habitacion: '',
+                                    vivienda: ''
+                                };
                         
-                        console.log($scope.tempUser);
-                        $scope.registrar = function() {
+                                console.log($scope.tempUser);
+                                $scope.registrar = function() {
                             
-                            tempUser = $scope.tempUser;
-                            console.log(tempUser);
-                                return $http.post(reservasContext, tempUser)
-                                        .then(function()
-                                {
-                                    $state.go('reservasList');
-                                    console.log('check');
-                                }, responseError);  
-                        }
-                        this.closeAlert = function (index) {
-                            $scope.alerts.splice(index, 1);
-                        };
+                                    tempUser = $scope.tempUser;
+                                    console.log(tempUser);
+                                    return $http.post(reservasContext, tempUser)
+                                            .then(function()
+                                    {
+                                        $state.go('reservasList');
+                                        console.log('check');
+                                    }, responseError);  
+                                }
+                                this.closeAlert = function (index) {
+                                    $scope.alerts.splice(index, 1);
+                                };
                         
-                        function showMessage(msg, type) {
-                            var types = ["info", "danger", "warning", "success"];
-                            if(types.some(function (rc) {
-                                return type === rc;
-                            })) {
-                                $scope.alerts.push({type: type, msg: msg});
-                            }
-                        }
+                                function showMessage(msg, type) {
+                                    var types = ["info", "danger", "warning", "success"];
+                                    if(types.some(function (rc) {
+                                        return type === rc;
+                                    })) {
+                                        $scope.alerts.push({type: type, msg: msg});
+                                    }
+                                }
                         
-                        this.showError = function(msg) {
-                            showMessage(msg, "danger");
-                        };
+                                this.showError = function(msg) {
+                                    showMessage(msg, "danger");
+                                };
                         
-                        this.showSuccess = function(msg) {
-                            showMessage(msg, "success");
-                        };
+                                this.showSuccess = function(msg) {
+                                    showMessage(msg, "success");
+                                };
                         
-                        var self = this;
-                        function responseError(response) {
-                            self.showError(response.data);
-                        }
-                        }]
+                                var self = this;
+                                function responseError(response) {
+                                    self.showError(response.data);
+                                }
+                            }]
                     }
                 }
             

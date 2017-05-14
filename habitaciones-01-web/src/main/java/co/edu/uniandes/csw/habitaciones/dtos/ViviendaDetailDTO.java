@@ -1,21 +1,21 @@
-/* 
- * Copyright (C) 2017 c.penaloza.
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301  USA
- */
+/*
+* Copyright (C) 2017 c.penaloza.
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301  USA
+*/
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
@@ -43,19 +43,34 @@ public class ViviendaDetailDTO extends ViviendaDTO{
      */
     private List<HabitacionDTO> habitaciones;
     
-    
+    /**
+     * Retorna las habitaciones
+     * @return habitaciones
+     */
     public List<HabitacionDTO> getHabitaciones() {
         return habitaciones;
     }
     
+    /**
+     * Modifica las habiraciones
+     * @param habitaciones nuevas
+     */
     public void setHabitaciones(List<HabitacionDTO> habitaciones) {
         this.habitaciones = habitaciones;
     }
-
+    
+    /**
+     * Retorna las reservas
+     * @return reservas
+     */
     public List<ReservaDTO> getReservas() {
         return reservas;
     }
-
+    
+    /**
+     * Cambia las reservas
+     * @param reservas nuevas
+     */
     public void setReservas(List<ReservaDTO> reservas) {
         this.reservas = reservas;
     }
@@ -68,16 +83,14 @@ public class ViviendaDetailDTO extends ViviendaDTO{
         ViviendaEntity entity = super.toEntity();
         if(entity.getHabitaciones()!=null){
             this.habitaciones=new ArrayList();
-            for(HabitacionEntity habitacion:entity.getHabitaciones())
-            {
+            for(HabitacionEntity habitacion:entity.getHabitaciones()){
                 this.habitaciones.add(new HabitacionDTO(habitacion));
             }
         }
         
         if(entity.getReservas()!=null){
             this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {
+            for(ReservaEntity reserva:entity.getReservas()){
                 this.reservas.add(new ReservaDTO(reserva));
             }
         }
@@ -94,16 +107,14 @@ public class ViviendaDetailDTO extends ViviendaDTO{
         if(entity!=null){
             if(entity.getHabitaciones()!=null){
                 this.habitaciones=new ArrayList();
-                for(HabitacionEntity habitacion:entity.getHabitaciones())
-                {
+                for(HabitacionEntity habitacion:entity.getHabitaciones()){
                     this.habitaciones.add(new HabitacionDTO(habitacion));
                 }
             }
             
             if(entity.getReservas()!=null){
                 this.reservas=new ArrayList();
-                for(ReservaEntity reserva:entity.getReservas())
-                {
+                for(ReservaEntity reserva:entity.getReservas()){
                     this.reservas.add(new ReservaDTO(reserva));
                 }
             }
@@ -131,16 +142,14 @@ public class ViviendaDetailDTO extends ViviendaDTO{
         
         if(entity.getHabitaciones()!=null){
             this.habitaciones=new ArrayList();
-            for(HabitacionEntity habitacion:entity.getHabitaciones())
-            {
+            for(HabitacionEntity habitacion:entity.getHabitaciones()){
                 this.habitaciones.add(new HabitacionDTO(habitacion));
             }
         }
         
         if(entity.getReservas()!=null){
             this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {
+            for(ReservaEntity reserva:entity.getReservas()){
                 this.reservas.add(new ReservaDTO(reserva));
             }
         }

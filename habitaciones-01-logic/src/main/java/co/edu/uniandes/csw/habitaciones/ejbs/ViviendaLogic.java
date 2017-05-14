@@ -1,21 +1,21 @@
-/* 
- * Copyright (C) 2017 c.penaloza.
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301  USA
- */
+/*
+* Copyright (C) 2017 c.penaloza.
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301  USA
+*/
 package co.edu.uniandes.csw.habitaciones.ejbs;
 
 
@@ -32,13 +32,12 @@ import javax.inject.Inject;
 import org.springframework.util.Assert;
 
 @Stateless
-public class ViviendaLogic 
+public class ViviendaLogic
 {
     /**
      * Constructor por defecto
      */
-    public ViviendaLogic()
-    {
+    public ViviendaLogic(){
         persistence = new ViviendaPersistence();
     }
     
@@ -54,36 +53,30 @@ public class ViviendaLogic
     
     /**
      * Constructor
-     * @param persistence 
+     * @param persistence persistencia
      */
     @Inject
-    public ViviendaLogic (ViviendaPersistence persistence)
-    {
+    public ViviendaLogic (ViviendaPersistence persistence){
         Assert.notNull(persistence, "My persistence must be not null");
         this.persistence = persistence;
     }
     
     /**
      * Obtiene la lista de los registros de Vivienda.
-     * 
      * @return Colección de objetos de ViviendaEntity.
      */
-    
-    public List<ViviendaEntity> getViviendas() 
-    {
+    public List<ViviendaEntity> getViviendas(){
         return persistence.findAll();
     }
     
-    
     /**
      * Obtiene los datos de una instancia de Vivienda a partir de su ID.
-     * 
+     *
      * @param id Identificador de la instancia a consultar
      * @return Instancia de ViviendaEntity con los datos del Vivienda consultado.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public ViviendaEntity getVivienda(Long id) throws BusinessLogicException 
-    {
+    public ViviendaEntity getVivienda(Long id) throws BusinessLogicException{
         ViviendaEntity vivienda = persistence.find(id);
         if (vivienda==null){
             throw new BusinessLogicException("La vivienda con el id dado no existe.");
@@ -93,15 +86,14 @@ public class ViviendaLogic
     
     /**
      * Se encarga de crear un Vivienda en la base de datos.
-     * 
+     *
      * @param entity Objeto de ViviendaEntity con los datos nuevos
      * @return Objeto de ViviendaEntity con los datos nuevos y su ID.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      * @generated
      */
     
-    public ViviendaEntity createVivienda(ViviendaEntity entity) throws BusinessLogicException 
-    {
+    public ViviendaEntity createVivienda(ViviendaEntity entity) throws BusinessLogicException{
         if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty()){
             throw new BusinessLogicException("Debe incluir la dirección completa.");}
         if (entity.getValorDiario()<0.0){
@@ -118,8 +110,7 @@ public class ViviendaLogic
      * @return Instancia de ViviendaEntity con los datos actualizados.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public ViviendaEntity updateVivienda(ViviendaEntity entity) throws BusinessLogicException 
-    {
+    public ViviendaEntity updateVivienda(ViviendaEntity entity) throws BusinessLogicException{
         if (entity.getDireccion().isEmpty()||entity.getCiudad().isEmpty()){
             throw new BusinessLogicException("Debe incluir la dirección completa.");}
         if (entity.getValorDiario()<0.0){
@@ -134,8 +125,7 @@ public class ViviendaLogic
      * @param id Identificador de la instancia a eliminar.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
      */
-    public void deleteVivienda(Long id) throws BusinessLogicException 
-    {
+    public void deleteVivienda(Long id) throws BusinessLogicException{
         ViviendaEntity vivienda = getVivienda(id);
         Date d = new Date();
         for (ReservaEntity r: vivienda.getReservas()){
@@ -152,6 +142,4 @@ public class ViviendaLogic
         }
         persistence.delete(id);
     }
-    
-    
 }

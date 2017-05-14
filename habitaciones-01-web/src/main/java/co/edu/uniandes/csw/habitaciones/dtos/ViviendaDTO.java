@@ -1,21 +1,21 @@
-/* 
- * Copyright (C) 2017 c.penaloza.
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301  USA
- */
+/*
+* Copyright (C) 2017 c.penaloza.
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301  USA
+*/
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.AnfitrionEntity;
@@ -34,7 +34,6 @@ import java.util.List;
 public class ViviendaDTO  implements Serializable{
     
     private static final long serialVersionUID = 1L;
-    
     private Long idVivienda;
     private String descripcion;
     private String ciudad;
@@ -47,21 +46,20 @@ public class ViviendaDTO  implements Serializable{
     
     
     /**
+     * Constructor por defecto
      * @generated
      */
-    public ViviendaDTO()
-    {
+    public ViviendaDTO(){
         
     }
     
     /**
      * Crea un objeto ViviendaDTO a partir de un objeto ViviendaEntity.
-     *
+     *Constructor con entidad
      * @param entity Entidad ViviendaEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ViviendaDTO(ViviendaEntity entity)
-    {
+    public ViviendaDTO(ViviendaEntity entity){
         if (entity!=null){
             this.idVivienda=entity.getIdVivienda();
             this.anfitrion=new AnfitrionBasicDTO(entity.getAnfitrion());
@@ -75,9 +73,10 @@ public class ViviendaDTO  implements Serializable{
         }
     }
     /**
-     * Constructor necesario para poder evitar ciclos infinitos al momento que ReservaDTO llama al constructor normal
-     * @param entity
-     * @param condicion
+     * Constructor necesario para poder evitar ciclos infinitos
+     * al momento que ReservaDTO llama al constructor normal
+     * @param entity entidad
+     * @param condicion string para error
      */
     
     public ViviendaDTO(ViviendaEntity entity, String condicion)
@@ -95,7 +94,7 @@ public class ViviendaDTO  implements Serializable{
     
     /**
      * Convierte un objeto ViviendaDTO a ViviendaEntity.
-     *
+     * Metodo to entuty
      * @return Nueva objeto ViviendaEntity.
      * @generated
      */
@@ -121,93 +120,139 @@ public class ViviendaDTO  implements Serializable{
         return entity;
     }
     
-    public Long getIdVivienda()
-    {
+    /**
+     * Retorna el id
+     * @return idvivienda
+     */
+    public Long getIdVivienda(){
         return idVivienda;
     }
     
-    public void setIdVivienda(Long idVivienda)
-    {
+    /**
+     * Cambia el id
+     * @param idVivienda nuevo id
+     */
+    public void setIdVivienda(Long idVivienda){
         this.idVivienda = idVivienda;
     }
     
-    public String getDescripcion()
-    {
+    /**
+     * Retorna la descripcion
+     * @return descripcion
+     */
+    public String getDescripcion(){
         return descripcion;
     }
     
-    public void setDescripcion(String descripcion)
-    {
+    /**
+     * Cambia la descripcion
+     * @param descripcion nueva
+     */
+    public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
     
-    public String getCiudad()
-    {
+    /**
+     * Retorna la ciudad
+     * @return ciudad
+     */
+    public String getCiudad(){
         return ciudad;
     }
     
-    public void setCiudad(String ciudad)
-    {
+    /**
+     * Cambia la ciudad
+     * @param ciudad nueva
+     */
+    public void setCiudad(String ciudad){
         this.ciudad = ciudad;
     }
     
-    public String getDireccion()
-    {
+    /**
+     * Retorna la direccion
+     * @return direccion
+     */
+    public String getDireccion(){
         return direccion;
     }
     
-    public void setDireccion(String direccion)
-    {
+    /**
+     * Cambia la direccion
+     * @param direccion nueva
+     */
+    public void setDireccion(String direccion){
         this.direccion = direccion;
     }
     
-    public Double getValorDiario()
-    {
+    /**
+     * Retorna el valor
+     * @return valor
+     */
+    public Double getValorDiario(){
         return valorDiario;
     }
     
-    public void setValorDiario(Double valorDiario)
-    {
+    /**
+     * Cambia el valor
+     * @param valorDiario nuevo
+     */
+    public void setValorDiario(Double valorDiario){
         this.valorDiario = valorDiario;
     }
     
-    public int getCapacidad()
-    {
+    /**
+     * Retorna la capacidad
+     * @return capacidad
+     */
+    public int getCapacidad(){
         return capacidad;
     }
     
-    public void setCapacidad(int capacidad)
-    {
+    /**
+     * Cambia la capacidad
+     * @param capacidad nueva
+     */
+    public void setCapacidad(int capacidad){
         this.capacidad = capacidad;
     }
     
-    public String getImagen()
-    {
+    /**
+     * Retorna la imagen
+     * @return imagen
+     */
+    public String getImagen(){
         return imagen;
     }
     
-    public void setImagen(String imagen)
-    {
+    /**
+     * Cambia la imagen
+     * @param imagen nueva
+     */
+    public void setImagen(String imagen){
         this.imagen = imagen;
     }
     
-    public AnfitrionBasicDTO getAnfitrion()
-    {
+    /**
+     * Retorna el anfitrion
+     * @return anfitrion
+     */
+    public AnfitrionBasicDTO getAnfitrion(){
         return anfitrion;
     }
     
-    public void setAnfitrion(AnfitrionBasicDTO anfitrion)
-    {
+    /**
+     * Cambia el anfitrion
+     * @param anfitrion nuevo
+     */
+    public void setAnfitrion(AnfitrionBasicDTO anfitrion){
         this.anfitrion = anfitrion;
     }
     
-    public int getNumeroHabitaciones()
-    {
+    public int getNumeroHabitaciones(){
         return numeroHabitaciones;
     }
     
-    public void setNumeroHabitaciones(int numeroHabitaciones)
-    {
+    public void setNumeroHabitaciones(int numeroHabitaciones){
         this.numeroHabitaciones = numeroHabitaciones;
     }
     

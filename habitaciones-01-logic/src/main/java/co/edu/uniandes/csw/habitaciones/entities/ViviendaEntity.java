@@ -1,21 +1,21 @@
-/* 
- * Copyright (C) 2017 c.penaloza.
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301  USA
- */
+/*
+* Copyright (C) 2017 c.penaloza.
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+* MA 02110-1301  USA
+*/
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.io.Serializable;
@@ -279,35 +279,30 @@ public class ViviendaEntity implements Serializable
     }
     
     @Override
-    public int hashCode() 
-    {
-        if (this.getIdVivienda()!= null)
-        {
+    public int hashCode(){
+        if (this.getIdVivienda()!= null){
             return this.getIdVivienda().hashCode();
         }
         return super.hashCode();
     }
     
     @Override
-    public boolean equals(Object obj) 
+    public boolean equals(Object obj)
     {
-        if (this == obj)
-        {
-            return true;
+        boolean resp=false;
+        if (this == obj){
+            resp = true;
         }
-        if (obj == null)
-        {
-            return false;
+        if (obj == null){
+            resp = false;
         }
-        if (getClass() != obj.getClass())
-        {
-            return false;
+        if (getClass() != obj.getClass()){
+            resp = false;
         }
         final ViviendaEntity other = (ViviendaEntity) obj;
-        if (!Objects.equals(this.idVivienda, other.idVivienda))
-        {
-            return false;
+        if (!Objects.equals(this.idVivienda, other.idVivienda)){
+            resp = false;
         }
-        return true;
+        return resp;
     }
 }

@@ -19,7 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.junit.Assert;
-import org.jboss.arquillian.container.test.api.Deployment;  
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -128,7 +128,7 @@ public class ViviendaLogicTest {
     
     /**
      * Prueba para crear un Vivienda.
-     * 
+     *
      * @generated
      */
     @Test
@@ -142,7 +142,7 @@ public class ViviendaLogicTest {
             Assert.assertEquals(result.getCiudad(), entity.getCiudad());
             Assert.assertEquals(result.getDireccion(), entity.getDireccion());
             Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
-            Assert.assertEquals(result.getDireccion(), entity.getDireccion());
+            Assert.assertEquals(result.getImagen(), entity.getImagen());
             Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,6 +183,8 @@ public class ViviendaLogicTest {
         Assert.assertEquals(entity.getCiudad(), resultEntity.getCiudad());
         Assert.assertEquals(entity.getDescripcion(), resultEntity.getDescripcion());
         Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
+        Assert.assertEquals(entity.getImagen(), resultEntity.getImagen());
+        Assert.assertEquals(entity.getValorDiario(), resultEntity.getValorDiario());
     }
     
     /**
@@ -227,6 +229,9 @@ public class ViviendaLogicTest {
         Assert.assertEquals(pojoEntity.getDireccion(), resp.getDireccion());
         Assert.assertEquals(pojoEntity.getValorDiario(), resp.getValorDiario());
         Assert.assertEquals(pojoEntity.getDescripcion(), resp.getDescripcion());
+        Assert.assertEquals(pojoEntity.getImagen(), resp.getImagen());
+        Assert.assertEquals(pojoEntity.getCiudad(), resp.getCiudad());
+        
     }
     
 }
