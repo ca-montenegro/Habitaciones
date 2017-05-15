@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
                 <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentHabitacion.imagen}}"/>
+                    <img class="img-responsive" ng-src="{{habitacionActual.imagen}}"/>
                 </div> 
             </div>
             <div class="col-md-4">
                 <dl>
                     <dt><b>Area</b></dt>
-                    <dd>{{currentHabitacion.area}}</dd>
+                    <dd>{{habitacionActual.area}}</dd>
                     <hr>
                     <dt><b>Capacidad</b></dt>
-                    <dd>{{currentHabitacion.capacidad}}</dd>
+                    <dd>{{habitacionActual.capacidad}}</dd>
                     <hr>
                      <dt><b>Valor Diario</b></dt>
-                    <dd>{{currentHabitacion.valorDiario}}</dd>
+                    <dd>{{habitacionActual.valorDiario}}</dd>
                     <hr>
                 </dl>
             </div>
             <div class="col-md-4">
                 <h3>Descripcion habitacion:</h3>
-                    <p>{{currentHabitacion.descripcion}}</p>
+                    <p>{{habitacionActual.descripcion}}</p>
             </div>
         </div>
     </div>
