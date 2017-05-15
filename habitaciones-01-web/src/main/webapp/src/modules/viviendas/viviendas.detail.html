@@ -8,6 +8,7 @@
                     <img class="img-responsive" ng-src="{{viviendaActual.imagen}}"/>
                 </div> 
             </div>
+            
             <div class="col-md-4">
                 <dl>
                     
@@ -33,9 +34,27 @@
             </div>
             
             <div  style="text-align:center">
-       <p><a class="btn btn-primary btn-lg buttonNuevaReserva" ui-sref="registrarReserva">Reservar esta vivienda</a></p>
+       
     </div>
 
+        </div>
+        <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="thumb" align="center">
+                     <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="eliminarVivienda">Reservar vivienda</a></p>
+                </div> 
+            </div>
+            <div class="col-md-4 ">
+                <div class="thumb" align="center">
+                     <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="eliminarVivienda">Eliminar vivienda</a></p>
+                </div> 
+            </div>
+            <div class="col-md-4 ">
+                <div class="thumb" align="center">
+                     <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="modificarVivienda">Modificar datos</a></p>
+                </div> 
+            </div>
         </div>
     </div>
 </div>

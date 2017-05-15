@@ -100,7 +100,8 @@
                             },]
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregarHabitacion.html',
+                        templateUrl: basePath+
+                                'botonAgregarHabitacion.html',
                     },
                 },
             }).state('agregarHabitacion', {
@@ -129,7 +130,7 @@
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
-                                            '/2'+'/habitaciones';
+                                            '/1'+'/habitaciones';
                                     return $http.post(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
@@ -144,8 +145,9 @@
                                     $scope.alerts.splice(index, 1);
                                 };
                                 
-                                // Función showMessage: Recibe el mensaje en String y su
-                                // tipo con el fin de almacenarlo en el array $scope.alerts.
+                                // Función showMessage: Recibe el mensaje en
+                                // String y su tipo con el fin de almacenarlo
+                                //  en el array $scope.alerts.
                                 function showMessage(msg, type) {
                                     const types = 
                                             ['info', 'danger',
@@ -171,7 +173,7 @@
                                     
                                     self.showError(response.data);
                                 }
-                            },]
+                            },],
                     },
                 },
             }).state('registrarReserva', {
@@ -188,33 +190,36 @@
                                     fechaFin: '',  
                                     estado:'H',
                                     "habitacion": {
-                                    "area": 30,
-                                    "capacidad": 2,
-                                    "descripcion": "bonita",
-                                    "imagen": "http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
-                                    "valorDiario": 858
+                                        "area": 30,
+                                        "capacidad": 2,
+                                        "descripcion": "bonita",
+                                        "imagen": "http:/'+'\n\
+   /www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
+                                        "valorDiario": 858
                                     },
                                     "multa": {
-                                    "codigoMulta": 100
+                                        "codigoMulta": 100
                                     },
                                     "vivienda": {
                                         "anfitrion": {
-                                        "correo": "hola2@hola.com",
-                                        "direccion": "calle 2 No 2.2",
-                                        "nombre": "David",
-                                        "numeroID": 2,
-                                        "telefono": 6876188,
-                                        "tipoID": "Cedula",
-                                        "puntuacion": 10
+                                            "correo": "hola2@hola.com",
+                                            "direccion": "calle 2 No 2.2",
+                                            "nombre": "David",
+                                            "numeroID": 2,
+                                            "telefono": 6876188,
+                                            "tipoID": "Cedula",
+                                            "puntuacion": 10
                                         },
-                                    "capacidad": 8,
-                                    "ciudad": "Cali",
-                                    "descripcion": "Casa grande",
-                                    "direccion": "Calle 15",
-                                    "idVivienda": 2,
-                                    "imagen": "https://a0.muscache.com/im/pictures/25735497/948807b4_original.jpg?aki_policy=large",
-                                    "numeroHabitaciones": 1,
-                                    "valorDiario": 458
+                                        "capacidad": 8,
+                                        "ciudad": "Cali",
+                                        "descripcion": "Casa grande",
+                                        "direccion": "Calle 15",
+                                        "idVivienda": 2,
+                                        "imagen": "https:/'+'\n\
+                                        /a0.muscache.com/im/pictures/'+\n\
+                                        '25735497/948807b4_original.jpg?aki_policy=large",
+                                        "numeroHabitaciones": 1,
+                                        "valorDiario": 458
                                     }
                                 };
                                 console.log($scope.tempReserva);
@@ -237,7 +242,9 @@
                                     $scope.alerts.splice(index, 1);
                                 };
                                 
-                                // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
+                                // Función showMessage: Recibe el mensaje en
+                                //  String y su tipo con el fin de almacenarlo
+                                //   en el array $scope.alerts.
                                 function showMessage(msg, type) {
                                     const types = 
                                             ['info', 'danger', 'warning', 'success'];
