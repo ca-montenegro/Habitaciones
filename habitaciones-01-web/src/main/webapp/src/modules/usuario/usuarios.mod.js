@@ -56,7 +56,7 @@
                                     direccion: '',
                                     telefono: '',
                                     numeroTarjeta: '',
-                                    image: '',
+                                    image: 'https://randomuser.me/api/portraits/men/16.jpg',
 
                                 };
                                 console.log($scope.tempUser);
