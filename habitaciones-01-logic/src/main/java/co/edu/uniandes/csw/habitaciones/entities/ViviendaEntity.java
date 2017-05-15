@@ -285,21 +285,4 @@ public class ViviendaEntity implements Serializable
         }
         return super.hashCode();
     }
-    
-    @Override
-    public boolean equals(Object obj)
-    {
-        boolean resp=false;
-        if (this == obj){
-            resp = true;
-        }
-        if (obj == null){
-            resp = false;
-        }
-        final ViviendaEntity other = (ViviendaEntity) obj;
-        if (!Objects.equals(this.idVivienda, other.idVivienda)){
-            resp = false;
-        }
-        return resp;
-    }
 }
