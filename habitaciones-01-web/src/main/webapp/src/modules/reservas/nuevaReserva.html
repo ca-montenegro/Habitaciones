@@ -1,29 +1,39 @@
-<div class="container-fluid" class="row">
-    <div class="col-sm-12">
-        <form class="panel-body">
-            <div class="col-md-2"></div>
-                <div class="tablaReservas col-md-8" >
-                    <h1>Realizar una nueva reserva</h1>
-                    ID usuario:
-                    <br>
-                    <input type="number" name="idUsuario">
-                    <br>
-                    Fecha de inicio:
-                    <br>
-                    <input type="date" name="fechaInicio" max="2017-12-31">
-                    <br>
-                    Fecha de fin:
-                    <br>
-                    <input type="date" name="fechaFinal" max="2017-12-31"><br><br>
-                </div>
-        </form>
-        <div class="row" class="container-fluid">
-        <div class="col-sm-12">
-            <div class="panel-body"> 
-                <div class="col-md-2"></div>
+<div id="fondo" class="center-block" style="width:100%x" align ="center" >
+    <div class="s-holder">
+        <b><h2 style="color:white">Agregar una reserva</h2></b>
+        <div class="row" style="width:400px" ng-controller = 'MainController'>
+            <form novalidate name="form" id="agregarVivienda-form" role="form" ng-submit="form.$valid && agregarHabitacion()">
+                <fieldset>
+                    <div>
+                        <section>
+                            <div class="form-group">
+                                <label style="color:white" for="class">ID del usuario:</label>
+                                <input type="number" name="idUsuario" ng-model="tempReserva.idUsuario" ng-init="tempReserva.idUsuario" placeholder="ID usuario" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            </div>
+                        </section>
+                     </div>    
+                    <div>
+                        <section>
+                            <div class="form-group">
+                                <label style="color:white" for="class">Fecha de inicio:</label>
+                                <input type="date" name="fechaInicio" max="2017-12-31" ng-model="tempReserva.fechaInicio" ng-init="tempReserva.fechaInicio" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            </div>
+                        </section>
+                    </div>
+                    
+                    <div>
+                        <section> 
+                            <div class="form-group">
+                                <label style="color:white" for="class">Fecha de fin:</label>
+                                <input type="date" name="fechaFinal" max="2017-12-31" ng-model="tempReserva.fechaFin" ng-init="tempReserva.fechaFin" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                            </div>
+                        </section>
+                    
+                 <div>
+                 </fieldset>
+                 <div>
                     <p><a type="submit" class="btn btn-primary btn-lg" href ng-click = "agregarReserva()">Reservar</a></p>
                 </div>
-            </div>
+           </div>
         </div>
-    </div>
 </div>

@@ -198,7 +198,7 @@
                                         "valorDiario": 858
                                     },
                                     "multa": {
-                                        "codigoMulta": 100
+                                        "codigoMulta": 101
                                     },
                                     "vivienda": {
                                         "anfitrion": {
