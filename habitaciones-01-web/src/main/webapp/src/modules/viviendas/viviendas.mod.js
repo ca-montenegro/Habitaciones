@@ -110,7 +110,8 @@
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
                             '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,  viviendas, viviendasContext) {
+                            function ($scope, $http, $state,
+                            viviendas, viviendasContext) {
                                 
                                 $scope.tempHabitacion = {
                                     'area': '',
