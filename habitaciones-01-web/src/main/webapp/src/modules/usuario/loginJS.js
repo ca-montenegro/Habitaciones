@@ -1,5 +1,5 @@
 (function (ng){
-let login = ng.module('MainLogin', ['ui.router']);
+const login = ng.module('MainLogin', ['ui.router']);
 login.controller('MainController', function ($scope, $http, $window,$state) {
     
 	$scope.loge = function(){
