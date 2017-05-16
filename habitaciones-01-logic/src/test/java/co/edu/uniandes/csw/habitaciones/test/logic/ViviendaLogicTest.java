@@ -137,13 +137,13 @@ public class ViviendaLogicTest {
             PodamFactory factory = new PodamFactoryImpl();
             ViviendaEntity entity = factory.manufacturePojo(ViviendaEntity.class);
             ViviendaEntity result = viviendaLogic.createVivienda(entity);
-            Assert.assertNotNull(result);
-            Assert.assertEquals(result.getCapacidad(), entity.getCapacidad());
-            Assert.assertEquals(result.getCiudad(), entity.getCiudad());
-            Assert.assertEquals(result.getDireccion(), entity.getDireccion());
-            Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
-            Assert.assertEquals(result.getImagen(), entity.getImagen());
-            Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
+            Assert.assertNotNull("No deberia ser nulo",result);
+            Assert.assertEquals("El resultado no es el esperado",result.getCapacidad(), entity.getCapacidad());
+            Assert.assertEquals("El resultado no es el esperado",result.getCiudad(), entity.getCiudad());
+            Assert.assertEquals("El resultado no es el esperado",result.getDireccion(), entity.getDireccion());
+            Assert.assertEquals("El resultado no es el esperado",result.getDescripcion(), entity.getDescripcion());
+            Assert.assertEquals("El resultado no es el esperado",result.getImagen(), entity.getImagen());
+            Assert.assertEquals("El resultado no es el esperado",result.getDescripcion(), entity.getDescripcion());
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -157,7 +157,7 @@ public class ViviendaLogicTest {
     @Test
     public void getViviendasTest() {
         List<ViviendaEntity> list = viviendaLogic.getViviendas();
-        Assert.assertEquals(data.size(), list.size());
+        Assert.assertEquals("El resultado no es el esperado",data.size(), list.size());
         for (ViviendaEntity entity : list) {
             boolean found = false;
             for (ViviendaEntity storedEntity : data) {
@@ -175,16 +175,20 @@ public class ViviendaLogicTest {
      * @generated
      */
     @Test
-    public void getViviendaTest() throws BusinessLogicException {
-        ViviendaEntity entity = data.get(0);
-        ViviendaEntity resultEntity = viviendaLogic.getVivienda(entity.getIdVivienda());
-        Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getCapacidad(), resultEntity.getCapacidad());
-        Assert.assertEquals(entity.getCiudad(), resultEntity.getCiudad());
-        Assert.assertEquals(entity.getDescripcion(), resultEntity.getDescripcion());
-        Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
-        Assert.assertEquals(entity.getImagen(), resultEntity.getImagen());
-        Assert.assertEquals(entity.getValorDiario(), resultEntity.getValorDiario());
+    public void getViviendaTest(){
+        try {
+            ViviendaEntity entity = data.get(0);
+            ViviendaEntity resultEntity = viviendaLogic.getVivienda(entity.getIdVivienda());
+            Assert.assertNotNull(resultEntity);
+            Assert.assertEquals("El resultado no es el esperado",entity.getCapacidad(), resultEntity.getCapacidad());
+            Assert.assertEquals("El resultado no es el esperado",entity.getCiudad(), resultEntity.getCiudad());
+            Assert.assertEquals("El resultado no es el esperado",entity.getDescripcion(), resultEntity.getDescripcion());
+            Assert.assertEquals("El resultado no es el esperado",entity.getDireccion(), resultEntity.getDireccion());
+            Assert.assertEquals("El resultado no es el esperado",entity.getImagen(), resultEntity.getImagen());
+            Assert.assertEquals("El resultado no es el esperado",entity.getValorDiario(), resultEntity.getValorDiario());
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -193,20 +197,28 @@ public class ViviendaLogicTest {
      * @generated
      */
     @Test
-    public void deleteViviendaTest() throws BusinessLogicException {
+    public void deleteViviendaTest() {
         ViviendaEntity entity = data.get(0);
-        viviendaLogic.deleteVivienda(entity.getIdVivienda());
+        try {
+            viviendaLogic.deleteVivienda(entity.getIdVivienda());
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
-        Assert.assertNull(deleted);
+        Assert.assertNull("deberia ser nulo",deleted);
         
         entity = data.get(1);
-        viviendaLogic.deleteVivienda(entity.getIdVivienda());
+        try {
+            viviendaLogic.deleteVivienda(entity.getIdVivienda());
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
-        Assert.assertNull(deleted);
+        Assert.assertNull("deberia ser nulo",deleted);
         
         entity = data.get(2);
         deleted = em.find(ViviendaEntity.class, entity.getIdVivienda());
-        Assert.assertNotNull(deleted);
+        Assert.assertNotNull("No deberia ser nulo",deleted);
     }
     
     /**
@@ -215,23 +227,26 @@ public class ViviendaLogicTest {
      * @generated
      */
     @Test
-    public void updateViviendaTest() throws BusinessLogicException {
+    public void updateViviendaTest(){
         ViviendaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ViviendaEntity pojoEntity = factory.manufacturePojo(ViviendaEntity.class);
         pojoEntity.setIdVivienda(entity.getIdVivienda());
         
-        viviendaLogic.updateVivienda(pojoEntity);
+        try {
+            viviendaLogic.updateVivienda(pojoEntity);
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ViviendaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         ViviendaEntity resp = em.find(ViviendaEntity.class, entity.getIdVivienda());
         
-        Assert.assertEquals(pojoEntity.getCapacidad(), resp.getCapacidad());
-        Assert.assertEquals(pojoEntity.getDireccion(), resp.getDireccion());
-        Assert.assertEquals(pojoEntity.getValorDiario(), resp.getValorDiario());
-        Assert.assertEquals(pojoEntity.getDescripcion(), resp.getDescripcion());
-        Assert.assertEquals(pojoEntity.getImagen(), resp.getImagen());
-        Assert.assertEquals(pojoEntity.getCiudad(), resp.getCiudad());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getCapacidad(), resp.getCapacidad());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getDireccion(), resp.getDireccion());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getValorDiario(), resp.getValorDiario());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getDescripcion(), resp.getDescripcion());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getImagen(), resp.getImagen());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getCiudad(), resp.getCiudad());
         
     }
-    
 }

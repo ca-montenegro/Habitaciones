@@ -1,17 +1,34 @@
+/**
+ * 
+ * @param {type} ng
+ * @returns {undefined}
+ */
 (function (ng) {
-    let mod = ng.module("usuarioModule", ['ui.router']);
-    mod.constant("usuarioContext", "api/usuarios");
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    /**
+     * 
+     * @type type
+     */
+    const mod = ng.module('usuarioModule', ['ui.router']);
+    mod.constant('usuarioContext', 'api/usuarios');
+    mod.config(['$stateProvider', '$urlRouterProvider', 
+        function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/usuario/';
-            $urlRouterProvider.otherwise("/usuariosList");
+            $urlRouterProvider.otherwise('/usuariosList');
             $stateProvider.state('usuarios', {
                 url: '/usuarios',
                 abstract: true,
+                /**
+                 * Resolve
+                 */
                 resolve: {
-                    usuarios: ['$http', 'usuarioContext', function ($http, usuarioContext) {
+                    usuarios: ['$http', 'usuarioContext', 
+                        function ($http, usuarioContext) {
                             return $http.get(usuarioContext);
                         }]
                 },
+                /**
+                 * views
+                 */
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'usuarios.html',
@@ -20,6 +37,9 @@
                             }]
                     }
                 }
+                /**
+                 * state usuariosList
+                 */
             }).state('usuariosList', {
                 url: '/list',
                 parent: 'usuarios',
@@ -28,6 +48,9 @@
                         templateUrl: basePath + 'usuario.list.html'
                     }
                 }
+                /**
+                 * state usuarioAdminLogin
+                 */
             }).state('usuarioAdminLogin', {
                 url: '/adminLogin',
                 parent: 'usuarios',
@@ -36,6 +59,9 @@
                         templateUrl: basePath + 'modal.html'
                     }
                 }
+                /**
+                 * state registrarUsuario
+                 */
             }).state('registrarUsuario', {
                 url: '/registrarUsuario',
                 parent: 'usuarios',
@@ -43,7 +69,7 @@
                     'listView': {
                         templateUrl: basePath + 'registrar.html',
                         controller: ['$scope', '$http', '$state', 'usuarios', 'usuarioContext',
-                            function ($scope, $http, $state,  usuarios, usuarioContext) {
+                            function ($scope, $http, $state, usuarios, usuarioContext) {
                                 //$scope.usuariosRecords = usuarios.data;
 
                                 $scope.tempUser = {
@@ -98,7 +124,7 @@
                                     showMessage(msg, "success");
                                 };
 
-                                let self = this;
+                                const self = this;
                                 function responseError(response) {
 
                                     self.showError(response.data);
@@ -107,7 +133,60 @@
                     }
                 }
 
+                /**
+                 * Ingresarusuario
+                 * @returns {undefined}
+                 */
+            }).state('ingresarUsuario', {
+                url: '/ingresarUsuario',
+                parent: 'usuarios',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'ingresoUsuario.html',
+                        controller: ['$scope', '$http', '$state', '$window', 'usuarios', 'usuarioContext',
+                            function ($scope, $http, $state, $window, usuarios, usuarioContext) {
+                                $scope.usuariosRecords = usuarios.data;
+                                usuariosRecords = $scope.usuariosRecords;
+                                console.log(usuariosRecords.length);
 
+                                $scope.tempCliente = {
+                                    usuario: '',
+                                    contrasenha: ''
+                                };
+                                console.log($scope.tempCliente);
+                                $scope.ingresarUsuario = function () {
+
+                                    tempCliente = $scope.tempCliente;
+                                    if (true) {
+                                        const sizeRec = usuariosRecords.length;
+                                        let encontrado = false;
+                                        for (let j = 0; j < sizeRec; j++)
+                                        {
+                                            console.log(usuariosRecords[j]);
+                                            if (usuariosRecords[j].usuario == tempCliente.usuario)
+                                            {
+                                                if (usuariosRecords[j].contrasenha == tempCliente.contrasenha)
+                                                {
+                                                    $window.alert("Bienvenido");
+                                                    encontrado = true;
+                                                    $state.go("reservasList");
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        if (!encontrado) {
+                                            window.alert("No se reconoce el usuario o contraseña");
+                                        }
+
+                                    }
+                                }
+                            }]
+                    }
+                }
+
+                /**
+                 * UsuarioDetail state
+                 */
             }).state('usuarioDetail', {
                 url: '/{usuarioId:int}/detail',
                 parent: 'usuarios',
@@ -140,3 +219,4 @@
             });
         }]);
 })(window.angular);
+

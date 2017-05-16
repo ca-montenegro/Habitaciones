@@ -6,7 +6,7 @@ er, choose License Headers in Project Properties.
  */
 
 (function (ng) {
-    var app = angular.module('mainApp', [
+    const app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
 

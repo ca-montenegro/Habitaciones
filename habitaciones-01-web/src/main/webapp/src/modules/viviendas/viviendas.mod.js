@@ -17,6 +17,12 @@
  * MA 02110-1301  USA
  */
 
+/**
+ * Modulo viviendas de la aplicación
+ * S
+ * @param {type} ng
+ * @return {undefined}
+ */
 (function (ng){
     const mod = ng.module('viviendaModule', ['ui.router']);
     mod.constant('viviendasContext', 'api/viviendas');
@@ -32,14 +38,14 @@
                 resolve: {
                     viviendas: ['$http', 'viviendasContext',
                         function ($http, viviendasContext) {
-                            return $http.get(viviendasContext);},]
+                            return $http.get(viviendasContext);},],
                 },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'viviendas.html',
                         controller: ['$scope', 'viviendas', 
                             function ($scope, viviendas) {
-                                $scope.viviendasRecords = viviendas.data},]  
+                                $scope.viviendasRecords = viviendas.data},], 
                     },
                 },
             }).state('viviendasList', {
@@ -81,7 +87,8 @@
                         function ($http, viviendasContext, $params) {
                             return $http.get(viviendasContext+
                                     '/'+$params.viviendaId);
-                        },]
+                        }
+                        ,],
                 },
                 views: {
                     'detailView': {
@@ -89,7 +96,7 @@
                         controller: ['$scope', 'viviendaActual',
                             function ($scope, viviendaActual) {
                                 $scope.viviendaActual =  viviendaActual.data;
-                            },]
+                            },],
                     },
                     'listView': {
                         templateUrl: basePath +
@@ -97,16 +104,44 @@
                         controller: ['$scope', 'viviendaActual',
                             function ($scope, viviendaActual) {
                                 $scope.viviendaActual = viviendaActual.data;
-                            },]
+                            },],
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregarHabitacion.html',
+                        templateUrl: basePath+
+                                'botonAgregarHabitacion.html',
+                    },
+                },
+            }).state('eliminarVivienda', {
+                url: '/{viviendaId:int}/eliminar',
+                parent: 'viviendas', views: {
+                    'listView': {
+                        templateUrl: basePath + 'agregarHabitacion.html',
+                        controller: ['$scope', '$http',
+                            '$state', 'viviendas', 'viviendasContext',
+                            function ($scope, $http, $state,
+                            viviendas, viviendasContext) {
+                                
+                                $scope.eliminarVivienda = function () {
+                                    
+                                    tempHabitacion = $scope.tempHabitacion;
+                                    console.log($scope.tempHabitacion);
+                                    const nuevoContext = viviendasContext+
+                                            '/'+$params.viviendaId;
+                                    return $http.delete(nuevoContext)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        console.log('check');
+                                    },);
+                                    
+                                }
+                            },],
                     },
                 },
             }).state('agregarHabitacion', {
                 url: '/agregarHabitacion',
-                parent: 'viviendas',
-                views: {
+                parent: 'viviendas', views: {
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
@@ -129,49 +164,55 @@
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
-                                            '/2'+'/habitaciones';
+                                            '/1'+'/habitaciones';
                                     return $http.post(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);
+                                    },);
                                     
                                 }
+                            },],
+                    },
+                },
+            }).state('modificarVivienda', {
+                url: '/{viviendaId:int}/modificarVivienda',
+                parent: 'viviendas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'agregarVivienda.html',
+                        controller: ['$scope', '$http',
+                            '$state', 'viviendas', 'viviendasContext',
+                            function ($scope, $http, $state,
+                            viviendas, viviendasContext) {
                                 
-                                this.closeAlert = function (index) {
-                                    $scope.alerts.splice(index, 1);
+                                $scope.tempHabitacion = {
+                                    'area': '',
+                                    'capacidad': '',
+                                    'descripcion': '',
+                                    'imagen': 
+                                            'https:/'+'/a0.muscache.com/im/pictures/42492006'+
+                                            '/d656f7da_original.jpg?aki_policy=large',
+                                    'valorDiario': '',
                                 };
-                                
-                                // Función showMessage: Recibe el mensaje en String y su
-                                // tipo con el fin de almacenarlo en el array $scope.alerts.
-                                function showMessage(msg, type) {
-                                    const types = 
-                                            ['info', 'danger',
-                                        'warning', 'success'];
-                                    if (types.some(function (rc) {
-                                        return type === rc;
-                                    })) {
-                                        $scope.alerts.push
-                                        ({type: type, msg: msg});
-                                    }
-                                }
-                                
-                                this.showError = function (msg) {
-                                    showMessage(msg, 'danger');
-                                };
-                                
-                                this.showSuccess = function (msg) {
-                                    showMessage(msg, 'success');
-                                };
-                                
-                                const self = this;
-                                function responseError(response) {
+                                console.log($scope.tempHabitacion);
+                                $scope.agregarHabitacion = function () {
                                     
-                                    self.showError(response.data);
+                                    tempHabitacion = $scope.tempHabitacion;
+                                    console.log($scope.tempHabitacion);
+                                    const nuevoContext = viviendasContext+
+                                            '/1'+'/habitaciones';
+                                    return $http.put(nuevoContext, tempHabitacion)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        console.log('check');
+                                    },);          
                                 }
-                            },]
+                            },],
                     },
                 },
             }).state('registrarReserva', {
@@ -187,34 +228,37 @@
                                     fechaInicio: '',
                                     fechaFin: '',  
                                     estado:'H',
-                                    "habitacion": {
-                                    "area": 30,
-                                    "capacidad": 2,
-                                    "descripcion": "bonita",
-                                    "imagen": "http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg",
-                                    "valorDiario": 858
+                                    'habitacion': {
+                                        'area': 30,
+                                        'capacidad': 2,
+                                        'descripcion': 'bonita',
+                                        'imagen': 'http:/'+'\n\
+   /www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg',
+                                        'valorDiario': 858
                                     },
-                                    "multa": {
-                                    "codigoMulta": 100
+                                    'multa': {
+                                        'codigoMulta': 101
                                     },
-                                    "vivienda": {
-                                        "anfitrion": {
-                                        "correo": "hola2@hola.com",
-                                        "direccion": "calle 2 No 2.2",
-                                        "nombre": "David",
-                                        "numeroID": 2,
-                                        "telefono": 6876188,
-                                        "tipoID": "Cedula",
-                                        "puntuacion": 10
+                                    'vivienda': {
+                                        'anfitrion': {
+                                            'correo': 'hola2@hola.com',
+                                            'direccion': 'calle 2 No 2.2',
+                                            'nombre': 'David',
+                                            'numeroID': 2,
+                                            'telefono': 6876188,
+                                            'tipoID': 'Cedula',
+                                            'puntuacion': 10
                                         },
-                                    "capacidad": 8,
-                                    "ciudad": "Cali",
-                                    "descripcion": "Casa grande",
-                                    "direccion": "Calle 15",
-                                    "idVivienda": 2,
-                                    "imagen": "https://a0.muscache.com/im/pictures/25735497/948807b4_original.jpg?aki_policy=large",
-                                    "numeroHabitaciones": 1,
-                                    "valorDiario": 458
+                                        'capacidad': 8,
+                                        'ciudad': 'Cali',
+                                        'descripcion': 'Casa grande',
+                                        'direccion': 'Calle 15',
+                                        'idVivienda': 2,
+                                        'imagen': 'https:/'+
+                                                '/a0.muscache.com/im/pictures/'+
+                                                '25735497/948807b4_original.jpg?aki_policy=large',
+                                        'numeroHabitaciones':1,
+                                        'valorDiario':458
                                     }
                                 };
                                 console.log($scope.tempReserva);
@@ -223,48 +267,19 @@
                                     tempReserva = $scope.tempReserva;
                                     console.log($scope.tempReserva);
                                     
-                                    return $http.post(reservasContext+'/6', tempReserva)
+                                    return $http.post(reservasContext
+                                            +'/6', tempReserva)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);
-                                    
+                                    },);
                                 }
-                                
-                                this.closeAlert = function (index) {
-                                    $scope.alerts.splice(index, 1);
-                                };
-                                
-                                // Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
-                                function showMessage(msg, type) {
-                                    const types = 
-                                            ['info', 'danger', 'warning', 'success'];
-                                    if (types.some(function (rc) {
-                                        return type === rc;
-                                    })) {
-                                        $scope.alerts.push({type: type, msg: msg});
-                                    }
-                                }
-                                
-                                this.showError = function (msg) {
-                                    showMessage(msg, 'danger');
-                                };
-                                
-                                this.showSuccess = function (msg) {
-                                    showMessage(msg, 'success');
-                                };
-                                
-                                const self = this;
-                                function responseError(response) {
-                                    
-                                    self.showError(response.data);
-                                }
-                            }]
+                            }],
                     },
                 }
             
             });
-        }]);
+        }],);
 })(window.angular);

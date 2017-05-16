@@ -19,6 +19,7 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -35,8 +36,7 @@ import uk.co.jemos.podam.common.PodamIntValue;
 
 
 @Entity
-public class ViviendaEntity implements Serializable
-{
+public class ViviendaEntity implements Serializable{
     private static final long serialVersionUID = 1L;
     
     /**
@@ -89,8 +89,8 @@ public class ViviendaEntity implements Serializable
     /**
      * Lista de reservas de la vivienda
      */
-    @OneToMany(mappedBy = "vivienda", cascade= CascadeType.PERSIST)
     @PodamExclude
+    @OneToMany(mappedBy = "vivienda", cascade= CascadeType.PERSIST)
     private List<ReservaEntity> reservas;
     
     /**
@@ -107,8 +107,10 @@ public class ViviendaEntity implements Serializable
     @PodamExclude
     private AnfitrionEntity anfitrion;
     
-    public ViviendaEntity()
-    {
+    /**
+     * Constructor por defecto
+     */
+    public ViviendaEntity(){
         
     }
     
@@ -246,8 +248,9 @@ public class ViviendaEntity implements Serializable
      * @return copy
      */
     public List<HabitacionEntity> getHabitaciones(){
-        List<HabitacionEntity> copy = habitaciones;
-        return copy;
+        List resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        return resp;
     }
     
     /**
@@ -255,7 +258,9 @@ public class ViviendaEntity implements Serializable
      * @param habitaciones
      */
     public void setHabitaciones(List habitaciones){
-        this.habitaciones = habitaciones;
+        List resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        this.habitaciones = resp;
     }
     
     /**
