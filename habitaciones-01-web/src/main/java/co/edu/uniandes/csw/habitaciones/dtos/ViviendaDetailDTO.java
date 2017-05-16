@@ -64,7 +64,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
      * @return reservas
      */
     public List<ReservaDTO> getReservas() {
-        return reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(reservas);
+        return resp;
     }
     
     /**
@@ -72,7 +74,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
      * @param reservas nuevas
      */
     public void setReservas(List<ReservaDTO> reservas) {
-        this.reservas = reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(reservas);
+        this.reservas = resp;
     }
     
     /**
