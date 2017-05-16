@@ -48,7 +48,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
      * @return habitaciones
      */
     public List<HabitacionDTO> getHabitaciones() {
-        return habitaciones;
+        List<HabitacionDTO> resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        return resp;
     }
     
     /**
@@ -56,7 +58,9 @@ public class ViviendaDetailDTO extends ViviendaDTO{
      * @param habitaciones nuevas
      */
     public void setHabitaciones(List<HabitacionDTO> habitaciones) {
-        this.habitaciones = habitaciones;
+        List<HabitacionDTO> resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        this.habitaciones = resp;
     }
     
     /**

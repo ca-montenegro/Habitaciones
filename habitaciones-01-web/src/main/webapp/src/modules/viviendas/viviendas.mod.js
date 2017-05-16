@@ -87,7 +87,8 @@
                         function ($http, viviendasContext, $params) {
                             return $http.get(viviendasContext+
                                     '/'+$params.viviendaId);
-                        },],
+                        }
+                        ,],
                 },
                 views: {
                     'detailView': {
@@ -110,21 +111,37 @@
                                 'botonAgregarHabitacion.html',
                     },
                 },
+            }).state('eliminarVivienda', {
+                url: '/{viviendaId:int}/eliminar',
+                parent: 'viviendas', views: {
+                    'listView': {
+                        templateUrl: basePath + 'agregarHabitacion.html',
+                        controller: ['$scope', '$http',
+                            '$state', 'viviendas', 'viviendasContext',
+                            function ($scope, $http, $state,
+                            viviendas, viviendasContext) {
+                                
+                                $scope.eliminarVivienda = function () {
+                                    
+                                    tempHabitacion = $scope.tempHabitacion;
+                                    console.log($scope.tempHabitacion);
+                                    const nuevoContext = viviendasContext+
+                                            '/'+$params.viviendaId;
+                                    return $http.delete(nuevoContext)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        console.log('check');
+                                    },);
+                                    
+                                }
+                            },],
+                    },
+                },
             }).state('agregarHabitacion', {
-                url: '/{viviendaId:int}/agregarHabitacion',
-                parent: 'viviendas',
-                param: {
-                    viviendaId: null,
-                },
-                resolve: {
-                    viviendaActual: 
-                            ['$http', 'viviendasContext', '$stateParams',
-                        function ($http, viviendasContext, $params) {
-                            return $http.get(viviendasContext+
-                                    '/'+$params.viviendaId);
-                        },],
-                },
-                views: {
+                url: '/agregarHabitacion',
+                parent: 'viviendas', views: {
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
@@ -161,11 +178,11 @@
                     },
                 },
             }).state('modificarVivienda', {
-                url: '/modificarVivienda',
+                url: '/{viviendaId:int}/modificarVivienda',
                 parent: 'viviendas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'agregarHabitacion.html',
+                        templateUrl: basePath + 'agregarVivienda.html',
                         controller: ['$scope', '$http',
                             '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,
@@ -187,7 +204,7 @@
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
                                             '/1'+'/habitaciones';
-                                    return $http.post(nuevoContext, tempHabitacion)
+                                    return $http.put(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
@@ -238,8 +255,8 @@
                                         'direccion': 'Calle 15',
                                         'idVivienda': 2,
                                         'imagen': 'https:/'+
-                                        '/a0.muscache.com/im/pictures/'+
-                                        '25735497/948807b4_original.jpg?aki_policy=large',
+                                                '/a0.muscache.com/im/pictures/'+
+                                                '25735497/948807b4_original.jpg?aki_policy=large',
                                         'numeroHabitaciones':1,
                                         'valorDiario':458
                                     }
