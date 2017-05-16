@@ -1,17 +1,34 @@
+/**
+ * 
+ * @param {type} ng
+ * @returns {undefined}
+ */
 (function (ng) {
-    const mod = ng.module("usuarioModule", ['ui.router']);
-    mod.constant("usuarioContext", "api/usuarios");
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    /**
+     * 
+     * @type type
+     */
+    const mod = ng.module('usuarioModule', ['ui.router']);
+    mod.constant('usuarioContext', 'api/usuarios');
+    mod.config(['$stateProvider', '$urlRouterProvider', 
+        function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/usuario/';
-            $urlRouterProvider.otherwise("/usuariosList");
+            $urlRouterProvider.otherwise('/usuariosList');
             $stateProvider.state('usuarios', {
                 url: '/usuarios',
                 abstract: true,
+                /**
+                 * Resolve
+                 */
                 resolve: {
-                    usuarios: ['$http', 'usuarioContext', function ($http, usuarioContext) {
+                    usuarios: ['$http', 'usuarioContext', 
+                        function ($http, usuarioContext) {
                             return $http.get(usuarioContext);
                         }]
                 },
+                /**
+                 * views
+                 */
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'usuarios.html',
@@ -20,6 +37,9 @@
                             }]
                     }
                 }
+                /**
+                 * state usuariosList
+                 */
             }).state('usuariosList', {
                 url: '/list',
                 parent: 'usuarios',
@@ -28,6 +48,9 @@
                         templateUrl: basePath + 'usuario.list.html'
                     }
                 }
+                /**
+                 * state usuarioAdminLogin
+                 */
             }).state('usuarioAdminLogin', {
                 url: '/adminLogin',
                 parent: 'usuarios',
@@ -36,6 +59,9 @@
                         templateUrl: basePath + 'modal.html'
                     }
                 }
+                /**
+                 * state registrarUsuario
+                 */
             }).state('registrarUsuario', {
                 url: '/registrarUsuario',
                 parent: 'usuarios',
@@ -107,7 +133,10 @@
                     }
                 }
 
-
+                /**
+                 * Ingresarusuario
+                 * @returns {undefined}
+                 */
             }).state('ingresarUsuario', {
                 url: '/ingresarUsuario',
                 parent: 'usuarios',
@@ -155,7 +184,9 @@
                     }
                 }
 
-
+                /**
+                 * UsuarioDetail state
+                 */
             }).state('usuarioDetail', {
                 url: '/{usuarioId:int}/detail',
                 parent: 'usuarios',
@@ -188,3 +219,4 @@
             });
         }]);
 })(window.angular);
+

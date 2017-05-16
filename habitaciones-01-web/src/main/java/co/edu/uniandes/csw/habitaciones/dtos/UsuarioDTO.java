@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ca.montenegro
  */
 @XmlRootElement
-public class UsuarioDTO implements Serializable {
+public class UsuarioDTO implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
     /**
      * Atributo ID
      */
@@ -95,9 +95,9 @@ public class UsuarioDTO implements Serializable {
      *
      * @param entity UsuarioEntity
      */
-    public UsuarioDTO(UsuarioEntity entity) {
-        if (entity != null) {
-            this.numeroID = entity.getNumeroID();
+    public UsuarioDTO(UsuarioEntity entity){
+     if (entity != null) {
+       this.numeroID = entity.getNumeroID();
             this.tipoID = entity.getTipoID();
             this.nombre = entity.getNombre();
             this.usuario = entity.getUsuario();
@@ -116,8 +116,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return UsuarioEntity
      */
-    public UsuarioEntity toEntity() {
-        UsuarioEntity entity = new UsuarioEntity();
+    public UsuarioEntity toEntity(){
+     UsuarioEntity entity = new UsuarioEntity();
 
         entity.setNumeroID(this.numeroID);
         entity.setTipoID(this.getTipoID());
@@ -139,8 +139,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return Long id
      */
-    public Long getNumeroID() {
-        return numeroID;
+    public Long getNumeroID(){
+     return numeroID;
     }
 
     /**
@@ -148,8 +148,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @param numeroID Long id
      */
-    public void setNumeroID(Long numeroID) {
-        this.numeroID = numeroID;
+    public void setNumeroID(Long numeroID){
+     this.numeroID = numeroID;
     }
 
     /**
@@ -157,8 +157,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return String tipo ID
      */
-    public String getTipoID() {
-        return tipoID;
+    public String getTipoID(){
+     return tipoID;
     }
 
     /**
@@ -166,8 +166,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @param tipoID
      */
-    public void setTipoID(String tipoID) {
-        this.tipoID = tipoID;
+    public void setTipoID(String tipoID){
+     this.tipoID = tipoID;
     }
 
     /**
@@ -175,8 +175,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return String nombre
      */
-    public String getNombre() {
-        return nombre;
+    public String getNombre(){
+     return nombre;
     }
 
     /**
@@ -184,8 +184,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @param nombre
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre){
+     this.nombre = nombre;
     }
 
     /**
@@ -193,8 +193,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return String usuario
      */
-    public String getUsuario() {
-        return usuario;
+    public String getUsuario(){
+     return usuario;
     }
 
     /**
@@ -202,8 +202,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @param usuario
      */
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String usuario){
+     this.usuario = usuario;
     }
 
     /**
@@ -211,8 +211,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @return String contraseña
      */
-    public String getContrasenha() {
-        return contrasenha;
+    public String getContrasenha(){
+     return contrasenha;
     }
 
     /**
@@ -220,8 +220,8 @@ public class UsuarioDTO implements Serializable {
      *
      * @param contrasenha
      */
-    public void setContrasenha(String contrasenha) {
-        this.contrasenha = contrasenha;
+    public void setContrasenha(String contrasenha){
+     this.contrasenha = contrasenha;
     }
 
     /**
@@ -229,7 +229,7 @@ public class UsuarioDTO implements Serializable {
      *
      * @return String correo
      */
-    public String getCorreo() {
+    public String getCorreo(){
         return correo;
     }
 
