@@ -39,21 +39,19 @@
                     habitacionId: null
                 },
                 resolve:{
-                    habitacionActual:
-                            ['$http','habitacionesContext', '$stateParams',
-                        function($http, habitacionesContext, $params){
-                            return $http.get(habitacionesContext + 
-                                    '/'+$params.habitacionId);
-                        },]
+                    habitacionActual:['$http', 'habitacionesContext', '$stateParams',
+                    function($http, habitacionesContext, $params) {
+                        return $http.get(habitacionesContext + '/' + $params.habitacionId);
+                    }]
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'habitaciones.detail.html',
-                        controller: ['$scope', 'habitacionActual', 
-                                    function ($scope,  habitacionActual ) {
-                                $scope.habitacionActual = habitacionActual.data;
-                            }]
-                    },
+                        controller: ['$scope', 'habitacionActual',
+                                    function ($scope, habitacionActual)
+                            { $scope.habitacionActual = habitacionActual.data;
+                            },]
+                    },                    
                 }
             });
         }]);

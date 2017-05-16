@@ -2,20 +2,18 @@
     
     <div class="row">
         
-        <div class="col-md-4" ng-repeat="habitacion in habitacionesRecords">
-            
-            <div class="thumbnail">
-                 <a ui-sref="habitacionDetail({habitacionId: habitacion.idHabitacion})"> 
-                    <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.idHabitacion}}"/>
-                 </a>
+        <div class="col-md-4 animate-box" ng-repeat="habitacion in habitacionesRecords">
+            <a ui-sref="habitacionDetail({habitacionId: habitacion.id})"> 
+  
+                 <img class="img-responsive" ng-src ='{{habitacion.imagen}}' alt = "{{habitacion.id}}"/>
+               
                     <div class ="caption text-left"> 
                         <p>Precio: {{habitacion.valorDiario}}</p>
                         <p>Area: {{habitacion.area}} m2</p>
                         <p>Capacidad: {{habitacion.capacidad}} personas</p>
                     </div>
                
-                
-            </div>
+            </a>
             
         </div>
         
