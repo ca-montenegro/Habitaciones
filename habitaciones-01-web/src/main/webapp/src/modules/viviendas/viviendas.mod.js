@@ -154,13 +154,9 @@
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);
+                                    },);
                                     
                                 }
-                                
-                                this.closeAlert = function (index) {
-                                    $scope.alerts.splice(index, 1);
-                                };
                             },],
                     },
                 },
@@ -197,13 +193,8 @@
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);
-                                    
+                                    },);          
                                 }
-                                
-                                this.closeAlert = function (index) {
-                                    $scope.alerts.splice(index, 1);
-                                };
                             },],
                     },
                 },
@@ -266,13 +257,8 @@
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
                                         console.log('check');
-                                    }, responseError);
-                                    
+                                    },);
                                 }
-                                
-                                this.closeAlert = function (index) {
-                                    $scope.alerts.splice(index, 1);
-                                };
                             }],
                     },
                 }
