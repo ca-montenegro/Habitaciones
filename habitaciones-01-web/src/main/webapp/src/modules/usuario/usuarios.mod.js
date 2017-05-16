@@ -1,5 +1,5 @@
 (function (ng) {
-    let mod = ng.module("usuarioModule", ['ui.router']);
+    const mod = ng.module("usuarioModule", ['ui.router']);
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/usuario/';
@@ -56,7 +56,7 @@
                                     direccion: '',
                                     telefono: '',
                                     numeroTarjeta: '',
-                                    image: 'https://randomuser.me/api/portraits/men/16.jpg',
+                                    image: '',
 
                                 };
                                 console.log($scope.tempUser);
@@ -98,7 +98,7 @@
                                     showMessage(msg, "success");
                                 };
 
-                                let self = this;
+                                const self = this;
                                 function responseError(response) {
 
                                     self.showError(response.data);
@@ -129,7 +129,7 @@
 
                                     tempCliente = $scope.tempCliente;
                                     if (true) {
-                                        let sizeRec = usuariosRecords.length;
+                                        const sizeRec = usuariosRecords.length;
                                         let encontrado = false;
                                         for (let j = 0; j < sizeRec; j++)
                                         {
