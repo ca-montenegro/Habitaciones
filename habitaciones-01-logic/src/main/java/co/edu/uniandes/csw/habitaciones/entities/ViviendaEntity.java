@@ -35,8 +35,7 @@ import uk.co.jemos.podam.common.PodamIntValue;
 
 
 @Entity
-public class ViviendaEntity implements Serializable
-{
+public class ViviendaEntity implements Serializable{
     private static final long serialVersionUID = 1L;
     
     /**
@@ -89,8 +88,8 @@ public class ViviendaEntity implements Serializable
     /**
      * Lista de reservas de la vivienda
      */
-    @OneToMany(mappedBy = "vivienda", cascade= CascadeType.PERSIST)
     @PodamExclude
+    @OneToMany(mappedBy = "vivienda", cascade= CascadeType.PERSIST)
     private List<ReservaEntity> reservas;
     
     /**
@@ -107,8 +106,10 @@ public class ViviendaEntity implements Serializable
     @PodamExclude
     private AnfitrionEntity anfitrion;
     
-    public ViviendaEntity()
-    {
+    /**
+     * Constructor por defecto
+     */
+    public ViviendaEntity(){
         
     }
     

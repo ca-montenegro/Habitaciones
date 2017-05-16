@@ -31,11 +31,15 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.springframework.util.Assert;
 
+/**
+ * Clase de logica del recurso vivienda
+ * @author c.penaloza
+ */
 @Stateless
-public class ViviendaLogic
-{
+public class ViviendaLogic{
     /**
      * Constructor por defecto
+     * Inicializa la persistencia
      */
     public ViviendaLogic(){
         persistence = new ViviendaPersistence();
@@ -53,6 +57,7 @@ public class ViviendaLogic
     
     /**
      * Constructor
+     * Inyecta la persistencia
      * @param persistence persistencia
      */
     @Inject
@@ -71,10 +76,10 @@ public class ViviendaLogic
     
     /**
      * Obtiene los datos de una instancia de Vivienda a partir de su ID.
-     *
+     * Revisa que la vivienda no sea nula
      * @param id Identificador de la instancia a consultar
      * @return Instancia de ViviendaEntity con los datos del Vivienda consultado.
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException si no existe una vivienda con el id dado
      */
     public ViviendaEntity getVivienda(Long id) throws BusinessLogicException{
         ViviendaEntity vivienda = persistence.find(id);
@@ -86,7 +91,7 @@ public class ViviendaLogic
     
     /**
      * Se encarga de crear un Vivienda en la base de datos.
-     *
+     * Realiza verificaciones necesarias
      * @param entity Objeto de ViviendaEntity con los datos nuevos
      * @return Objeto de ViviendaEntity con los datos nuevos y su ID.
      * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
@@ -129,14 +134,16 @@ public class ViviendaLogic
         ViviendaEntity vivienda = getVivienda(id);
         Date d = new Date();
         for (ReservaEntity r: vivienda.getReservas()){
-            if (r.getFechaInicio().after(d)) {
+            if (r.getFechaInicio().after(d)){
                 throw new BusinessLogicException("No se puede borrar una vivienda con reservas futuras.");
             }
         }
         for (HabitacionEntity h: vivienda.getHabitaciones()){
             for (ReservaEntity re: h.getReservas()){
                 if (re.getFechaInicio().after(d)){
-                    throw new BusinessLogicException("No se puede borrar una vivienda con habitaciones que tienen reservas futuras.");
+                    throw new BusinessLogicException
+                ("No se puede borrar una vivienda con"
+                        + " habitaciones que tienen reservas futuras.");
                 }
             }
         }
