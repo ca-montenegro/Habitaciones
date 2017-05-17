@@ -27,7 +27,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
 
-    public static final String DEPLOY = "Prueba";
+    public static final String DEPLOY = "Prueba1";
 
     
     /**

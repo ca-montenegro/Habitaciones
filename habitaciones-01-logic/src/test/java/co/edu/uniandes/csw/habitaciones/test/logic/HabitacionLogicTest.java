@@ -31,15 +31,16 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 /**
  * @generated
  */
-@RunWith(Arquillian.class)
+
 
 /**
  *
  * @author l.maya10
  */
+@RunWith(Arquillian.class)
 public class HabitacionLogicTest {
     
-    public static final String DEPLOY = "Prueba";
+    public static final String DEPLOY = "PruebaHabitacion";
     
     /**
      * @generated
@@ -63,7 +64,7 @@ public class HabitacionLogicTest {
     /**
      * @generated
      */
-    @PersistenceContext
+    @PersistenceContext(unitName = "habitacionesPU")
     private EntityManager em;
     
     /**
