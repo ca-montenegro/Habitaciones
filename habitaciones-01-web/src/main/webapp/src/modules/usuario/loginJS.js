@@ -4,7 +4,7 @@ login.controller('MainController', function ($scope, $http, $window,$state) {
     
 	$scope.loge = function(){
 	console.log($scope.usrname1);
-	},
+	}
 
 	$scope.verificar = function(){
       
@@ -20,7 +20,7 @@ login.controller('MainController', function ($scope, $http, $window,$state) {
         for(let i = 0; i<$scope.datos.length; i++)
         {
         	$scope.usuario = (response.data[i].usuario);
-        	if($scope.usuario==$scope.usrname1 && !encontrado){
+        	if($scope.usuario==$scope.usrname1 && encontrado==false){
         		$scope.contrasenha = (response.data[i].contrasenha);
         		if($scope.psw == $scope.contrasenha){
         			$window.alert("Bienvenido");	

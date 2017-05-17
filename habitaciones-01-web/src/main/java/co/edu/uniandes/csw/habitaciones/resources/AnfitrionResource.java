@@ -89,8 +89,7 @@ public class AnfitrionResource {
     @Path("{id: \\d+}/viviendas")
     public ViviendaDTO agregarVivienda(@PathParam("id") Long id, ViviendaDTO dto) throws Exception{
         dto.setAnfitrion(getAnfitrionBasic(id));
-        ViviendaEntity vivienda=new ViviendaEntity();
-        vivienda = dto.toEntity();
+        ViviendaEntity vivienda=dto.toEntity();
         ViviendaEntity stored=anfitrionlogic.createVivienda(id,vivienda);
         return new ViviendaDTO(stored);
     }

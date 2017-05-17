@@ -90,16 +90,13 @@
 
                                     tempUser = $scope.tempUser;
                                     console.log(tempUser);
-                                    if (true) {
-                                        return $http.post(usuarioContext, tempUser)
-                                                .then(function () {
-                                                    // $http.post es una promesa
-                                                    // cuando termine bien, cambie de estado
-                                                    $state.go('viviendasList');
-                                                    console.log('check');
-                                                }, responseError);
-
-                                    }
+                                    return $http.post(usuarioContext, tempUser)
+                                            .then(function () {
+                                                // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        console.log('check');
+                                    }, responseError);
                                 }
 
                                 this.closeAlert = function (index) {
@@ -157,27 +154,24 @@
                                 $scope.ingresarUsuario = function () {
 
                                     tempCliente = $scope.tempCliente;
-                                    if (true) {
-                                        const sizeRec = usuariosRecords.length;
-                                        let encontrado = false;
-                                        for (let j = 0; j < sizeRec; j++)
+                                    const sizeRec = usuariosRecords.length;
+                                    let encontrado = false;
+                                    for (let j = 0; j < sizeRec; j++)
+                                    {
+                                        console.log(usuariosRecords[j]);
+                                        if (usuariosRecords[j].usuario == tempCliente.usuario)
                                         {
-                                            console.log(usuariosRecords[j]);
-                                            if (usuariosRecords[j].usuario == tempCliente.usuario)
+                                            if (usuariosRecords[j].contrasenha == tempCliente.contrasenha)
                                             {
-                                                if (usuariosRecords[j].contrasenha == tempCliente.contrasenha)
-                                                {
-                                                    $window.alert("Bienvenido");
-                                                    encontrado = true;
-                                                    $state.go("reservasList");
-                                                    break;
-                                                }
+                                                $window.alert("Bienvenido");
+                                                encontrado = true;
+                                                $state.go("reservasList");
+                                                break;
                                             }
                                         }
-                                        if (!encontrado) {
-                                            window.alert("No se reconoce el usuario o contraseña");
-                                        }
-
+                                    }
+                                    if (!encontrado) {
+                                        window.alert("No se reconoce el usuario o contraseña");
                                     }
                                 }
                             }]
