@@ -112,8 +112,7 @@ public class ViviendaEntity implements Serializable{
      * Constructor por defecto
      */
     public ViviendaEntity(){
-        habitaciones=new ArrayList<HabitacionEntity>();
-        reservas=new ArrayList<ReservaEntity>();
+        
     }
     
     /**
