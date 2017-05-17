@@ -232,8 +232,9 @@ public class ViviendaEntity implements Serializable{
      * @return copy
      */
     public List<ReservaEntity> getReservas(){
-        List<ReservaEntity> copy = reservas;
-        return copy;
+        List resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        return resp;
     }
     
     /**
@@ -241,8 +242,9 @@ public class ViviendaEntity implements Serializable{
      * @param reservas
      */
     public void setReservas(List reservas){
-        List<ReservaEntity> copy = reservas;
-        this.reservas = copy;
+        List resp = new ArrayList<>();
+        resp.addAll(habitaciones);
+        this.reservas = resp;
     }
     
     /**

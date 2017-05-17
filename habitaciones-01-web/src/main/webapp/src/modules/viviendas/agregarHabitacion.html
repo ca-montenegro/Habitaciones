@@ -3,7 +3,7 @@
     &nbsp
     <div class="s-holder">
         <b><h2 style="color:white">Agregar Habitacións</h2></b>
-        <div class="row" style="width:400px" ng-controller = 'MainController'>
+        <div class="row" style="width:400px">
             <form novalidate name="form" id="agregarVivienda-form" role="form" ng-submit="form.$valid && agregarHabitacion()">
                 <fieldset>
                     <div>
@@ -26,8 +26,8 @@
                     
                     <div>
                         <div class="form-group">
-                            <label style="color:white" for="from">Descripción</label>
-                            <input type="text" class="form-control" ng-model="tempHabitacion.descripcion" ng-init="tempHabitacion.descripcion" placeholder="Ciudad"/>
+                            <label style="color:white" for="from">Qué distingue a la habitación</label>
+                            <input type="text" class="form-control" ng-model="tempHabitacion.descripcion" ng-init="tempHabitacion.descripcion" placeholder="Descripción"/>
                         </div>
                     </div>
                     
