@@ -141,7 +141,9 @@ public class UsuarioResource {
      */
     @GET
     @Path("{id: \\d+}/reservas/{idReserva}")
-    public ReservaDTO getUsuarioReservaID(@PathParam("id") Long id, @PathParam("idReserva") String idReserva) throws BusinessLogicException {
+    public ReservaDTO getUsuarioReservaID(@PathParam("id") 
+            Long id, @PathParam("idReserva") String idReserva) 
+            throws BusinessLogicException {
         for (ReservaEntity re : usuarioLogic.getUsuario(id).getReservas()) {
             if (re.getCodigoReserva() == Long.parseLong(idReserva)) {
                 return new ReservaDTO(re);
@@ -215,7 +217,9 @@ public class UsuarioResource {
      */
     @PUT
     @Path("{id: \\d+}/reservas/{idReserva}")
-    public ReservaDTO updateReserva(@PathParam("id") Long id, @PathParam("idReserva") String idReserva, ReservaDTO dto) throws BusinessLogicException {
+    public ReservaDTO updateReserva(@PathParam("id") Long id, 
+            @PathParam("idReserva") String idReserva, ReservaDTO dto) 
+            throws BusinessLogicException {
         List<ReservaEntity> listaReservas = usuarioLogic.getUsuario(id).getReservas();
         ReservaEntity reservaUpdate = null;
 
@@ -233,7 +237,8 @@ public class UsuarioResource {
             
         }
         if (reservaUpdate == null) {
-            throw new BusinessLogicException("No existe la reserva con el id: " + idReserva + " para el usuario con id: " + id);
+            throw new BusinessLogicException("No existe la reserva con el id: " 
+                    + idReserva + " para el usuario con id: " + id);
         }
         return new ReservaDTO(reservaUpdate);
 
