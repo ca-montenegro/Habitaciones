@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "habitaciones-01",
-		"_postman_id": "2224902f-745e-1a78-d880-05da3e657a33",
+		"_postman_id": "79487c36-e7bc-8bbf-897d-68e6baa7f207",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -168,6 +168,77 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"nombres\": \"Prueba\",\r\n    \"apellidos\": \"Pruebas\",\r\n    \"condicionFisica\": 1,\r\n    \"fechaNacimiento\": \"1979-10-11T14:45:00\",\r\n    \"login\": \"prueba\"\r\n}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get vivienda id",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"direccion\": \"calle 1 No 1-1\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get viviendas",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"direccion\": \"calle 1 No 1-1\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post habitacion en viviendas",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1/habitaciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"area\": 30,\n      \"capacidad\": 4,\n      \"descripcion\": \"nueva\",\n      \"imagen\": \"http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg\",\n      \"valorDiario\": 450\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete vivienda",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []

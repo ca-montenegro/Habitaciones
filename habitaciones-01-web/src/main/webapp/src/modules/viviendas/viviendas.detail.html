@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    
+
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -20,41 +20,45 @@
                     <hr>
                     <dt><b>Valor diario</b></dt>
                     <dd>{{viviendaActual.valorDiario}}</dd>
-                        
+                    
                 </dl>
                 
             </div>
             <div class="col-md-4">
                 <h3>Acerca de la vivienda:</h3>
-                    <p>{{viviendaActual.descripcion}}</p>
+                <p>{{viviendaActual.descripcion}}</p>
                 <h3>El anfitrión:</h3>
-                    <p>Nombre: {{viviendaActual.anfitrion.nombre}}</p>
-                    <p>Teléfono: {{viviendaActual.anfitrion.telefono}}</p>
-                    <p>Puntuación: {{viviendaActual.anfitrion.puntuacion}}/10</p>
+                <p>Nombre: {{viviendaActual.anfitrion.nombre}}</p>
+                <p>Teléfono: {{viviendaActual.anfitrion.telefono}}</p>
+                <p>Puntuación: {{viviendaActual.anfitrion.puntuacion}}/10</p>
             </div>
             
             <div  style="text-align:center">
-       
-    </div>
-
+                
+            </div>
         </div>
         <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4 ">
-                <div class="thumb" align="center">
-                     <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="registrarReserva">Reservar vivienda</a></p>
-                </div> 
-            </div>
-            <div class="col-md-4 ">
-                <div class="thumb" align="center">
-                     <p><a class="btn btn-primary btn-lg buttonEliminar" ng-click = "eliminar()">Eliminar vivienda</a></p>
-                </div> 
-            </div>
-            <div class="col-md-4 ">
-                <div class="thumb" align="center">
-                     <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="modificarVivienda({viviendaId: viviendaActual.idVivienda})">Modificar datos</a></p>
-                </div> 
+            <div class="row">
+                <div class="col-md-3 ">
+                    <div class="thumb" align="center">
+                        <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="registrarReserva">Reservar vivienda</a></p>
+                    </div> 
+                </div>
+                <div class="col-md-3 ">
+                    <div class="thumb" align="center">
+                        <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="eliminarVivienda({viviendaId: viviendaActual.idVivienda})">Eliminar vivienda</a></p>
+                    </div> 
+                </div>
+                <div class="col-md-3 ">
+                    <div class="thumb" align="center">
+                        <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="modificarVivienda({viviendaId: viviendaActual.idVivienda})">Modificar datos</a></p>
+                    </div> 
+                </div>
+                <div class="col-md-3 ">
+                    <div class="thumb" align="center">
+                        <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="agregarHabitacion({viviendaId: viviendaActual.idVivienda})">Agregar habitación</a></p>
+                    </div> 
+                </div>
             </div>
         </div>
     </div>
-</div>
