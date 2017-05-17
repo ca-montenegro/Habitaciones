@@ -1,11 +1,11 @@
 (function (ng) {
-    var mod = ng.module("reservasModule", ['ui.router']);
+    const mod = ng.module("reservasModule", ['ui.router']);
     /**
      * Recurso de reserva, lee directamente del back-end, para su correcto funcionamiento ejecutar el script en la carpeta /data/ScriptViviendas.sql 
      */
     mod.constant("reservasContext", "api/reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/reservas/';
+            const basePath = 'src/modules/reservas/';
             $urlRouterProvider.otherwise("/reservas");
 
             $stateProvider.state('reservas', {

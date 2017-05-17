@@ -78,8 +78,10 @@ public class ViviendaLogic{
      * Obtiene los datos de una instancia de Vivienda a partir de su ID.
      * Revisa que la vivienda no sea nula
      * @param id Identificador de la instancia a consultar
-     * @return Instancia de ViviendaEntity con los datos del Vivienda consultado.
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException si no existe una vivienda con el id dado
+     * @return Instancia de ViviendaEntity con los datos 
+     * del Vivienda consultado.
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.
+     * BusinessLogicException si no existe una vivienda con el id dado
      */
     public ViviendaEntity getVivienda(Long id) throws BusinessLogicException{
         ViviendaEntity vivienda = persistence.find(id);
@@ -94,7 +96,8 @@ public class ViviendaLogic{
      * Realiza verificaciones necesarias
      * @param entity Objeto de ViviendaEntity con los datos nuevos
      * @return Objeto de ViviendaEntity con los datos nuevos y su ID.
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.
+     * BusinessLogicException
      * @generated
      */
     

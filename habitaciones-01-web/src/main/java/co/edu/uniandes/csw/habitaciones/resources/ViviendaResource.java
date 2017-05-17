@@ -48,17 +48,39 @@ import java.util.Objects;
 import javax.ws.rs.WebApplicationException;
 import org.springframework.util.Assert;
 
-
+/**
+ * Clase resource del recurso vivienda
+ * No se tiene ruta predefinida
+ * 
+ * @author c.penaloza
+ */
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ViviendaResource {
     
-    
+    /**
+     * Vivienda logica
+     */
     private final ViviendaLogic viviendaLogic;
+    
+    /**
+     * Habitacion logica
+     */
     private final HabitacionLogic habitacionLogic;
+    
+    /**
+     * Response
+     */
     @Context private HttpServletResponse response;
+    
+    private static final int notFound=404;
+    
+    /**
+     * Pagina
+     */
     @QueryParam("page") private Integer page;
+    
     @QueryParam("limit") private Integer maxRecords;
     
     /**
@@ -66,11 +88,14 @@ public class ViviendaResource {
      * @param viviendaLogic
      */
     @Inject
-    public ViviendaResource (ViviendaLogic viviendaLogic, HabitacionLogic habitacionLogic) {
-        Assert.notNull(viviendaLogic, "Vivienda logic no puede ser nula!");
+    public ViviendaResource (ViviendaLogic viviendaLogic,
+            HabitacionLogic habitacionLogic) {
+        Assert.notNull(viviendaLogic,
+                "Vivienda logic no puede ser nula!");
         this.viviendaLogic = viviendaLogic;
         
-        Assert.notNull(habitacionLogic, "Habitacion logic no puede ser nula!");
+        Assert.notNull(habitacionLogic,
+                "Habitacion logic no puede ser nula!");
         this.habitacionLogic = habitacionLogic;
     }
     
@@ -81,7 +106,8 @@ public class ViviendaResource {
      * @return Lista de ViviendaDetailDTO convertida.
      * @generated
      */
-    private List<ViviendaDTO> listEntity2DTO(List<ViviendaEntity> entityList){
+    private List<ViviendaDTO> listEntity2DTO
+        (List<ViviendaEntity> entityList){
         List<ViviendaDTO> list = new ArrayList<>();
         for (ViviendaEntity entity : entityList) {
             list.add(new ViviendaDTO(entity));
@@ -110,7 +136,8 @@ public class ViviendaResource {
      */
     @GET
     @Path("/viviendas/{id: \\d+}")
-    public ViviendaDetailDTO getVivienda(@PathParam("id") Long id) throws BusinessLogicException {
+    public ViviendaDetailDTO getVivienda
+        (@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
         if (vivienda==null){
             throw new WebApplicationException("La vivienda no existe", 404);
@@ -127,8 +154,10 @@ public class ViviendaResource {
      */
     @POST
     @Path("/anfitriones/{idA:\\d+}/viviendas/")
-    public ViviendaDetailDTO createVivienda(ViviendaDetailDTO dto) throws BusinessLogicException {
-        return new ViviendaDetailDTO(viviendaLogic.createVivienda(dto.toEntity()));
+    public ViviendaDetailDTO createVivienda
+        (ViviendaDetailDTO dto) throws BusinessLogicException {
+        return new ViviendaDetailDTO
+        (viviendaLogic.createVivienda(dto.toEntity()));
     }
     
     /**
@@ -140,31 +169,40 @@ public class ViviendaResource {
      */
     @PUT
     @Path("/viviendas/{id: \\d+}")
-    public ViviendaDetailDTO updateVivienda(ViviendaDetailDTO dto, @PathParam("id") Long id) throws BusinessLogicException {
+    public ViviendaDetailDTO updateVivienda
+        (ViviendaDetailDTO dto, @PathParam("id") Long id)
+                throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
-        if (dto.getCapacidad()!=vivienda.getCapacidad()&&dto.getCapacidad()>0){
+        if (dto.getCapacidad()!=
+                vivienda.getCapacidad()&&dto.getCapacidad()>0){
             vivienda.setCapacidad(dto.getCapacidad());
         }
-        if (!dto.getDescripcion().equals(vivienda.getDescripcion()) && !dto.getDescripcion().isEmpty()){
+        if (!dto.getDescripcion().equals(vivienda.getDescripcion())
+                && !dto.getDescripcion().isEmpty()){
             vivienda.setDescripcion(dto.getDescripcion());
         }
-        if (!dto.getDireccion().equals(vivienda.getDireccion()) && !dto.getDireccion().isEmpty()){
+        if (!dto.getDireccion().equals(vivienda.getDireccion())
+                && !dto.getDireccion().isEmpty()){
             vivienda.setDireccion(dto.getDireccion());
         }
-        if (!dto.getImagen().equals(vivienda.getImagen()) && !dto.getImagen().isEmpty()){
+        if (!dto.getImagen().equals(vivienda.getImagen())
+                && !dto.getImagen().isEmpty()){
             vivienda.setImagen(dto.getImagen());
         }
-        if (!dto.getValorDiario().equals(vivienda.getValorDiario())&&dto.getValorDiario()>0){
+        if (!dto.getValorDiario().equals
+        (vivienda.getValorDiario())&&dto.getValorDiario()>0){
             vivienda.setValorDiario(dto.getValorDiario());
         }
-        return new ViviendaDetailDTO(viviendaLogic.updateVivienda(vivienda));
+        return new ViviendaDetailDTO
+        (viviendaLogic.updateVivienda(vivienda));
     }
     
     
     /**
      * Elimina una instancia de Vivienda de la base de datos
      * @param id Identificador de la instancia a eliminar
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.
+     * BusinessLogicException
      * @generated
      */
     @DELETE
@@ -172,7 +210,7 @@ public class ViviendaResource {
     public void deleteVivienda(@PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
         if (vivienda==null){
-            throw new WebApplicationException("La vivienda no existe", 404);
+            throw new WebApplicationException("La vivienda no existe", notFound);
         }
         viviendaLogic.deleteVivienda(id);
     }
@@ -186,30 +224,34 @@ public class ViviendaResource {
      */
     @POST
     @Path("/viviendas/{idV:\\d+}/habitaciones/")
-    public HabitacionDetailDTO createHabitacion(HabitacionDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
+    public HabitacionDetailDTO createHabitacion
+        (HabitacionDTO dto, @PathParam("idV") Long idV) throws BusinessLogicException {
         ViviendaEntity v = viviendaLogic.getVivienda(idV);
         HabitacionEntity nueva = dto.toEntity();
         nueva.setVivienda(v);
         v.setNumeroHabitaciones(v.getNumeroHabitaciones()+1);
         viviendaLogic.updateVivienda(v);
         
-        return new HabitacionDetailDTO(habitacionLogic.createHabitacion(nueva));
+        return new HabitacionDetailDTO
+        (habitacionLogic.createHabitacion(nueva));
     }
     
     /**
      * Retorna todas las habitaciones de una vivienda
      * @param idV id de la vivienda
      * @return Lista de HabitacionDTO
-     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.
+     * BusinessLogicException
      */
     @GET
     @Path("viviendas/{idV:\\d+}/habitaciones/")
-    public List<HabitacionDTO> getHabitaciones(@PathParam("idV") Long idV) throws BusinessLogicException {
+    public List<HabitacionDTO> getHabitaciones
+        (@PathParam("idV") Long idV) throws BusinessLogicException {
         if (viviendaLogic.getVivienda(idV)==null){
-            throw new WebApplicationException("La vivienda no existe", 404);
+            throw new WebApplicationException("La vivienda no existe", notFound);
         }
-        //return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitaciones());
-        return HabitacionResource.listEntity2DTO(habitacionLogic.getHabitacionesVivienda(idV));
-    }
-    
+        //return HabitacionResource.listEntity2DTO
+        return HabitacionResource.listEntity2DTO
+        (habitacionLogic.getHabitacionesVivienda(idV));
+    }    
 }
