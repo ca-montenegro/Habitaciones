@@ -62,7 +62,7 @@ public class ReservaDTO implements Serializable{
         entity.setEstado(this.getEstado());
         entity.setFechaInicio(this.getFechaInicio());
         entity.setFechaFin(this.getFechaFin());
-        if( entity.getHabitacion() != null)
+        if( entity.getHabitacion() !=null)
         {
             entity.setHabitacion(this.getHabitacion().toEntity());
         }
