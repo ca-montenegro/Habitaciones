@@ -219,17 +219,18 @@ public class UsuarioResource {
         List<ReservaEntity> listaReservas = usuarioLogic.getUsuario(id).getReservas();
         ReservaEntity reservaUpdate = null;
 
+        int count =0;
         for (ReservaEntity re : listaReservas) {
-            int count = 0;
+            
 
             if (re.getCodigoReserva() == Long.parseLong(idReserva)) {
 
-                listaReservas.remove(count);
+                listaReservas.remove(count++);
                 reservaUpdate = reservaLogic.updateReserva(dto.toEntity());
                 listaReservas.add(re);
                 break;
             }
-            count++;
+            
         }
         if (reservaUpdate == null) {
             throw new BusinessLogicException("No existe la reserva con el id: " + idReserva + " para el usuario con id: " + id);

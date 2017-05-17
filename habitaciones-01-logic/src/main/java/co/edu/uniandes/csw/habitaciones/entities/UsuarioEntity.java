@@ -286,6 +286,11 @@ public class UsuarioEntity implements Serializable {
         this.image = image;
     }
 
+    public boolean agregarReserva(ReservaEntity rese) {
+        return reservas.add(rese);
+
+    }
+
     @Override
     public int hashCode() {
         if (this.getNumeroID() != null) {
@@ -296,24 +301,14 @@ public class UsuarioEntity implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        Boolean retu = false;
-        if (this == obj) {
-            retu = false;
-        }
-        if (obj == null) {
-            retu = false;
-        }
-        if (getClass() != obj.getClass()) {
-            retu = false;
+        if (this == obj || obj == null || getClass() != obj.getClass()) {
+            return false;
         }
         final UsuarioEntity other = (UsuarioEntity) obj;
         if (!Objects.equals(this.numeroID, other.numeroID)) {
-            retu = false;
-        } else {
-            retu = true;
+            return false;
         }
-
-        return retu;
+        return true;
     }
 
 }

@@ -93,9 +93,25 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'viviendas.detail.html',
-                        controller: ['$scope', 'viviendaActual',
-                            function ($scope, viviendaActual) {
+                        controller: ['$scope', 'viviendaActual','$stateParams','$state','$http', 'viviendasContext',
+                            function ($scope, viviendaActual,$params, $state, $http, viviendasContext) {
+                                
                                 $scope.viviendaActual =  viviendaActual.data;
+                                let vivi = $scope.viviendaActual;
+                                console.log(vivi);
+                                
+                                $scope.eliminar = function(){
+                                    console.log(vivi);
+                                const nuevoContext = viviendasContext+
+                                            '/'+vivi.idVivienda;
+                                    console.log(nuevoContext);
+                                return $http.delete(nuevoContext).then(function () {
+                                                    // $http.post es una promesa
+                                                    // cuando termine bien, cambie de estado
+                                                    $state.go('viviendasList');
+                                                    console.log('Hola carlitos');
+                                                },);
+                            }
                             },],
                     },
                     'listView': {
@@ -120,9 +136,9 @@
                             '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,
                             viviendas, viviendasContext) {
-                                
+                                console.log("entra");
                                 $scope.eliminarVivienda = function () {
-                                    
+                                    console.log("entra1");
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
