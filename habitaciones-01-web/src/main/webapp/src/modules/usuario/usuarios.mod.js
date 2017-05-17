@@ -1,19 +1,52 @@
+/* 
+ * Copyright (C) 2017 c.penaloza.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301  USA
+ */
+
+
 /**
- * 
+ * Modulo usuario de la aplicación.
+ * S
  * @param {type} ng
  * @returns {undefined}
  */
 (function (ng) {
     /**
-     * 
+     * Modulo usuario
      * @type type
      */
     const mod = ng.module('usuarioModule', ['ui.router']);
     mod.constant('usuarioContext', 'api/usuarios');
     mod.config(['$stateProvider', '$urlRouterProvider',
+        /**
+         * 
+         * @param {type} $stateProvider
+         * @param {type} $urlRouterProvider
+         * @returns {undefined}
+         */
         function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/usuario/';
             $urlRouterProvider.otherwise('/usuariosList');
+            /**
+             * Proveedor de estados
+             * @param {type} $scope
+             * @param {type} usuarios
+             * @returns {undefined}
+             */
             $stateProvider.state('usuarios', {
                 url: '/usuarios',
                 abstract: true,
@@ -22,6 +55,12 @@
                  */
                 resolve: {
                     usuarios: ['$http', 'usuarioContext',
+                        /**
+                         * 
+                         * @param {type} $http
+                         * @param {type} usuarioContext
+                         * @returns {unresolved}
+                         */
                         function ($http, usuarioContext) {
                             return $http.get(usuarioContext);
                         }, ]
@@ -33,13 +72,20 @@
                     'mainView': {
                         templateUrl: basePath + 'usuarios.html',
                         controller: ['$scope', 'usuarios',
-                            function ($scope, usuarios) {
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} usuarios
+                             * @returns {undefined}
+                             */
+                                    function ($scope, usuarios) {
                                 $scope.usuariosRecords = usuarios.data;
                             }, ]
                     },
                 },
                 /**
                  * state usuariosList
+                 * Principal modulo
                  */
             }).state('usuariosList', {
                 url: '/list',
@@ -52,6 +98,8 @@
                 },
                 /**
                  * state usuarioAdminLogin
+                 * Login del admin con controlador. 
+                 * usuario = JaimeAdmin contra = 1234
                  */
             }).state('usuarioAdminLogin', {
                 url: '/adminLogin',
@@ -61,7 +109,17 @@
                         templateUrl: basePath + 'modal.html',
                         controller: ['$scope', '$http', '$state',
                             '$window', 'usuarios', 'usuarioContext',
-                            function ($scope, $http, $state,
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} $window
+                             * @param {type} usuarios
+                             * @param {type} usuarioContext
+                             * @returns {undefined}
+                             */
+                                    function ($scope, $http, $state,
                                     $window, usuarios, usuarioContext) {
                                 $scope.usuariosRecords = usuarios.data;
 
@@ -88,6 +146,7 @@
                     },
                 },
                 /**
+                 * estado para registrar
                  * state registrarUsuario
                  */
             }).state('registrarUsuario', {
@@ -98,7 +157,16 @@
                         templateUrl: basePath + 'registrar.html',
                         controller: ['$scope', '$http', '$state',
                             'usuarios', 'usuarioContext',
-                            function ($scope, $http, $state,
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} usuarios
+                             * @param {type} usuarioContext
+                             * @returns {undefined}
+                             */
+                                    function ($scope, $http, $state,
                                     usuarios, usuarioContext) {
                                 //$scope.usuariosRecords = usuarios.data;
 
@@ -116,7 +184,12 @@
 
                                 };
                                 console.log($scope.tempUser);
-                                $scope.registrar = function () {
+                                $scope.registrar = 
+                                        /**
+                                         * 
+                                         * @returns {unresolved}
+                                         */
+                                        function () {
 
                                     tempUser = $scope.tempUser;
                                     console.log(tempUser);
@@ -135,6 +208,9 @@
 
                 /**
                  * Ingresarusuario
+                 * se ingresa un usuaroi
+                 * Entra un usuario a ver reservas
+                 * cambia de estado
                  * @returns {undefined}
                  */
             }).state('ingresarUsuario', {
@@ -145,7 +221,17 @@
                         templateUrl: basePath + 'ingresoUsuario.html',
                         controller: ['$scope', '$http', '$state',
                             '$window', 'usuarios', 'usuarioContext',
-                            function ($scope, $http, $state,
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} $window
+                             * @param {type} usuarios
+                             * @param {type} usuarioContext
+                             * @returns {undefined}
+                             */
+                                    function ($scope, $http, $state,
                                     $window, usuarios, usuarioContext) {
                                 $scope.usuariosRecords = usuarios.data;
                                 usuariosRecords = $scope.usuariosRecords;
@@ -156,7 +242,12 @@
                                     contrasenha: '',
                                 };
                                 console.log($scope.tempCliente);
-                                $scope.ingresarUsuario = function () {
+                                $scope.ingresarUsuario = 
+                                        /**
+                                         * 
+                                         * @returns {undefined}
+                                         */
+                                        function () {
 
                                     tempCliente = $scope.tempCliente;
                                     const sizeRec = usuariosRecords.length;
@@ -186,9 +277,14 @@
                     },
                 },
 
-                /**
-                 * UsuarioDetail state
-                 */
+               
+              /**
+               * Modificar usuario
+               * modifica el usuario
+               * param
+               * usuarioID
+               * @returns {undefined}
+               */ 
             }).state('modificarUsuario', {
                 url: '{usuarioId: int}/modificarUsuario',
                 parent: 'usuarios',
@@ -200,7 +296,17 @@
                         templateUrl: basePath + 'modificarUsuario.html',
                         controller: ['$scope', '$http', '$state',
                             'usuarios', 'usuarioContext', '$stateParams',
-                            function ($scope, $http, $state,
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} usuarios
+                             * @param {type} usuarioContext
+                             * @param {type} $params
+                             * @returns {undefined}
+                             */
+                                    function ($scope, $http, $state,
                                     usuarios, usuarioContext, $params) {
                                 //$scope.usuariosRecords = usuarios.data;
 
@@ -217,12 +323,22 @@
                                     image:'',
                                 };
                                 console.log($scope.tempUserMo);
-                                $scope.update = function () {
+                                $scope.update = 
+                                        /**
+                                         * 
+                                         * @returns {unresolved}
+                                         */
+                                        function () {
 
                                     tempUserMo = $scope.tempUserMo;
                                     console.log(tempUserMo);
                                     return $http.put(usuarioContext + "/" + $params.usuarioId, tempUserMo)
-                                            .then(function () {
+                                            .then(
+                                            /**
+                                             * 
+                                             * @returns {undefined}
+                                             */
+                                            function () {
                                                 // $http.post es una promesa
                                                 // cuando termine bien, cambie de estado
                                                 $state.go('usuariosList');
@@ -235,8 +351,10 @@
                 },
 
                 /**
-                 * Ingresarusuario
-                 * @returns {undefined}
+                 * Estado detail de usuario
+                 * muestra los detalles del usuario
+                 * param
+                 * usuarioID
                  */
             }).state('usuarioDetail', {
                 url: '/{usuarioId:int}/detail',
@@ -246,6 +364,13 @@
                 },
                 resolve: {
                     currentUsuario: ['$http', 'usuarioContext', '$stateParams',
+                        /**
+                         * 
+                         * @param {type} $http
+                         * @param {type} usuarioContext
+                         * @param {type} $params
+                         * @returns {unresolved}
+                         */
                         function ($http, usuarioContext, $params) {
                             return $http.get(usuarioContext + '/'
                                     + $params.usuarioId);
@@ -256,7 +381,14 @@
                         templateUrl: basePath + 'usuario.list.html',
                         resolve: {
                             usuarios: ['$http', 'usuarioContext',
-                                function ($http, usuarioContext) {
+                                /**
+                                 * Funcion
+                                 * Dobdle funcion
+                                 * @param {type} $http
+                                 * @param {type} usuarioContext
+                                 * @returns {unresolved}
+                                 */
+                                        function ($http, usuarioContext) {
                                     return $http.get(usuarioContext);
                                 }, ]
                         },
@@ -265,7 +397,13 @@
 
                         templateUrl: basePath + 'usuario.detail.html',
                         controller: ['$scope', 'currentUsuario',
-                            function ($scope, currentUsuario) {
+                            /**
+                             * 
+                             * @param {type} $scope
+                             * @param {type} currentUsuario
+                             * @returns {undefined}
+                             */
+                                    function ($scope, currentUsuario) {
                                 console.log(currentUsuario.data);
                                 $scope.currentUsuario = currentUsuario.data;
                             }, ]
