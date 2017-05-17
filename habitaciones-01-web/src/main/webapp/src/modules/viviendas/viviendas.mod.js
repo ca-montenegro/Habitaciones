@@ -24,6 +24,10 @@
  * @return {undefined}
  */
 (function (ng){
+    /**
+     * Modulo viviendas
+     * @type {type}
+     */
     const mod = ng.module('viviendaModule', ['ui.router']);
     mod.constant('viviendasContext', 'api/viviendas');
     mod.constant('reservasContext', 'api/reservas');
@@ -32,6 +36,12 @@
             const basePath = 'src/modules/viviendas/';
             $urlRouterProvider.otherwise('/viviendasList');
             
+            /**
+             * Proveedor de estado
+             * @param {type} $scope
+             * @param {type} viviendas
+             * @return {undefined}
+             */
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
                 abstract: true,
@@ -48,6 +58,11 @@
                                 $scope.viviendasRecords = viviendas.data},], 
                     },
                 },
+                /**
+                 * Estado lista
+                 * Principal del modulo
+                 * 
+                 */
             }).state('viviendasList', {
                 url: '/lista',
                 parent: 'viviendas',
@@ -61,20 +76,33 @@
                     'extraView': {
                     },
                 },
+                /**
+                 * Estado buscar
+                 * No se ha implementado completamente
+                 */
             }).state('buscarVivienda', {
                 url: '/filtrar',
                 parent: 'viviendas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'viviendas.list.html',
+                        templateUrl: basePath+'viviendas.list.html',
                     },
                     'detailView': {
-                        templateUrl: basePath + 'buscarVivienda.html',
+                        templateUrl: basePath+'buscarVivienda.html',
                     },
                     'extraView': {
-                        templateUrl: basePath + 'botonAgregar.html',
+                        templateUrl: basePath+'botonAgregar.html',
                     },
                 },
+                /**
+                 * Estado detalle
+                 * Funcion borrar
+                 * Funcion modificar
+                 * Llama a agregar habitacion
+                 * @param {type} $scope
+                 * @param {type} viviendaActual
+                 * @return {undefined}
+                 */
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
                 parent: 'viviendas',
@@ -93,22 +121,24 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'viviendas.detail.html',
-                        controller: ['$scope', 'viviendaActual','$stateParams','$state','$http', 'viviendasContext',
-                            function ($scope, viviendaActual,$params, $state, $http, viviendasContext) {
+                        controller: ['$scope', 'viviendaActual',
+                            '$stateParams','$state','$http','viviendasContext',
+                            function ($scope, viviendaActual,$params,
+                            $state, $http, viviendasContext) {
                                 
                                 $scope.viviendaActual =  viviendaActual.data;
-                                let vivi = $scope.viviendaActual;
+                                const vivi = $scope.viviendaActual;
                                 $scope.eliminar = function(){
-                                const nuevoContext = viviendasContext+
+                                    const nuevoContext = viviendasContext+
                                             '/'+vivi.idVivienda;
                                     console.log(nuevoContext);
-                                return $http.delete(nuevoContext).then(function () {
-                                                    // $http.post es una promesa
-                                                    // cuando termine bien, cambie de estado
-                                                    $state.go('viviendasList');
-                                                    location.reload();
-                                                },);
-                            }
+                                    return $http.delete(nuevoContext).then(function () {
+                                        // $http.post es una promesa
+                                        // cuando termine bien, cambie de estado
+                                        $state.go('viviendasList');
+                                        location.reload();
+                                    },);
+                                }
                             },],
                     },
                     'listView': {
@@ -122,6 +152,11 @@
                     'extraView': {         
                     },
                 },
+                /**
+                 * Agrega habitacion
+                 * Vuelve a lista
+                 * @return {undefined}
+                 */
             }).state('agregarHabitacion', {
                 url: '/{viviendaId:int}/agregarHabitacion',
                 parent: 'viviendas',
@@ -138,12 +173,21 @@
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
-                            '$state', 'viviendas', 'viviendasContext', '$stateParams',
-                            
+                            '$state','viviendas','viviendasContext','$stateParams',
+                            /**
+                             * Funcion para agregar habitacion
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} viviendas
+                             * @param {type} viviendasContext
+                             * @param {type} $params
+                             * @return {undefined}
+                             */
                             function ($scope, $http, $state,
                             viviendas, viviendasContext, $params) {
                                 
-                                let idActual = $params.viviendaId;
+                                const idActual = $params.viviendaId;
                                 $scope.tempHabitacion = {
                                     'area': '',
                                     'capacidad': '',
@@ -154,6 +198,10 @@
                                     'valorDiario': '',
                                 };
                                 
+                                /**
+                                 * Agrega la habitacion
+                                 * @return {unresolved}
+                                 */
                                 $scope.agregarHabitacion = function () {
                                     
                                     tempHabitacion = $scope.tempHabitacion;
@@ -174,6 +222,10 @@
                             },],
                     },
                 },
+                /**
+                 * Estado modificar reserva
+                 * @return {undefined}
+                 */
             }).state('modificarVivienda', {
                 url: '/{viviendaId:int}/modificarVivienda',
                 parent: 'viviendas',
@@ -188,13 +240,22 @@
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'modificarVivienda.html',
-                        controller: ['$scope', '$http',
-                            '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,
-                            viviendas, viviendasContext) {
-                                let viv = $scope.viviendaActual;
-                                console.log(viv);
+                        templateUrl: basePath+'modificarVivienda.html',
+                        controller: ['$scope','viviendaActual',
+                            '$state', '$http','viviendasContext',
+                            /**
+                             * Funcion modifivar vivienda
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} viviendas
+                             * @param {type} viviendasContext
+                             * @return {undefined}
+                             */
+                            function ($scope, viviendaActual, $params,
+                            $state,$http, viviendasContext) {
+                                $scope.viviendaActual=viviendaActual.data;
+                                const viv = $scope.viviendaActual;
                                 $scope.tempVivienda = {
                                     "capacidad": viv.capacidad,
                                     "ciudad": viv.ciudad,
@@ -204,13 +265,17 @@
                                     "imagen": viv.imagen,
                                     "valorDiario": viv.valorDiario,
                                 };
-                                console.log($scope.tempVivienda);
+                                /**
+                                 * Modifica la vivienda
+                                 * @return {unresolved}
+                                 */
                                 $scope.modificarVivienda = function () {
                                     
                                     tempVivienda = $scope.tempVivienda;
                                     console.log($scope.tempVivienda);
-                                    const nuevoContext = viviendasContext+1;
-                                    return $http.put(nuevoContext, tempVivienda)
+                                    const nuevoContext = viviendasContext;
+                                    return $http.put(nuevoContext+'/'+
+                                            tempVivienda.idVivienda,$scope.tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
@@ -222,50 +287,30 @@
                     },
                 },
             }).state('registrarReserva', {
-                url: '/registrarReserva',
+                url: '/{idVivienda:int}/\n\
+{valorDiario:int}/registrarReserva',
                 parent : 'reservas',
+                param: {
+                    idVivienda : null
+                },
                 views: {
                     'listView': {
                         templateUrl:'src/modules/reservas/nuevaReserva.html',
-                        controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
-                            function ($scope, $http, $state,  reservas, reservasContext) {
+                        controller: ['$scope', '$http', '$state', 
+                            'reservas', 'reservasContext','$stateParams',
+                            function ($scope, $http, $state,
+                            reservas, reservasContext, $params) {
+                                
                                 
                                 $scope.tempReserva = {
                                     fechaInicio: '',
                                     fechaFin: '',  
                                     estado:'H',
-                                    'habitacion': {
-                                        'area': 30,
-                                        'capacidad': 2,
-                                        'descripcion': 'bonita',
-                                        'imagen': 'http:/'+'\n\
-   /www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg',
-                                        'valorDiario': 858
-                                    },
-                                    'multa': {
-                                        'codigoMulta': 101
-                                    },
-                                    'vivienda': {
-                                        'anfitrion': {
-                                            'correo': 'hola2@hola.com',
-                                            'direccion': 'calle 2 No 2.2',
-                                            'nombre': 'David',
-                                            'numeroID': 2,
-                                            'telefono': 6876188,
-                                            'tipoID': 'Cedula',
-                                            'puntuacion': 10
-                                        },
-                                        'capacidad': 8,
-                                        'ciudad': 'Cali',
-                                        'descripcion': 'Casa grande',
-                                        'direccion': 'Calle 15',
-                                        'idVivienda': 2,
-                                        'imagen': 'https:/'+
-                                                '/a0.muscache.com/im/pictures/'+
-                                                '25735497/948807b4_original.jpg?aki_policy=large',
-                                        'numeroHabitaciones':1,
-                                        'valorDiario':458
-                                    }
+                                    "vivienda" :
+                                            {
+                                                "idVivienda" : $params.idVivienda,
+                                        "valorDiario" : $params.valorDiario                                        
+                                    }           
                                 };
                                 console.log($scope.tempReserva);
                                 $scope.agregarReserva = function () {
@@ -273,19 +318,50 @@
                                     tempReserva = $scope.tempReserva;
                                     console.log($scope.tempReserva);
                                     
-                                    return $http.post(reservasContext
-                                            +'/6', tempReserva)
+                                    return $http.post(reservasContext+'/6', tempReserva)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
-                                        $state.go('viviendasList');
+                                        $state.go('reservasList');
                                         console.log('check');
-                                    },);
+                                    }, responseError);
+                                    
                                 }
-                            }],
+                                
+                                this.closeAlert = function (index) {
+                                    $scope.alerts.splice(index, 1);
+                                };
+                                
+                                // Función showMessage: Recibe el mensaje en
+                                //  String y su tipo con el fin de almacenarlo
+                                //   en el array $scope.alerts.
+                                function showMessage(msg, type) {
+                                    const types = 
+                                            ['info', 'danger', 'warning', 'success'];
+                                    if (types.some(function (rc) {
+                                        return type === rc;
+                                    })) {
+                                        $scope.alerts.push({type: type, msg: msg});
+                                    }
+                                }
+                                
+                                this.showError = function (msg) {
+                                    showMessage(msg, 'danger');
+                                };
+                                
+                                this.showSuccess = function (msg) {
+                                    showMessage(msg, 'success');
+                                };
+                                
+                                const self = this;
+                                function responseError(response) {
+                                    
+                                    self.showError(response.data);
+                                }
+                            }]
                     },
                 }
             
             });
-        }],);
+        }]);
 })(window.angular);

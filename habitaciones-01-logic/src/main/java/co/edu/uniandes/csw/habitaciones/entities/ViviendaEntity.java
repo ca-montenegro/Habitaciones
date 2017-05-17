@@ -97,7 +97,7 @@ public class ViviendaEntity implements Serializable{
     /**
      * Lista de habitaciones de la vivienda
      */
-    @OneToMany(mappedBy="vivienda", cascade= CascadeType.PERSIST)
+    @OneToMany(mappedBy="vivienda", cascade= CascadeType.ALL)
     @PodamExclude
     private List<HabitacionEntity> habitaciones;
     
