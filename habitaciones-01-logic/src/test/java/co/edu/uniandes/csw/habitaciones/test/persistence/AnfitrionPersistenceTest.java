@@ -150,7 +150,7 @@ public class AnfitrionPersistenceTest {
     @Test
     public void getAnfitrionTest() {
         List<AnfitrionEntity> list = persistence.findAll();
-        //Assert.assertEquals(data.size(), list.size());
+        Assert.assertEquals(data.size(), list.size());
         for (AnfitrionEntity ent : list) {
             boolean found = false;
             for (AnfitrionEntity entity : data) {

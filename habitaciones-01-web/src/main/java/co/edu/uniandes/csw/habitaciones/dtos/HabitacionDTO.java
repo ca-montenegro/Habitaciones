@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class HabitacionDTO implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     private Long id;
@@ -34,15 +35,12 @@ public class HabitacionDTO implements Serializable {
     private String descripcion;
     private String imagen;
     
-    public HabitacionDTO()
-    {
+    public HabitacionDTO(){
         
     }
     
-    public HabitacionDTO(HabitacionEntity entity)
-    {
-        if(entity!=null)
-        {
+    public HabitacionDTO(HabitacionEntity entity){
+        if(entity!=null){
             this.id = entity.getId();
             this.area = entity.getArea();
             this.capacidad = entity.getCapacidad();
@@ -52,8 +50,7 @@ public class HabitacionDTO implements Serializable {
         }
     }
     
-    public HabitacionEntity toEntity()
-    {
+    public HabitacionEntity toEntity(){
         HabitacionEntity entity = new HabitacionEntity();
         entity.setId(this.getId());
         entity.setArea(this.getArea());

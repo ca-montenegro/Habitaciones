@@ -241,7 +241,8 @@ public class ViviendaEntity implements Serializable{
      * @param reservas
      */
     public void setReservas(List reservas){
-        this.reservas = reservas;
+        List<ReservaEntity> copy = reservas;
+        this.reservas = copy;
     }
     
     /**

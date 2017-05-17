@@ -19,6 +19,7 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -69,11 +70,15 @@ public class HabitacionEntity implements Serializable {
     private List<ReservaEntity> reservas;
 
     public List<ReservaEntity> getReservas() {
-        return reservas;
+        List<ReservaEntity> resp = new ArrayList<>();
+        resp.addAll(this.reservas);
+        return resp;
     }
 
     public void setReservas(List reservas) {
-        this.reservas = reservas;
+        List<ReservaEntity> resp = new ArrayList<>();
+        resp.addAll(reservas);
+        this.reservas = resp;
     }
 
     public Long getId() {

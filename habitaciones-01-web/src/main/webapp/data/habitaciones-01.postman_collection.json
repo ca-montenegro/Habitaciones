@@ -1,404 +1,339 @@
 {
-	"variables": [],
-	"info": {
-		"name": "habitaciones-01.postman_collection.json",
-		"_postman_id": "8d5d089f-1263-db06-bb61-494c969baddc",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+	"name": "habitaciones-01.postman_collection.json copy",
+	"description": "",
+	"order": [
+		"01a95d23-6e1a-cedb-315a-c4a56f138259",
+		"99d2d70d-513f-06c7-04c0-fd31a5590747",
+		"0d73a915-a556-b7a6-72ee-464166f52c9f",
+		"56652319-c72f-d1ed-9e9a-210c520e9566",
+		"b6f9d78b-5bcc-aab6-e5b6-26298b3577e1",
+		"de69664b-ce36-3801-424c-3b5ccc219924",
+		"98e4f06a-8b4a-92fb-ceef-928e164be252",
+		"bb0c3c6c-4468-fec6-8706-506910f02132",
+		"b8d5419f-411f-31fd-025e-e85c17e0c03f",
+		"d4cd3b82-61b5-c661-0a99-d55a809455ad",
+		"7730cd85-d3db-85b7-6332-542a8122aa57",
+		"8d6e9905-54d5-4d8a-2722-b8162934621a",
+		"0836d60a-5347-88e8-0599-b96b9f106f92",
+		"ae10746b-a55b-7eb8-6908-cea8fd724bc7",
+		"cc284a93-43d3-cdc5-2491-94312632cda8",
+		"d3a2ac8d-d95a-8baf-c933-550562d4ed3f",
+		"952dadab-6fb0-bcf7-57dd-5998e8248973",
+		"7f06a7c7-e505-5d6e-5ce1-90a6ddb0a3d9",
+		"ee612ae4-5cb3-f850-3f2b-65642d65e2ae",
+		"f3d2bb74-bcb3-317c-821d-aea6361c0e34"
+	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
 		{
+			"id": "01a95d23-6e1a-cedb-315a-c4a56f138259",
 			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse(responseBody);",
-							"tests[\"test length of response\"] = data.length === 1;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/usuarios",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombres\": \"Prueba\",\r\n    \"apellidos\": \"Pruebas\",\r\n    \"condicionFisica\": 1,\r\n    \"fechaNacimiento\": \"1979-10-11T14:45:00\",\r\n    \"login\": \"prueba\"\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"nombres\": \"Prueba\",\r\n    \"apellidos\": \"Pruebas\",\r\n    \"condicionFisica\": 1,\r\n    \"fechaNacimiento\": \"1979-10-11T14:45:00\",\r\n    \"login\": \"prueba\"\r\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test length of response\"] = data.length === 1;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/usuarios",
+			"responses": []
 		},
 		{
-			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios/12345 copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 500\"] = responseCode.code === 500;",
-							"tests[\"test usuario no existe\"] = responseBody.has(\"El usuario no existe\");"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/usuarios/0",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"numeroID\": 12345,\r\n    \"tipoID\": \"Cedula\",\r\n    \"nombre\": \"UsuarioP\",\r\n    \"usuario\": \"usuario prueba\",\r\n    \"correo\": \"prueba@prueba.com\",\r\n    \"direccion\": \"direccion prueba\",\r\n    \"telefono\": 1234567\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/viajes-01-web/api/usuarios/1 copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse(responseBody);",
-							"tests[\"test telefono\"] = data.telefono === 7654321;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/usuarios/{{idv}}",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"contasenha\": \"123456\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 7654321,\r\n    \"numeroTarjeta\": 123456789\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse(responseBody);",
-							"tests[\"test telefono\"] = data[0].telefono === 7654321;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/usuarios",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombres\": \"Prueba\",\r\n    \"apellidos\": \"Pruebas\",\r\n    \"condicionFisica\": 1,\r\n    \"fechaNacimiento\": \"1979-10-11T14:45:00\",\r\n    \"login\": \"prueba\"\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get vivienda id",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "\"direccion\": \"calle 1 No 1-1\""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get viviendas",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "\"direccion\": \"calle 1 No 1-1\""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Post habitacion en viviendas",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1/habitaciones",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"area\": 30,\n      \"capacidad\": 4,\n      \"descripcion\": \"nueva\",\n      \"imagen\": \"http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg\",\n      \"valorDiario\": 450\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete vivienda",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6",
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Put vivienda",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"capacidad\": 4,\n  \"ciudad\": \"Bogota\",\n  \"descripcion\": \"\",\n  \"direccion\": \"Calle 250\",\n  \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n  \"valorDiario\": 410\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get Habitaciones LIsta",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse([responseBody]);",
-							"tests[\"test nombre\"] = data.nombre === \"Prueba\";",
-							"postman.setGlobalVariable(\"id\", data.numeroID);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get Habitacion ID",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse([responseBody]);",
-							"tests[\"test nombre\"] = data.nombre === \"Prueba\";",
-							"postman.setGlobalVariable(\"id\", data.numeroID);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/1",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete habitacion vivienda",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6/habitaciones/2",
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
+			"id": "0836d60a-5347-88e8-0599-b96b9f106f92",
 			"name": "Update Habitacion vivienda",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/3/habitaciones/1",
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		
-		{
-			"name": "Get reservas",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/reservas",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-13T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-08T00:00:00-05:00\",\n    \"vivienda\": {\n      \"capacidad\": 6,\n      \"ciudad\": \"Bogota\",\n      \"descripcion\": \"Casa bonita\",\n      \"direccion\": \"Calle 200\",\n      \"idVivienda\": 1,\n      \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n      \"numeroHabitaciones\": 0,\n      \"valorDiario\": 273\n\t}\n\n}"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "PUT",
+			"headers": "",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/3/habitaciones/1",
+			"responses": []
 		},
 		{
-			"name": "Get reserva por id",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/reservas/1",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
+			"id": "0d73a915-a556-b7a6-72ee-464166f52c9f",
+			"name": "http://localhost:8080/viajes-01-web/api/usuarios/1 copy",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "PUT",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"contasenha\": \"123456\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 7654321,\r\n    \"numeroTarjeta\": 123456789\r\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test telefono\"] = data.telefono === 7654321;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/usuarios/{{idv}}",
+			"responses": []
 		},
 		{
-			"name": "Post de reservas ",
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/reservas/6",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-19T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-18T00:00:00-05:00\",\n    \"vivienda\": {\n      \"idVivienda\": 1,\n      \"valorDiario\": 273\n    }\n  }"
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "56652319-c72f-d1ed-9e9a-210c520e9566",
+			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios copy",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"nombres\": \"Prueba\",\r\n    \"apellidos\": \"Pruebas\",\r\n    \"condicionFisica\": 1,\r\n    \"fechaNacimiento\": \"1979-10-11T14:45:00\",\r\n    \"login\": \"prueba\"\r\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test telefono\"] = data[0].telefono === 7654321;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/usuarios",
+			"responses": []
 		},
 		{
+			"id": "7730cd85-d3db-85b7-6332-542a8122aa57",
+			"name": "Get Habitacion ID",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse([responseBody]);\ntests[\"test nombre\"] = data.nombre === \"Prueba\";\npostman.setGlobalVariable(\"id\", data.numeroID);",
+			"preRequestScript": "",
+			"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/1",
+			"responses": []
+		},
+		{
+			"id": "7f06a7c7-e505-5d6e-5ce1-90a6ddb0a3d9",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/habitaciones-01-web/api/anfitriones",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/habitaciones-01-web/api/anfitriones",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495045402577,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"rawModeData": "{\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"contasenha\": \"123456\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 7654321,\r\n    \"numeroTarjeta\": 123456789\r\n}"
+		},
+		{
+			"id": "8d6e9905-54d5-4d8a-2722-b8162934621a",
+			"name": "Delete habitacion vivienda",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "DELETE",
+			"headers": "",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6/habitaciones/2",
+			"responses": []
+		},
+		{
+			"id": "952dadab-6fb0-bcf7-57dd-5998e8248973",
 			"name": "Put de reservas (Se cancela la reserva)",
-			"request": {
-				"url": "",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"estado\" : \"C\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "PUT",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\t\"estado\" : \"C\"\n}",
+			"url": "",
+			"responses": []
+		},
+		{
+			"id": "98e4f06a-8b4a-92fb-ceef-928e164be252",
+			"name": "Post habitacion en viviendas",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "POST",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\t\"area\": 30,\n      \"capacidad\": 4,\n      \"descripcion\": \"nueva\",\n      \"imagen\": \"http://www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg\",\n      \"valorDiario\": 450\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1/habitaciones",
+			"responses": []
+		},
+		{
+			"id": "99d2d70d-513f-06c7-04c0-fd31a5590747",
+			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios/12345 copy",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n\t\"numeroID\": 12345,\r\n    \"tipoID\": \"Cedula\",\r\n    \"nombre\": \"UsuarioP\",\r\n    \"usuario\": \"usuario prueba\",\r\n    \"correo\": \"prueba@prueba.com\",\r\n    \"direccion\": \"direccion prueba\",\r\n    \"telefono\": 1234567\r\n}",
+			"tests": "tests[\"Status code is 500\"] = responseCode.code === 500;\ntests[\"test usuario no existe\"] = responseBody.has(\"El usuario no existe\");",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/usuarios/0",
+			"responses": []
+		},
+		{
+			"id": "ae10746b-a55b-7eb8-6908-cea8fd724bc7",
+			"name": "Get reservas",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-13T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-08T00:00:00-05:00\",\n    \"vivienda\": {\n      \"capacidad\": 6,\n      \"ciudad\": \"Bogota\",\n      \"descripcion\": \"Casa bonita\",\n      \"direccion\": \"Calle 200\",\n      \"idVivienda\": 1,\n      \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n      \"numeroHabitaciones\": 0,\n      \"valorDiario\": 273\n\t}\n\n}",
+			"url": "http://localhost:8080/habitaciones-01-web/api/reservas",
+			"responses": []
+		},
+		{
+			"id": "b6f9d78b-5bcc-aab6-e5b6-26298b3577e1",
+			"name": "Get vivienda id",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "\"direccion\": \"calle 1 No 1-1\"",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test length of response\"] = data.length === 1;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
+			"responses": []
+		},
+		{
+			"id": "b8d5419f-411f-31fd-025e-e85c17e0c03f",
+			"name": "Put vivienda",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "PUT",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n  \"capacidad\": 4,\n  \"ciudad\": \"Bogota\",\n  \"descripcion\": \"\",\n  \"direccion\": \"Calle 250\",\n  \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n  \"valorDiario\": 410\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test telefono\"] = data.capacidad === 4;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
+			"responses": []
+		},
+		{
+			"id": "bb0c3c6c-4468-fec6-8706-506910f02132",
+			"name": "Delete vivienda",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "DELETE",
+			"headers": "",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 204;\nvar data = JSON.parse(responseBody);\ntests[\"test length of response\"] = data.length === 0;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6",
+			"responses": []
+		},
+		{
+			"id": "cc284a93-43d3-cdc5-2491-94312632cda8",
+			"name": "Get reserva por id",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/reservas/1",
+			"responses": []
+		},
+		{
+			"id": "d3a2ac8d-d95a-8baf-c933-550562d4ed3f",
+			"name": "Post de reservas ",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "POST",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-19T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-18T00:00:00-05:00\",\n    \"vivienda\": {\n      \"idVivienda\": 1,\n      \"valorDiario\": 273\n    }\n  }",
+			"url": "http://localhost:8080/habitaciones-01-web/api/reservas/6",
+			"responses": []
+		},
+		{
+			"id": "d4cd3b82-61b5-c661-0a99-d55a809455ad",
+			"name": "Get Habitaciones LIsta",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse([responseBody]);\ntests[\"test nombre\"] = data.nombre === \"Prueba\";\npostman.setGlobalVariable(\"id\", data.numeroID);",
+			"preRequestScript": "",
+			"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/",
+			"responses": []
+		},
+		{
+			"id": "de69664b-ce36-3801-424c-3b5ccc219924",
+			"name": "Get viviendas",
+			"description": "",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "\"direccion\": \"calle 1 No 1-1\"",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\ntests[\"test length of response\"] = data.length === 6;",
+			"preRequestScript": "",
+			"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/",
+			"responses": []
+		},
+		{
+			"id": "ee612ae4-5cb3-f850-3f2b-65642d65e2ae",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/habitaciones-01-web/api/anfitriones/1/viviendas",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/habitaciones-01-web/api/anfitriones",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495045452544,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"rawModeData": "{\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"contasenha\": \"123456\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 7654321,\r\n    \"numeroTarjeta\": 123456789\r\n}"
+		},
+		{
+			"id": "f3d2bb74-bcb3-317c-821d-aea6361c0e34",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:8080/habitaciones-01-web/api/anfitriones",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "9252aa54-d1bb-628f-62a4-9a3538a017b9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/habitaciones-01-web/api/anfitriones",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495045776239,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"rawModeData": "{\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"contasenha\": \"123456\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 7654321,\r\n    \"numeroTarjeta\": 123456789,\r\n    \"puntuacion\":10,\r\n    \"correo\":\"correo\",\r\n    \"usuario\":\"perro loco\",\r\n    \"image\":\"image\",\r\n    \"numeroID\":12\r\n}"
 		}
 	]
 }
