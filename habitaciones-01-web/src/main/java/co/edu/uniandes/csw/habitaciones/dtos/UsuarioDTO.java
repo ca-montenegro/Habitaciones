@@ -22,8 +22,8 @@ package co.edu.uniandes.csw.habitaciones.dtos;
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.entities.UsuarioEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-//import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -81,7 +81,7 @@ public class UsuarioDTO implements Serializable{
     /**
      * Lista de reservas de un usuario
      */
-    private List<ReservaEntity> reservas;
+    private List<ReservaDTO> reservas;
 
     /**
      * Constructor por defecto
@@ -106,7 +106,11 @@ public class UsuarioDTO implements Serializable{
             this.direccion = entity.getDireccion();
             this.telefono = entity.getTelefono();
             this.numeroTarjeta = entity.getNumeroTarjeta();
-            this.reservas = entity.getReservas();
+            List<ReservaDTO> listRese = new ArrayList<>();
+            entity.getReservas().forEach((rs) -> {
+                listRese.add(new ReservaDTO(rs));
+         });
+            this.reservas = listRese;
             this.image = entity.getImage();
         }
     }
@@ -128,7 +132,11 @@ public class UsuarioDTO implements Serializable{
         entity.setDireccion(this.direccion);
         entity.setTelefono(this.telefono);
         entity.setNumeroTarjeta(this.numeroTarjeta);
-        entity.setReservas(this.reservas);
+        List<ReservaEntity> lista = new ArrayList<>();
+        this.reservas.forEach((rs) -> {
+            lista.add(rs.toEntity());
+       });
+        entity.setReservas(lista);
         entity.setImage(this.image);
 
         return entity;
