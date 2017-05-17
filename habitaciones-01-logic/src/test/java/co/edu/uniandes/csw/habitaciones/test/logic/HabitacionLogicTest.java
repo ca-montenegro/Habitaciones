@@ -230,10 +230,10 @@ public class HabitacionLogicTest {
         HabitacionEntity result = em.find(HabitacionEntity.class, entity.getId());
 
         Assert.assertNotNull(result);
-        Assert.assertEquals(result.getArea(), entity.getArea());
-        Assert.assertEquals(result.getCapacidad(), entity.getCapacidad());
-        Assert.assertEquals(result.getImagen(), entity.getImagen());
-        Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
+        Assert.assertEquals(result.getArea(), pojoEntity.getArea());
+        Assert.assertEquals(result.getCapacidad(), pojoEntity.getCapacidad());
+        Assert.assertEquals(result.getImagen(), pojoEntity.getImagen());
+        Assert.assertEquals(result.getDescripcion(), pojoEntity.getDescripcion());
     }
     
 }
