@@ -14,7 +14,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -127,21 +126,21 @@ public class UsuarioLogicTest {
      * @generated
      */
     @Test
-    public void createUsuarioTest() throws BusinessLogicException {
+    public void testCreateUsuario() throws BusinessLogicException {
         
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
         UsuarioEntity result = usuarioLogic.createUsuario(entity);
-        Assert.assertNotNull(result);
-        Assert.assertEquals(result.getNombre(), entity.getNombre());
-        Assert.assertEquals(result.getTipoID(), entity.getTipoID());
-        Assert.assertEquals(result.getUsuario(), entity.getUsuario());
-        Assert.assertEquals(result.getImage(), entity.getImage());
-        Assert.assertEquals(result.getContrasenha(), entity.getContrasenha());
-        Assert.assertEquals(result.getCorreo(), entity.getCorreo());
-        Assert.assertEquals(result.getDireccion(), entity.getDireccion());
-        Assert.assertEquals(result.getTelefono(), entity.getTelefono());
-        Assert.assertEquals(result.getNumeroTarjeta(), entity.getNumeroTarjeta());
+        Assert.assertNotNull("No debe ser nulo",result);
+        Assert.assertEquals("Debe coincidir: ",result.getNombre(), entity.getNombre());
+        Assert.assertEquals("Debe coincidir: ",result.getTipoID(), entity.getTipoID());
+        Assert.assertEquals("Debe coincidir: ",result.getUsuario(), entity.getUsuario());
+        Assert.assertEquals("Debe coincidir: ",result.getImage(), entity.getImage());
+        Assert.assertEquals("Debe coincidir: ",result.getContrasenha(), entity.getContrasenha());
+        Assert.assertEquals("Debe coincidir: ",result.getCorreo(), entity.getCorreo());
+        Assert.assertEquals("Debe coincidir: ",result.getDireccion(), entity.getDireccion());
+        Assert.assertEquals("Debe coincidir: ",result.getTelefono(), entity.getTelefono());
+        Assert.assertEquals("Debe coincidir: ",result.getNumeroTarjeta(), entity.getNumeroTarjeta());
     }
 
     /**
@@ -150,9 +149,9 @@ public class UsuarioLogicTest {
      * @generated
      */
     @Test
-    public void getUsuariosTest() {
+    public void testGetUsuarios() {
         List<UsuarioEntity> list = usuarioLogic.getUsuarios();
-        Assert.assertEquals(data.size(), list.size());
+        Assert.assertEquals("Debe coincidir: ",data.size(), list.size());
         for (UsuarioEntity entity : list) {
             boolean found = false;
             for (UsuarioEntity storedEntity : data) {
@@ -160,7 +159,7 @@ public class UsuarioLogicTest {
                     found = true;
                 }
             }
-            Assert.assertTrue(found);
+            Assert.assertTrue("debe ser true: ",found);
         }
     }
 
@@ -173,16 +172,16 @@ public class UsuarioLogicTest {
     public void getUsuarioTest() throws BusinessLogicException {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity resultEntity = usuarioLogic.getUsuario(entity.getNumeroID());
-        Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
-        Assert.assertEquals(entity.getTipoID(), resultEntity.getTipoID());
-        Assert.assertEquals(entity.getUsuario(), resultEntity.getUsuario());
-        Assert.assertEquals(entity.getImage(), resultEntity.getImage());
-        Assert.assertEquals(entity.getContrasenha(), resultEntity.getContrasenha());
-        Assert.assertEquals(entity.getCorreo(), resultEntity.getCorreo());
-        Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
-        Assert.assertEquals(entity.getTelefono(), resultEntity.getTelefono());
-        Assert.assertEquals(entity.getNumeroTarjeta(), resultEntity.getNumeroTarjeta());
+        Assert.assertNotNull("No debe ser null, ",resultEntity);
+        Assert.assertEquals("Debe coincidir: ",entity.getNombre(), resultEntity.getNombre());
+        Assert.assertEquals("Debe coincidir: ",entity.getTipoID(), resultEntity.getTipoID());
+        Assert.assertEquals("Debe coincidir: ",entity.getUsuario(), resultEntity.getUsuario());
+        Assert.assertEquals("Debe coincidir: ",entity.getImage(), resultEntity.getImage());
+        Assert.assertEquals("Debe coincidir: ",entity.getContrasenha(), resultEntity.getContrasenha());
+        Assert.assertEquals("Debe coincidir: ",entity.getCorreo(), resultEntity.getCorreo());
+        Assert.assertEquals("Debe coincidir: ",entity.getDireccion(), resultEntity.getDireccion());
+        Assert.assertEquals("Debe coincidir: ",entity.getTelefono(), resultEntity.getTelefono());
+        Assert.assertEquals("Debe coincidir: ",entity.getNumeroTarjeta(), resultEntity.getNumeroTarjeta());
     }
 
 
@@ -192,7 +191,7 @@ public class UsuarioLogicTest {
      * @generated
      */
     @Test
-    public void updateUsuarioTest() throws BusinessLogicException {
+    public void testUpdateUsuario() throws BusinessLogicException {
         UsuarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity pojoEntity = factory.manufacturePojo(UsuarioEntity.class);
@@ -201,14 +200,14 @@ public class UsuarioLogicTest {
         usuarioLogic.updateUsuario(pojoEntity);
 
         UsuarioEntity resp = em.find(UsuarioEntity.class, entity.getNumeroID());
-        Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
-        Assert.assertEquals(pojoEntity.getTipoID(), resp.getTipoID());
-        Assert.assertEquals(pojoEntity.getUsuario(), resp.getUsuario());
-        Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
-        Assert.assertEquals(pojoEntity.getContrasenha(), resp.getContrasenha());
-        Assert.assertEquals(pojoEntity.getCorreo(), resp.getCorreo());
-        Assert.assertEquals(pojoEntity.getDireccion(), resp.getDireccion());
-        Assert.assertEquals(pojoEntity.getTelefono(), resp.getTelefono());
-        Assert.assertEquals(pojoEntity.getNumeroTarjeta(), resp.getNumeroTarjeta());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getTipoID(), resp.getTipoID());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getUsuario(), resp.getUsuario());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getImage(), resp.getImage());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getContrasenha(), resp.getContrasenha());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getCorreo(), resp.getCorreo());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getDireccion(), resp.getDireccion());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getTelefono(), resp.getTelefono());
+        Assert.assertEquals("Debe coincidir: ",pojoEntity.getNumeroTarjeta(), resp.getNumeroTarjeta());
     }
 }

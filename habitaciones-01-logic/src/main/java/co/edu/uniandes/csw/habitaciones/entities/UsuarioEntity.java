@@ -263,11 +263,13 @@ public class UsuarioEntity implements Serializable {
     }
 
     public List<ReservaEntity> getReservas() {
-        return reservas;
+        List<ReservaEntity> retu = reservas;
+        return retu;
     }
 
     public void setReservas(List<ReservaEntity> reservas) {
-        this.reservas = reservas;
+        List<ReservaEntity> retu = reservas;
+        this.reservas = retu;
     }
 
     /**

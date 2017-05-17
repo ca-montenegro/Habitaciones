@@ -16,6 +16,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301  USA
  */
+/**
+ * Clase usuarioDetailDTO
+ */
 package co.edu.uniandes.csw.habitaciones.dtos;
 
 import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
@@ -26,37 +29,55 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ *Clase
+ * UsuarioDetailDTO
+ * Super: UsuarioDTO
  * @author ca.montenegro
  */
 @XmlRootElement
-public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
+public class UsuarioDetailDTO extends UsuarioDTO {
     
+    /**
+     * serialVersionUID = 1L
+     */
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Lista 
+     * de reservas
+     */
     private List<ReservaDTO> reservas;
     
+    /**
+     * Constructor por defecto
+     */
     public UsuarioDetailDTO(){
         super();
     }
     
-    public UsuarioDetailDTO(UsuarioEntity entity)
-    {
+    /**
+     * Constructor que crea un usuarioEntity
+     * @param entity 
+     */
+    public UsuarioDetailDTO(UsuarioEntity entity){
         super(entity);
         if(entity!=null){ 
         if(entity.getReservas()!=null){
             this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {   
+            for(ReservaEntity reserva:entity.getReservas()){   
                 this.reservas.add(new ReservaDTO(reserva));
             }
         }
         }
     }
 
+    /**
+     * Metodo convierte 
+     * a entity
+     * @return 
+     */
     @Override
-    public UsuarioEntity toEntity()
-    {
+    public UsuarioEntity toEntity(){
         UsuarioEntity entity = new UsuarioEntity();
         entity.setNumeroID(this.getNumeroID());
         entity.setTipoID(this.getTipoID());
@@ -71,23 +92,35 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
         if(this.getReservas()!=null){         
             entity.setReservas(new ArrayList());
             List<ReservaEntity> entities0=entity.getReservas();
-            for(ReservaDTO reserva:this.getReservas())
-            {
+            for(ReservaDTO reserva:this.getReservas()){
+            
                 entities0.add(reserva.toEntity());
             }
         }
         return entity;
     }
     
+    /**
+     * Getter 
+     * reservas
+     * @return 
+     */
     //@Override
-    public List<ReservaDTO> getReservas()
-    {
-        return reservas;
+    public List<ReservaDTO> getReservas(){
+    
+        List<ReservaDTO> retu = reservas;
+        return retu;
     }
     
+    /**
+     * Setter
+     * reservas
+     * @param reservas Lista de reservas
+     */
     //@Override
-    public void setReservas(List reservas)
-    {
-        this.reservas = reservas;
+    public void setReservas(List reservas){
+    
+        List<ReservaDTO> retu = reservas;
+        this.reservas = retu;
     }
 }
