@@ -19,8 +19,10 @@
 package co.edu.uniandes.csw.habitaciones.ejbs;
 
 import co.edu.uniandes.csw.habitaciones.entities.HabitacionEntity;
+import co.edu.uniandes.csw.habitaciones.entities.ReservaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.habitaciones.persistence.HabitacionPersistence;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -53,9 +55,13 @@ public class HabitacionLogic {
         return persistence.findAllVivienda(idVivienda);
     }
     
-    public HabitacionEntity getHabitacion(Long id)
+    public HabitacionEntity getHabitacion(Long id) throws BusinessLogicException
     {
-        return persistence.find(id);
+        HabitacionEntity habitacion = persistence.find(id);
+        if (habitacion==null){
+            throw new BusinessLogicException("La habitacion con el id dado no existe.");
+        }
+        return habitacion;
     }
     
     public HabitacionEntity getHabitacionVivienda(Long id, Long idV)
@@ -82,11 +88,27 @@ public class HabitacionLogic {
         return entity;
     }
     
-    public HabitacionEntity updateHabitacion(HabitacionEntity entity) {
+    public HabitacionEntity updateHabitacion(HabitacionEntity entity) throws BusinessLogicException {
+        
+        if (entity.getValorDiario()<0.0){
+            throw new BusinessLogicException("El precio no puede ser negativo.");}
+        if (entity.getCapacidad()<0){
+            throw new BusinessLogicException("La capacidad de la habitacion no puede ser negativa.");}
+        if(entity.getArea() <0){
+            throw new BusinessLogicException("El area de la habitacion no puede ser negativa");
+        }
         return persistence.update(entity);
     }
     
-    public void deleteHabitacion(Long id) {
+    public void deleteHabitacion(Long id) throws BusinessLogicException {
+        HabitacionEntity habitacion = getHabitacion(id);
+        Date d = new Date();
+        for (ReservaEntity r: habitacion.getReservas()){
+            if (r.getFechaInicio().after(d)){
+                throw new BusinessLogicException("No se puede borrar una habitacion con reservas futuras.");
+            }
+        }
+
         persistence.delete(id);
     }
 }
