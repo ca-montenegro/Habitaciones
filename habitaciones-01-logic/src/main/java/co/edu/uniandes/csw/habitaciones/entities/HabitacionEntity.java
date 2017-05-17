@@ -63,7 +63,8 @@ public class HabitacionEntity implements Serializable {
     @ManyToOne 
     @PodamExclude
     private ViviendaEntity vivienda;
-    @OneToMany(mappedBy="habitacion", cascade = CascadeType.PERSIST)
+    
+    @OneToMany(mappedBy="habitacion", cascade = CascadeType.ALL)
     @PodamExclude
     private List<ReservaEntity> reservas;
 

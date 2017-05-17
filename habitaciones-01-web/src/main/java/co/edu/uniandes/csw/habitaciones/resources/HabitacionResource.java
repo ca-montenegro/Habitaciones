@@ -27,6 +27,8 @@ import co.edu.uniandes.csw.habitaciones.entities.ViviendaEntity;
 import co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -92,8 +94,12 @@ public class HabitacionResource {
     
     @DELETE
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
-        public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
-        habitacionLogic.deleteHabitacion(id);
+        public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) {
+        try {
+            habitacionLogic.deleteHabitacion(id);
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(HabitacionResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
         
             /**

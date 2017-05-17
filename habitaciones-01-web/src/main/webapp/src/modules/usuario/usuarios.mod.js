@@ -126,7 +126,7 @@
                                                 // cuando termine bien, cambie de estado
                                                 $state.go('viviendasList');
                                                 console.log('check');
-                                            }, responseError);
+                                            },);
                                 }
 
                             },]
