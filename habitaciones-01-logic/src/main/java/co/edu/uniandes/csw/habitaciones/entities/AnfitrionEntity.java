@@ -19,9 +19,11 @@
 package co.edu.uniandes.csw.habitaciones.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -36,7 +38,8 @@ public class AnfitrionEntity extends UsuarioEntity{
     
     private Double puntuacion;
     
-    @OneToMany(mappedBy = "anfitrion")
+    @PodamExclude
+    @OneToMany(mappedBy = "anfitrion", cascade= CascadeType.PERSIST)
     private List<ViviendaEntity> viviendas;
     
     public AnfitrionEntity()

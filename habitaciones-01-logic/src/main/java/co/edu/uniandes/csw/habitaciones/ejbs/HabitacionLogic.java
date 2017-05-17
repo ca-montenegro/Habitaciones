@@ -74,7 +74,7 @@ public class HabitacionLogic {
         if(entity.getArea() <= 0.0){
             throw new BusinessLogicException ("El area debe ser mayor a 0");
         }
-        if(entity.getCapacidad()<=0.0){
+        if(entity.getCapacidad()<0.0){
             throw new BusinessLogicException("La capacidad debe ser mayor a 0");
         }
         if(entity.getValorDiario()<0.0)

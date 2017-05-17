@@ -56,10 +56,11 @@ public class HabitacionEntity implements Serializable {
     private Double area;
     
     @PodamDoubleValue(minValue = 0)
-    
     private Double valorDiario;
+    
     private String descripcion;
     private String imagen;
+    
     @ManyToOne 
     @PodamExclude
     private ViviendaEntity vivienda;
