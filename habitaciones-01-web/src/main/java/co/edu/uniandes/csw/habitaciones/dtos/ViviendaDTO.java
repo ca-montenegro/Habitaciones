@@ -246,5 +246,5 @@ public class ViviendaDTO  implements Serializable{
     
     public void setNumeroHabitaciones(int numeroHabitaciones){
         this.numeroHabitaciones = numeroHabitaciones;
-    }   
+    }
 }

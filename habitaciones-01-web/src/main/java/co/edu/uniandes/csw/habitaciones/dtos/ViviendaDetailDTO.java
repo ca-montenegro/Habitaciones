@@ -89,19 +89,7 @@ public class ViviendaDetailDTO extends ViviendaDTO{
     public ViviendaDetailDTO(){
         super();
         ViviendaEntity entity = super.toEntity();
-        if(entity.getHabitaciones()!=null){
-            this.habitaciones=new ArrayList();
-            for(HabitacionEntity habitacion:entity.getHabitaciones()){
-                this.habitaciones.add(new HabitacionDTO(habitacion));
-            }
-        }
         
-        if(entity.getReservas()!=null){
-            this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas()){
-                this.reservas.add(new ReservaDTO(reserva));
-            }
-        }
     }
     
     /**
