@@ -1,8 +1,8 @@
 (function (ng){
-    var mod = ng.module("anfitrionModule", ['ui.router']);
+    const mod = ng.module("anfitrionModule", ['ui.router']);
     mod.constant("anfitrionesContext", "api/anfitriones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/anfitriones/';
+            const basePath = 'src/modules/anfitriones/';
             $urlRouterProvider.otherwise("/anfitrionesList");
             
             $stateProvider.state('anfitriones', {

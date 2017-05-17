@@ -1,9 +1,9 @@
 (function (ng){
-    var mod = ng.module('habitacionModule', ['ui.router']);
+    const mod = ng.module('habitacionModule', ['ui.router']);
     mod.constant('habitacionesContext', 'api/habitaciones');
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/habitaciones/';
+            const basePath = 'src/modules/habitaciones/';
             $urlRouterProvider.otherwise('/habitacionesList');
 
             $stateProvider.state('habitaciones', {

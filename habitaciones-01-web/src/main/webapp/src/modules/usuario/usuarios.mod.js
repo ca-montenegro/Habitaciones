@@ -161,7 +161,7 @@
                                     tempCliente = $scope.tempCliente;
                                     const sizeRec = usuariosRecords.length;
                                     let encontrado = false;
-                                    for (let j = 0; j < sizeRec; j++) {
+                                        for (let j = 0; j < sizeRec; j++) {
 
                                         console.log(usuariosRecords[j]);
                                         if (usuariosRecords[j].usuario ==

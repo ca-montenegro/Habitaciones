@@ -150,6 +150,57 @@ public class ViviendaLogicTest {
     }
     
     /**
+     * Prueba para crear un Vivienda.
+     *
+     * @generated
+     */
+    @Test
+    public void createViviendaPrecioNegativoTest(){
+        try {
+            PodamFactory factory = new PodamFactoryImpl();
+            ViviendaEntity entity = factory.manufacturePojo(ViviendaEntity.class);
+            entity.setValorDiario(-5.0);
+            ViviendaEntity result = viviendaLogic.createVivienda(entity);
+            Assert.fail("El precio no puede ser negativo");
+        } catch (BusinessLogicException ex) {
+        }
+    }
+    
+    /**
+     * Prueba para crear un Vivienda.
+     *
+     * @generated
+     */
+    @Test
+    public void createViviendaCapacidadNegativaTest(){
+        try {
+            PodamFactory factory = new PodamFactoryImpl();
+            ViviendaEntity entity = factory.manufacturePojo(ViviendaEntity.class);
+            entity.setCapacidad(-2);
+            ViviendaEntity result = viviendaLogic.createVivienda(entity);
+            Assert.fail("La capacidad no puede ser negativa");
+        } catch (BusinessLogicException ex) {
+        }
+    }
+    
+    /**
+     * Prueba para crear un Vivienda.
+     *
+     * @generated
+     */
+    @Test
+    public void createViviendaSinDireccionTest(){
+        try {
+            PodamFactory factory = new PodamFactoryImpl();
+            ViviendaEntity entity = factory.manufacturePojo(ViviendaEntity.class);
+            entity.setDireccion("");
+            ViviendaEntity result = viviendaLogic.createVivienda(entity);
+            Assert.fail("La direccion no puede ser vacia");
+        } catch (BusinessLogicException ex) {
+        }
+    }
+    
+    /**
      * Prueba para consultar la lista de Viviendas.
      * Get vivienda test
      * @generated
@@ -247,6 +298,7 @@ public class ViviendaLogicTest {
         Assert.assertEquals("El resultado no es el esperado",pojoEntity.getDescripcion(), resp.getDescripcion());
         Assert.assertEquals("El resultado no es el esperado",pojoEntity.getImagen(), resp.getImagen());
         Assert.assertEquals("El resultado no es el esperado",pojoEntity.getCiudad(), resp.getCiudad());
+        Assert.assertEquals("El resultado no es el esperado",pojoEntity.getDireccion(), resp.getDireccion());
         
     }
 }
