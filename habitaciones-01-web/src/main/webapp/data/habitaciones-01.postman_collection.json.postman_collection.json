@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "habitaciones-01.postman_collection.json",
-		"_postman_id": "8d5d089f-1263-db06-bb61-494c969baddc",
+		"_postman_id": "76baabb4-bf94-02bd-99a3-39454be3c635",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -140,6 +140,19 @@
 		},
 		{
 			"name": "Get vivienda id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"test length of response\"] = data.length === 1;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
 				"method": "GET",
@@ -160,6 +173,19 @@
 		},
 		{
 			"name": "Get viviendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"test length of response\"] = data.length === 6;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/",
 				"method": "GET",
@@ -180,6 +206,18 @@
 		},
 		{
 			"name": "Post habitacion en viviendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1/habitaciones",
 				"method": "POST",
@@ -200,6 +238,19 @@
 		},
 		{
 			"name": "Delete vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 204;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"test length of response\"] = data.length === 0;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6",
 				"method": "DELETE",
@@ -214,6 +265,19 @@
 		},
 		{
 			"name": "Put vivienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"test telefono\"] = data.capacidad === 4;"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
 				"method": "PUT",
@@ -328,7 +392,6 @@
 			},
 			"response": []
 		},
-		
 		{
 			"name": "Get reservas",
 			"request": {
@@ -355,7 +418,10 @@
 				"url": "http://localhost:8080/habitaciones-01-web/api/reservas/1",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
