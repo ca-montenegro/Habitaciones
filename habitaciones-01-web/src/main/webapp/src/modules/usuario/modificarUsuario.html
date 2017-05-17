@@ -1,0 +1,75 @@
+<!DOCTYPE html>    
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <h3>Actualizar información:</h3>
+        <form novalidate name="form" id="registro-form" role="form" ng-submit="form.$valid && update()">
+            
+            <fieldset>
+                <div class="form-group">
+                    <label for="idUser"><span class="glyphicon glyphicon-eye-open"></span> Identificación</label>
+                    <input type="text" class="form-control" ng-model ="tempUserMo.numeroID" ng-init ="tempUserMo.numeroID" placeholder="Enter Id">
+                </div>
+                <div class="form-group">
+                    <label for="tipoId"><span class="glyphicon glyphicon-eye-open"></span> TipoId</label>
+                    Seleccione un tipo de ID:
+                    <select class = "form-control" ng-model = "tempUserMo.tipoID" ng-init ="tempUserMo.tipoID" >
+                        <option value="">
+                        <option value="CC">C.C.
+                        <option value="TI">T.I.
+                        <option value="IDExtranjera">Id.Extranjera
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name"><span class="glyphicon glyphicon-user"></span> Nombre</label>
+                    <input type="text" class="form-control" ng-model="tempUserMo.nombre" ng-init ="tempUserMo.nombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                    <input type="text" class="form-control" ng-model="tempUserMo.usuario" ng-init ="tempUserMo.usuario" placeholder="Ingrese Username">
+                </div>
+                <div class="form-group">
+                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                    <input type="password" class="form-control" ng-model="tempUserMo.contrasenha" ng-init ="tempUserMo.contrasenha" placeholder="Ingrese password">
+                </div>
+                <div class="form-group">
+                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Confirmar Password</label>
+                    <input type="password" class="form-control" ng-model="psw2"  placeholder="Ingrese nuevamente password">
+                </div>
+                <div class="form-group">
+                    <label for="email"><span class="glyphicon glyphicon-user"></span> Email</label>
+                    <input type="text" class="form-control" ng-model="tempUserMo.correo" ng-init ="tempUserMo.correo" placeholder="Ingrese email">
+                </div>
+                <div class="form-group">
+                    <label for="genra"><span class="glyphicon glyphicon-eye-open"></span> Genero</label>
+                    Seleccione un genero
+                    <select class = "form-control" id = "genero">
+                        <option value="">
+                        <option value="Femenino">Femenino
+                        <option value="Masculino">Masculino
+                        <option value="Nose">No se
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address"><span class="glyphicon glyphicon-user"></span> Dirección</label>
+                    <input type="text" class="form-control" ng-model="tempUserMo.direccion" ng-init ="tempUserMo.direccion" placeholder="Ingrese direccion">
+                </div>
+                <div class="form-group">
+                    <label for="telephone"><span class="glyphicon glyphicon-user"></span> Telefono</label>
+                    <input type="number" class="form-control" ng-model="tempUserMo.telefono" ng-init ="tempUserMo.telefono"placeholder="Ingrese Telefono">
+                </div>
+                <div class="form-group">
+                    <label for="Number"><span class="glyphicon glyphicon-user"></span> Número Tarjeta</label>
+                    <input type="number" class="form-control" ng-model="tempUserMo.numeroTarjeta" ng-init ="tempUserMo.numeroTarjeta" placeholder="Ingrese numero Tarjeta">
+                </div>
+                <div class="form-group">
+                    <label for="url"><span class="glyphicon glyphicon-user"></span> Seleccione una imagen para subir</label>
+                    <input type="file" ng-model="myFile" size="50">
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-success btn-block" href ng-click = "update()"><span class="glyphicon glyphicon-off"></span> Registrarse</button>
+            
+        </form>
+    </div>
+</div>
