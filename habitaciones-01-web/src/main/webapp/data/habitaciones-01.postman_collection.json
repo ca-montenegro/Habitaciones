@@ -1,46 +1,12 @@
 {
 	"variables": [],
 	"info": {
-		"name": "habitaciones-01",
-		"_postman_id": "cf74b724-16ed-f463-bb19-3b04f9765c5b",
+		"name": "habitaciones-01.postman_collection.json",
+		"_postman_id": "8d5d089f-1263-db06-bb61-494c969baddc",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"var data = JSON.parse([responseBody]);",
-							"tests[\"test nombre\"] = data.nombre === \"Prueba\";",
-							"postman.setGlobalVariable(\"id\", data.numeroID);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/habitaciones-01-web/api/usuarios",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
 		{
 			"name": "http://localhost:8080/habitaciones-01-web/api/usuarios",
 			"event": [
@@ -261,6 +227,102 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"capacidad\": 4,\n  \"ciudad\": \"Bogota\",\n  \"descripcion\": \"\",\n  \"direccion\": \"Calle 250\",\n  \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n  \"valorDiario\": 410\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Habitaciones LIsta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse([responseBody]);",
+							"tests[\"test nombre\"] = data.nombre === \"Prueba\";",
+							"postman.setGlobalVariable(\"id\", data.numeroID);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Habitacion ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"var data = JSON.parse([responseBody]);",
+							"tests[\"test nombre\"] = data.nombre === \"Prueba\";",
+							"postman.setGlobalVariable(\"id\", data.numeroID);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "                        http://localhost:8080/habitaciones-01-web/api/habitaciones/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroID\": 1,\r\n    \"tipoID\": \"cedula\",\r\n    \"nombre\": \"Prueba\",\r\n    \"usuario\": \"usuario\",\r\n    \"contasenha\": \"123456\",\r\n    \"correo\": \"correo@correo.com\",\r\n    \"direccion\": \"cr 1 # 5\",\r\n    \"telefono\": 1234567,\r\n    \"numeroTarjeta\": 123456789\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete habitacion vivienda",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6/habitaciones/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Habitacion vivienda",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/3/habitaciones/1",
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
 				"description": ""
 			},
