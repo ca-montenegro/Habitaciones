@@ -24,6 +24,10 @@
  * @return {undefined}
  */
 (function (ng){
+    /**
+     * Modulo viviendas
+     * @type {type}
+     */
     const mod = ng.module('viviendaModule', ['ui.router']);
     mod.constant('viviendasContext', 'api/viviendas');
     mod.constant('reservasContext', 'api/reservas');
@@ -32,6 +36,12 @@
             const basePath = 'src/modules/viviendas/';
             $urlRouterProvider.otherwise('/viviendasList');
             
+            /**
+             * Proveedor de estado
+             * @param {type} $scope
+             * @param {type} viviendas
+             * @return {undefined}
+             */
             $stateProvider.state('viviendas', {
                 url: '/viviendas',
                 abstract: true,
@@ -48,6 +58,11 @@
                                 $scope.viviendasRecords = viviendas.data},], 
                     },
                 },
+                /**
+                 * Estado lista
+                 * Principal del modulo
+                 * 
+                 */
             }).state('viviendasList', {
                 url: '/lista',
                 parent: 'viviendas',
@@ -61,6 +76,10 @@
                     'extraView': {
                     },
                 },
+                /**
+                 * Estado buscar
+                 * No se ha implementado completamente
+                 */
             }).state('buscarVivienda', {
                 url: '/filtrar',
                 parent: 'viviendas',
@@ -75,6 +94,15 @@
                         templateUrl: basePath + 'botonAgregar.html',
                     },
                 },
+                /**
+                 * Estado detalle
+                 * Funcion borrar
+                 * Funcion modificar
+                 * Llama a agregar habitacion
+                 * @param {type} $scope
+                 * @param {type} viviendaActual
+                 * @return {undefined}
+                 */
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
                 parent: 'viviendas',
@@ -97,7 +125,7 @@
                             function ($scope, viviendaActual,$params, $state, $http, viviendasContext) {
                                 
                                 $scope.viviendaActual =  viviendaActual.data;
-                                let vivi = $scope.viviendaActual;
+                                const vivi = $scope.viviendaActual;
                                 $scope.eliminar = function(){
                                 const nuevoContext = viviendasContext+
                                             '/'+vivi.idVivienda;
@@ -122,6 +150,11 @@
                     'extraView': {         
                     },
                 },
+                /**
+                 * Agrega habitacion
+                 * Vuelve a lista
+                 * @return {undefined}
+                 */
             }).state('agregarHabitacion', {
                 url: '/{viviendaId:int}/agregarHabitacion',
                 parent: 'viviendas',
@@ -139,11 +172,20 @@
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
                             '$state', 'viviendas', 'viviendasContext', '$stateParams',
-                            
+                            /**
+                             * Funcion para agregar habitacion
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} viviendas
+                             * @param {type} viviendasContext
+                             * @param {type} $params
+                             * @return {undefined}
+                             */
                             function ($scope, $http, $state,
                             viviendas, viviendasContext, $params) {
                                 
-                                let idActual = $params.viviendaId;
+                                const idActual = $params.viviendaId;
                                 $scope.tempHabitacion = {
                                     'area': '',
                                     'capacidad': '',
@@ -193,7 +235,7 @@
                             '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,
                             viviendas, viviendasContext) {
-                                let viv = $scope.viviendaActual;
+                                const viv = $scope.viviendaActual;
                                 console.log(viv);
                                 $scope.tempVivienda = {
                                     "capacidad": viv.capacidad,
