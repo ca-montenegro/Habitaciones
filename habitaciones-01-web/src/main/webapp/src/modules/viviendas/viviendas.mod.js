@@ -331,7 +331,7 @@
                              * @param {type} viviendasContext
                              * @return {undefined}
                              */
-                            function ($scope, viviendaActual,$params,
+                            function ($scope, viviendaActual,
                             $state, $http, viviendasContext) {
                                 $scope.viviendaActual=viviendaActual.data;
                                 const viv = $scope.viviendaActual;
@@ -353,13 +353,15 @@
                                     
                                     tempVivienda = $scope.tempVivienda;
                                     console.log(tempVivienda);
-                                    const nuevoContext = viviendasContext;
+                                    const nuevoContext = 
+                                            viviendasContext+'/'+tempVivienda.idVivienda;
+                                    console.log(nuevoContext)
                                     return $http.put(nuevoContext,tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
                                         $state.go('viviendasList');
-                                        console.log('check');
+                                        location.reload();
                                     },);          
                                 }
                             },],
