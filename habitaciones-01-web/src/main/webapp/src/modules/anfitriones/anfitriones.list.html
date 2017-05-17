@@ -3,7 +3,7 @@
     <div class="col-md-4 animate-box" ng-repeat="anfitrion in anfitrionesRecords">
         <div class="property">
             <a ui-sref="anfitrionesDetail({anfitrionId: anfitrion.numeroID})"> 
-                <img class="img-responsive col-md-12" ng-src ='https://www.compraetiquetas.com/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/0/0/00833_3.jpg' ngStyle="width:100px;height:100px;" alt= "{{anfitrion.numeroID}}"/>
+                <img class="img-responsive col-md-12" ng-src ='{{anfitrion.image}}' ngStyle="width:100px;height:100px;" alt= "{{anfitrion.numeroID}}"/>
                 <ul class="list-details">
                     <li>{{anfitrion.nombre}}</li>
                     <li>{{anfitrion.correo}}</li>

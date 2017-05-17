@@ -75,13 +75,12 @@ public class AnfitrionResource {
     
     @GET
     @Path("{id: \\d+}/viviendas")
-    public AnfitrionDTO getAnfitrion(@PathParam("id") Long id){
-        AnfitrionDTO buscado=new AnfitrionDTO(anfitrionlogic.getAnfitrion(id));
-  
+    public AnfitrionDetailDTO getAnfitrion(@PathParam("id") Long id){
+        AnfitrionDetailDTO buscado=new AnfitrionDetailDTO(anfitrionlogic.getAnfitrion(id));
         return buscado;
     }
 
-    public AnfitrionBasicDTO getAnfitrionBasic(Long id){
+    public AnfitrionBasicDTO getAnfitrionBasic(@PathParam("id") Long id){
         AnfitrionBasicDTO buscado=new AnfitrionBasicDTO(anfitrionlogic.getAnfitrion(id));
   
         return buscado;

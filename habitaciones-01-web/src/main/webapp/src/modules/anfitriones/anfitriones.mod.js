@@ -9,9 +9,9 @@
                 url: '/anfitriones',
                 abstract: true,
                 resolve: {
-                    anfitriones: ['$http', 'anfitrionContext',
-                        function ($http, anfitrionContext) {
-                            return $http.get(anfitrionContext);
+                    anfitriones: ['$http', 'anfitrionesContext',
+                        function ($http, anfitrionesContext) {
+                            return $http.get(anfitrionesContext);
                         }, ]
                 },
                 views: {

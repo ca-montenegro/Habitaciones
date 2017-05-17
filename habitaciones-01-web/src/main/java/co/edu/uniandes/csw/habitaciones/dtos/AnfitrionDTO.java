@@ -52,6 +52,7 @@ public class AnfitrionDTO extends UsuarioDTO{
         entity.setNumeroTarjeta(this.getNumeroTarjeta());
         entity.setReservas(null);
         entity.setPuntuacion(this.getPuntuacion());
+        entity.setImage(this.getImage());
         return entity;
     }
     
