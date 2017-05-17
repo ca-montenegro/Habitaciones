@@ -26,16 +26,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlRootElement
+/**
+ * Clase Habitacion Detail Dto
+ */
 public class HabitacionDetailDTO extends HabitacionDTO {
     
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Lista de reservas de la habitacion
+     */
     private List<ReservaDTO> reservas;
     
+    /**
+     * Constructor de la clase
+     */
     public HabitacionDetailDTO(){      
         super();
     }
-    
+    /**
+     * Constructor de la clase con parametros de entrada
+     * @param entity Entidad que se quiere volver DTO
+     */
     public HabitacionDetailDTO(HabitacionEntity entity){
         super(entity);
         if(entity!=null){
@@ -48,6 +60,10 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         }
     }
     
+    /**
+     * Metodo que convierte un DTO en un entity
+     * @return 
+     */
     @Override
     public HabitacionEntity toEntity(){
         HabitacionEntity entity = new HabitacionEntity();
@@ -67,12 +83,20 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         return entity;
     }
 
+    /**
+     * Metodo que retorna las reservas de la habitacion
+     * @return Reservas de la habitacion
+     */
     public List<ReservaDTO> getReservas() {
         List<ReservaDTO> resp = new ArrayList<>();
         resp.addAll(this.reservas);
         return resp;
     }
 
+    /**
+     * Metodo que asigna las reservas de la hablitacion
+     * @param reservas Reservas que se le asignaran a la habitacion
+     */
     public void setReservas(List<ReservaDTO> reservas) {
         List<ReservaDTO> resp = new ArrayList<>();
         resp.addAll(reservas);
