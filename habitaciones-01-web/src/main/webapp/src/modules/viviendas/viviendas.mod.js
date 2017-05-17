@@ -222,50 +222,27 @@
                     },
                 },
             }).state('registrarReserva', {
-                url: '/registrarReserva',
+                url: '/{idVivienda:int}/{valorDiario:int}/registrarReserva',
                 parent : 'reservas',
+                param: {
+                    idVivienda : null
+                },
                 views: {
                     'listView': {
                         templateUrl:'src/modules/reservas/nuevaReserva.html',
-                        controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext',
-                            function ($scope, $http, $state,  reservas, reservasContext) {
+                        controller: ['$scope', '$http', '$state', 'reservas', 'reservasContext','$stateParams',
+                            function ($scope, $http, $state,  reservas, reservasContext, $params) {
+                                
                                 
                                 $scope.tempReserva = {
                                     fechaInicio: '',
                                     fechaFin: '',  
                                     estado:'H',
-                                    'habitacion': {
-                                        'area': 30,
-                                        'capacidad': 2,
-                                        'descripcion': 'bonita',
-                                        'imagen': 'http:/'+'\n\
-   /www.casacumbrero.com/images/casa_rural_habitaciones_1_b.jpg',
-                                        'valorDiario': 858
-                                    },
-                                    'multa': {
-                                        'codigoMulta': 101
-                                    },
-                                    'vivienda': {
-                                        'anfitrion': {
-                                            'correo': 'hola2@hola.com',
-                                            'direccion': 'calle 2 No 2.2',
-                                            'nombre': 'David',
-                                            'numeroID': 2,
-                                            'telefono': 6876188,
-                                            'tipoID': 'Cedula',
-                                            'puntuacion': 10
-                                        },
-                                        'capacidad': 8,
-                                        'ciudad': 'Cali',
-                                        'descripcion': 'Casa grande',
-                                        'direccion': 'Calle 15',
-                                        'idVivienda': 2,
-                                        'imagen': 'https:/'+
-                                                '/a0.muscache.com/im/pictures/'+
-                                                '25735497/948807b4_original.jpg?aki_policy=large',
-                                        'numeroHabitaciones':1,
-                                        'valorDiario':458
-                                    }
+                                    "vivienda" :
+                                            {
+                                                "idVivienda" : $params.idVivienda,
+                                                "valorDiario" : $params.valorDiario                                        
+                                            }           
                                 };
                                 console.log($scope.tempReserva);
                                 $scope.agregarReserva = function () {
@@ -273,19 +250,50 @@
                                     tempReserva = $scope.tempReserva;
                                     console.log($scope.tempReserva);
                                     
-                                    return $http.post(reservasContext
-                                            +'/6', tempReserva)
+                                    return $http.post(reservasContext+'/6', tempReserva)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
-                                        $state.go('viviendasList');
+                                        $state.go('reservasList');
                                         console.log('check');
-                                    },);
+                                    }, responseError);
+                                    
                                 }
-                            }],
+                                
+                                this.closeAlert = function (index) {
+                                    $scope.alerts.splice(index, 1);
+                                };
+                                
+                                // Función showMessage: Recibe el mensaje en
+                                //  String y su tipo con el fin de almacenarlo
+                                //   en el array $scope.alerts.
+                                function showMessage(msg, type) {
+                                    const types = 
+                                            ['info', 'danger', 'warning', 'success'];
+                                    if (types.some(function (rc) {
+                                        return type === rc;
+                                    })) {
+                                        $scope.alerts.push({type: type, msg: msg});
+                                    }
+                                }
+                                
+                                this.showError = function (msg) {
+                                    showMessage(msg, 'danger');
+                                };
+                                
+                                this.showSuccess = function (msg) {
+                                    showMessage(msg, 'success');
+                                };
+                                
+                                const self = this;
+                                function responseError(response) {
+                                    
+                                    self.showError(response.data);
+                                }
+                            }]
                     },
                 }
             
             });
-        }],);
+        }]);
 })(window.angular);
