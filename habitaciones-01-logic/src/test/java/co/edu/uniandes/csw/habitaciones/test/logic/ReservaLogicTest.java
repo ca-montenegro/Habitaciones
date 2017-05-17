@@ -146,16 +146,16 @@ public class ReservaLogicTest {
         entity.setVivienda(vivienda);
         
         ReservaEntity result = reservaLogic.createReserva(entity);
-        Assert.assertNotNull(result);
+        Assert.assertNotNull("El mensaje no es el esperado",result);
         double error = 0.00000001;
 
-        Assert.assertEquals(result.getCosto(), entity.getCosto(), error);
-        Assert.assertEquals(result.getEstado(),entity.getEstado());
-        Assert.assertEquals(result.getFechaInicio(), entity.getFechaInicio());
-        Assert.assertEquals(result.getFechaFin(), entity.getFechaFin());
-        Assert.assertEquals(result.getHabitacion(), entity.getHabitacion());
-        Assert.assertEquals(result.getMulta(), entity.getMulta());
-        Assert.assertEquals(result.getVivienda(), entity.getVivienda());
+        Assert.assertEquals("El mensaje no es el esperado", result.getCosto(), entity.getCosto(), error);
+        Assert.assertEquals("El mensaje no es el esperado", result.getEstado(),entity.getEstado());
+        Assert.assertEquals("El mensaje no es el esperado", result.getFechaInicio(), entity.getFechaInicio());
+        Assert.assertEquals("El mensaje no es el esperado", result.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals("El mensaje no es el esperado", result.getHabitacion(), entity.getHabitacion());
+        Assert.assertEquals("El mensaje no es el esperado", result.getMulta(), entity.getMulta());
+        Assert.assertEquals("El mensaje no es el esperado", result.getVivienda(), entity.getVivienda());
     }
 
     /**
@@ -174,7 +174,7 @@ public class ReservaLogicTest {
                     found = true;
                 }
             }
-            Assert.assertTrue(found);
+            Assert.assertTrue("El mensaje no es el esperado",found);
         }
     }
 
@@ -189,12 +189,12 @@ public class ReservaLogicTest {
         ReservaEntity resultEntity = reservaLogic.getReserva(entity.getCodigoReserva());
         Assert.assertNotNull(resultEntity);
         double error = 0.00000001;
-        Assert.assertEquals(entity.getCosto(), resultEntity.getCosto(), error);
-        Assert.assertEquals(entity.getEstado(),resultEntity.getEstado());
-        Assert.assertEquals(entity.getFechaInicio(), resultEntity.getFechaInicio());
-        Assert.assertEquals(entity.getFechaFin(), resultEntity.getFechaFin());
-        Assert.assertEquals(entity.getHabitacion(), resultEntity.getHabitacion());
-        Assert.assertEquals(entity.getMulta(), resultEntity.getMulta());
+        Assert.assertEquals("El mensaje no es el esperado",entity.getCosto(), resultEntity.getCosto(), error);
+        Assert.assertEquals("El mensaje no es el esperado",entity.getEstado(),resultEntity.getEstado());
+        Assert.assertEquals("El mensaje no es el esperado",entity.getFechaInicio(), resultEntity.getFechaInicio());
+        Assert.assertEquals("El mensaje no es el esperado",entity.getFechaFin(), resultEntity.getFechaFin());
+        Assert.assertEquals("El mensaje no es el esperado",entity.getHabitacion(), resultEntity.getHabitacion());
+        Assert.assertEquals("El mensaje no es el esperado",entity.getMulta(), resultEntity.getMulta());
         //Assert.assertEquals(entity.getVivienda(), resultEntity.getVivienda());
     }
 
@@ -215,13 +215,13 @@ public class ReservaLogicTest {
         ReservaEntity resp = em.find(ReservaEntity.class, entity.getCodigoReserva());
         
         double error = 0.00000001;
-        Assert.assertEquals(pojoEntity.getCosto(), resp.getCosto(), error);
-        Assert.assertEquals(pojoEntity.getEstado(),resp.getEstado());
-        Assert.assertEquals(pojoEntity.getFechaInicio(), resp.getFechaInicio());
-        Assert.assertEquals(pojoEntity.getFechaFin(), resp.getFechaFin());
-        Assert.assertEquals(pojoEntity.getHabitacion(), resp.getHabitacion());
-        Assert.assertEquals(pojoEntity.getMulta(), resp.getMulta());
-        Assert.assertEquals(pojoEntity.getVivienda(), resp.getVivienda());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getCosto(), resp.getCosto(), error);
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getEstado(),resp.getEstado());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getFechaInicio(), resp.getFechaInicio());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getFechaFin(), resp.getFechaFin());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getHabitacion(), resp.getHabitacion());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getMulta(), resp.getMulta());
+        Assert.assertEquals("El mensaje no es el esperado",pojoEntity.getVivienda(), resp.getVivienda());
     }
     
     private Date agregaDias(Date date, int dias) {
