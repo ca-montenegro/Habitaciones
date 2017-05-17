@@ -106,14 +106,6 @@ public class ViviendaDTO  implements Serializable{
         entity.setDireccion(this.getDireccion());
         entity.setCapacidad(this.getCapacidad());
         
-        AnfitrionEntity anfitrion = new AnfitrionEntity();
-        anfitrion.setCorreo(this.getAnfitrion().getCorreo());
-        anfitrion.setNombre(this.getAnfitrion().getNombre());
-        anfitrion.setDireccion(this.getAnfitrion().getDireccion());
-        anfitrion.setPuntuacion(this.getAnfitrion().getPuntuacion());
-        anfitrion.setTelefono(this.getAnfitrion().getTelefono());
-        
-        entity.setAnfitrion(anfitrion);
         entity.setValorDiario(this.getValorDiario());
         entity.setImagen(this.getImagen());
         entity.setNumeroHabitaciones (this.getNumeroHabitaciones());

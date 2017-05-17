@@ -190,15 +190,16 @@
                             '$state', 'viviendas', 'viviendasContext',
                             function ($scope, $http, $state,
                             viviendas, viviendasContext) {
-                                
+                                let viv = $scope.viviendaActual;
+                                console.log(viv);
                                 $scope.tempVivienda = {
-                                    "capacidad": viviendaActual.capacidad,
-                                    "ciudad": viviendaActual.ciudad,
-                                    "descripcion": viviendaActual.descripcion,
-                                    "direccion": viviendaActual.direccion,
-                                    "idVivienda": viviendaActual.idVivienda,
-                                    "imagen": viviendaActual.imagen,
-                                    "valorDiario": viviendaActual.valorDiario,
+                                    "capacidad": viv.capacidad,
+                                    "ciudad": viv.ciudad,
+                                    "descripcion": viv.descripcion,
+                                    "direccion": viv.direccion,
+                                    "idVivienda": viv.idVivienda,
+                                    "imagen": viv.imagen,
+                                    "valorDiario": viv.valorDiario,
                                 };
                                 console.log($scope.tempVivienda);
                                 $scope.modificarVivienda = function () {

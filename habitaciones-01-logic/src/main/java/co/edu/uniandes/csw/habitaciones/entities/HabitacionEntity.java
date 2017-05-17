@@ -27,6 +27,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamDoubleValue;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
  *
@@ -42,16 +45,26 @@ public class HabitacionEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
+    @PodamExclude
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @PodamIntValue(minValue = 0)
     private Integer capacidad;
+    
+    @PodamIntValue(minValue = 0)
     private Double area;
+    
+    @PodamDoubleValue(minValue = 0)
+    
     private Double valorDiario;
     private String descripcion;
     private String imagen;
     @ManyToOne 
+    @PodamExclude
     private ViviendaEntity vivienda;
     @OneToMany(mappedBy="habitacion", cascade = CascadeType.PERSIST)
+    @PodamExclude
     private List<ReservaEntity> reservas;
 
     public List<ReservaEntity> getReservas() {
