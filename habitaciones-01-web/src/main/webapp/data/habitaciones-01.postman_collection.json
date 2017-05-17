@@ -328,5 +328,77 @@
 			},
 			"response": []
 		}
+		
+		{
+			"name": "Get reservas",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/reservas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-13T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-08T00:00:00-05:00\",\n    \"vivienda\": {\n      \"capacidad\": 6,\n      \"ciudad\": \"Bogota\",\n      \"descripcion\": \"Casa bonita\",\n      \"direccion\": \"Calle 200\",\n      \"idVivienda\": 1,\n      \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n      \"numeroHabitaciones\": 0,\n      \"valorDiario\": 273\n\t}\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get reserva por id",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/reservas/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post de reservas ",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/reservas/6",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoReserva\": 6,\n    \"estado\": \"H\",\n    \"fechaFin\": \"2017-03-19T00:00:00-05:00\",\n    \"fechaInicio\": \"2017-03-18T00:00:00-05:00\",\n    \"vivienda\": {\n      \"idVivienda\": 1,\n      \"valorDiario\": 273\n    }\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put de reservas (Se cancela la reserva)",
+			"request": {
+				"url": "",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"estado\" : \"C\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
 	]
 }
