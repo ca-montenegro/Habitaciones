@@ -31,6 +31,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import org.eclipse.persistence.platform.database.H2Platform;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamIntValue;
 
@@ -111,7 +112,8 @@ public class ViviendaEntity implements Serializable{
      * Constructor por defecto
      */
     public ViviendaEntity(){
-        
+        habitaciones=new ArrayList<HabitacionEntity>();
+        reservas=new ArrayList<ReservaEntity>();
     }
     
     /**
@@ -249,7 +251,9 @@ public class ViviendaEntity implements Serializable{
      */
     public List<HabitacionEntity> getHabitaciones(){
         List resp = new ArrayList<>();
-        resp.addAll(habitaciones);
+        if (habitaciones.size()>0){
+            resp.addAll(habitaciones);
+        }
         return resp;
     }
     
