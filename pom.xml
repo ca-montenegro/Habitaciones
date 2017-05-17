@@ -33,6 +33,11 @@
                 <artifactId>org.eclipse.persistence.moxy</artifactId>
                 <version>2.6.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <scope>runtime</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -64,12 +69,12 @@
             <artifactId>podam</artifactId>
             <version>6.0.2.RELEASE</version>
         </dependency>
-		<dependency>
-              <groupId>org.jboss.shrinkwrap.resolver</groupId>
-              <artifactId>shrinkwrap-resolver-depchain</artifactId>
-              <scope>test</scope>
-              <type>pom</type>
-         </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-depchain</artifactId>
+            <scope>test</scope>
+            <type>pom</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -80,10 +85,10 @@
                 <executions>
                     <execution>
                         <goals>
-                           <goal>prepare-agent</goal>
-                           <goal>prepare-agent-integration</goal>
-                           <goal>report</goal>
-                           <goal>report-integration</goal>
+                            <goal>prepare-agent</goal>
+                            <goal>prepare-agent-integration</goal>
+                            <goal>report</goal>
+                            <goal>report-integration</goal>
                         </goals>
                     </execution>
                 </executions>

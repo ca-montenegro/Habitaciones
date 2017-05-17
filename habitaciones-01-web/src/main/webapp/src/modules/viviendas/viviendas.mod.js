@@ -242,7 +242,7 @@
                     'listView': {
                         templateUrl: basePath+'modificarVivienda.html',
                         controller: ['$scope','viviendaActual',
-                            '$state', '$http','viviendasContext',
+                            '$state','$http','viviendasContext',
                             /**
                              * Funcion modifivar vivienda
                              * @param {type} $scope
@@ -252,10 +252,11 @@
                              * @param {type} viviendasContext
                              * @return {undefined}
                              */
-                            function ($scope, viviendaActual, $params,
-                            $state,$http, viviendasContext) {
+                            function ($scope, viviendaActual,$params,
+                            $state, $http, viviendasContext) {
                                 $scope.viviendaActual=viviendaActual.data;
                                 const viv = $scope.viviendaActual;
+                                console.log(viv);
                                 $scope.tempVivienda = {
                                     "capacidad": viv.capacidad,
                                     "ciudad": viv.ciudad,
@@ -272,10 +273,9 @@
                                 $scope.modificarVivienda = function () {
                                     
                                     tempVivienda = $scope.tempVivienda;
-                                    console.log($scope.tempVivienda);
+                                    console.log(tempVivienda);
                                     const nuevoContext = viviendasContext;
-                                    return $http.put(nuevoContext+'/'+
-                                            tempVivienda.idVivienda,$scope.tempVivienda)
+                                    return $http.put(nuevoContext,tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
