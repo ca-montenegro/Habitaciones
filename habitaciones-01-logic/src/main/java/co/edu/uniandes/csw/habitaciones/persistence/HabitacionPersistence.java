@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2017 c.penaloza.
+ * Copyright (C) 2017
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -36,13 +36,11 @@ public class HabitacionPersistence {
     @PersistenceContext(unitName="habitacionesPU")
      protected EntityManager em;
     
-    public HabitacionEntity find(Long id)
-    {
+    public HabitacionEntity find(Long id){
         return em.find(HabitacionEntity.class, id);
     }
     
-    public HabitacionEntity findV(Long id, Long idV)
-    {
+    public HabitacionEntity findV(Long id, Long idV){
         Query q = em.createQuery("SELECT u FROM HABITACIONENTITY u WHERE u.ID="+id+"AND u.IDVIVIENDA=:" + idV);
         return (HabitacionEntity) q.getResultList().get(0);
     }

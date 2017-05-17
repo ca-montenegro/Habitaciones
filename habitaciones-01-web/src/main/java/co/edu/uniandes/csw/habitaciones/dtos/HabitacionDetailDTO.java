@@ -26,34 +26,46 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlRootElement
+/**
+ * Clase Habitacion Detail Dto
+ */
 public class HabitacionDetailDTO extends HabitacionDTO {
     
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Lista de reservas de la habitacion
+     */
     private List<ReservaDTO> reservas;
     
-    public HabitacionDetailDTO()
-    {      
+    /**
+     * Constructor de la clase
+     */
+    public HabitacionDetailDTO(){      
         super();
     }
-    
-    public HabitacionDetailDTO(HabitacionEntity entity)
-    {      
+    /**
+     * Constructor de la clase con parametros de entrada
+     * @param entity Entidad que se quiere volver DTO
+     */
+    public HabitacionDetailDTO(HabitacionEntity entity){
         super(entity);
         if(entity!=null){
-        if(entity.getReservas()!=null){
-            this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {   
-                this.reservas.add(new ReservaDTO(reserva));
+            if(entity.getReservas()!=null){
+                this.reservas=new ArrayList();
+                for(ReservaEntity reserva:entity.getReservas()){
+                    this.reservas.add(new ReservaDTO(reserva));
+                }
             }
-        }
         }
     }
     
+    /**
+     * Metodo que convierte un DTO en un entity
+     * @return 
+     */
     @Override
-    public HabitacionEntity toEntity()
-    {
+    public HabitacionEntity toEntity(){
         HabitacionEntity entity = new HabitacionEntity();
         entity.setId(this.getId());
         entity.setArea(this.getArea());
@@ -64,19 +76,30 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         if(this.getReservas()!=null){
             entity.setReservas(new ArrayList());
             List<ReservaEntity> entities0=entity.getReservas();
-            for(ReservaDTO reserva:this.getReservas())
-            {
+            for(ReservaDTO reserva:this.getReservas()){
                 entities0.add(reserva.toEntity());
             }
         }
         return entity;
     }
 
+    /**
+     * Metodo que retorna las reservas de la habitacion
+     * @return Reservas de la habitacion
+     */
     public List<ReservaDTO> getReservas() {
-        return reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(this.reservas);
+        return resp;
     }
 
+    /**
+     * Metodo que asigna las reservas de la hablitacion
+     * @param reservas Reservas que se le asignaran a la habitacion
+     */
     public void setReservas(List<ReservaDTO> reservas) {
-        this.reservas = reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(reservas);
+        this.reservas = resp;
     }    
 }
