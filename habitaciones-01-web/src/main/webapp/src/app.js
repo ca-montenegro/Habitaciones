@@ -15,7 +15,6 @@ er, choose License Headers in Project Properties.
         'reservasModule',
         'habitacionModule',
         'usuarioModule',
-        'MainLogin',
         'anfitrionModule'
 
     ]); 

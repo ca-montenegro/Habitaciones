@@ -10,7 +10,7 @@
      */
     const mod = ng.module('usuarioModule', ['ui.router']);
     mod.constant('usuarioContext', 'api/usuarios');
-    mod.config(['$stateProvider', '$urlRouterProvider', 
+    mod.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
             const basePath = 'src/modules/usuario/';
             $urlRouterProvider.otherwise('/usuariosList');
@@ -21,7 +21,7 @@
                  * Resolve
                  */
                 resolve: {
-                    usuarios: ['$http', 'usuarioContext', 
+                    usuarios: ['$http', 'usuarioContext',
                         function ($http, usuarioContext) {
                             return $http.get(usuarioContext);
                         }]
@@ -56,7 +56,31 @@
                 parent: 'usuarios',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'modal.html'
+                        templateUrl: basePath + 'modal.html',
+                        controller: ['$scope', '$http', '$state', '$window', 'usuarios', 'usuarioContext',
+                            function ($scope, $http, $state, $window, usuarios, usuarioContext) {
+                                $scope.usuariosRecords = usuarios.data;
+
+                                $scope.tempAdmin = {
+                                    usuario: '',
+                                    contrasenha: ''
+                                };
+                                console.log($scope.tempAdmin);
+                                $scope.ingresar = function () {
+
+                                    tempAdmin = $scope.tempAdmin;
+                                     if ('JaimeAdmin' == tempAdmin.usuario)
+                                        {
+                                            if (123456 == tempAdmin.contrasenha)
+                                            {
+                                                $window.alert("Bienvenido");
+                                                
+                                                $state.go("usuariosList");
+                                                
+                                            }
+                                        }
+                                }
+                            }]
                     }
                 }
                 /**
