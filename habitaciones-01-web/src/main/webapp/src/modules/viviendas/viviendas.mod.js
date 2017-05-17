@@ -174,6 +174,7 @@
                                 };
                                 console.log($scope.tempHabitacion);
                                 $scope.agregarHabitacion = function () {
+                                    idV=$params.viviendaId;
                                     console.log(idV);
                                 
                                     tempHabitacion = $scope.tempHabitacion;
