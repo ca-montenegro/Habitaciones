@@ -34,7 +34,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class AnfitrionLogicTest {
     
-    public static final String DEPLOY = "Prueba1";
+    public static final String DEPLOY = "PruebaAnfitrionLogic";
 
     /**
      * @generated
@@ -96,7 +96,7 @@ public class AnfitrionLogicTest {
      * @generated
      */
     private void clearData() {
-        em.createQuery("delete from UsuarioEntity where DTYPE='c' OR DTYPE='AnfitrionEntity'").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
 
     /**
@@ -151,7 +151,7 @@ public class AnfitrionLogicTest {
      * @generated
      */
     @Test
-    public void getAnfitrionessTest() {
+    public void getAnfitrionesTest() {
         List<AnfitrionEntity> list = anfitrionLogic.getAnfitriones();
         Assert.assertEquals(data.size(), list.size());
         for (AnfitrionEntity entity : list) {
@@ -171,7 +171,7 @@ public class AnfitrionLogicTest {
      * @generated
      */
     @Test
-    public void getUsuarioTest() throws BusinessLogicException {
+    public void getAnfitrionTest() throws BusinessLogicException {
         AnfitrionEntity entity = data.get(0);
         AnfitrionEntity resultEntity = anfitrionLogic.getAnfitrion(entity.getNumeroID());
         Assert.assertNotNull(resultEntity);

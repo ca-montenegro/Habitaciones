@@ -27,6 +27,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -95,6 +96,7 @@ public class UsuarioEntity implements Serializable {
     /**
      * Lista de reservas de un usuario
      */
+    @PodamExclude
     @OneToMany(cascade = CascadeType.ALL)
     private List<ReservaEntity> reservas;
 

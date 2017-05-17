@@ -9,9 +9,10 @@
                 url: '/anfitriones',
                 abstract: true,
                 resolve: {
-                    anfitriones: ['$http', function ($http) {
-                            return $http.get('data/anfitriones.json');
-                        }]
+                    anfitriones: ['$http', 'anfitrionContext',
+                        function ($http, anfitrionContext) {
+                            return $http.get(anfitrionContext);
+                        }, ]
                 },
                 views: {
                     'mainView': {
