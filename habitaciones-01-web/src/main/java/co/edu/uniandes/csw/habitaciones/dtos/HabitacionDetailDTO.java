@@ -32,28 +32,24 @@ public class HabitacionDetailDTO extends HabitacionDTO {
     
     private List<ReservaDTO> reservas;
     
-    public HabitacionDetailDTO()
-    {      
+    public HabitacionDetailDTO(){      
         super();
     }
     
-    public HabitacionDetailDTO(HabitacionEntity entity)
-    {      
+    public HabitacionDetailDTO(HabitacionEntity entity){
         super(entity);
         if(entity!=null){
-        if(entity.getReservas()!=null){
-            this.reservas=new ArrayList();
-            for(ReservaEntity reserva:entity.getReservas())
-            {   
-                this.reservas.add(new ReservaDTO(reserva));
+            if(entity.getReservas()!=null){
+                this.reservas=new ArrayList();
+                for(ReservaEntity reserva:entity.getReservas()){
+                    this.reservas.add(new ReservaDTO(reserva));
+                }
             }
-        }
         }
     }
     
     @Override
-    public HabitacionEntity toEntity()
-    {
+    public HabitacionEntity toEntity(){
         HabitacionEntity entity = new HabitacionEntity();
         entity.setId(this.getId());
         entity.setArea(this.getArea());
@@ -64,8 +60,7 @@ public class HabitacionDetailDTO extends HabitacionDTO {
         if(this.getReservas()!=null){
             entity.setReservas(new ArrayList());
             List<ReservaEntity> entities0=entity.getReservas();
-            for(ReservaDTO reserva:this.getReservas())
-            {
+            for(ReservaDTO reserva:this.getReservas()){
                 entities0.add(reserva.toEntity());
             }
         }
@@ -73,10 +68,14 @@ public class HabitacionDetailDTO extends HabitacionDTO {
     }
 
     public List<ReservaDTO> getReservas() {
-        return reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(this.reservas);
+        return resp;
     }
 
     public void setReservas(List<ReservaDTO> reservas) {
-        this.reservas = reservas;
+        List<ReservaDTO> resp = new ArrayList<>();
+        resp.addAll(reservas);
+        this.reservas = resp;
     }    
 }

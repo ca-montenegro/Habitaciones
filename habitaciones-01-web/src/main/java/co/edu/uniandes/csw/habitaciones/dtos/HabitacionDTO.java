@@ -70,7 +70,7 @@ public class HabitacionDTO implements Serializable {
     }
     
     public Integer getCapacidad() {
-                        return capacidad;
+        return capacidad;
     }
 
     public void setCapacidad(Integer capacidad) {
