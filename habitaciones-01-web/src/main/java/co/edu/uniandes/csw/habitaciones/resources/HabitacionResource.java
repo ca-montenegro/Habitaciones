@@ -92,7 +92,7 @@ public class HabitacionResource {
     
     @DELETE
     @Path("/viviendas/{idV:\\d+}/habitaciones/{id}")
-        public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) {
+        public void deleteHabitacion (@PathParam("idV") Long idV, @PathParam("id") Long id) throws BusinessLogicException {
         habitacionLogic.deleteHabitacion(id);
     }
         

@@ -138,11 +138,12 @@
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
-                            '$state', 'viviendas', 'viviendasContext',
+                            '$state', 'viviendas', 'viviendasContext', '$stateParams',
                             
                             function ($scope, $http, $state,
-                            viviendas, viviendasContext) {
-                                let vivi = $scope.viviendaActual;
+                            viviendas, viviendasContext, $params) {
+                                
+                                let idActual = $params.viviendaId;
                                 $scope.tempHabitacion = {
                                     'area': '',
                                     'capacidad': '',
@@ -152,18 +153,19 @@
                                             '/d656f7da_original.jpg?aki_policy=large',
                                     'valorDiario': '',
                                 };
-                                console.log(vivi);
+                                
                                 $scope.agregarHabitacion = function () {
                                     
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
-                                            '/'+vivi+'/habitaciones';
+                                            '/'+idActual+'/habitaciones';
+                                    console.log(nuevoContext);
                                     return $http.post(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
-                                        $state.go('viviendasList');
+                                        //$state.go('viviendasList');
                                         console.log('check');
                                     },);
                                     
