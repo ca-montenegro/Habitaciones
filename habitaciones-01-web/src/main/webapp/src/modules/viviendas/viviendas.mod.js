@@ -166,7 +166,8 @@
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
                                         //$state.go('viviendasList');
-                                        console.log('check');
+                                        $state.go('viviendasList');
+                                        location.reload();
                                     },);
                                     
                                 }
