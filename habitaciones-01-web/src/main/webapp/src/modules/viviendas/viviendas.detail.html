@@ -45,10 +45,10 @@
                     </div> 
                 </div>
                 <div class="col-md-3 ">
-                    <div class="thumb" align="center">
-                        <p><a class="btn btn-primary btn-lg buttonEliminar" ui-sref="eliminarVivienda({viviendaId: viviendaActual.idVivienda})">Eliminar vivienda</a></p>
-                    </div> 
-                </div>
+                <div class="thumb" align="center">
+                     <p><a class="btn btn-primary btn-lg buttonEliminar" ng-click = "eliminar()">Eliminar vivienda</a></p>
+                </div> 
+            </div>
                 <div class="col-md-3 ">
                     <div class="thumb" align="center">
                         <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="modificarVivienda({viviendaId: viviendaActual.idVivienda})">Modificar datos</a></p>
@@ -59,6 +59,4 @@
                         <p><a class="btn btn-primary btn-lg buttonModificarVivienda" ui-sref="agregarHabitacion({viviendaId: viviendaActual.idVivienda})">Agregar habitación</a></p>
                     </div> 
                 </div>
-            </div>
-        </div>
-    </div>
+                

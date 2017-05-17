@@ -98,10 +98,7 @@
                                 
                                 $scope.viviendaActual =  viviendaActual.data;
                                 let vivi = $scope.viviendaActual;
-                                console.log(vivi);
-                                
                                 $scope.eliminar = function(){
-                                    console.log(vivi);
                                 const nuevoContext = viviendasContext+
                                             '/'+vivi.idVivienda;
                                     console.log(nuevoContext);
@@ -109,7 +106,7 @@
                                                     // $http.post es una promesa
                                                     // cuando termine bien, cambie de estado
                                                     $state.go('viviendasList');
-                                                    console.log('Hola carlitos');
+                                                    location.reload();
                                                 },);
                             }
                             },],
@@ -125,44 +122,27 @@
                     'extraView': {         
                     },
                 },
-            }).state('eliminarVivienda', {
-                url: '/{viviendaId:int}/eliminar',
-                parent: 'viviendas', views: {
-                    'listView': {
-                        templateUrl: basePath + 'agregarHabitacion.html',
-                        controller: ['$scope', '$http',
-                            '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,
-                            viviendas, viviendasContext) {
-                                console.log("entra");
-                                $scope.eliminarVivienda = function () {
-                                    console.log("entra1");
-                                    tempHabitacion = $scope.tempHabitacion;
-                                    console.log($scope.tempHabitacion);
-                                    const nuevoContext = viviendasContext+
-                                            '/'+$params.viviendaId;
-                                    return $http.delete(nuevoContext)
-                                            .then(function () {
-                                                // $http.post es una promesa
-                                        // cuando termine bien, cambie de estado
-                                        $state.go('viviendasList');
-                                        console.log('check');
-                                    },);
-                                    
-                                }
-                            },],
-                    },
-                },
             }).state('agregarHabitacion', {
                 url: '/{viviendaId:int}/agregarHabitacion',
-                parent: 'viviendas', views: {
+                parent: 'viviendas',
+                resolve: {
+                    viviendaActual: 
+                            ['$http', 'viviendasContext', '$stateParams',
+                        function ($http, viviendasContext, $params) {
+                            return $http.get(viviendasContext+
+                                    '/'+$params.viviendaId);
+                        }
+                        ,],
+                },
+                views: {
                     'listView': {
                         templateUrl: basePath + 'agregarHabitacion.html',
                         controller: ['$scope', '$http',
                             '$state', 'viviendas', 'viviendasContext',
+                            
                             function ($scope, $http, $state,
                             viviendas, viviendasContext) {
-                                
+                                let vivi = $scope.viviendaActual;
                                 $scope.tempHabitacion = {
                                     'area': '',
                                     'capacidad': '',
@@ -172,15 +152,13 @@
                                             '/d656f7da_original.jpg?aki_policy=large',
                                     'valorDiario': '',
                                 };
-                                console.log($scope.tempHabitacion);
+                                console.log(vivi);
                                 $scope.agregarHabitacion = function () {
-                                    idV=$params.viviendaId;
-                                    console.log(idV);
-                                
+                                    
                                     tempHabitacion = $scope.tempHabitacion;
                                     console.log($scope.tempHabitacion);
                                     const nuevoContext = viviendasContext+
-                                            '/'+idV+'/habitaciones';
+                                            '/'+vivi+'/habitaciones';
                                     return $http.post(nuevoContext, tempHabitacion)
                                             .then(function () {
                                                 // $http.post es una promesa
