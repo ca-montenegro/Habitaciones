@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "habitaciones-01",
-		"_postman_id": "79487c36-e7bc-8bbf-897d-68e6baa7f207",
+		"_postman_id": "cf74b724-16ed-f463-bb19-3b04f9765c5b",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -238,7 +238,30 @@
 				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/6",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put vivienda",
+			"request": {
+				"url": "http://localhost:8080/habitaciones-01-web/api/viviendas/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"capacidad\": 4,\n  \"ciudad\": \"Bogota\",\n  \"descripcion\": \"\",\n  \"direccion\": \"Calle 250\",\n  \"imagen\": \"https://a0.muscache.com/im/pictures/42492006/d656f7da_original.jpg?aki_policy=large\",\n  \"valorDiario\": 410\n}"
+				},
 				"description": ""
 			},
 			"response": []

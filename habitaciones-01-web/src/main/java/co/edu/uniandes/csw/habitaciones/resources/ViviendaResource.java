@@ -142,7 +142,21 @@ public class ViviendaResource {
     @Path("/viviendas/{id: \\d+}")
     public ViviendaDetailDTO updateVivienda(ViviendaDetailDTO dto, @PathParam("id") Long id) throws BusinessLogicException {
         ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
-        
+        if (dto.getCapacidad()!=vivienda.getCapacidad()&&dto.getCapacidad()>0){
+            vivienda.setCapacidad(dto.getCapacidad());
+        }
+        if (!dto.getDescripcion().equals(vivienda.getDescripcion()) && !dto.getDescripcion().isEmpty()){
+            vivienda.setDescripcion(dto.getDescripcion());
+        }
+        if (!dto.getDireccion().equals(vivienda.getDireccion()) && !dto.getDireccion().isEmpty()){
+            vivienda.setDireccion(dto.getDireccion());
+        }
+        if (!dto.getImagen().equals(vivienda.getImagen()) && !dto.getImagen().isEmpty()){
+            vivienda.setImagen(dto.getImagen());
+        }
+        if (!dto.getValorDiario().equals(vivienda.getValorDiario())&&dto.getValorDiario()>0){
+            vivienda.setValorDiario(dto.getValorDiario());
+        }
         return new ViviendaDetailDTO(viviendaLogic.updateVivienda(vivienda));
     }
     

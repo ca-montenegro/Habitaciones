@@ -224,8 +224,8 @@ public class UsuarioResource {
             
 
             if (re.getCodigoReserva() == Long.parseLong(idReserva)) {
-
-                listaReservas.remove(count++);
+                count++;
+                listaReservas.remove(count);
                 reservaUpdate = reservaLogic.updateReserva(dto.toEntity());
                 listaReservas.add(re);
                 break;
