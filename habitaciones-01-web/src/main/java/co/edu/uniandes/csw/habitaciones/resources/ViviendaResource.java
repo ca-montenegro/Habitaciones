@@ -154,7 +154,7 @@ public class ViviendaResource {
         if (!dto.getImagen().equals(vivienda.getImagen()) && !dto.getImagen().isEmpty()){
             vivienda.setImagen(dto.getImagen());
         }
-        if (dto.getValorDiario()!=vivienda.getValorDiario()&&dto.getValorDiario()>0){
+        if (!dto.getValorDiario().equals(vivienda.getValorDiario())&&dto.getValorDiario()>0){
             vivienda.setValorDiario(dto.getValorDiario());
         }
         return new ViviendaDetailDTO(viviendaLogic.updateVivienda(vivienda));
