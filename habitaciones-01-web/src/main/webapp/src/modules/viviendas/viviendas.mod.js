@@ -179,7 +179,14 @@
                 parent: 'viviendas',
                 resolve: {
                     viviendaActual: 
-                            ['$http', 'viviendasContext', '$stateParams',
+                            ['$http','viviendasContext','$stateParams',
+                        /**
+                         * Get vivienda actual
+                         * @param {type} $http
+                         * @param {type} viviendasContext
+                         * @param {type} $params
+                         * @return {unresolved}
+                         */
                         function ($http, viviendasContext, $params) {
                             return $http.get(viviendasContext+
                                     '/'+$params.viviendaId);
@@ -188,12 +195,22 @@
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'modificarVivienda.html',
-                        controller: ['$scope', '$http',
-                            '$state', 'viviendas', 'viviendasContext',
-                            function ($scope, $http, $state,
-                            viviendas, viviendasContext) {
-                                let viv = $scope.viviendaActual;
+                        templateUrl: basePath+'modificarVivienda.html',
+                        controller: ['$scope','viviendaActual',
+                            '$state','$http','viviendasContext',
+                            /**
+                             * Funcion modifivar vivienda
+                             * @param {type} $scope
+                             * @param {type} $http
+                             * @param {type} $state
+                             * @param {type} viviendas
+                             * @param {type} viviendasContext
+                             * @return {undefined}
+                             */
+                            function ($scope, viviendaActual,$params,
+                            $state, $http, viviendasContext) {
+                                $scope.viviendaActual=viviendaActual.data;
+                                const viv = $scope.viviendaActual;
                                 console.log(viv);
                                 $scope.tempVivienda = {
                                     "capacidad": viv.capacidad,
@@ -204,13 +221,16 @@
                                     "imagen": viv.imagen,
                                     "valorDiario": viv.valorDiario,
                                 };
-                                console.log($scope.tempVivienda);
+                                /**
+                                 * Modifica la vivienda
+                                 * @return {unresolved}
+                                 */
                                 $scope.modificarVivienda = function () {
                                     
                                     tempVivienda = $scope.tempVivienda;
-                                    console.log($scope.tempVivienda);
-                                    const nuevoContext = viviendasContext+1;
-                                    return $http.put(nuevoContext, tempVivienda)
+                                    console.log(tempVivienda);
+                                    const nuevoContext = viviendasContext;
+                                    return $http.put(nuevoContext,tempVivienda)
                                             .then(function () {
                                                 // $http.post es una promesa
                                         // cuando termine bien, cambie de estado
