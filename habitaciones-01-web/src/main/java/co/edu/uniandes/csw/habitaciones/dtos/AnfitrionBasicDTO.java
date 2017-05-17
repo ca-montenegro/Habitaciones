@@ -27,17 +27,11 @@ public class AnfitrionBasicDTO extends AnfitrionDTO{
 
     public AnfitrionBasicDTO()
     {
-        
+        super();
     }
     
     public AnfitrionBasicDTO(AnfitrionEntity entity){
-        this.setNumeroID(entity.getNumeroID());
-        this.setTipoID(entity.getTipoID());
-        this.setNombre(entity.getNombre());
-        this.setCorreo(entity.getCorreo());
-        this.setDireccion(entity.getDireccion());
-        this.setTelefono(entity.getTelefono());
-        this.setPuntuacion(entity.getPuntuacion());
+        super(entity);
     }
     
     @Override
