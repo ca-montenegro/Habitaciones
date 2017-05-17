@@ -131,6 +131,35 @@ public class ViviendaResource {
         return new ViviendaDetailDTO(viviendaLogic.createVivienda(dto.toEntity()));
     }
     
+    /**
+     * Se encarga de modificar un Vivienda en la base de datos
+     * @param dto Objeto de ViviendaDetailDTO con los datos nuevos
+     * @return Objeto de ViviendaDetailDTOcon los datos nuevos y su ID
+     * @throws co.edu.uniandes.csw.habitaciones.exceptions.BusinessLogicException
+     * @generated
+     */
+    @PUT
+    @Path("/viviendas/{id: \\d+}")
+    public ViviendaDetailDTO updateVivienda(ViviendaDetailDTO dto, @PathParam("id") Long id) throws BusinessLogicException {
+        ViviendaEntity vivienda = viviendaLogic.getVivienda(id);
+        if (dto.getCiudad()!=null){
+            vivienda.setCiudad(dto.getCiudad());
+        }
+        if (dto.getCapacidad()!=vivienda.getCapacidad()&&dto.getCapacidad()>0){
+            vivienda.setCapacidad(dto.getCapacidad());
+        }
+        if (dto.getDescripcion()!=null){
+            vivienda.setDescripcion(dto.getDescripcion());
+        }
+        if (dto.getImagen()!=null){
+            vivienda.setImagen(dto.getImagen());
+        }
+        if (dto.getValorDiario()!=null){
+            vivienda.setValorDiario(dto.getValorDiario());
+        }
+        return new ViviendaDetailDTO(viviendaLogic.updateVivienda(vivienda));
+    }
+    
     
     /**
      * Elimina una instancia de Vivienda de la base de datos
