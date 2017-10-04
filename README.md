@@ -1,6 +1,6 @@
 # API Rest Habitaciones
 ## Description
-FullStack Application with similar bussiness logic as AirBnb. 
+FullStack Application with similar business logic as AirBnb. 
 
 Develop using:
 -Java
