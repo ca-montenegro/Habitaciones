@@ -14,6 +14,8 @@ Develop using:
 
 For more information visit the Wiki of this repository.
 
+[Wiki-Home](https://github.com/Uniandes-ISIS2603-backup/201710-habitaciones_01/wiki) 
+
 ## Introducción
 Basándonos en la premisa la cual dicta que la relación Cliente-Servidor debe estar separada mediante interfaces uniformes, se espera que el cliente no conozca la forma de obtención de la información y cómo se almacena la misma en el servidor. Asimismo, el servidor no conoce la implementación a usar para presentar la información al cliente. Por tal motivo, se hace uso de intercambio de objetos de tipo JSON, en donde las interfaces uniformes hacen la correcta conversión de los atributos en propiedades de objeto tipo JSON con el fin de ser reconocidas y representadas en dicho formato. 
 En la aplicación se hace uso de tres entidades las cuales contienen como atributo un ID autogenerado para identificar cada registro.
